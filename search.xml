@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Quantum noise and quantum operations</title>
+    <url>/2020/10/19/Quantum-noise-and-quantum-operations/</url>
+    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
+<p>Closed quantum systems, without noise.</p>
+<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
+<a id="more"></a>
+<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
+<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
+<script type="math/tex; mode=display">
+\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
+<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
+<script type="math/tex; mode=display">
+\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
+<p>Three equivalent seperate ways to understand quantum operation:</p>
+<ul>
+<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
+<li>Operator-sum representation: abstract, convenient in mathematics.</li>
+<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
+</ul>
+<blockquote>
+<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
+<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
+<script type="math/tex; mode=display">
+ \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
+</blockquote>
+<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
+<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
+<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
+<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
+<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
+<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
+<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
+    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
+    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
+\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
+<script type="math/tex; mode=display">
+\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
+<blockquote>
+<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Quantum Information</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Calculating Entropy for Variational Method</title>
     <url>/2020/04/30/Calculating-Entropy-for-Variational-Method/</url>
     <content><![CDATA[<p>When using variational method to solve the equilibrium state for some many-particle system, one usually sets a density operator $\rho_i$ (with trace 1) for particle $i$. The density operator may have some parameters to be determined by the condition that the free energy be at its minimum. <a id="more"></a>Suppose we have $N$ particles at $N$ sites, each being labeled by $i$. The whole density operator is thus</p>
@@ -202,62 +258,6 @@ J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac
       </tags>
   </entry>
   <entry>
-    <title>Quantum noise and quantum operations</title>
-    <url>/2020/10/19/Quantum-noise-and-quantum-operations/</url>
-    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
-<p>Closed quantum systems, without noise.</p>
-<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
-<a id="more"></a>
-<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
-<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
-<script type="math/tex; mode=display">
-\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
-<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
-<script type="math/tex; mode=display">
-\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
-<p>Three equivalent seperate ways to understand quantum operation:</p>
-<ul>
-<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
-<li>Operator-sum representation: abstract, convenient in mathematics.</li>
-<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
-</ul>
-<blockquote>
-<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
-<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
-<script type="math/tex; mode=display">
- \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
-</blockquote>
-<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
-<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
-<script type="math/tex; mode=display">
-\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
-<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
-<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
-<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
-<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
-<script type="math/tex; mode=display">
-\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
-<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
-    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
-    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
-\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
-<script type="math/tex; mode=display">
-\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
-<blockquote>
-<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Quantum Information</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Introduction to Semiconductor Physics</title>
     <url>/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
     <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
@@ -303,6 +303,29 @@ D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{
       </categories>
       <tags>
         <tag>Solid State Physics Course Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一篇给小北的非典型庆生文</title>
+    <url>/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
+    <content><![CDATA[<p>小北今年122岁了。</p>
+<p>122岁还叫小北？没办法，大家都这么叫。一方面是可爱吧——水灵灵的未名湖，鸭子游着，浮光闪着，楼影立着，一天天呆看着来去匆匆的苦恼和幸福、爱恋和背弃、智慧与迷茫，眼都不眨，被风一挠痒痒却笑得一切都映歪了；<a id="more"></a>还有表面儒雅娴静的博雅塔，暗暗地按着大家的头：你们都不准比我高！还有各种各样奇奇怪怪的人组成的社团，有在课堂上写诗的数学教授，有艺园二楼的烤鹅腿（我好像暴露了些什么）……颜值高、可撩、不开心了还能扑到它怀里的东西，不可爱吗？另一方面，叫它小北，也有一种看着自家不争气小孩的心态吧：你为啥一个劲地说着没名堂的转圈圈话？你为啥就不像隔壁家的孩子那么会包装自己？你为啥整天干坏事被人骂？你为啥最近学得没那么好？……好多人都觉得这娃不是理想的样子，觉得这娃理应做得更好。</p>
+<p>其实人家娃很优秀的。1898年，在内忧外患的国家中、在维新变法的浪潮中诞生，一生下来就寄托着一个民族复兴的希望。才十几二十岁，就成了新文化运动的主要阵地、马克思主义在中国的发源地，深刻影响了国家发展的方向。再往后，一个个辉煌的名字和这孩子联系在一起（太多了，也太强了，挂一漏万不如不列了），“爱国进步民主科学”的精神和这孩子联系在一起……不多说了，现在操控这孩子的那帮人比我能说。总而言之，你觉得它不争气吧，在这个国家，你似乎还找不到第二个这样的学校——了解它的人首先想到的不是“优秀”“一流”这类词汇，而是“伟大”。</p>
+<p>所以呀，说句实话，承担着民众（包括高中生）多少有点不切实际的期待，承担着无数溢美、无数骂名，这娃压力太大了，真太大了，是我娃我肯定看着心疼。心一疼，娃还过生日，今天就不批评它了，发自内心说一句——生日快乐！我喜欢你！</p>
+<p>想起我十六岁的夏天和你的初见，塔影湖光处你的美丽、燕南园旧院里你的深沉、邱德拔晚会上你的活力、讲座和物院宣讲会上你的智慧与能力，深深吸引了我。临别前夜，我站在宿舍楼水房的窗前，望着北京的夜空，写下了一首《暂别》。或许你会觉得我未免太过自信，后面那些坎都还没探出头就敢说是“暂别”？其实看了内容你会觉得我更自信：我始终挥之不去的是在燕南园里对着门牌号查这里住过哪些人时感受到的震撼：冰心、周培源、马寅初、冯友兰……一个个之前只在书上见到过的名字在手机屏幕上出现，告诉我“我当年就在你眼前浇花呢”——于是那晚我写道：“老房子的牙齿掉光时，讲述者是谁？”心里想的是：北大的故事谁来续写？就是我了！这何止是自信？这简直是狂妄了！</p>
+<p>后来就是回到大雁塔脚下，刷题，然后竞赛没有进省队，金秋营报名没过……那时我有点想你，有点怨你，不过没有你生活还是要继续。然后是十七岁的夏天，第一天早上语文多蒙对了几道选择题，第二天坐在华清中学的教室里，看着骊山在雨幕中静默。我走出了考场，结束了六年的中学生活。</p>
+<p>真正重逢的时候，我却感到异常忐忑。我真的可以吗？这里适合我吗？这是梦的起点，还是终点呢？我被推着往前走，然后北大变真实了。与很多人的想象相吻合，我遇到了精心设计课程让我零基础顺滑入门c++的老师；遇到了讲课参考很多本教材形成自己的体系，这样深刻改变了我学习思路的老师；遇到了包容我不会弹琴并且重塑我对音乐认识的钢琴社的大佬；遇到了一群巨得形态各异又非常可爱的同学……无论如何，这绝对是开心的生活。但另一方面，我也看到北大并非净土，看到了平均而言可谓低劣的教学水平，看到了某些人做学生工作时的形式主义和官僚主义，看到了许多真真切切的丑事……曾经和人谈起北大是否令人失望的话题，我说：“你要是让我复习一下，这几年北大的烂事我能给你讲一天一夜。”我失望吗？我不失望。北大从来都不在神坛上，它生存于人群中，扎根在土地里，绵延百余年，承载了太多意义和期待，但现在终归只是海淀区的一个园子而已。</p>
+<p>有时也会停下来想想自己究竟是在一个怎样的处境当中。不知何时开始，我有了这样的判断：</p>
+<p>我处在历史的摄像头聚焦的地方，却并不是主角。</p>
+<p>对于一个沉迷于人生的宏大叙事的人，认识到自身力量的局限和伟大的不可到达，之后再去寻找意义的过程，是非常痛苦的。人生意义在那？科学的意义在哪？探究非本质问题的意义在哪？一连串问题压得我喘不过气，走不动路，我在未名湖边转了一圈又一圈，得到了一个简单粗暴的结论——干就是了！</p>
+<p>依据在哪？依据在于北大，这个总是被人与“伟大”联系在一起的地方，似乎在用一种特殊的方式不断暗示着我：成功不是一个良定义的状态，但开心是。一方面有着家国天下的胸怀，一方面包容每个个体的无奈。这就是传说中的北大精神？</p>
+<p>于是十七岁那个惴惴不安地坐在物院会议室里听董老师那段几乎没有停顿的讲话的孩子变成了今天的样子：也会焦虑，也会迷茫，但几乎总是开心地享用着北大提供的精神盛宴。</p>
+<p>所以今天，我要祝不完美的世界非一流大学：北京大学——生日快乐！</p>
+<p>也要祝从这里走出去的、在这里的、将要来这里的伟大的成功者和可敬的失败者们——快乐！</p>
+<p>今天也是青年节，那就再祝可爱的小北永远年轻、永远进步、永远做这片土地上思想和教育的光！</p>
+]]></content>
+      <tags>
+        <tag>隨筆</tag>
       </tags>
   </entry>
   <entry>
@@ -422,67 +445,6 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
       </tags>
   </entry>
   <entry>
-    <title>一篇给小北的非典型庆生文</title>
-    <url>/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
-    <content><![CDATA[<p>小北今年122岁了。</p>
-<p>122岁还叫小北？没办法，大家都这么叫。一方面是可爱吧——水灵灵的未名湖，鸭子游着，浮光闪着，楼影立着，一天天呆看着来去匆匆的苦恼和幸福、爱恋和背弃、智慧与迷茫，眼都不眨，被风一挠痒痒却笑得一切都映歪了；<a id="more"></a>还有表面儒雅娴静的博雅塔，暗暗地按着大家的头：你们都不准比我高！还有各种各样奇奇怪怪的人组成的社团，有在课堂上写诗的数学教授，有艺园二楼的烤鹅腿（我好像暴露了些什么）……颜值高、可撩、不开心了还能扑到它怀里的东西，不可爱吗？另一方面，叫它小北，也有一种看着自家不争气小孩的心态吧：你为啥一个劲地说着没名堂的转圈圈话？你为啥就不像隔壁家的孩子那么会包装自己？你为啥整天干坏事被人骂？你为啥最近学得没那么好？……好多人都觉得这娃不是理想的样子，觉得这娃理应做得更好。</p>
-<p>其实人家娃很优秀的。1898年，在内忧外患的国家中、在维新变法的浪潮中诞生，一生下来就寄托着一个民族复兴的希望。才十几二十岁，就成了新文化运动的主要阵地、马克思主义在中国的发源地，深刻影响了国家发展的方向。再往后，一个个辉煌的名字和这孩子联系在一起（太多了，也太强了，挂一漏万不如不列了），“爱国进步民主科学”的精神和这孩子联系在一起……不多说了，现在操控这孩子的那帮人比我能说。总而言之，你觉得它不争气吧，在这个国家，你似乎还找不到第二个这样的学校——了解它的人首先想到的不是“优秀”“一流”这类词汇，而是“伟大”。</p>
-<p>所以呀，说句实话，承担着民众（包括高中生）多少有点不切实际的期待，承担着无数溢美、无数骂名，这娃压力太大了，真太大了，是我娃我肯定看着心疼。心一疼，娃还过生日，今天就不批评它了，发自内心说一句——生日快乐！我喜欢你！</p>
-<p>想起我十六岁的夏天和你的初见，塔影湖光处你的美丽、燕南园旧院里你的深沉、邱德拔晚会上你的活力、讲座和物院宣讲会上你的智慧与能力，深深吸引了我。临别前夜，我站在宿舍楼水房的窗前，望着北京的夜空，写下了一首《暂别》。或许你会觉得我未免太过自信，后面那些坎都还没探出头就敢说是“暂别”？其实看了内容你会觉得我更自信：我始终挥之不去的是在燕南园里对着门牌号查这里住过哪些人时感受到的震撼：冰心、周培源、马寅初、冯友兰……一个个之前只在书上见到过的名字在手机屏幕上出现，告诉我“我当年就在你眼前浇花呢”——于是那晚我写道：“老房子的牙齿掉光时，讲述者是谁？”心里想的是：北大的故事谁来续写？就是我了！这何止是自信？这简直是狂妄了！</p>
-<p>后来就是回到大雁塔脚下，刷题，然后竞赛没有进省队，金秋营报名没过……那时我有点想你，有点怨你，不过没有你生活还是要继续。然后是十七岁的夏天，第一天早上语文多蒙对了几道选择题，第二天坐在华清中学的教室里，看着骊山在雨幕中静默。我走出了考场，结束了六年的中学生活。</p>
-<p>真正重逢的时候，我却感到异常忐忑。我真的可以吗？这里适合我吗？这是梦的起点，还是终点呢？我被推着往前走，然后北大变真实了。与很多人的想象相吻合，我遇到了精心设计课程让我零基础顺滑入门c++的老师；遇到了讲课参考很多本教材形成自己的体系，这样深刻改变了我学习思路的老师；遇到了包容我不会弹琴并且重塑我对音乐认识的钢琴社的大佬；遇到了一群巨得形态各异又非常可爱的同学……无论如何，这绝对是开心的生活。但另一方面，我也看到北大并非净土，看到了平均而言可谓低劣的教学水平，看到了某些人做学生工作时的形式主义和官僚主义，看到了许多真真切切的丑事……曾经和人谈起北大是否令人失望的话题，我说：“你要是让我复习一下，这几年北大的烂事我能给你讲一天一夜。”我失望吗？我不失望。北大从来都不在神坛上，它生存于人群中，扎根在土地里，绵延百余年，承载了太多意义和期待，但现在终归只是海淀区的一个园子而已。</p>
-<p>有时也会停下来想想自己究竟是在一个怎样的处境当中。不知何时开始，我有了这样的判断：</p>
-<p>我处在历史的摄像头聚焦的地方，却并不是主角。</p>
-<p>对于一个沉迷于人生的宏大叙事的人，认识到自身力量的局限和伟大的不可到达，之后再去寻找意义的过程，是非常痛苦的。人生意义在那？科学的意义在哪？探究非本质问题的意义在哪？一连串问题压得我喘不过气，走不动路，我在未名湖边转了一圈又一圈，得到了一个简单粗暴的结论——干就是了！</p>
-<p>依据在哪？依据在于北大，这个总是被人与“伟大”联系在一起的地方，似乎在用一种特殊的方式不断暗示着我：成功不是一个良定义的状态，但开心是。一方面有着家国天下的胸怀，一方面包容每个个体的无奈。这就是传说中的北大精神？</p>
-<p>于是十七岁那个惴惴不安地坐在物院会议室里听董老师那段几乎没有停顿的讲话的孩子变成了今天的样子：也会焦虑，也会迷茫，但几乎总是开心地享用着北大提供的精神盛宴。</p>
-<p>所以今天，我要祝不完美的世界非一流大学：北京大学——生日快乐！</p>
-<p>也要祝从这里走出去的、在这里的、将要来这里的伟大的成功者和可敬的失败者们——快乐！</p>
-<p>今天也是青年节，那就再祝可爱的小北永远年轻、永远进步、永远做这片土地上思想和教育的光！</p>
-]]></content>
-      <tags>
-        <tag>隨筆</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>切向量与几何直观</title>
-    <url>/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/</url>
-    <content><![CDATA[<p>甲初学微分几何, 了解到切向量定义如下:</p>
-<blockquote>
-<p>微分流形$M$中$p$点上的切向量$X_p$是一个从$p$点处所有differentiable function的代数到实数集的线性映射, 即$X_p:\mathcal{F}_p(M)\rightarrow\mathbb{R}$, 且满足莱布尼茨积规则:$X_p(fg)=f(p)X_pg+g(p)X_pf$.</p>
-</blockquote>
-<p>如果选择一个chart $(U,\phi)$, 切向量可以用坐标表示为</p>
-<script type="math/tex; mode=display">X_pf=X^i\frac{\partial}{\partial x^i}\left(f\circ\phi^{-1}\right).</script><p>他清楚这一定义显然具有坐标变换下的不变性, 所以满足向量的要求. 但仍然想不明白: 它和几何直观中切向量的定义有什么联系呢? 为什么不直接定义成一个”向量”呢? 于是他去找乙请教.</p>
-<a id="more"></a>
-<p>甲: 为什么不直接定义为一个向量?</p>
-<p>乙: 什么是向量?</p>
-<p>甲: 就是向量空间中的元素啊?</p>
-<p>乙: 在我们定义切向量之前, 这里没有向量空间. 注意我们研究的就是一个微分流形, 没有说把它嵌在一个欧氏空间里.</p>
-<p>甲: 哦也就是说我之前考虑的”向量”的几何直观, 是要求流形嵌在一个欧氏空间里的. 一般而言我们研究的流形并不嵌在欧氏空间里, 所以不能直接通过欧氏空间中的向量来定义切向量.</p>
-<p>乙: 是的. 到这一步, 你已经澄清了你之前说的几何直观的”向量”究竟是什么意思. 那么你是不是可以想想如果我们把流形嵌在了欧氏空间里, 这一切向量的定义与几何直观有什么联系呢?</p>
-<p>甲: 对哦. 为了说明图像, 只考虑一个三维欧氏空间中的二维曲面, 假设它在局部可以记为$z=F(x,y)$, 坐标映射为向$xy$平面的投影, 即$\phi=\operatorname{pr}_{xy}, \phi(p)=(x_p,y_p)$. 这个时候几何直观地给出两个切向量作为切空间的基: </p>
-<script type="math/tex; mode=display">\left(1,0,\frac{\partial F(x,y)}{\partial x}\right),\quad \left(0,1,\frac{\partial F(x,y)}{\partial y}\right).</script><p>某个切向量用$(a,b)$表示, 那么它完整的坐标为</p>
-<script type="math/tex; mode=display">t_p=\left(a,b,a\frac{\partial F(x,y)}{\partial x}+b\frac{\partial F(x,y)}{\partial y}\right).</script><p>再考虑切向量的严格定义, 对任意$p$点的differential function $f$, 有</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    X_pf&=a\frac{\partial}{\partial x}f\left(x,y,F(x,y)\right)+b\frac{\partial}{\partial y}f\left(x,y,F(x,y)\right)\\
-    &=a\frac{\partial f(p)}{\partial x}+b\frac{\partial f(p)}{\partial x}+\left(a\frac{\partial F(x,y)}{\partial x}+b\frac{\partial F(x,y)}{\partial y}\right)\frac{\partial f(p)}{\partial z}\\
-    &=t_p\cdot\nabla f.
-\end{aligned}</script><p>啊! 所以说把流形嵌入欧氏空间之后, 我们定义的切向量其实是几何直观上的切向量乘一个梯度算符.</p>
-<p>乙: 嘿嘿, 笨蛋, 你现在能进一步体会这样定义的动机了吗?</p>
-<p>甲: 也就是说, 对于欧氏空间中内嵌的流形, 我们可以通过欧氏空间中的向量来定义切向量, 但是这种依赖于欧氏空间的定义在讨论一般流形的时候失效了. 幸运的是, 在欧氏空间中, 我们发现切向量乘上一个梯度算符之后得到的线性泛函和切向量自己是一一对应的, 因此可以用后者替代前者, 后者替代前者之后我们发现可以通过直接指定映射本身来定义后者, 这就不需要外面那个欧氏空间了!</p>
-<p>乙: 嗯嗯, 但是你没有说明欧氏空间中直接指定满足要求的映射为什么可以和几何直观的切向量一一对应, 你只说了几何直观的向量乘梯度算符之后和自己一一对应.</p>
-<p>甲: 这不就是要说明向量乘梯度算符得到的泛函集合和满足开头定义中性质的集合是一样的吗? 这就是前面提到的坐标表示啊, 就是要证明那些偏导构成了一组基而已, 这个证明是前面提到坐标表示的基础, 我不可能不知道的.</p>
-<p>乙: 啊这次没坑到你.</p>
-]]></content>
-      <categories>
-        <category>Mathematics</category>
-      </categories>
-      <tags>
-        <tag>Differential Geometry</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>今天</title>
     <url>/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
     <content><![CDATA[<p>今天没有什么特别的<br>无非是风吹得耳朵疼<br>无非是骑自行车手会很冷</p>
@@ -568,7 +530,7 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
 <p><strong>联络系数</strong> 设$U$是$M$上的一个坐标域, 局部坐标是$x_i, 1\leq i\leq m$. 取$E$在$U$上的$q$个处处线性无关的光滑截面$s_\alpha(1\leq\alpha\leq q)$, 称为$E$在$U$上的一个局部标架场. 在每个点沿$s_\alpha$展开, 有</p>
 <script type="math/tex; mode=display">
  \mathrm{D}s_\alpha=\Gamma^\beta_{\phantom{\beta}\alpha i}\mathrm{d}x^i\otimes s_\beta,</script><p>展开系数称为联络系数.</p>
-<p><strong>协变导数及其张量性质</strong> 物理学家一般关心这样的问题, 把上述的矢量丛取成切丛, 或者由切空间及其对偶空间形成的张量丛, 这些张量的协变导数有什么性质. 当我们选定一个局部坐标系, 矢量$Y=Y^i\partial<em>{x^i}$直接对坐标求导$Y^i</em>{\phantom{i},j}=\partial Y_i/\partial x^j$在坐标变换下有如下性质:</p>
+<p><strong>协变导数及其张量性质</strong> 物理学家一般关心这样的问题, 把上述的矢量丛取成切丛, 或者由切空间及其对偶空间形成的张量丛, 这些张量的协变导数有什么性质. 当我们选定一个局部坐标系, 矢量$Y=Y^i\partial_{x^i}$直接对坐标求导$Y^i_{\phantom{i},j}=\partial Y_i/\partial x^j$在坐标变换下有如下性质:</p>
 <script type="math/tex; mode=display">
 Y^{\prime i'}_{\phantom{\prime i'},j'}=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^j}{\partial x'^{j'}}Y^i_{\phantom{i},j}+Y^i\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j},</script><p>第一项为(1,1)型张量的变换, 但第二项不具有张量变换的性质. 所以, 直接对坐标求导并不能得到一个张量, 不能用来描述真实的物理.</p>
 <p>另外我们容易推出, 仿射联络(即切丛上的联络)分量的变换为</p>
@@ -593,22 +555,6 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
       </categories>
       <tags>
         <tag>科普</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在博客中插入數學公式</title>
-    <url>/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
-    <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Usage: hexo &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  clean     Remove generated files and cache.</span><br><span class="line">  config    Get or <span class="built_in">set</span> configurations.</span><br><span class="line">  deploy    Deploy your website.</span><br><span class="line">  generate  Generate static files.</span><br><span class="line">  <span class="built_in">help</span>      Get <span class="built_in">help</span> on a <span class="built_in">command</span>.</span><br><span class="line">  init      Create a new Hexo folder.</span><br><span class="line">  list      List the information of the site</span><br><span class="line">  migrate   Migrate your site from other system to Hexo.</span><br><span class="line">  new       Create a new post.</span><br><span class="line">  publish   Moves a draft post from _drafts to _posts folder.</span><br><span class="line">  render    Render files with renderer plugins.</span><br><span class="line">  version   Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages <span class="keyword">in</span> the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more <span class="built_in">help</span>, you can use <span class="string">&#x27;hexo help [command]&#x27;</span> <span class="keyword">for</span> the detailed information</span><br><span class="line">or you can check the docs: http://hexo.io/docs/</span><br></pre></td></tr></table></figure>
-<p>後來我卸載了所有插件，按照這個<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/MATH.md">文檔</a>所說的去做，很快就成功了。在此記錄，留作參考。</p>
-]]></content>
-      <categories>
-        <category>Computer</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>排版</tag>
       </tags>
   </entry>
   <entry>
@@ -638,21 +584,42 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
       </tags>
   </entry>
   <entry>
-    <title>我的信仰</title>
-    <url>/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
-    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
-<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
-<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
-<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
-<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
-<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
-<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
-<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
-<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
+    <title>切向量与几何直观</title>
+    <url>/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/</url>
+    <content><![CDATA[<p>甲初学微分几何, 了解到切向量定义如下:</p>
+<blockquote>
+<p>微分流形$M$中$p$点上的切向量$X_p$是一个从$p$点处所有differentiable function的代数到实数集的线性映射, 即$X_p:\mathcal{F}_p(M)\rightarrow\mathbb{R}$, 且满足莱布尼茨积规则:$X_p(fg)=f(p)X_pg+g(p)X_pf$.</p>
+</blockquote>
+<p>如果选择一个chart $(U,\phi)$, 切向量可以用坐标表示为</p>
+<script type="math/tex; mode=display">X_pf=X^i\frac{\partial}{\partial x^i}\left(f\circ\phi^{-1}\right).</script><p>他清楚这一定义显然具有坐标变换下的不变性, 所以满足向量的要求. 但仍然想不明白: 它和几何直观中切向量的定义有什么联系呢? 为什么不直接定义成一个”向量”呢? 于是他去找乙请教.</p>
+<a id="more"></a>
+<p>甲: 为什么不直接定义为一个向量?</p>
+<p>乙: 什么是向量?</p>
+<p>甲: 就是向量空间中的元素啊?</p>
+<p>乙: 在我们定义切向量之前, 这里没有向量空间. 注意我们研究的就是一个微分流形, 没有说把它嵌在一个欧氏空间里.</p>
+<p>甲: 哦也就是说我之前考虑的”向量”的几何直观, 是要求流形嵌在一个欧氏空间里的. 一般而言我们研究的流形并不嵌在欧氏空间里, 所以不能直接通过欧氏空间中的向量来定义切向量.</p>
+<p>乙: 是的. 到这一步, 你已经澄清了你之前说的几何直观的”向量”究竟是什么意思. 那么你是不是可以想想如果我们把流形嵌在了欧氏空间里, 这一切向量的定义与几何直观有什么联系呢?</p>
+<p>甲: 对哦. 为了说明图像, 只考虑一个三维欧氏空间中的二维曲面, 假设它在局部可以记为$z=F(x,y)$, 坐标映射为向$xy$平面的投影, 即$\phi=\operatorname{pr}_{xy}, \phi(p)=(x_p,y_p)$. 这个时候几何直观地给出两个切向量作为切空间的基: </p>
+<script type="math/tex; mode=display">\left(1,0,\frac{\partial F(x,y)}{\partial x}\right),\quad \left(0,1,\frac{\partial F(x,y)}{\partial y}\right).</script><p>某个切向量用$(a,b)$表示, 那么它完整的坐标为</p>
+<script type="math/tex; mode=display">t_p=\left(a,b,a\frac{\partial F(x,y)}{\partial x}+b\frac{\partial F(x,y)}{\partial y}\right).</script><p>再考虑切向量的严格定义, 对任意$p$点的differential function $f$, 有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    X_pf&=a\frac{\partial}{\partial x}f\left(x,y,F(x,y)\right)+b\frac{\partial}{\partial y}f\left(x,y,F(x,y)\right)\\
+    &=a\frac{\partial f(p)}{\partial x}+b\frac{\partial f(p)}{\partial x}+\left(a\frac{\partial F(x,y)}{\partial x}+b\frac{\partial F(x,y)}{\partial y}\right)\frac{\partial f(p)}{\partial z}\\
+    &=t_p\cdot\nabla f.
+\end{aligned}</script><p>啊! 所以说把流形嵌入欧氏空间之后, 我们定义的切向量其实是几何直观上的切向量乘一个梯度算符.</p>
+<p>乙: 嘿嘿, 笨蛋, 你现在能进一步体会这样定义的动机了吗?</p>
+<p>甲: 也就是说, 对于欧氏空间中内嵌的流形, 我们可以通过欧氏空间中的向量来定义切向量, 但是这种依赖于欧氏空间的定义在讨论一般流形的时候失效了. 幸运的是, 在欧氏空间中, 我们发现切向量乘上一个梯度算符之后得到的线性泛函和切向量自己是一一对应的, 因此可以用后者替代前者, 后者替代前者之后我们发现可以通过直接指定映射本身来定义后者, 这就不需要外面那个欧氏空间了!</p>
+<p>乙: 嗯嗯, 但是你没有说明欧氏空间中直接指定满足要求的映射为什么可以和几何直观的切向量一一对应, 你只说了几何直观的向量乘梯度算符之后和自己一一对应.</p>
+<p>甲: 这不就是要说明向量乘梯度算符得到的泛函集合和满足开头定义中性质的集合是一样的吗? 这就是前面提到的坐标表示啊, 就是要证明那些偏导构成了一组基而已, 这个证明是前面提到坐标表示的基础, 我不可能不知道的.</p>
+<p>乙: 啊这次没坑到你.</p>
 ]]></content>
       <categories>
-        <category>隨筆</category>
+        <category>Mathematics</category>
       </categories>
+      <tags>
+        <tag>Differential Geometry</tag>
+      </tags>
   </entry>
   <entry>
     <title>小delta到底是个啥</title>
@@ -882,6 +849,22 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </tags>
   </entry>
   <entry>
+    <title>在博客中插入數學公式</title>
+    <url>/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Usage: hexo &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  clean     Remove generated files and cache.</span><br><span class="line">  config    Get or <span class="built_in">set</span> configurations.</span><br><span class="line">  deploy    Deploy your website.</span><br><span class="line">  generate  Generate static files.</span><br><span class="line">  <span class="built_in">help</span>      Get <span class="built_in">help</span> on a <span class="built_in">command</span>.</span><br><span class="line">  init      Create a new Hexo folder.</span><br><span class="line">  list      List the information of the site</span><br><span class="line">  migrate   Migrate your site from other system to Hexo.</span><br><span class="line">  new       Create a new post.</span><br><span class="line">  publish   Moves a draft post from _drafts to _posts folder.</span><br><span class="line">  render    Render files with renderer plugins.</span><br><span class="line">  version   Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages <span class="keyword">in</span> the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more <span class="built_in">help</span>, you can use <span class="string">&#x27;hexo help [command]&#x27;</span> <span class="keyword">for</span> the detailed information</span><br><span class="line">or you can check the docs: http://hexo.io/docs/</span><br></pre></td></tr></table></figure>
+<p>後來我卸載了所有插件，按照這個<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/MATH.md">文檔</a>所說的去做，很快就成功了。在此記錄，留作參考。</p>
+]]></content>
+      <categories>
+        <category>Computer</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>排版</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>幾首舊詩</title>
     <url>/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/</url>
     <content><![CDATA[<p>最近抽空整理一些舊作放在這個站點。本文收錄的幾篇都和之前一次愛情相關，覆蓋了愛情從產生到結束的全過程。</p>
@@ -955,12 +938,31 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </categories>
   </entry>
   <entry>
-    <title>關於這個博客</title>
-    <url>/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
-<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
-<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
-<p>聽起來是很有趣罷。</p>
+    <title>色彩</title>
+    <url>/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
+    <content><![CDATA[<p>——致这个美丽而变动不居的秋天</p>
+<a id="more"></a>
+<p>深秋——我也不知道什么是深秋<br>词语如落叶堆积于僵硬的土地<br>风鉴别并摧折无依的希望<br>排演晦暗的仪式<br>仪式<br>楚地的巫者临风怳然唱着苍茫的歌<br>湘水默默地吞噬古老的抒情<br>一代代漂泊者走过无边落木<br>直到世界悄然变换色彩<br>你如一场细密的和弦落入我的双眼<br>以泥土和青草的气息你许诺一个花园<br>你撷取远方的隐喻解读晦涩的暗香<br>和露水谈起日暮的伯劳与南塘的莲子<br>然后你歌唱曾经很盛大的夏日<br>直到你悄然变换色彩<br>于是我想起北四环的路灯<br>于是我想起城墙下的地铁<br>于是我想起水泥地防盗网和沾了油的招牌<br>想起落日下的紫藤萝和晨风中的桂花香<br>于是我想起走廊漏进的冷气暗白的灯光和混乱的读书声<br>想起矮墙边的自行车和迫不及待的脚步<br>我撕开窗前的爬山虎听到一夜脚步匆匆<br>直到我悄然变换色彩<br>推演未来的笔在稿纸上迟疑<br>时空在纷繁的角标中扭曲<br>我透过场方程看到宇宙再看到你的眼睛<br>看到玻璃酒杯间跳动的懒散的灯光<br>我无视引力理论的警告<br>走进你的旋律然后迷路<br>和正确的和声交换舞步<br>目睹你占领星空<br>直到我们悄然变换色彩<br>变换色彩是日出<br>我看到你脚踩的是黄亮黄亮的银杏叶<br>你看到深绿到深红的层次里<br>借着夜的庇护散溢的言语不知该放在何处<br>你看到几片秋叶飘落如无依的希望<br>没有什么仪式<br>未名湖倒影平静<br>你为词语而惶惑<br>直到世界悄然变换色彩<br>我回头<br>只有空荡荡的深秋</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的信仰</title>
+    <url>/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
+    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
+<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
+<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
+<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
+<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
+<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
+<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
+<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
+<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
 ]]></content>
       <categories>
         <category>隨筆</category>
@@ -994,18 +996,16 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </tags>
   </entry>
   <entry>
-    <title>色彩</title>
-    <url>/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
-    <content><![CDATA[<p>——致这个美丽而变动不居的秋天</p>
-<a id="more"></a>
-<p>深秋——我也不知道什么是深秋<br>词语如落叶堆积于僵硬的土地<br>风鉴别并摧折无依的希望<br>排演晦暗的仪式<br>仪式<br>楚地的巫者临风怳然唱着苍茫的歌<br>湘水默默地吞噬古老的抒情<br>一代代漂泊者走过无边落木<br>直到世界悄然变换色彩<br>你如一场细密的和弦落入我的双眼<br>以泥土和青草的气息你许诺一个花园<br>你撷取远方的隐喻解读晦涩的暗香<br>和露水谈起日暮的伯劳与南塘的莲子<br>然后你歌唱曾经很盛大的夏日<br>直到你悄然变换色彩<br>于是我想起北四环的路灯<br>于是我想起城墙下的地铁<br>于是我想起水泥地防盗网和沾了油的招牌<br>想起落日下的紫藤萝和晨风中的桂花香<br>于是我想起走廊漏进的冷气暗白的灯光和混乱的读书声<br>想起矮墙边的自行车和迫不及待的脚步<br>我撕开窗前的爬山虎听到一夜脚步匆匆<br>直到我悄然变换色彩<br>推演未来的笔在稿纸上迟疑<br>时空在纷繁的角标中扭曲<br>我透过场方程看到宇宙再看到你的眼睛<br>看到玻璃酒杯间跳动的懒散的灯光<br>我无视引力理论的警告<br>走进你的旋律然后迷路<br>和正确的和声交换舞步<br>目睹你占领星空<br>直到我们悄然变换色彩<br>变换色彩是日出<br>我看到你脚踩的是黄亮黄亮的银杏叶<br>你看到深绿到深红的层次里<br>借着夜的庇护散溢的言语不知该放在何处<br>你看到几片秋叶飘落如无依的希望<br>没有什么仪式<br>未名湖倒影平静<br>你为词语而惶惑<br>直到世界悄然变换色彩<br>我回头<br>只有空荡荡的深秋</p>
+    <title>關於這個博客</title>
+    <url>/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
+<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
+<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
+<p>聽起來是很有趣罷。</p>
 ]]></content>
       <categories>
-        <category>詩歌</category>
+        <category>隨筆</category>
       </categories>
-      <tags>
-        <tag>献给lhp</tag>
-      </tags>
   </entry>
   <entry>
     <title>灯笼</title>
