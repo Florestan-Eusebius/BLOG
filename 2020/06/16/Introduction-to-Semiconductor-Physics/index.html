@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://florestan-eusebius.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Qualitative properties Semi-metal &amp; half metal, the latter is related to spin polarization Direct &amp; indirect band gap Intrinsic &amp; extrinsic semiconductor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Semiconductor Physics">
+<meta property="og:url" content="https://florestan-eusebius.github.io/2020/06/16/Introduction-to-Semiconductor-Physics/index.html">
+<meta property="og:site_name" content="狸狌的平行世界">
+<meta property="og:description" content="Qualitative properties Semi-metal &amp; half metal, the latter is related to spin polarization Direct &amp; indirect band gap Intrinsic &amp; extrinsic semiconductor">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-16T13:53:22.000Z">
+<meta property="article:modified_time" content="2020-06-16T16:00:00.000Z">
+<meta property="article:author" content="Atonal Fermion">
+<meta property="article:tag" content="Solid State Physics Course Summary">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://florestan-eusebius.github.io/2020/06/16/Introduction-to-Semiconductor-Physics/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Introduction to Semiconductor Physics | 狸狌的平行世界</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">狸狌的平行世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">當理性從左半邊開始變質</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/2020/06/16/Introduction-to-Semiconductor-Physics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Atonal Fermion">
+      <meta itemprop="description" content="學不可以已">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="狸狌的平行世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Introduction to Semiconductor Physics
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-16 21:53:22" itemprop="dateCreated datePublished" datetime="2020-06-16T21:53:22+08:00">2020-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-17 00:00:00" itemprop="dateModified" datetime="2020-06-17T00:00:00+08:00">2020-06-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Physics/" itemprop="url" rel="index">
+                    <span itemprop="name">Physics</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
+<li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
+<li>Direct &amp; indirect band gap</li>
+<li>Intrinsic &amp; extrinsic semiconductor</li>
+</ul>
+<a id="more"></a>
+<h2 id="Quantitative-properties"><a href="#Quantitative-properties" class="headerlink" title="Quantitative properties"></a>Quantitative properties</h2><h3 id="Effective-mass-k-p-approximation"><a href="#Effective-mass-k-p-approximation" class="headerlink" title="Effective mass: k-p approximation"></a>Effective mass: k-p approximation</h3><p>Near the band edge, quadratic term.</p>
+<script type="math/tex; mode=display">
+\varepsilon(\mathbf{k})=\varepsilon\left(\mathbf{k}_{0}\right)+\frac{\hbar^{2}\left(k_{x}-k_{x 0}\right)^{2}}{2 m_{x}^{*}}+\frac{\hbar^{2}\left(k_{y}-k_{y 0}\right)^{2}}{2 m_{y}^{*}}+\frac{\hbar^{2}\left(k_{z}-k_{z 0}\right)^{2}}{2 m_{z}^{*}}.</script><p>Bloch state:</p>
+<script type="math/tex; mode=display">\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r}).</script><p> Schrödinger equation on $u$ becomes</p>
+<script type="math/tex; mode=display">\left(\frac{\mathbf{p}^2}{2m}+\frac{\hbar\mathbf{k}\cdot\mathbf{p}}{m}+V(\mathbf{r})\right)u_{n\mathbf{k}}(\mathbf{r})=\left(\varepsilon_n(\mathbf{k})-\frac{\hbar^2\mathbf{k}^2}{2m}\right)u_{n\mathbf{k}}(\mathbf{r}).</script><p> Taking $\mathbf{k}_0$ to be 0, <strong>view $\mathbf{k}\cdot\mathbf{p}$ term as perturbation and the $\mathbf{k}=\mathbf{k}_0$ state as the unperturbed state</strong>, </p>
+<script type="math/tex; mode=display">\Delta\varepsilon_n^{(1)}(\mathbf{k})\propto\mathbf{k}=0</script><script type="math/tex; mode=display">\Delta \varepsilon_{n}^{(2)}(\mathbf{k})=\frac{\hbar^{2}}{m^{2}} \sum_{i} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)} k_{i}^{2}</script><p>by taking the principal axes. Finally we have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{1}{m_{i}^{*}\left(k_{i}\right)}&=\frac{1}{m}+\frac{2}{m^{2}} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)}\\
+    &=\frac{1}{m}+\frac{2}{m^2}\frac{\left\langle u_{c 0}(\mathbf{r})\left|p_{i}\right| u_{v 0}(\mathbf{r})\right\rangle\left\langle u_{v 0}(\mathbf{r})\left|p_{i}\right| u_{c 0}(\mathbf{r})\right\rangle}{\varepsilon_{\mathrm{gap}}}.\quad(\text{For conduction band})
+\end{aligned}</script><h3 id="Statistics-of-charge-carriers"><a href="#Statistics-of-charge-carriers" class="headerlink" title="Statistics of charge carriers"></a>Statistics of charge carriers</h3><p>Electrons obey Fermi-Dirac perturbation</p>
+<script type="math/tex; mode=display">f(\varepsilon)=\frac{1}{e^{\left(\varepsilon(\mathbf{k})-\mu\right)/k_BT}+1}.</script><p>Consider</p>
+<ul>
+<li>Even at room temperature, $\varepsilon_c-\mu\sim\mu-\varepsilon_v\gg k_BT.$</li>
+<li>The distribution of the hole is $1-f(\varepsilon_h)$</li>
+<li>The density of state are<script type="math/tex; mode=display">\begin{aligned}
+D_{e}\left(\varepsilon_{e}(\mathbf{k})\right)&=\frac{2\left(2 m_{e}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{e}(\mathbf{k})-\varepsilon_{c}}, \\
+D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{v}-\varepsilon_{h}(\mathbf{k})}.
+\end{aligned}</script></li>
+</ul>
+<p>We have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    n_{e}&=\frac{1}{4}\left(\frac{2 m_{e}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{c}(\mathbf{k})-\varepsilon_{F}\right) / k_{B} T},\\
+    n_{h}&=\frac{1}{4}\left(\frac{2 m_{h}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{F}-\varepsilon_{v}(\mathbf{k})\right) / k_{B} T},
+\end{aligned}</script><p>and the <strong>law of mass action</strong></p>
+<script type="math/tex; mode=display">n_e n_h=\frac{1}{2}\left(\frac{k_BT}{\pi\hbar^2}\right)^3\left(m_e^*m_h^*\right)^{3/2}e^{-\varepsilon_{\mathrm{gap}}/k_BT}.</script><h4 id="Intrinsic-semiconductor"><a href="#Intrinsic-semiconductor" class="headerlink" title="Intrinsic semiconductor"></a>Intrinsic semiconductor</h4><script type="math/tex; mode=display">n_e=n_h</script><p>Consider the expression of $n_e$ and the law of mass action</p>
+<script type="math/tex; mode=display">\mu=\frac{3}{4}\frac{k_BT}{2}\ln\left(\frac{m_h^*}{m_e^*}\right)+\frac{\varepsilon_c+\varepsilon_v}{2}.</script><h4 id="Extrinsic-semiconductor"><a href="#Extrinsic-semiconductor" class="headerlink" title="Extrinsic semiconductor"></a>Extrinsic semiconductor</h4><p>Consider only donor case. Assume donor impurity density $D_i$ and energy $\varepsilon_i$.</p>
+<script type="math/tex; mode=display">n_e=D_i\left(1-f(\varepsilon_i)\right)=D_i\frac{1}{e^{(\mu-\varepsilon_i)/k_BT}+1}.</script><p>Put the equation above and $n_e=c_e\exp\left[-(\varepsilon_c-\varepsilon_F)/k_BT\right]$ together, solve $n_e$,</p>
+<script type="math/tex; mode=display">n_{e}=\frac{-1+\sqrt{1+4\left(\frac{D_{i}}{c_{e}}\right) e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}}{\frac{2 e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}{c_{e}}}.</script><ul>
+<li>At low temperature, <script type="math/tex; mode=display">n_e\approx\sqrt{c_eD_i}e^{-(\varepsilon_c-\varepsilon_i)/2k_BT}.</script></li>
+<li>At high temperature,<script type="math/tex; mode=display">n_e\approx D_i.</script></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Solid-State-Physics-Course-Summary/" rel="tag"># Solid State Physics Course Summary</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" rel="prev" title="为LaTex设置VScode代码片段">
+      <i class="fa fa-chevron-left"></i> 为LaTex设置VScode代码片段
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/17/Semi-classical-Transport/" rel="next" title="Semi-classical Transport">
+      Semi-classical Transport <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qualitative-properties"><span class="nav-number">1.</span> <span class="nav-text">Qualitative properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quantitative-properties"><span class="nav-number">2.</span> <span class="nav-text">Quantitative properties</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Effective-mass-k-p-approximation"><span class="nav-number">2.1.</span> <span class="nav-text">Effective mass: k-p approximation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statistics-of-charge-carriers"><span class="nav-number">2.2.</span> <span class="nav-text">Statistics of charge carriers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Intrinsic-semiconductor"><span class="nav-number">2.2.1.</span> <span class="nav-text">Intrinsic semiconductor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Extrinsic-semiconductor"><span class="nav-number">2.2.2.</span> <span class="nav-text">Extrinsic semiconductor</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Atonal Fermion</p>
+  <div class="site-description" itemprop="description">學不可以已</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Florestan-Eusebius" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Florestan-Eusebius" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yifei@pku.edu.cn" title="E-Mail (Academic) → mailto:wang_yifei@pku.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Academic)</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yff@outlook.com" title="E-Mail (Personal) → mailto:wang_yff@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Personal)</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Atonal Fermion</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'eef533c12a28fdcba9a0',
+      clientSecret: '9b83e56106d20adb3aad83840dce713edaaed618',
+      repo: 'BlogComment',
+      owner: 'Florestan-Eusebius',
+      admin: ['Florestan-Eusebius'],
+      id: 'b4f0054b2c42e3afb0c20c97be72a73f',
+        language: 'default.yml',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

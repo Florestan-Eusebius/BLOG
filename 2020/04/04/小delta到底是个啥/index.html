@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://florestan-eusebius.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="各种物理书中, 用得最混乱的概念是变分, 用得最混乱的符号就是$\delta$了. 一般来说, $\delta$有两个含义, 一是研究泛函极值时引入的变分, 这可以接受; 但有时研究一个随便什么函数, 也出来$\delta$, 也名之曰”变分”, 这在热力学中十分常见, 搞清楚了是力量, 搞不清楚就是混乱之源. 这里我们试图讲清楚第二种用法的精确含义, 并说明这种记号的优越性.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小delta到底是个啥">
+<meta property="og:url" content="https://florestan-eusebius.github.io/2020/04/04/%E5%B0%8Fdelta%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5/index.html">
+<meta property="og:site_name" content="狸狌的平行世界">
+<meta property="og:description" content="各种物理书中, 用得最混乱的概念是变分, 用得最混乱的符号就是$\delta$了. 一般来说, $\delta$有两个含义, 一是研究泛函极值时引入的变分, 这可以接受; 但有时研究一个随便什么函数, 也出来$\delta$, 也名之曰”变分”, 这在热力学中十分常见, 搞清楚了是力量, 搞不清楚就是混乱之源. 这里我们试图讲清楚第二种用法的精确含义, 并说明这种记号的优越性.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-03T16:47:24.000Z">
+<meta property="article:modified_time" content="2020-04-03T16:00:00.000Z">
+<meta property="article:author" content="Atonal Fermion">
+<meta property="article:tag" content="基础物理中的怪力乱神">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://florestan-eusebius.github.io/2020/04/04/%E5%B0%8Fdelta%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>小delta到底是个啥 | 狸狌的平行世界</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">狸狌的平行世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">當理性從左半邊開始變質</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/2020/04/04/%E5%B0%8Fdelta%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Atonal Fermion">
+      <meta itemprop="description" content="學不可以已">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="狸狌的平行世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          小delta到底是个啥
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-04 00:47:24 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-04T00:47:24+08:00">2020-04-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Physics/" itemprop="url" rel="index">
+                    <span itemprop="name">Physics</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>各种物理书中, 用得最混乱的概念是变分, 用得最混乱的符号就是$\delta$了. 一般来说, $\delta$有两个含义, 一是研究泛函极值时引入的<strong>变分</strong>, 这可以接受; 但有时研究一个随便什么函数, 也出来$\delta$, 也名之曰”变分”, 这在热力学中十分常见, 搞清楚了是力量, 搞不清楚就是混乱之源. 这里我们试图讲清楚第二种用法的精确含义, 并说明这种记号的优越性.</p>
+<a id="more"></a>
+<h2 id="微分-导函数-高阶微分和高阶导函数"><a href="#微分-导函数-高阶微分和高阶导函数" class="headerlink" title="微分, 导函数, 高阶微分和高阶导函数"></a>微分, 导函数, 高阶微分和高阶导函数</h2><p>Warning: 单纯为了实用的目的, 可以直接去看第二节的第一个定义(向量上的导数), 然后跳到第三节. 之所以叙述微分等内容, 主要是为了理论的完整和物理意义的优美. 这些内容主要参考了卓里奇的名著: 数学分析.</p>
+<p>我们下面引入一些定义. 为了叙述的方便, 我们仅仅讨论线性赋范空间. 一般意义下讨论切空间原则上也是可行的.</p>
+<blockquote>
+<p><strong>定义: 可微和微分</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数, 对于$x\in U$, 如果存在连续线性映射<sup><a href="#fn_1" id="reffn_1">1</a></sup> $L(x)\in\mathcal L(X,Y)$使得对于$h\in X, x+h\in U$, </p>
+<script type="math/tex; mode=display">
+\begin{equation}
+f(x+h)-f(x)=L(x)h+\alpha(x;h)
+\end{equation}</script><p>成立, 其中$\alpha(x;h)=o(h), |h|\rightarrow 0$. 则称$f$在$x$处可微. 并称连续线性映射$L(x)$为$f$在$x$处的微分, 微分也记作$f’(x)$.</p>
+<p><strong>定义: 导函数</strong></p>
+<p>对$U$上的可微函数$f$, $f’:x\mapsto f’(x)$称为导函数.</p>
+</blockquote>
+<p>为了避免混淆, 我们作一个类比: $f$是一个函数, 而$f(x)$是函数值; $f’:U\rightarrow \mathcal L(X,Y)$是导函数, 而$f’(x)$是导函数的<strong>值</strong>: $\mathcal L(X,Y)$中的一个线性映射. 下面我们递归地定义高阶微分和高阶导函数.</p>
+<blockquote>
+<p><strong>定义: 高阶微分和高阶导函数</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数, 如果其$n-1$阶导函数$f^{(n-1)}$可微, 那么它的微分$(f^{(n-1)})’(x)$就是$f$的$n$阶微分, 记为$f^{(n)}(x)$, 将$x$映射到$f^{(n)}(x)$的映射$f^{(n)}$就是$f$的$n$阶导函数. $n\in\mathbb{N}$.</p>
+</blockquote>
+<p>为了方便理解, 我们在下表中列出了$n$阶微分和$n$阶导函数分别是什么类型的映射.</p>
+<p>$n$阶微分和导函数所属的映射类</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>阶数</th>
+<th style="text-align:right">微分$f^{(n)}(x)$</th>
+<th style="text-align:right">导函数$f^{(n)}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">$\mathcal L(X,Y)$</td>
+<td style="text-align:right">$U\rightarrow \mathcal L(X,Y)$</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">$\mathcal L(X,\mathcal L(X,Y))$</td>
+<td style="text-align:right">$U\rightarrow\mathcal L(X,\mathcal L(X,Y))$</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">$\mathcal L(X,\mathcal L(X,\mathcal L(X,Y)))$</td>
+<td style="text-align:right">$U\rightarrow\mathcal L(X,\mathcal L(X,\mathcal L(X,Y)))$</td>
+</tr>
+<tr>
+<td>…</td>
+<td style="text-align:right">…</td>
+<td style="text-align:right">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这里的层层套娃看着有些吓人, 不过容易看出, 它其实和$n$重线性映射是一样的. 如果你看不出, 我们马上就会给出一个构造性的说明.</p>
+<h2 id="导数的向量计算"><a href="#导数的向量计算" class="headerlink" title="导数的向量计算"></a>导数的向量计算</h2><p>上面给出的定义稍显抽象, 下面我们讨论具体的计算.</p>
+<blockquote>
+<p><strong>定义: 向量上的导数</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数, 对于$x,h\in X, t\in\mathbb{R}$, 若极限</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    D_hf(x)=\lim_{t\rightarrow 0}\frac{f(x+th)-f(x)}{t}
+\end{equation}</script><p>存在, 那么称$D_hf(x)$为$f$在向量$h$上的导数.</p>
+</blockquote>
+<p>注意, 这里给出的定义是依赖于$|h|$的, 如果$|h|=1$, 我们的定义就和一般定义的方向导数一致.</p>
+<p>不难看出, 如果$f$可微, 那么</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    D_hf(x)=f'(x)h.
+\end{equation}</script><p>由此我们获得两点信息, 结构上, $D_h$对于角标$h$有线性性; 计算上, 把$h$选成一组基就可以立即看出微分的分量正是偏导数.</p>
+<p>另外, 对于一个连续线性映射$L\in\mathcal L(Y,Z)$, $Z$是另外的线性空间, 我们有</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{eq:DhLcommute}
+D_h(L\circ f)(x)=L\left(D_hf(x)\right).
+\end{equation}</script><p>这一点从定义就很容易看出.</p>
+<p>另外, 显然导数的加法和乘法等等公式对$D_h$也适用.</p>
+<p>下面我们来研究$D_h$与高阶微分的联系.</p>
+<p>对于一阶, 显然</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    f'(x)(h)=f'(x)h=D_hf(x).
+\end{equation}</script><p>对于二阶微分, 我们先以$h_1\in X$为参数定义一个$X$到$Y$的线性映射$f^{(2)}(x)h_1$, 它等于$D_{h_1} f’(x)$. 接下来<strong>定义</strong>:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
+&=\left(D_{h_1}f'(x)\right)h_2
+\end{aligned}
+\end{equation}</script><p>如果我们引入线性映射$L:\mathcal L(X,Y)\rightarrow Y$, 定义为$L(A)=A(h_2)$, 那么根据式$\eqref{eq:DhLcommute}$,</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+        \left(D_{h_1}f'(x)\right)h_2&=L\left(D_{h_1}f'(x)\right) \\
+        &=D_{h_1}\left(L\circ f'\right)(x)\\
+        &=D_{h_1}\left(f'(x)h_2\right)\\
+        &=D_{h_1}D_{h_2}f(x).
+    \end{aligned}
+\end{equation}</script><p>类似地, 我们可以<strong>定义</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{eq:multilinear}
+    \begin{aligned}
+        f^{(n)}(x)(h_1,\cdots,h_n):&=\left(\cdots\left(\left(f^{(n)}(x)h_1\right)h_2\right)\cdots h_{n-1}\right)h_n\\
+        &=D_{h_1}\cdots D_{h_n}f(x).
+    \end{aligned}
+\end{equation}</script><p>这样, 我们就把第一节中套娃式线性映射和$n$重线性映射等同了起来. 我们要注意, 上式中第一行左右两边$f^{(n)}(x)$的意义是不相同的: 右边是$n$阶微分的原始定义, 左边是一个和$n$阶微分对应的$n$重线性函数.</p>
+<p>使用分析学的技巧容易证明, $\eqref{eq:multilinear}$中定义的多重线性函数, 是对称的.</p>
+<h2 id="delta-到底是个啥"><a href="#delta-到底是个啥" class="headerlink" title="$\delta$到底是个啥"></a>$\delta$到底是个啥</h2><p>有了上面的知识准备, 我们终于可以开始严格地定义$\delta$.</p>
+<blockquote>
+<p><strong>定义</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数. $\delta$定义为$\operatorname{Map}(U,Y)\times X$到$\operatorname{Map}(U,Y)$的一个映射, 满足</p>
+<script type="math/tex; mode=display">
+\begin{equation}\delta(f,h)(x)=D_hf(x)=f'(x)h.\end{equation}</script><p>固定$h=(h_1,\cdots,h_d)^T\in X$, 我们可以将上式简记为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+     \begin{aligned}
+         &\delta f(x)=D_hf(x);\\
+         &\delta^n f(x)=D_h^nf(x), n\in\mathbb N.
+     \end{aligned}
+\end{equation}</script><p>固定$f$, 也可简记为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+     \begin{aligned}
+         &\delta f(x)=f'(x)h;\\
+         &\delta^n f(x)=f^{(n)}(x)(h,\cdots,h), n\in\mathbb N.
+     \end{aligned}
+\end{equation}</script></blockquote>
+<p>下面几个例子给出了$\delta$的一些具体表达式. 注意我们使用了Einstein求和约定, 并且以$\partial^i$表示$\partial_{x_i}$</p>
+<blockquote>
+<p><strong>例</strong></p>
+<p>一般的函数$f(x)$, 我们有</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+        \delta f(x)=f'(x)h=\partial^if(x)h_i,
+\end{equation}</script><p>二阶:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\delta^2 f(x)&=D_hD_hf(x)\\
+&=\partial^i\partial^jf(x)h_ih_j\\
+&=\left(h_i\partial^i+\cdots+h_d\partial^d\right)^2f(x),
+\end{aligned}
+\end{equation}</script><p>$n$阶:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\delta^n f(x)&=D_h^nf(x)\\
+&=\partial^{i_1}\cdots\partial^{i_d}f(x)h_{i_1}\cdots h_{i_d}\\
+&=\left(h_1\partial^1+\cdots+h_d\partial^d\right)^nf(x).
+\end{aligned}
+\end{equation}</script></blockquote>
+<p>不难看出, 在形式化的数值计算中, 我们可以直接将$\delta$写成$h_i\partial^i$. 这里$h_i$是一个数, 是坐标分量, 而不是上一节多重线性映射中不同的矢量.</p>
+<p>上例使我们可以方便地用$\delta$记号来表达Taylor多项式. 在物理中, $h$一般被赋予<strong>虚变化</strong>的含义. $\delta^n f(x)$的物理意义, 可以在Taylor多项式中看出:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+        f(x+h)-f(x)&=\sum_{k=1}^{n-1}\frac{1}{k!}\left(h_1\partial^1+\cdots+h_d\partial^d\right)^kf(x)+O(\|h\|^n)\\
+        &=\sum_{k=1}^{n-1}\frac{1}{k!}\delta^kf(x)+O(\|h\|^n)
+    \end{aligned}
+\end{equation}</script><p>因此, 我们就不难说明, 如果$\delta f(x)=0$, 那么$x$为函数的驻点. 如果在此基础上对于某个邻域内的$h$都有$\delta^2f(x)&gt;0$, 那么近似到虚位移的二阶项, 向无论何处移动函数值都会增大, 函数就处在极小值点.</p>
+<blockquote>
+<p><strong>例</strong></p>
+<p>投影函数$x_i(x_1,\cdots,x_d)=x_i$, 则</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta x_i(x)=h_i
+\end{equation}</script><p>更高阶</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta^n x_i(x)=0, n>1.
+\end{equation}</script><p> 基于此, 我们可以用$\delta x_i$来表示$h_i$, 并且$\delta^n x_i$对$n&gt;1$一概为$0$.</p>
+<p><strong>例</strong></p>
+<p>复合函数$y=f\left(w(x)\right)$, 其中$\delta$仍然是对自变量$x$和$h\in X$而言的. 分别考虑一阶和二阶的情况:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta f\left(w(x)\right)=D_hf\left(w(x)\right)=\frac{\partial f}{\partial w_j}\frac{\partial w_j}{\partial x_i}\delta x_i.
+\end{equation}</script><p>同时我们也可以写成</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta f\left(w(x)\right)=f'(w)w'(x)h=f'(w)D_hw(x)=f'(w)\delta w.
+\end{equation}</script><p>二阶</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{indepv}
+\begin{aligned}
+\delta^2f\left(w(x)\right)&=D_h^2f\left(w(x)\right)\\
+&=D_h\left(f'(w)D_hw(x)\right)\\
+&=D_hf'(w)D_hw(x)+f'(w)D_h^2w(x)\\
+&=\delta f'(w)\delta w+f'(w)\delta^2 w.
+\end{aligned}
+\end{equation}</script><p>对比上面两式, 我们发现我们完全可以用导数的运算法则来处理$\delta$的运算. 需要注意, 这里$\delta^2 w$并不为零, 因为$w$并非自变量. 事实上, $\delta^2 w$的表达式在前面的例子中已经给出.</p>
+</blockquote>
+<p>在上面这个例子中, 如果我们导出$\delta^2f(w)$之后, 临时决定以$w$为自变量, 那么右边第二项就会等于零, 左右两边此时还是相等的. 对于这种现象, 我们可以做出如下抽象概括:</p>
+<p><strong>由于固定$h$, 对于给定的$x$,  $\delta$写在一个函数前面无非就是对这个函数求$h$上的导数. 因此计算一个函数的$\delta$时, 我们可以直接使用导数的运算规则(加减乘除, 复合). 在变量之间依赖关系十分复杂的计算中, 我们总可以假设$h$(及其所在的空间$X$)已经固定, 尽管尚未指明, 然后使用复合函数的求导法则计算到任何你需要的一步, 最后再确定自变量和$h$带入即可.</strong> 这种性质赋予了使用$\delta$记号极大的灵活性, 也是它的优势所在. 下一节我们将使用一个物理中的一个实例来说明这一点.</p>
+<p>在结束这一节之前, 让我们再对$\delta$和微分的关系进行一个评述, 以澄清某些常见的误解. 前面的定义中, 如果固定$f$而仍以$h$为自变量, 那么$\delta f(x)$就是一个微分映射, $\delta^nf(x)$和$n$阶微分则略有不同, 它要求这个$n$重线性映射在每一个线性空间中的自变量都是$h$. 值得一提的是, 含$D_h$的表达式已经足够告诉我们怎么计算, 但是使用微分映射的语言则更直接地展现了$\delta^nf(x)$随$h$的变化, 这与函数对虚变化的响应完美呼应, 构成了优美的图像. </p>
+<h2 id="物理中实例的分析"><a href="#物理中实例的分析" class="headerlink" title="物理中实例的分析"></a>物理中实例的分析</h2><p>著名的物理学教学大师刘川在其平衡态统计物理的讲义中, 推导各种平衡条件时大量使用了这一记号, 可以检查, 那里的推导都符合这里给出的定义和计算规则. 这种推导繁而不难, 这里不再赘述.</p>
+<p>下面这个例子可以很好地展现上节中提到的优越性. </p>
+<blockquote>
+<p><strong>例 相稳定条件</strong> </p>
+<p>刘川老师在讲义中用$\delta$的一般运算规则推导出了相稳定条件:</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{eq:eqstab}
+    \delta p\delta v-\delta T\delta s< 0.
+\end{equation}</script><p>这里我们并没有确定自变量, 一旦我们确定了自变量, 我们就可以导出不同的热力学不等式. 例如, 以$(T, v)$为自变量, 则上面的条件变成</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+        &\delta v\left(\frac{\partial p}{\partial v}\delta v+\frac{\partial p}{\partial T}\delta T\right)-\delta T\left(\frac{\partial s}{\partial T}\delta T+\frac{\partial s}{\partial v}\delta v\right)\\
+        =&\left(\frac{\partial p}{\partial v}\right)_T(\delta v)^2-\frac{c_v}{T}(\delta T)^2\\
+        <&0
+    \end{aligned}
+\end{equation}</script><p>其中已利用Maxwell条件. </p>
+<p>如果我们选取不同的自变量带入不等式$\eqref{eq:eqstab}$, 我们可以得到不同的热力学不等式. 显然这种推导方式相比每次选取不同的自变量做泰勒展开要方便得多.</p>
+</blockquote>
+<p>这就是力量.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 有限维线性空间中的线性映射都是连续的.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%89%A9%E7%90%86%E4%B8%AD%E7%9A%84%E6%80%AA%E5%8A%9B%E4%B9%B1%E7%A5%9E/" rel="tag"># 基础物理中的怪力乱神</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/" rel="prev" title="我的信仰">
+      <i class="fa fa-chevron-left"></i> 我的信仰
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/30/Calculating-Entropy-for-Variational-Method/" rel="next" title="Calculating Entropy for Variational Method">
+      Calculating Entropy for Variational Method <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%88%86-%E5%AF%BC%E5%87%BD%E6%95%B0-%E9%AB%98%E9%98%B6%E5%BE%AE%E5%88%86%E5%92%8C%E9%AB%98%E9%98%B6%E5%AF%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">微分, 导函数, 高阶微分和高阶导函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E7%9A%84%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">导数的向量计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delta-%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5"><span class="nav-number">3.</span> <span class="nav-text">$\delta$到底是个啥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E4%B8%AD%E5%AE%9E%E4%BE%8B%E7%9A%84%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">物理中实例的分析</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Atonal Fermion</p>
+  <div class="site-description" itemprop="description">學不可以已</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Florestan-Eusebius" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Florestan-Eusebius" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yifei@pku.edu.cn" title="E-Mail (Academic) → mailto:wang_yifei@pku.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Academic)</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yff@outlook.com" title="E-Mail (Personal) → mailto:wang_yff@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Personal)</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Atonal Fermion</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'eef533c12a28fdcba9a0',
+      clientSecret: '9b83e56106d20adb3aad83840dce713edaaed618',
+      repo: 'BlogComment',
+      owner: 'Florestan-Eusebius',
+      admin: ['Florestan-Eusebius'],
+      id: '4c56c6ae204edf19c90ea39f6dfd5dea',
+        language: 'default.yml',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

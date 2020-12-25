@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://florestan-eusebius.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Warning: 这是一篇科普. 面向人类的内容在正文, 面向非人类的内容放在引用框中.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从加速度的定义说起">
+<meta property="og:url" content="https://florestan-eusebius.github.io/2020/10/27/%E4%BB%8E%E5%8A%A0%E9%80%9F%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%B5%B7/index.html">
+<meta property="og:site_name" content="狸狌的平行世界">
+<meta property="og:description" content="Warning: 这是一篇科普. 面向人类的内容在正文, 面向非人类的内容放在引用框中.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-27T08:34:09.000Z">
+<meta property="article:modified_time" content="2020-10-26T16:00:00.000Z">
+<meta property="article:author" content="Atonal Fermion">
+<meta property="article:tag" content="科普">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://florestan-eusebius.github.io/2020/10/27/%E4%BB%8E%E5%8A%A0%E9%80%9F%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%B5%B7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>从加速度的定义说起 | 狸狌的平行世界</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">狸狌的平行世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">當理性從左半邊開始變質</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/2020/10/27/%E4%BB%8E%E5%8A%A0%E9%80%9F%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%B5%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Atonal Fermion">
+      <meta itemprop="description" content="學不可以已">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="狸狌的平行世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从加速度的定义说起
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-27 16:34:09 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-27T16:34:09+08:00">2020-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathematics</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>Warning:</strong> 这是一篇科普. 面向人类的内容在正文, 面向非人类的内容放在引用框中.</p>
+<a id="more"></a>
+<h2 id="问题引入-加速度是什么"><a href="#问题引入-加速度是什么" class="headerlink" title="问题引入: 加速度是什么?"></a>问题引入: 加速度是什么?</h2><p>任何一个正常初中生都了解这样的物理定义: 速度是位置矢量对时间的导数, 加速度是速度矢量对时间的导数. 由于我们是在位置空间中看这个问题, 位置矢量的加减很自然, 因此其求导也很自然; 但是速度矢量的求导这件事, 值得仔细考虑.</p>
+<p>仍然从一个初中水平的问题开始考虑: 速度可以和位置加减吗? 为什么? 初中生的回答是: 不能, 因为速度和位置的单位不同. 问: 什么是单位? 答: 某个物理量的单位是一个同类的物理量, 前者可以表示为后者乘一个系数的形式, 这个系数就是物理量在这个单位下的数值. 对于一个矢量, 我们可以将其表示为一些基矢量线性组合的形式, 这些基矢量就是单位, 展开系数便是不同分量的数值.</p>
+<p>因此, 对于三维空间中的位置矢量, 我们只需要选取一个参考系, 并以此为原点定下三个基, 矢量就可以由这三个基展开. 我们认为位置矢量处在上述的基张成的线性空间中, 可以进行加减运算. 对于速度呢? 我们则是以此时运动物体所在的点为原点, 取三个不共面的表征速度单位的矢量, 把速度用这三个基矢量展开, 得到可以用数值表示的形式. 我们把上面的过程用更紧凑的语言表述出来: 位置矢量是位置空间中的矢量, 每一点处的速度矢量则是”附着在”这一点处的另一个矢量空间中的矢量. 这时, 速度所在的矢量空间和位置所在的矢量空间根本就不是一个空间, 因此不能相加减.</p>
+<p>从上面的讨论还可以看出另一个问题: 两个点处的速度也不在同一个矢量空间中, 因此按照我们的逻辑, 它们也是不能加减的.</p>
+<p>或许你会辩驳: 你只要把不同速度空间的基矢量取成平行的, 不就可以对速度作加减了吗? 这里我们要陈述一个原则: <strong>物理规律是不依赖于坐标系的选取的.</strong> 我们前面之所以提到基矢量, 实际上只是为了做一个从单位到矢量空间的过渡. 况且, 平行这一概念是同一个矢量空间中才能讨论的概念, 不同矢量空间基的平行是很荒谬的说法. 因此, 我们要问: 我们在对速度求导时, 到底是在做什么呢?</p>
+<h2 id="流形和矢量丛"><a href="#流形和矢量丛" class="headerlink" title="流形和矢量丛"></a>流形和矢量丛</h2><p>为了更好地讨论上述问题, 同样也是为了不让欧氏空间非常好的性质赋予我们危险的直觉, 我们后面考虑一般的曲面上的运动. 这样的曲面, 我们称为”流形”.</p>
+<blockquote>
+<p><strong>流形</strong> 设$M$是Hausdorff空间. 若对任一点$p\in M$, 都有$p$在$M$中的一个邻域$U$同胚于$m$维欧氏空间$\mathbb{R}^m$中的一个开集, 则称$m$是一个$M$维流形, 也叫$m$维拓扑流形.</p>
+<p>在流形上确定一个$C^\infty$微分结构(在这里不详述其定义), 则我们称这个流形为光滑流形.</p>
+</blockquote>
+<p>在光滑流形的每个点上, 我们可以定义”切矢量”, 每个点上的切矢量是在这一点处的切空间中, 切空间是一个维数和流形维数相同的矢量空间. 值得一提的是, 切矢量的定义和几何直观上的相切是有密切联系的, 但其定义并不依赖于把流形放在另外的空间中(比如我们最容易想象的三维空间中的曲面那样), 这一点的详细讨论见<a href="https://florestan-eusebius.github.io/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/">这篇文章</a>.</p>
+<p>我们不光可以在光滑流形上每一个点处定义切空间, 还可以在这一点处附着其它类型的矢量空间. 如果我们在每一点处附着的矢量空间维数都相同, 并且它们还满足其他一些更好的性质(例如可以把一些结构赋予所有这些矢量空间的集合, 令其构成一个光滑流形, 等等), 那么我们就把这一套系统称为一个<strong>矢量丛</strong>. 每个点上附着的那个矢量空间, 我们称其为这个点上的”纤维”. 矢量丛是纤维丛的一种. 这些术语看起来有点吓人, 其实还是很形象的. 如果一个矢量丛它”附着”在每个点上的矢量空间是切空间, 那么我们称其为<strong>切丛</strong>.</p>
+<blockquote>
+<p><strong>矢量丛</strong> 设$E,M$是两个光滑流形, $\pi:E\rightarrow M$是光滑满映射, $V=\mathbb{R}^q$是$q$维矢量空间. 如果给定了$M$的一个开覆盖${U,W,Z,\cdots}$及一组映射${\varphi_U,\varphi_W,\varphi_Z,\cdots}$, 使得下列条件成立, 则称$(E,M,\pi)$是流形$M$上的(实)$q$维矢量丛, 其中$E$称为丛空间, $M$称为底空间, $\pi$称为丛投影, $V$是纤维型</p>
+<ul>
+<li>每一个映射$\phi_U$是从$U\times \mathbb{R}$到$\pi^{-1}(U)$的可微同胚, 而且对任意的$p\in U, y\in \mathbb{R}^q$, 有</li>
+</ul>
+<script type="math/tex; mode=display">
+\pi\circ\varphi_U(p,y)=p;</script><ul>
+<li>对于任意固定的$p\in U$, 命</li>
+</ul>
+<script type="math/tex; mode=display">
+ \varphi_{U,p}(y)=\varphi_U(p,y),\  y\in\mathbb{R},</script><p>则$\varphi_{U,p}:\mathbb{R}^q\rightarrow \pi^{-1}(p)$是同胚. 当$U\cap W\neq\varnothing$时, 对任意的$p\in U\cap W$, 要求</p>
+<script type="math/tex; mode=display">
+ g_{UW}(p)=\varphi^{-1}_{W,p} \circ {\varphi} _{U,p}:\mathbb{R}^q\rightarrow\mathbb{R}^q</script><p>是矢量空间$V=\mathbb{R}^q$的线性自同构, 即$g_{UW}{p}\in\mathrm{GL}(V)$;</p>
+<ul>
+<li>对于$U\cap W\neq\varnothing$, 映射$g_{UW}:U\cap W\rightarrow\mathrm{GL}(V)$是光滑的.</li>
+</ul>
+</blockquote>
+<p>我们可以在矢量丛的每个”纤维”中选取一个矢量, 如果选取的这些矢量是连续的, (这里”连续”实际上是由上述定义中$M$到$E$的光滑映射定义的, 不依赖于不同点上的矢量相减这类操作.) 那么我们称这是矢量丛的一个光滑<strong>截面</strong>, 切丛的光滑截面是一个光滑<strong>矢量场</strong>.</p>
+<p>现在我们很清楚数学上如何描述在每个点处长出一个矢量空间这种事情了, 这些不同的矢量空间中的元素自然是互不相干的, 但我们有很多动机将它们联系起来.</p>
+<h2 id="无动力小船上的旗子"><a href="#无动力小船上的旗子" class="headerlink" title="无动力小船上的旗子"></a>无动力小船上的旗子</h2><p>现在我们假设有一个人坐着无动力小船在海上漂, 他的手里在挥舞着一个旗子, 方向始终与此处的海面相切. 一种有意义的想法是, 我们就以船为参考系, 考虑这个人挥舞的旗子的速度. 此时, 我们只需要在船上对旗子求导即可.</p>
+<p>换一个角度看上面的过程, 我们把海面看成一个流形, 水流构成了一个流速场(这是一个矢量场). 人举的旗子构成了另一个矢量场(更为确切地说, 在一个二维流形上仅仅给出一条线上的矢量并不是这个流形上的矢量场, 不过你可以想象有一排船, 船之间旗子的方向连续过渡, 在漂流过程中遍历了这片水域). 上一段提到的导数, 实际是考虑了这样一个操作: 流速场确定了整体的流动, 从初始位置出发, 如果人举着旗子不动, 那么他和旗子也会被水流推到某一个位置上去, 但是他实际上动了旗子, 因此旗子实际处在另一个位置上, 旗子的这两个位置, 是在同一点的切空间中的, 因此可以作差, 这样作差比时间, 当时间无穷小时, 就得到了这种导数.</p>
+<p>更为紧凑的说法是: 流形上一个矢量场(流速场)确定了一个流形的一个单参数自同构映射(水流, 参数相当于上面例子中的时间), 沿着这个矢量场对另一个矢量场求导(类似于方向导数, 前者确定了后者求导的方向), 就是考虑单参数自同构映射两个相差很小的参数决定的两个点, 在这两个点上对被求导的矢量场作差, 这个差值除以时间, 当时间趋于零时得到导数. 其中作差的操作中, 我们用被”流”推到后一个处的矢量替代前一个点的矢量(切映射).</p>
+<p>这样定义的导数, 被称为<strong>李导数</strong>. 李导数不需要为流形引入其他的结构, 但因为我们需要用一个矢量场引入一个流, 这个流不是单一一个点处的矢量所能确定的, 所以对这个矢量场的李导数, 不能由这个点处的矢量确定, 还取决于这个点邻域内矢量场的性质. </p>
+<blockquote>
+<p><strong>李导数</strong> $X$是光滑流形$M$上的光滑矢量场, 它生成了$M$上一个单参数变换群$\sigma_t$. 如果$Y$是$M$上的光滑矢量场, 我们定义沿着$X$的李导数为</p>
+<script type="math/tex; mode=display">
+ \mathcal{L}_X Y=\lim_{t\rightarrow 0}\frac{Y-(\sigma t)_*Y}{t}.</script></blockquote>
+<h2 id="有动力小船上的旗子"><a href="#有动力小船上的旗子" class="headerlink" title="有动力小船上的旗子"></a>有动力小船上的旗子</h2><p>现在我们没有了流, 我门开着小船, 挥舞着旗子. 当然你仍然可以以小船为参考系为这个旗子求导, 这和默认有一个流是差不多的. 但我们还有另一种考虑方式: 我们在位置空间中把两个时刻的旗子按一定的规则移动使得它们的原点重合, 然后作差, 求导. 如果我们所在的空间恰好的欧氏空间, 这种移动恰好是平移, 那么这和我们一开始求加速度的操作是类似的.</p>
+<p>你一定会问, 如果以流形和流形上的矢量丛的角度考虑, 这种移动是非法的: 你在把一个矢量空间中的元素移到另一个空间中去! 是的, 仅依赖于流形本身的性质, 我们的确无法简单地定义平移. 但是这句话反过来看就是, 想要定义不同点上的矢量空间之间的关联, 我们就要为矢量丛加入新的结构, 这种结构被称为<strong>联络</strong>.</p>
+<p>根据我们引入的联络这一新结构, 我们就可以定义另外一种导数, 称为绝对微商; 如果是对切丛考虑, 这种导数也被物理学家称为<strong>协变导数</strong>. 协变导数仅依赖于这一点处你给出的确定求导方向的矢量, 不像李导数依赖于一个矢量场在邻域内的性质; 但它要求了一个新的结构. 这是一种必然的妥协. </p>
+<p>联络的引入有很大的任意性, 某种程度上体现了我们希望赋予流形的一些物理性质. 回到最初的问题, 只要我们令所有联络系数为零, 我们就可以在平直的欧氏空间中得到符合直觉的导数.</p>
+<blockquote>
+<p><strong>联络</strong> 记矢量丛$E$在流形$M$上光滑截面的集合为$\Gamma(E)$, $E$上的联络是一个映射</p>
+<script type="math/tex; mode=display">
+ \mathrm{D}:\Gamma(E)\rightarrow\Gamma(T^*(M)\otimes E),</script><p>它满足下列条件:</p>
+<ul>
+<li>对任意的$s_1,s_2\in\Gamma(E)$有</li>
+</ul>
+<script type="math/tex; mode=display">
+ \mathrm{D}(s_1+s_2)=\mathrm{D}s_1+\mathrm{D}s_2;</script><ul>
+<li>对$s\in\Gamma(E)$及任意的$\alpha\in C^\infty(M)$, 有</li>
+</ul>
+<script type="math/tex; mode=display">
+ \mathrm{D}(\alpha s)=\mathrm{d}\alpha\otimes s+\alpha\mathrm{D}s.</script><p><strong>绝对微商</strong> 设$X$是$M$上的光滑矢量场, $s\in\Gamma(E)$, 命</p>
+<script type="math/tex; mode=display">
+ \mathrm{D}_X s=\langle X,\mathrm{D}s\rangle,</script><p>则$\mathrm{D}_Xs$是$E$的截面, 称为截面$s$沿切矢量场$X$的绝对微商.</p>
+<p><strong>联络系数</strong> 设$U$是$M$上的一个坐标域, 局部坐标是$x_i, 1\leq i\leq m$. 取$E$在$U$上的$q$个处处线性无关的光滑截面$s_\alpha(1\leq\alpha\leq q)$, 称为$E$在$U$上的一个局部标架场. 在每个点沿$s_\alpha$展开, 有</p>
+<script type="math/tex; mode=display">
+ \mathrm{D}s_\alpha=\Gamma^\beta_{\phantom{\beta}\alpha i}\mathrm{d}x^i\otimes s_\beta,</script><p>展开系数称为联络系数.</p>
+<p><strong>协变导数及其张量性质</strong> 物理学家一般关心这样的问题, 把上述的矢量丛取成切丛, 或者由切空间及其对偶空间形成的张量丛, 这些张量的协变导数有什么性质. 当我们选定一个局部坐标系, 矢量$Y=Y^i\partial<em>{x^i}$直接对坐标求导$Y^i</em>{\phantom{i},j}=\partial Y_i/\partial x^j$在坐标变换下有如下性质:</p>
+<script type="math/tex; mode=display">
+Y^{\prime i'}_{\phantom{\prime i'},j'}=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^j}{\partial x'^{j'}}Y^i_{\phantom{i},j}+Y^i\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j},</script><p>第一项为(1,1)型张量的变换, 但第二项不具有张量变换的性质. 所以, 直接对坐标求导并不能得到一个张量, 不能用来描述真实的物理.</p>
+<p>另外我们容易推出, 仿射联络(即切丛上的联络)分量的变换为</p>
+<script type="math/tex; mode=display">
+\Gamma^{i'}_{\phantom{i'}j'k'}=\frac{\partial x^k}{\partial x'^{k'}}\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}\Gamma^i_{\phantom{i}jk}+\frac{\partial ^2x^i}{\partial x'^{k'}\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}.</script><p>因此协变导数的分量</p>
+<script type="math/tex; mode=display">
+Y^i_{\phantom{i};k}=Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j,</script><p>的坐标变换为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'}j'k'}Y'^{j'}.\\  
+&=\left(\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}Y^i_{\phantom{i},k}+Y^i\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j}\right)+\left(\frac{\partial x^k}{\partial x'^{k'}}\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}\Gamma^i_{\phantom{i}jk}+\frac{\partial ^2x^i}{\partial x'^{k'}\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}\right)\left(\frac{\partial x'^{j'}}{\partial x^j}Y^j\right)\\  
+&=\left(\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}Y^i_{\phantom{i},k}+Y^i\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j}\right)+\left(\frac{\partial x^k}{\partial x'^{k'}}\frac{\partial x'^{i'}}{\partial x^i}\Gamma^i_{\phantom{i}jk}Y^j+\frac{\partial ^2x^i}{\partial x'^{k'}\partial x^{j}}\frac{\partial x'^{i'}}{\partial x^i}Y^j\right)\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)+Y^i\left(\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j}+\frac{\partial ^2x^j}{\partial x'^{k'}\partial x^{i}}\frac{\partial x'^{i'}}{\partial x^j}\right)\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)+Y^i\frac{\partial}{\partial x^i}\left(\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial x'^{i'}}{\partial x^j}\right)\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)+Y^i\frac{\partial}{\partial x^i}{\delta^{i'}}_{k'}\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)
+\end{aligned}</script><p>因此具有张量的性质.</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E6%99%AE/" rel="tag"># 科普</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/" rel="prev" title="幾首舊詩">
+      <i class="fa fa-chevron-left"></i> 幾首舊詩
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/29/%E6%B2%A1%E6%9C%89%E5%9C%B0%E5%9D%80%E7%9A%84%E4%BF%A1/" rel="next" title="没有地址的信">
+      没有地址的信 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5-%E5%8A%A0%E9%80%9F%E5%BA%A6%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">问题引入: 加速度是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E5%BD%A2%E5%92%8C%E7%9F%A2%E9%87%8F%E4%B8%9B"><span class="nav-number">2.</span> <span class="nav-text">流形和矢量丛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%B0%8F%E8%88%B9%E4%B8%8A%E7%9A%84%E6%97%97%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">无动力小船上的旗子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%B0%8F%E8%88%B9%E4%B8%8A%E7%9A%84%E6%97%97%E5%AD%90"><span class="nav-number">4.</span> <span class="nav-text">有动力小船上的旗子</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Atonal Fermion</p>
+  <div class="site-description" itemprop="description">學不可以已</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Florestan-Eusebius" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Florestan-Eusebius" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yifei@pku.edu.cn" title="E-Mail (Academic) → mailto:wang_yifei@pku.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Academic)</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yff@outlook.com" title="E-Mail (Personal) → mailto:wang_yff@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Personal)</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Atonal Fermion</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'eef533c12a28fdcba9a0',
+      clientSecret: '9b83e56106d20adb3aad83840dce713edaaed618',
+      repo: 'BlogComment',
+      owner: 'Florestan-Eusebius',
+      admin: ['Florestan-Eusebius'],
+      id: '973e8d73433b2797cdf4d9c8144c6b17',
+        language: 'default.yml',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

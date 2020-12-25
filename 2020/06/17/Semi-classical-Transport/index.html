@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://florestan-eusebius.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Drude modelAssumptions Electron scattering time $\tau$. After scattering, $\mathbf{p}&#x3D;0$. Between scattering, electrons move classically.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Semi-classical Transport">
+<meta property="og:url" content="https://florestan-eusebius.github.io/2020/06/17/Semi-classical-Transport/index.html">
+<meta property="og:site_name" content="狸狌的平行世界">
+<meta property="og:description" content="Drude modelAssumptions Electron scattering time $\tau$. After scattering, $\mathbf{p}&#x3D;0$. Between scattering, electrons move classically.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-17T14:28:33.000Z">
+<meta property="article:modified_time" content="2020-06-16T16:00:00.000Z">
+<meta property="article:author" content="Atonal Fermion">
+<meta property="article:tag" content="Solid State Physics Course Summary">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://florestan-eusebius.github.io/2020/06/17/Semi-classical-Transport/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Semi-classical Transport | 狸狌的平行世界</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">狸狌的平行世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">當理性從左半邊開始變質</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/2020/06/17/Semi-classical-Transport/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Atonal Fermion">
+      <meta itemprop="description" content="學不可以已">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="狸狌的平行世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Semi-classical Transport
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-17 22:28:33 / Modified: 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-17T22:28:33+08:00">2020-06-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Physics/" itemprop="url" rel="index">
+                    <span itemprop="name">Physics</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Drude-model"><a href="#Drude-model" class="headerlink" title="Drude model"></a>Drude model</h2><h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
+<li>Electron scattering time $\tau$.</li>
+<li>After scattering, $\mathbf{p}=0$.</li>
+<li>Between scattering, electrons move classically.</li>
+</ul>
+<a id="more"></a>
+<h3 id="Equation-of-motion"><a href="#Equation-of-motion" class="headerlink" title="Equation of motion"></a>Equation of motion</h3><p>From the assumptions:</p>
+<script type="math/tex; mode=display">\langle\mathbf{p}(t+\mathrm{d}t)\rangle=\left(1-\frac{\mathrm{d}t}{\tau}\right)\left(\mathbf{p}(t)+\mathbf{F}\mathrm{d}t\right)</script><script type="math/tex; mode=display">\frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t}=-\frac{\mathbf{p}}{\tau}+\mathbf{F}</script><h3 id="Transport-in-electromagnetic-field"><a href="#Transport-in-electromagnetic-field" class="headerlink" title="Transport in electromagnetic field"></a>Transport in electromagnetic field</h3><p>If there is only electric field, consider steady case where $\frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t}=0$.</p>
+<script type="math/tex; mode=display">\mathbf{j}=\sigma \mathbf{E},\quad \sigma=\frac{e^2\tau n}{m}.</script><p>Suppose $\mathbf{B}=B_z$.</p>
+<script type="math/tex; mode=display">\mathbf{E}=\rho\mathbf{j},\quad \rho=\begin{bmatrix}
+    \frac{m}{ne^2\tau} && \frac{B}{ne} && 0\\
+    -\frac{B}{ne} && \frac{m}{ne^2\tau} && 0\\
+    0 && 0 && \frac{m}{ne^2\tau}
+\end{bmatrix}.</script><h3 id="Thermal-Transport"><a href="#Thermal-Transport" class="headerlink" title="Thermal Transport"></a>Thermal Transport</h3><p>Kinetic theory of gas gives</p>
+<script type="math/tex; mode=display">\kappa=\frac{1}{3}n c_v\langle v\rangle\lambda</script><p>with</p>
+<script type="math/tex; mode=display">c_v=\frac{3}{2}k_B, \langle v\rangle=\sqrt{\frac{8k_BT}{\pi m}}, \lambda=\langle v\rangle\tau.</script><p>Then </p>
+<script type="math/tex; mode=display">\kappa=\frac{4}{\pi}\frac{n\tau k_B^2T}{m}.</script><p>Lorentz number </p>
+<script type="math/tex; mode=display">L=\frac{\kappa}{T\sigma}=\frac{4}{\pi}\left(\frac{k_B}{e}\right)^2.</script><p>Seebeck coefficient (thermal current $\mathbf{j}_q=\frac{1}{3}c_vTn\mathbf{v}$)</p>
+<script type="math/tex; mode=display">S=\frac{\mathbf{j}_q}{T\mathbf{j}}=-\frac{k_B}{2e}</script><h2 id="Sommerfeld’s-theory"><a href="#Sommerfeld’s-theory" class="headerlink" title="Sommerfeld’s theory"></a>Sommerfeld’s theory</h2><p>Introduce Fermi-Dirac distribution to Drude model.</p>
+<script type="math/tex; mode=display">f\left((E-\mu) / k_{B} T\right)=\frac{1}{e^{(E-\mu) / k_{B} T}+1}.</script><h3 id="Fermi-Dirac-statistics"><a href="#Fermi-Dirac-statistics" class="headerlink" title="Fermi-Dirac statistics"></a>Fermi-Dirac statistics</h3><p>The number of electrons</p>
+<script type="math/tex; mode=display">N=\frac{2V}{8\pi^3}\int\mathrm{d}^3\mathbf{k}\frac{1}{e^{(E-\mu)/k_BT}+1}.</script><h4 id="Zero-temperature"><a href="#Zero-temperature" class="headerlink" title="Zero temperature"></a>Zero temperature</h4><script type="math/tex; mode=display">N=\frac{2V}{8\pi^3}\frac{4}{3}\pi k_F^3=\frac{V k_F^3}{3\pi^2},\quad k_F=\left(3\pi^2n\right)^{1/3}.</script><p>Define fermi energy, fermi velocity, fermi temperature as </p>
+<script type="math/tex; mode=display">E_F=\frac{\hbar^2k_F^2}{2m}, v_F=\frac{\hbar k_F}{m}, T_F=\frac{E_F}{k_B}.</script><h4 id="Nonzero-temperature-heat-capacity"><a href="#Nonzero-temperature-heat-capacity" class="headerlink" title="Nonzero temperature heat capacity"></a>Nonzero temperature heat capacity</h4><p>Rewrite the integral</p>
+<script type="math/tex; mode=display">N=V\int_0^\infty\mathrm{d}\varepsilon g(\varepsilon)\frac{1}{e^{(\varepsilon-\mu)/k_BT}+1}, \quad g(\varepsilon)=\frac{(2m)^{3/2}}{2\pi^2\hbar^3}\varepsilon^{1/2}=\frac{3n}{2E_F}\left(\frac{\varepsilon}{E_F}\right)^{1/2}.</script><script type="math/tex; mode=display">E=V\int_0^\infty\mathrm{d}\varepsilon\varepsilon g(\varepsilon)\frac{1}{e^{(\varepsilon-\mu)/k_BT}+1}.</script><p>Sommerfeld expansion</p>
+<script type="math/tex; mode=display">\int_{-\infty}^\infty\mathrm{d}\varepsilon G(\varepsilon)f(\varepsilon)=\int_{-\infty}^\mu\mathrm{d}\varepsilon G(\varepsilon)+\sum_{n=1}^\infty\left[\frac{\mathrm{d}^{2n-1}G(\varepsilon)}{\mathrm{d}\varepsilon^{2n-1}}\right]_{\varepsilon=\mu}c_n \left(k_BT\right)^{2n},</script><p>where </p>
+<script type="math/tex; mode=display">c_{n}=2^{2 n-1} \frac{\pi^{2 n}}{(2 n) !}\left(2-\frac{1}{2^{2(n-1)}}\right) B_{n},\quad c_1=\frac{\pi^2}{6}, c_2=\frac{7\pi}{360},\cdots</script><p>Approximation:</p>
+<script type="math/tex; mode=display">\int_0^\mu\mathrm{d}\varepsilon G(\varepsilon)\approx\int_0^{\varepsilon_F}\mathrm{d}\varepsilon G(\varepsilon)+\left(\mu-\varepsilon_F\right)G(\varepsilon_F).</script><p>Apply the approximation to $N$ and compare with 0 temperature, </p>
+<script type="math/tex; mode=display">\mu=\varepsilon_{F}-\frac{\pi^{2}}{6}\left(k_{B} T\right)^{2} \frac{g^{\prime}\left(\varepsilon_{F}\right)}{g\left(\varepsilon_{F}\right)}=\varepsilon_{F}\left[1-\frac{1}{3}\left(\frac{\pi k_{B} T}{2 \varepsilon_{F}}\right)^{2}\right].</script><p>So</p>
+<script type="math/tex; mode=display">E=\int_0^{\varepsilon_F}\mathrm{d}\varepsilon\varepsilon g(\varepsilon)+\frac{\pi^2}{6}\left(k_BT\right)^2g(\varepsilon_F).</script><p>Heat capacity is </p>
+<script type="math/tex; mode=display">c_v=\frac{\pi^2}{3}k_B^2Tg(\varepsilon_F)=\frac{\pi^2}{2}\frac{k_BT}{\varepsilon_F}n k_B,</script><p>the latter term for free electrons.</p>
+<h3 id="Sommerfeld-model"><a href="#Sommerfeld-model" class="headerlink" title="Sommerfeld model"></a>Sommerfeld model</h3><p>Consider the electrons near Fermi surface.</p>
+<p>Compare Sommerfeld model with Drude model:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Drude model</th>
+<th>Sommerfeld model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_v=\frac{3}{2}nk_B$</td>
+<td>$c_v=\frac{\pi^2}{2}\frac{k_BT}{\varepsilon_F}nk_B$</td>
+</tr>
+<tr>
+<td>$v^2=\frac{8k_BT}{\pi m}$</td>
+<td>$v^2=v_F^2=\frac{2\varepsilon_F}{m}$</td>
+</tr>
+<tr>
+<td>$\kappa=\frac{4}{\pi}\frac{n\tau k_B^2T}{m}$</td>
+<td>$\kappa=\frac{1}{3}\frac{n\tau\pi^2k_B^2T}{m}$</td>
+</tr>
+<tr>
+<td>$L=\frac{\kappa}{T\sigma}=\frac{3}{2}\left(\frac{k_B}{e}\right)^2$</td>
+<td>$L=\frac{\kappa}{T\sigma}=\frac{\pi^2}{3}\left(\frac{k_B}{e}\right)^2$</td>
+</tr>
+<tr>
+<td>$S=\frac{\mathbf{j}_q}{T\mathbf{j}}=-\frac{k_B}{2e}$</td>
+<td>$S=\frac{\mathbf{j}_q}{T\mathbf{j}}=-\frac{k_B}{2e}\frac{\pi^2k_BT}{3\varepsilon_F}\sim 0.01\left(-\frac{k_B}{2e}\right)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Boltzmann-equation"><a href="#Boltzmann-equation" class="headerlink" title="Boltzmann equation"></a>Boltzmann equation</h2><h3 id="Distribution-function"><a href="#Distribution-function" class="headerlink" title="Distribution function"></a>Distribution function</h3><p>Specific spin, per phase space volume</p>
+<script type="math/tex; mode=display">\frac{f_n(\mathbf{r},\mathbf{k},t)\mathrm{d}\mathbf{r}\mathrm{d}\mathbf{k}}{8\pi^3}</script><p>The equilibrium distribution function $f_0$ is, for example for electrons, Fermi-Dirac distribution. Current density</p>
+<script type="math/tex; mode=display">\mathbf{J}(\mathbf{r},t)=-\frac{1}{4\pi^3}\int e\mathbf{v}_kf\mathrm{d}^3\mathbf{k}</script><p>Collision changes the distribution function, which is described by <strong>Boltzmann equation</strong> </p>
+<script type="math/tex; mode=display">\frac{\partial f}{\partial t}+\frac{\partial \mathbf{k}}{\partial t}\cdot\nabla_\mathbf{k}f+\frac{\partial \mathbf{r}}{\partial t}\cdot\nabla_\mathbf{r}f=S[f].</script><p>The right hand side is collision term. For stationary conditions, $\frac{\partial f}{\partial t}$ term vanishes.</p>
+<h3 id="Relaxation-time-approximation"><a href="#Relaxation-time-approximation" class="headerlink" title="Relaxation time approximation"></a>Relaxation time approximation</h3><p>The only property if the collision is relaxation time, so the collision term is </p>
+<script type="math/tex; mode=display">S[f]=-\frac{f-f_0}{\tau}.</script><h4 id="Electromagnetic-properties"><a href="#Electromagnetic-properties" class="headerlink" title="Electromagnetic properties"></a>Electromagnetic properties</h4><p>In E-B field, the Boltzmann equation reads</p>
+<script type="math/tex; mode=display">-\frac{e\mathbf{E}}{\hbar}\cdot\frac{\partial f_0}{\partial \mathbf{k}}=-\frac{f_1}{\tau}+\frac{e\left(\mathbf{v_k}\times\mathbf{B}\right)}{\hbar}\cdot\frac{\partial f_1}{\partial \mathbf{k}}.</script><h5 id="Only-electric-field"><a href="#Only-electric-field" class="headerlink" title="Only electric field"></a>Only electric field</h5><script type="math/tex; mode=display">-\frac{e\mathbf{E}}{\hbar}\cdot\frac{\partial f_0}{\partial \mathbf{k}}=-\frac{f_1}{\tau}.</script><p>Then </p>
+<script type="math/tex; mode=display">\mathbf{J}=\left[\frac{e^2}{4\pi^3}\int\tau\mathbf{v_k}\mathbf{v_k}\left(-\frac{\partial f_0}{\partial \varepsilon}\right)\mathrm{d}^3\mathbf{k}\right]\cdot\mathbf{E}=\left[\frac{e^{2}}{4 \pi^{3} \hbar} \int \tau \frac{\mathbf{v}_{k} \mathbf{v}_{k}}{v_{k}} \mathrm{d} S_{F}\right] \cdot \mathbf{E}.</script><p>Isotropic condition yields</p>
+<script type="math/tex; mode=display">\sigma_0=\frac{e^2}{12\pi^3\hbar}\int\tau v_k\mathrm{d}S_F=\frac{e^2\tau n}{m^*}.</script><h5 id="Hall-effects"><a href="#Hall-effects" class="headerlink" title="Hall effects"></a>Hall effects</h5><p>Trial solution:</p>
+<script type="math/tex; mode=display">f_{1}=\frac{\tau e \mathbf{D}}{\hbar} \cdot \frac{\partial f_{0}}{\partial \mathbf{k}}=\frac{\tau e \mathbf{D}}{\hbar} \cdot \frac{\partial \varepsilon(\mathbf{k})}{\partial \mathbf{k}} \frac{\partial f_{0}}{\partial \varepsilon}=\tau e \mathbf{D} \cdot v_{\mathbf{k}} \frac{\partial f_{0}}{\partial \varepsilon}</script><p>Consider $\mathbf{D}$ and $\frac{\partial f_0}{\partial \varepsilon}$ (a delta function) is independent of $\mathbf{k}$, for isotropic case, we can get</p>
+<script type="math/tex; mode=display">\mathbf{E}=\mathbf{D}-\frac{\tau e}{m^*}(\mathbf{B}\times\mathbf{D}).</script><p>The current density is </p>
+<script type="math/tex; mode=display">\mathbf{J}=\sigma_0\mathbf{D},</script><p>where $\sigma_0$ is the same as that of the previous section.</p>
+<script type="math/tex; mode=display">\mathbf{E}=\rho_0\mathbf{J}-\frac{\tau e\rho_0}{m^*}\left(\mathbf{B}\times\mathbf{J}\right)</script><p>Hall angle</p>
+<script type="math/tex; mode=display">\tan\theta_H=\frac{E_\perp}{E_\parallel}=-\frac{\tau e}{m^*}B</script><h5 id="Semi-classical-magnetoresistance"><a href="#Semi-classical-magnetoresistance" class="headerlink" title="Semi-classical magnetoresistance"></a>Semi-classical magnetoresistance</h5><p>Two types of charge carrier.</p>
+<script type="math/tex; mode=display">\mathbf{J}=\mathbf{J}_1+\mathbf{J}_2=\sigma_1\mathbf{D}_1+\sigma_2\mathbf{D}_2.</script><p>Take $\mathbf{D}_i=a_i\mathbf{E}+b_i\left(\mathbf{B}\times\mathbf{E}\right)$, we can calculate</p>
+<script type="math/tex; mode=display">\begin{aligned}
+a_{i}&=\frac{1}{1+\omega_{i}^{2} \tau_{i}^{2}} \\
+b_{i}&=\frac{e \tau_{i}}{m_{i}^{*}} \frac{1}{1+\omega_{i}^{2} \tau_{i}^{2}}
+\end{aligned},</script><p>Then</p>
+<script type="math/tex; mode=display">\mathbf{J}=\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right) \mathbf{E}+\left(\frac{e \tau_{1}}{m_{1}^{*}} \frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{e \tau_{2}}{m_{2}^{*}} \frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)(\mathbf{B} \times \mathbf{E}).</script><p>In a Hall bar, $J_y=0$, which gives</p>
+<script type="math/tex; mode=display">E_{x}=-\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)}{\left(\frac{\sigma_{1} \omega_{1} \tau_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2} \omega_{2} \tau_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)} E_{y},</script><p>and</p>
+<script type="math/tex; mode=display">\begin{aligned}
+J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)^{2}}{\left(\frac{\sigma_{1} \omega_{1} \tau_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2} \omega_{2} \tau_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)}+\left(\frac{\sigma_{1} \omega_{1} \tau_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2} \omega_{2} \tau_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)\right] E_{y} \\
+=& \frac{\frac{\sigma_{1}^{2}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}^{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}+\frac{2 \sigma_{1} \sigma_{2}\left(1+\omega_{1} \tau_{1} \omega_{2} \tau_{2}\right)}{\left(1+\omega_{1}^{2} \tau_{1}^{2}\right)\left(1+\omega_{2}^{2} \tau_{2}^{2}\right)}}{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)} E_{x}=\sigma E_{x}.
+\end{aligned}</script><p>For small $\mathbf{B}$,</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\frac{\Delta \sigma}{\sigma(B=0)}=&-\frac{\frac{\sigma_{1} \sigma_{2}\left(\omega_{1} \tau_{1}-\omega_{2} \tau_{2}\right)^{2}}{\left(1+\omega_{1}^{2} \tau_{1}^{2}\right)\left(1+\omega_{2}^{2} \tau_{2}^{2}\right)}}{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)\left(\sigma_{1}+\sigma_{2}\right)} \\
+&=-\frac{\sigma_{1} \sigma_{2}\left(\omega_{1} \tau_{1}-\omega_{2} \tau_{2}\right)^{2}}{\left[\sigma_{1}\left(1+\omega_{2}^{2} \tau_{2}^{2}\right)+\sigma_{2}\left(1+\omega_{1}^{2} \tau_{1}^{2}\right)\right]\left(\sigma_{1}+\sigma_{2}\right)}
+\end{aligned}</script><h5 id="AC-electric-field"><a href="#AC-electric-field" class="headerlink" title="AC electric field"></a>AC electric field</h5><p>Same as the DC field, except for that $f_1$ is dependent on time so $1/\tau$ is replaced by $1/\tau-\mathrm{i}\omega$.</p>
+<h4 id="Thermal-transport"><a href="#Thermal-transport" class="headerlink" title="Thermal transport"></a>Thermal transport</h4><p>In a electric field and a temperature gradience Boltzmann equation becomes</p>
+<script type="math/tex; mode=display">-\frac{e\mathbf{E}}{\hbar}\cdot\frac{\partial f_0}{\partial \mathbf{k}}+\frac{\partial \mathbf{r}}{\partial t}\cdot\left(\frac{\partial f_0}{\partial T}\nabla T+\frac{\partial f_0}{\partial \mu}\nabla\mu\right)=-\frac{f_1}{\tau}.</script><p>Then we have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathbf{J}&=\sigma \mathbf{E}+\frac{\nabla T}{T} \frac{\left(\pi k_{B} T\right)^{2}}{3 e} \frac{\mathrm{d} \sigma}{\mathrm{d} \varepsilon}, \\
+\mathbf{J}_{Q}&=-\frac{\left(\pi k_{B} T\right)^{2}}{3 e} \frac{\mathrm{d} \sigma}{\mathrm{d} \varepsilon} \mathbf{E}-\frac{\nabla T}{T} \frac{\left(\pi k_{B} T\right)^{2}}{3 e^{2}} \sigma
+\end{aligned}.</script><p>For metal, $\mathrm{d}\sigma/\mathrm{d}\varepsilon\ll \sigma$, Lorentz number is a constant</p>
+<script type="math/tex; mode=display">L=\frac{\kappa}{\sigma T}=\frac{1}{3}\left(\frac{\pi k_B}{e}\right)^2,</script><p>which is Wiedemann-Franz law.</p>
+<p>Seebeck coefficient. Condition: $\nabla T\neq 0, \mathbf{J}=0, \mathbf{J}_Q\neq 0$.</p>
+<script type="math/tex; mode=display">S=\frac{\mathbf{E}}{\nabla T}=-\frac{\pi}{3}\frac{k_B^2T}{e}\frac{\mathrm{d}\sigma/\mathrm{d}\varepsilon}{\sigma}.</script><h3 id="The-collision-term"><a href="#The-collision-term" class="headerlink" title="The collision term"></a>The collision term</h3><p>General form</p>
+<script type="math/tex; mode=display">S[f](\mathbf{k})=\int\left[f\left(\mathbf{k}^{\prime}, t\right) \Theta\left(\mathbf{k}^{\prime}, \mathbf{k}\right)(1-f(\mathbf{k}, t))-f(\mathbf{k}, t) \Theta\left(\mathbf{k}, \mathbf{k}^{\prime}\right)\left(1-f\left(\mathbf{k}^{\prime}, t\right)\right)\right] \frac{\mathrm{d}^3 \mathbf{k}^{\prime}}{(2 \pi)^{3}}.</script><p>For $f_0$ there is detailed balance,</p>
+<script type="math/tex; mode=display">f_{0}\left(\mathbf{k}^{\prime}, t\right) \Theta\left(\mathbf{k}^{\prime}, \mathbf{k}\right)\left(1-f_{0}(\mathbf{k}, t)\right)=f_{0}(\mathbf{k}, t) \Theta\left(\mathbf{k}, \mathbf{k}^{\prime}\right)\left(1-f_{0}\left(\mathbf{k}^{\prime}, t\right)\right).</script><p>For Fermi-Dirac distribution and elastic scattering,</p>
+<script type="math/tex; mode=display">\Theta\left(\mathbf{k}',\mathbf{k}\right)=\Theta\left(\mathbf{k},\mathbf{k}'\right).</script><p>Then</p>
+<script type="math/tex; mode=display">S[f]\left(\mathbf{k}\right)=\int\Theta\left(\mathbf{k},\mathbf{k}'\right)\left(f\left(\mathbf{k}',t\right)-f\left(\mathbf{k},t\right)\right)\frac{\mathrm{d}^3\mathbf{k}'}{\left(2\pi\right)^3}.</script><h4 id="Deriving-relaxation-time"><a href="#Deriving-relaxation-time" class="headerlink" title="Deriving relaxation time"></a>Deriving relaxation time</h4><h5 id="Isotropic-case-elastic-scattering"><a href="#Isotropic-case-elastic-scattering" class="headerlink" title="Isotropic case, elastic scattering"></a>Isotropic case, elastic scattering</h5><p>Suppose $f_1\left(\mathbf{k},t\right)=k_i\varphi(\varepsilon)$,</p>
+<script type="math/tex; mode=display">\frac{1}{\tau}=\int\Theta\left(\mathbf{k},\mathbf{k}'\right)\left(1-\cos\theta\right)\frac{\mathrm{d}^3\mathbf{k}}{\left(2\pi\right)^3}.</script><p>Thus for two unrelated mechanism for scattering,</p>
+<script type="math/tex; mode=display">\frac{1}{\tau}=\frac{1}{\tau'}+\frac{1}{\tau''}.</script><h5 id="Phonon-scattering"><a href="#Phonon-scattering" class="headerlink" title="Phonon scattering"></a>Phonon scattering</h5><p>To be continued.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Solid-State-Physics-Course-Summary/" rel="tag"># Solid State Physics Course Summary</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/16/Introduction-to-Semiconductor-Physics/" rel="prev" title="Introduction to Semiconductor Physics">
+      <i class="fa fa-chevron-left"></i> Introduction to Semiconductor Physics
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/" rel="next" title="切向量与几何直观">
+      切向量与几何直观 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Drude-model"><span class="nav-number">1.</span> <span class="nav-text">Drude model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Assumptions"><span class="nav-number">1.1.</span> <span class="nav-text">Assumptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equation-of-motion"><span class="nav-number">1.2.</span> <span class="nav-text">Equation of motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transport-in-electromagnetic-field"><span class="nav-number">1.3.</span> <span class="nav-text">Transport in electromagnetic field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thermal-Transport"><span class="nav-number">1.4.</span> <span class="nav-text">Thermal Transport</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sommerfeld%E2%80%99s-theory"><span class="nav-number">2.</span> <span class="nav-text">Sommerfeld’s theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fermi-Dirac-statistics"><span class="nav-number">2.1.</span> <span class="nav-text">Fermi-Dirac statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zero-temperature"><span class="nav-number">2.1.1.</span> <span class="nav-text">Zero temperature</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nonzero-temperature-heat-capacity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Nonzero temperature heat capacity</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sommerfeld-model"><span class="nav-number">2.2.</span> <span class="nav-text">Sommerfeld model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boltzmann-equation"><span class="nav-number">3.</span> <span class="nav-text">Boltzmann equation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Distribution-function"><span class="nav-number">3.1.</span> <span class="nav-text">Distribution function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relaxation-time-approximation"><span class="nav-number">3.2.</span> <span class="nav-text">Relaxation time approximation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Electromagnetic-properties"><span class="nav-number">3.2.1.</span> <span class="nav-text">Electromagnetic properties</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Only-electric-field"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Only electric field</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hall-effects"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Hall effects</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Semi-classical-magnetoresistance"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">Semi-classical magnetoresistance</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AC-electric-field"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">AC electric field</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thermal-transport"><span class="nav-number">3.2.2.</span> <span class="nav-text">Thermal transport</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-collision-term"><span class="nav-number">3.3.</span> <span class="nav-text">The collision term</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deriving-relaxation-time"><span class="nav-number">3.3.1.</span> <span class="nav-text">Deriving relaxation time</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Isotropic-case-elastic-scattering"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Isotropic case, elastic scattering</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Phonon-scattering"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">Phonon scattering</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Atonal Fermion</p>
+  <div class="site-description" itemprop="description">學不可以已</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Florestan-Eusebius" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Florestan-Eusebius" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yifei@pku.edu.cn" title="E-Mail (Academic) → mailto:wang_yifei@pku.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Academic)</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wang_yff@outlook.com" title="E-Mail (Personal) → mailto:wang_yff@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail (Personal)</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Atonal Fermion</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'eef533c12a28fdcba9a0',
+      clientSecret: '9b83e56106d20adb3aad83840dce713edaaed618',
+      repo: 'BlogComment',
+      owner: 'Florestan-Eusebius',
+      admin: ['Florestan-Eusebius'],
+      id: '10f347e90b1ddae608c090a3051816a6',
+        language: 'default.yml',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

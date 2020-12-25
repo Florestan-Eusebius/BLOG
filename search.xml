@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Calculating Entropy for Variational Method</title>
+    <url>/2020/04/30/Calculating-Entropy-for-Variational-Method/</url>
+    <content><![CDATA[<p>When using variational method to solve the equilibrium state for some many-particle system, one usually sets a density operator $\rho_i$ (with trace 1) for particle $i$. The density operator may have some parameters to be determined by the condition that the free energy be at its minimum. <a id="more"></a>Suppose we have $N$ particles at $N$ sites, each being labeled by $i$. The whole density operator is thus</p>
+<script type="math/tex; mode=display">
+\rho=\rho_1\otimes\rho_2\otimes\cdots\otimes\rho_N.</script><p>Our problem now is to calculate the entropy given this density operator,</p>
+<script type="math/tex; mode=display">
+S=-k_B\operatorname{Tr}\left(\rho\ln\rho\right),</script><p>or equivalently, to represent $\operatorname{Tr}\left(\rho\ln\rho\right)$ in terms of separated $\rho_i$.</p>
+<p>Since $\operatorname{Tr}\left(\bigotimes_{i\in I}\rho_i\right)=1$, where $I$ is some index set, we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\operatorname{Tr}\left(\rho\ln\rho\right)&=\sum_{\left\{\psi_1\psi_2\cdots\psi_N\right\}}\langle\psi_1\cdots\psi_N|\rho\ln\rho|\psi_1\cdots\psi_N\rangle\\
+&=\sum_{\left\{\psi_1\psi_2\cdots\psi_N\right\}}\langle\psi_1\cdots\psi_N|\rho\left(\ln\rho_1+\cdots+\ln\rho_N\right)|\psi_1\cdots\psi_N\rangle\\
+&=\sum_{i=1}^N\sum_{\psi_i}\langle\psi_i|\rho_i\ln\rho_i|\psi_i\rangle\sum_{\left\{\psi_1\cdots\tilde{\psi_i}\cdots\psi_N\right\}}\langle\psi_1\cdots\tilde{\psi_i}\cdots\psi_N|\rho_1\cdots\tilde{\rho_i}\cdots\rho_N|\psi_1\cdots\tilde{\psi_i}\cdots\psi_N\rangle\\
+&=\sum_{i=1}^N\operatorname{Tr}\left(\rho_i\ln\rho_i\right).
+\end{aligned}</script><p>Tilde over a term means the term is excluded.</p>
+]]></content>
+      <tags>
+        <tag>Statistical Mechanics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EPR到底说了些什么？</title>
+    <url>/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>本文改写自笔者的课程作业, DDL已过, 故整理发出. </p>
+<p>EPR悖论一直是学界内外的一个热词, 但中文互联网上对EPR到底说了些什么的介绍并不尽如人意, 一会说量子力学不完备, 一会说定域实在论和量子力学不相容, 一会说量子纠缠和”鬼魅般的超距作用”, 这些词组, 或多或少和EPR有些联系, 但它们究竟是怎样的逻辑关系? EPR的原始论文究竟讲了些什么? 这就是本文试图说明的.</p>
+</blockquote>
+<a id="more"></a>
+<p>Einstein, Podolsky, Rosen三人的论文<em>Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?</em> (对物理实在的量子力学描述是完备的吗?) 是量子力学发展史上的一篇重要文献. 这篇论文从科学哲学的角度对量子力学的完备性提出了质疑, 引发了旷日持久的争论, 这些争论促成了诸多重要概念的提出和发展, 这些概念则建构了量子信息科学的理论基础. 因此, 直到今天, 这篇论文对于试图了解量子信息乃至从事相关研究的人, 仍然是绕不开的经典.</p>
+<p>EPR的论文乍看来似乎曲折回环, 但其论证思路实际上非常清晰, 本文将先梳理原文的论证思路, 再联系后续的发展简要谈谈笔者的理解.</p>
+<h2 id="EPR论文的论证思路"><a href="#EPR论文的论证思路" class="headerlink" title="EPR论文的论证思路"></a>EPR论文的论证思路</h2><p>文章主要围绕两个命题A, B展开并分为两部分. 第一部分论述了命题A或B为真, 即A, B必有一个是真命题; 第二部分论述了如果A是假命题, 那么B也一定是假命题, 并由此导出A是真命题. 两个命题的具体内容如下:</p>
+<ul>
+<li><p>命题A: 量子力学对物理实在的描述是不完备的.</p>
+</li>
+<li><p>命题B: 两个不对易的算符不可能同时对应物理实在.</p>
+</li>
+</ul>
+<p>先对两个命题中涉及的概念作出说明. 这里的”完备”, 是对一套物理理论而言的, 是指每一个物理实在在理论中都能找到对应, 并不存在理论所不能描述的物理实在. 要注意这并不是算符的本征态构成希尔伯特空间完备基这种意义上的完备. 在”完备”的定义和命题B中, 我们都提到了”物理实在”这一概念, 论文中并未给出这一概念的确切定义, 而只给出了一个物理实在存在的充分条件: 对于一个物理系统, 如果我们可以在不扰动这个系统的前提下确切地预测一个物理量的值, 那么就存在一个物理实在和这个物理量相对应.</p>
+<p>有了上述概念上的准备, EPR三人在第一部分考察了不可对易的两个可观测量, 例如位置和动量, 按照不确定原理, 这两个可观测量在同一量子态上不会同时具有确定的值. 如果这两个物理量同时对应物理实在(即命题B不成立), 那么一个完备的物理理论应该能够同时描述它们. 需要强调的是, 这里的”同时描述”并不要求两个物理量可以在同一个瞬间一起测量, 而只是要求对于系统的同一个物理状态, 它们都有确定的值. 显然量子力学由于不确定原理的存在, 连后者都不能做到.<sup><a href="#fn_1" id="reffn_1">1</a></sup> 因此, 若B不成立, 则A成立, 推出A或B至少有一个是成立的.</p>
+<p>在文章的第二部分, 作者先假设量子力学是完备的. 此时考虑两个系统的纠缠态, 测量第一个系统的某个物理量, 第二个系统的一个物理量的值也随之确定; 再测量第一个系统的另一个物理量, 第二个系统又有一个物理量随之确定. 作为一个例子, 作者考虑了一个简单的二粒子态:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+
+     \Psi(x_1,x_2)=\int_{-\infty}^\infty e^{\frac{2\pi i}{h}(x_1-x_2+x_0)p}dp,
+
+\end{equation}</script><p>测量第一个粒子的动量, 第二个粒子的动量也随之确定; 测量第一个粒子的位置, 第二个粒子的位置也随之确定. 作者认为, 既然此时两个粒子已经没有了相互作用, 测量第一个粒子就不可能对第二个粒子产生实质性的影响, 因此, <strong>虽然第二个粒子在上述两个测量过程中波函数是不相同的, 却只能处在同一个真实的物理状态.</strong> 此时, 对于这样一个物理状态, 它的位置和动量都可以被不加扰动地确切预测, 因此它们都对应物理实在.<sup><a href="#fn_2" id="reffn_2">2</a></sup> 这样就由非A推导出了非B. 因此, 结合A或B为真, 我们只能得出A为真, 即量子力学不能提供对物理实在完备的描述.</p>
+<h2 id="“定域实在论”与量子力学的矛盾"><a href="#“定域实在论”与量子力学的矛盾" class="headerlink" title="“定域实在论”与量子力学的矛盾"></a>“定域实在论”与量子力学的矛盾</h2><p>尽管爱因斯坦的本意是指出量子力学的不完备性, 但后人却将EPR的意义解读为定域实在论和量子力学的矛盾. 关于”实在”, 前面已经介绍了很多, 下面我们讨论”定域”的概念.</p>
+<p>在EPR的第二部分论述中, 实际上引入了一个关键的前提: 对第一个粒子的测量并不实质影响第二个粒子的物理状态(即上文加粗部分). 原论文中轻描淡写地说: “这仅仅是它们没有相互作用的一种表述.” 但后来的物理学家普遍认为第二个粒子的状态实际上被改变了.<sup><a href="#fn_3" id="reffn_3">3</a></sup> 因此, 第二个粒子状态不被改变这种观点, 其实是一个很重要的预设, 我们称其为”定域”假设, 记为命题C.</p>
+<p>另外, 作者在第二部分的论述中并没有明显地使用量子力学完备这一前提, 而仅仅假设了量子力学正确, 由此出发和定域假设一起推出了B不成立. 再考虑到整篇文章并没有否认量子力学的意思, 可以认为文章的一个大前提就是量子力学是成立的, 因此我们重新整理文章的论证思路如下:</p>
+<ul>
+<li><p>前提: (1)量子力学正确; (2)命题C, 即定域假设.</p>
+</li>
+<li><p>论证的第一部分: 命题A或B成立.</p>
+</li>
+<li><p>论证的第二部分: 由两个前提推出命题B不成立.</p>
+</li>
+<li><p>结论: 命题A成立.</p>
+</li>
+</ul>
+<p>略去中间的推理, 我们概括文章的结论为: 在满足定域性的前提下, 量子力学不可能是具有实在完备性的理论. 或者, 可以等价地表述为: 量子力学不可能同时具有定域性和对物理实在的完备性. 概括的说法即为: 量子力学与定域实在论是不相容的.</p>
+<h2 id="对定域假设的突破"><a href="#对定域假设的突破" class="headerlink" title="对定域假设的突破"></a>对定域假设的突破</h2><p>EPR的论文从定域性出发, 论证了量子力学的不完备. 但是如果我们破坏论证的第二部分, 即放弃定域假设, 那么我们就无法否定命题B, 量子力学就有可能还是一个完备的理论.</p>
+<p>贝尔在1964年发表了一篇重要的文章, <em>On the Einstein-Podolsky-Rosen Paradox</em> (论EPR悖论). 这篇文章非常优美, 六个小标题分别为Introduction, Formulation, Illustration, Contradiction, Generalization, Conclusion, 物理论文写出了韵律, 可谓别出心裁. 文章的核心在于, 考虑两个纠缠的电子, 同时分别测量两个粒子不同方向上的自旋, 可以根据量子力学计算出两个测量结果乘积的期待值. 贝尔证明了, 诚如EPR所说, 量子力学不完备, 存在其他我们不知道的物理量(称为”隐变量”)影响着测量结果, 并且如果我们要求这种隐变量理论中对一个粒子的测量不会立刻影响另一个粒子的测量机制, 那么它给出的上述测量结果乘积的期待值就必须满足贝尔不等式. 但是量子力学给出的期待值是不满足贝尔不等式的. 因此, 为了给出和量子力学的预测相同的期待值, 只能在这种隐变量理论中引入超光速的机制.</p>
+<p>需要注意, 这里我们已经承认了对于纠缠的两个粒子, 测量其中一个会立刻改变另一个的量子态, 用不同的方式测量一个粒子, 另一个粒子的物理状态的确可能不同. 这种奇异的现象人称”鬼魅般的超距作用”, 但后续研究表明, 这种所谓的”超距作用”并不能用来传递信息, 也不能传递物质或能量, 因此, 它虽然看起来像是超距作用, 但实际上并不违反相对论. 而在隐变量理论中, 测量一个粒子瞬间了影响另一个粒子的测量机制, 出现了超光速并且关乎物理实在的作用. 相比于量子纠缠理论中没有实质信息传递的非定域, 这种非定域使得理论与相对论直接冲突, 显然更不可接受.</p>
+<p>至此, 摆在我们面前的只有两种可能: 要么量子力学是正确的, 纠缠确实会产生非定域的影响, 因此纠缠态并不能用来否定量子力学的完备性; 要么量子力学是不完备的, 我们需要用额外的变量来描述物理体系, 由于我们不能引入实质的超光速机制, 这种描述必然进一步意味着量子力学是错误的. 孰是孰非, 贝尔已经指出了验证的道路. 既然不违反相对论的隐变量理论必须服从贝尔不等式, 如果实验结果违反了这个不等式, 那么局域隐变量理论就只能被抛弃, 量子力学暂时获得了安全; 反之, 如果无数次实验结果都满足这个不等式, 理论物理学家就会迎来新一轮的狂欢(如果量子力学错了, 有多少物理需要重建, 想想就激动). 于是, 一个个越来越精巧, 越来越严密的贝尔实验, 便轰轰烈烈地开展了起来.</p>
+<p>幸运, 或许也是不幸, 目前看来, 量子力学还是安全的.</p>
+<blockquote id="fn_1">
+<sup>1</sup>.  熟悉不确定原理的推导就应该知道, 不确定原理关心的是同一个态, 而非同一时间. 由于前者蕴含后者, 很多人受此迷惑并不能深刻地认识到这一点.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 注意上一段提到的”同时”的确切含义, 这里第一个粒子的位置和动量也不能在同一瞬间一并测量, 但由于测量之后第二个粒子并无实质变化(这一点我们后文会继续展开), 因此对应的是第二个粒子的同一个物理状态.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 我们现在将这种改变称为导引. 关于纠缠, 导引和非定域三个概念更加细致的差别, 本文暂不做讨论.<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Quantum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Semi-classical Transport</title>
+    <url>/2020/06/17/Semi-classical-Transport/</url>
+    <content><![CDATA[<h2 id="Drude-model"><a href="#Drude-model" class="headerlink" title="Drude model"></a>Drude model</h2><h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
+<li>Electron scattering time $\tau$.</li>
+<li>After scattering, $\mathbf{p}=0$.</li>
+<li>Between scattering, electrons move classically.</li>
+</ul>
+<a id="more"></a>
+<h3 id="Equation-of-motion"><a href="#Equation-of-motion" class="headerlink" title="Equation of motion"></a>Equation of motion</h3><p>From the assumptions:</p>
+<script type="math/tex; mode=display">\langle\mathbf{p}(t+\mathrm{d}t)\rangle=\left(1-\frac{\mathrm{d}t}{\tau}\right)\left(\mathbf{p}(t)+\mathbf{F}\mathrm{d}t\right)</script><script type="math/tex; mode=display">\frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t}=-\frac{\mathbf{p}}{\tau}+\mathbf{F}</script><h3 id="Transport-in-electromagnetic-field"><a href="#Transport-in-electromagnetic-field" class="headerlink" title="Transport in electromagnetic field"></a>Transport in electromagnetic field</h3><p>If there is only electric field, consider steady case where $\frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t}=0$.</p>
+<script type="math/tex; mode=display">\mathbf{j}=\sigma \mathbf{E},\quad \sigma=\frac{e^2\tau n}{m}.</script><p>Suppose $\mathbf{B}=B_z$.</p>
+<script type="math/tex; mode=display">\mathbf{E}=\rho\mathbf{j},\quad \rho=\begin{bmatrix}
+    \frac{m}{ne^2\tau} && \frac{B}{ne} && 0\\
+    -\frac{B}{ne} && \frac{m}{ne^2\tau} && 0\\
+    0 && 0 && \frac{m}{ne^2\tau}
+\end{bmatrix}.</script><h3 id="Thermal-Transport"><a href="#Thermal-Transport" class="headerlink" title="Thermal Transport"></a>Thermal Transport</h3><p>Kinetic theory of gas gives</p>
+<script type="math/tex; mode=display">\kappa=\frac{1}{3}n c_v\langle v\rangle\lambda</script><p>with</p>
+<script type="math/tex; mode=display">c_v=\frac{3}{2}k_B, \langle v\rangle=\sqrt{\frac{8k_BT}{\pi m}}, \lambda=\langle v\rangle\tau.</script><p>Then </p>
+<script type="math/tex; mode=display">\kappa=\frac{4}{\pi}\frac{n\tau k_B^2T}{m}.</script><p>Lorentz number </p>
+<script type="math/tex; mode=display">L=\frac{\kappa}{T\sigma}=\frac{4}{\pi}\left(\frac{k_B}{e}\right)^2.</script><p>Seebeck coefficient (thermal current $\mathbf{j}_q=\frac{1}{3}c_vTn\mathbf{v}$)</p>
+<script type="math/tex; mode=display">S=\frac{\mathbf{j}_q}{T\mathbf{j}}=-\frac{k_B}{2e}</script><h2 id="Sommerfeld’s-theory"><a href="#Sommerfeld’s-theory" class="headerlink" title="Sommerfeld’s theory"></a>Sommerfeld’s theory</h2><p>Introduce Fermi-Dirac distribution to Drude model.</p>
+<script type="math/tex; mode=display">f\left((E-\mu) / k_{B} T\right)=\frac{1}{e^{(E-\mu) / k_{B} T}+1}.</script><h3 id="Fermi-Dirac-statistics"><a href="#Fermi-Dirac-statistics" class="headerlink" title="Fermi-Dirac statistics"></a>Fermi-Dirac statistics</h3><p>The number of electrons</p>
+<script type="math/tex; mode=display">N=\frac{2V}{8\pi^3}\int\mathrm{d}^3\mathbf{k}\frac{1}{e^{(E-\mu)/k_BT}+1}.</script><h4 id="Zero-temperature"><a href="#Zero-temperature" class="headerlink" title="Zero temperature"></a>Zero temperature</h4><script type="math/tex; mode=display">N=\frac{2V}{8\pi^3}\frac{4}{3}\pi k_F^3=\frac{V k_F^3}{3\pi^2},\quad k_F=\left(3\pi^2n\right)^{1/3}.</script><p>Define fermi energy, fermi velocity, fermi temperature as </p>
+<script type="math/tex; mode=display">E_F=\frac{\hbar^2k_F^2}{2m}, v_F=\frac{\hbar k_F}{m}, T_F=\frac{E_F}{k_B}.</script><h4 id="Nonzero-temperature-heat-capacity"><a href="#Nonzero-temperature-heat-capacity" class="headerlink" title="Nonzero temperature heat capacity"></a>Nonzero temperature heat capacity</h4><p>Rewrite the integral</p>
+<script type="math/tex; mode=display">N=V\int_0^\infty\mathrm{d}\varepsilon g(\varepsilon)\frac{1}{e^{(\varepsilon-\mu)/k_BT}+1}, \quad g(\varepsilon)=\frac{(2m)^{3/2}}{2\pi^2\hbar^3}\varepsilon^{1/2}=\frac{3n}{2E_F}\left(\frac{\varepsilon}{E_F}\right)^{1/2}.</script><script type="math/tex; mode=display">E=V\int_0^\infty\mathrm{d}\varepsilon\varepsilon g(\varepsilon)\frac{1}{e^{(\varepsilon-\mu)/k_BT}+1}.</script><p>Sommerfeld expansion</p>
+<script type="math/tex; mode=display">\int_{-\infty}^\infty\mathrm{d}\varepsilon G(\varepsilon)f(\varepsilon)=\int_{-\infty}^\mu\mathrm{d}\varepsilon G(\varepsilon)+\sum_{n=1}^\infty\left[\frac{\mathrm{d}^{2n-1}G(\varepsilon)}{\mathrm{d}\varepsilon^{2n-1}}\right]_{\varepsilon=\mu}c_n \left(k_BT\right)^{2n},</script><p>where </p>
+<script type="math/tex; mode=display">c_{n}=2^{2 n-1} \frac{\pi^{2 n}}{(2 n) !}\left(2-\frac{1}{2^{2(n-1)}}\right) B_{n},\quad c_1=\frac{\pi^2}{6}, c_2=\frac{7\pi}{360},\cdots</script><p>Approximation:</p>
+<script type="math/tex; mode=display">\int_0^\mu\mathrm{d}\varepsilon G(\varepsilon)\approx\int_0^{\varepsilon_F}\mathrm{d}\varepsilon G(\varepsilon)+\left(\mu-\varepsilon_F\right)G(\varepsilon_F).</script><p>Apply the approximation to $N$ and compare with 0 temperature, </p>
+<script type="math/tex; mode=display">\mu=\varepsilon_{F}-\frac{\pi^{2}}{6}\left(k_{B} T\right)^{2} \frac{g^{\prime}\left(\varepsilon_{F}\right)}{g\left(\varepsilon_{F}\right)}=\varepsilon_{F}\left[1-\frac{1}{3}\left(\frac{\pi k_{B} T}{2 \varepsilon_{F}}\right)^{2}\right].</script><p>So</p>
+<script type="math/tex; mode=display">E=\int_0^{\varepsilon_F}\mathrm{d}\varepsilon\varepsilon g(\varepsilon)+\frac{\pi^2}{6}\left(k_BT\right)^2g(\varepsilon_F).</script><p>Heat capacity is </p>
+<script type="math/tex; mode=display">c_v=\frac{\pi^2}{3}k_B^2Tg(\varepsilon_F)=\frac{\pi^2}{2}\frac{k_BT}{\varepsilon_F}n k_B,</script><p>the latter term for free electrons.</p>
+<h3 id="Sommerfeld-model"><a href="#Sommerfeld-model" class="headerlink" title="Sommerfeld model"></a>Sommerfeld model</h3><p>Consider the electrons near Fermi surface.</p>
+<p>Compare Sommerfeld model with Drude model:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Drude model</th>
+<th>Sommerfeld model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_v=\frac{3}{2}nk_B$</td>
+<td>$c_v=\frac{\pi^2}{2}\frac{k_BT}{\varepsilon_F}nk_B$</td>
+</tr>
+<tr>
+<td>$v^2=\frac{8k_BT}{\pi m}$</td>
+<td>$v^2=v_F^2=\frac{2\varepsilon_F}{m}$</td>
+</tr>
+<tr>
+<td>$\kappa=\frac{4}{\pi}\frac{n\tau k_B^2T}{m}$</td>
+<td>$\kappa=\frac{1}{3}\frac{n\tau\pi^2k_B^2T}{m}$</td>
+</tr>
+<tr>
+<td>$L=\frac{\kappa}{T\sigma}=\frac{3}{2}\left(\frac{k_B}{e}\right)^2$</td>
+<td>$L=\frac{\kappa}{T\sigma}=\frac{\pi^2}{3}\left(\frac{k_B}{e}\right)^2$</td>
+</tr>
+<tr>
+<td>$S=\frac{\mathbf{j}_q}{T\mathbf{j}}=-\frac{k_B}{2e}$</td>
+<td>$S=\frac{\mathbf{j}_q}{T\mathbf{j}}=-\frac{k_B}{2e}\frac{\pi^2k_BT}{3\varepsilon_F}\sim 0.01\left(-\frac{k_B}{2e}\right)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Boltzmann-equation"><a href="#Boltzmann-equation" class="headerlink" title="Boltzmann equation"></a>Boltzmann equation</h2><h3 id="Distribution-function"><a href="#Distribution-function" class="headerlink" title="Distribution function"></a>Distribution function</h3><p>Specific spin, per phase space volume</p>
+<script type="math/tex; mode=display">\frac{f_n(\mathbf{r},\mathbf{k},t)\mathrm{d}\mathbf{r}\mathrm{d}\mathbf{k}}{8\pi^3}</script><p>The equilibrium distribution function $f_0$ is, for example for electrons, Fermi-Dirac distribution. Current density</p>
+<script type="math/tex; mode=display">\mathbf{J}(\mathbf{r},t)=-\frac{1}{4\pi^3}\int e\mathbf{v}_kf\mathrm{d}^3\mathbf{k}</script><p>Collision changes the distribution function, which is described by <strong>Boltzmann equation</strong> </p>
+<script type="math/tex; mode=display">\frac{\partial f}{\partial t}+\frac{\partial \mathbf{k}}{\partial t}\cdot\nabla_\mathbf{k}f+\frac{\partial \mathbf{r}}{\partial t}\cdot\nabla_\mathbf{r}f=S[f].</script><p>The right hand side is collision term. For stationary conditions, $\frac{\partial f}{\partial t}$ term vanishes.</p>
+<h3 id="Relaxation-time-approximation"><a href="#Relaxation-time-approximation" class="headerlink" title="Relaxation time approximation"></a>Relaxation time approximation</h3><p>The only property if the collision is relaxation time, so the collision term is </p>
+<script type="math/tex; mode=display">S[f]=-\frac{f-f_0}{\tau}.</script><h4 id="Electromagnetic-properties"><a href="#Electromagnetic-properties" class="headerlink" title="Electromagnetic properties"></a>Electromagnetic properties</h4><p>In E-B field, the Boltzmann equation reads</p>
+<script type="math/tex; mode=display">-\frac{e\mathbf{E}}{\hbar}\cdot\frac{\partial f_0}{\partial \mathbf{k}}=-\frac{f_1}{\tau}+\frac{e\left(\mathbf{v_k}\times\mathbf{B}\right)}{\hbar}\cdot\frac{\partial f_1}{\partial \mathbf{k}}.</script><h5 id="Only-electric-field"><a href="#Only-electric-field" class="headerlink" title="Only electric field"></a>Only electric field</h5><script type="math/tex; mode=display">-\frac{e\mathbf{E}}{\hbar}\cdot\frac{\partial f_0}{\partial \mathbf{k}}=-\frac{f_1}{\tau}.</script><p>Then </p>
+<script type="math/tex; mode=display">\mathbf{J}=\left[\frac{e^2}{4\pi^3}\int\tau\mathbf{v_k}\mathbf{v_k}\left(-\frac{\partial f_0}{\partial \varepsilon}\right)\mathrm{d}^3\mathbf{k}\right]\cdot\mathbf{E}=\left[\frac{e^{2}}{4 \pi^{3} \hbar} \int \tau \frac{\mathbf{v}_{k} \mathbf{v}_{k}}{v_{k}} \mathrm{d} S_{F}\right] \cdot \mathbf{E}.</script><p>Isotropic condition yields</p>
+<script type="math/tex; mode=display">\sigma_0=\frac{e^2}{12\pi^3\hbar}\int\tau v_k\mathrm{d}S_F=\frac{e^2\tau n}{m^*}.</script><h5 id="Hall-effects"><a href="#Hall-effects" class="headerlink" title="Hall effects"></a>Hall effects</h5><p>Trial solution:</p>
+<script type="math/tex; mode=display">f_{1}=\frac{\tau e \mathbf{D}}{\hbar} \cdot \frac{\partial f_{0}}{\partial \mathbf{k}}=\frac{\tau e \mathbf{D}}{\hbar} \cdot \frac{\partial \varepsilon(\mathbf{k})}{\partial \mathbf{k}} \frac{\partial f_{0}}{\partial \varepsilon}=\tau e \mathbf{D} \cdot v_{\mathbf{k}} \frac{\partial f_{0}}{\partial \varepsilon}</script><p>Consider $\mathbf{D}$ and $\frac{\partial f_0}{\partial \varepsilon}$ (a delta function) is independent of $\mathbf{k}$, for isotropic case, we can get</p>
+<script type="math/tex; mode=display">\mathbf{E}=\mathbf{D}-\frac{\tau e}{m^*}(\mathbf{B}\times\mathbf{D}).</script><p>The current density is </p>
+<script type="math/tex; mode=display">\mathbf{J}=\sigma_0\mathbf{D},</script><p>where $\sigma_0$ is the same as that of the previous section.</p>
+<script type="math/tex; mode=display">\mathbf{E}=\rho_0\mathbf{J}-\frac{\tau e\rho_0}{m^*}\left(\mathbf{B}\times\mathbf{J}\right)</script><p>Hall angle</p>
+<script type="math/tex; mode=display">\tan\theta_H=\frac{E_\perp}{E_\parallel}=-\frac{\tau e}{m^*}B</script><h5 id="Semi-classical-magnetoresistance"><a href="#Semi-classical-magnetoresistance" class="headerlink" title="Semi-classical magnetoresistance"></a>Semi-classical magnetoresistance</h5><p>Two types of charge carrier.</p>
+<script type="math/tex; mode=display">\mathbf{J}=\mathbf{J}_1+\mathbf{J}_2=\sigma_1\mathbf{D}_1+\sigma_2\mathbf{D}_2.</script><p>Take $\mathbf{D}_i=a_i\mathbf{E}+b_i\left(\mathbf{B}\times\mathbf{E}\right)$, we can calculate</p>
+<script type="math/tex; mode=display">\begin{aligned}
+a_{i}&=\frac{1}{1+\omega_{i}^{2} \tau_{i}^{2}} \\
+b_{i}&=\frac{e \tau_{i}}{m_{i}^{*}} \frac{1}{1+\omega_{i}^{2} \tau_{i}^{2}}
+\end{aligned},</script><p>Then</p>
+<script type="math/tex; mode=display">\mathbf{J}=\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right) \mathbf{E}+\left(\frac{e \tau_{1}}{m_{1}^{*}} \frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{e \tau_{2}}{m_{2}^{*}} \frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)(\mathbf{B} \times \mathbf{E}).</script><p>In a Hall bar, $J_y=0$, which gives</p>
+<script type="math/tex; mode=display">E_{x}=-\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)}{\left(\frac{\sigma_{1} \omega_{1} \tau_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2} \omega_{2} \tau_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)} E_{y},</script><p>and</p>
+<script type="math/tex; mode=display">\begin{aligned}
+J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)^{2}}{\left(\frac{\sigma_{1} \omega_{1} \tau_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2} \omega_{2} \tau_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)}+\left(\frac{\sigma_{1} \omega_{1} \tau_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2} \omega_{2} \tau_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)\right] E_{y} \\
+=& \frac{\frac{\sigma_{1}^{2}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}^{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}+\frac{2 \sigma_{1} \sigma_{2}\left(1+\omega_{1} \tau_{1} \omega_{2} \tau_{2}\right)}{\left(1+\omega_{1}^{2} \tau_{1}^{2}\right)\left(1+\omega_{2}^{2} \tau_{2}^{2}\right)}}{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)} E_{x}=\sigma E_{x}.
+\end{aligned}</script><p>For small $\mathbf{B}$,</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\frac{\Delta \sigma}{\sigma(B=0)}=&-\frac{\frac{\sigma_{1} \sigma_{2}\left(\omega_{1} \tau_{1}-\omega_{2} \tau_{2}\right)^{2}}{\left(1+\omega_{1}^{2} \tau_{1}^{2}\right)\left(1+\omega_{2}^{2} \tau_{2}^{2}\right)}}{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac{\sigma_{2}}{1+\omega_{2}^{2} \tau_{2}^{2}}\right)\left(\sigma_{1}+\sigma_{2}\right)} \\
+&=-\frac{\sigma_{1} \sigma_{2}\left(\omega_{1} \tau_{1}-\omega_{2} \tau_{2}\right)^{2}}{\left[\sigma_{1}\left(1+\omega_{2}^{2} \tau_{2}^{2}\right)+\sigma_{2}\left(1+\omega_{1}^{2} \tau_{1}^{2}\right)\right]\left(\sigma_{1}+\sigma_{2}\right)}
+\end{aligned}</script><h5 id="AC-electric-field"><a href="#AC-electric-field" class="headerlink" title="AC electric field"></a>AC electric field</h5><p>Same as the DC field, except for that $f_1$ is dependent on time so $1/\tau$ is replaced by $1/\tau-\mathrm{i}\omega$.</p>
+<h4 id="Thermal-transport"><a href="#Thermal-transport" class="headerlink" title="Thermal transport"></a>Thermal transport</h4><p>In a electric field and a temperature gradience Boltzmann equation becomes</p>
+<script type="math/tex; mode=display">-\frac{e\mathbf{E}}{\hbar}\cdot\frac{\partial f_0}{\partial \mathbf{k}}+\frac{\partial \mathbf{r}}{\partial t}\cdot\left(\frac{\partial f_0}{\partial T}\nabla T+\frac{\partial f_0}{\partial \mu}\nabla\mu\right)=-\frac{f_1}{\tau}.</script><p>Then we have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathbf{J}&=\sigma \mathbf{E}+\frac{\nabla T}{T} \frac{\left(\pi k_{B} T\right)^{2}}{3 e} \frac{\mathrm{d} \sigma}{\mathrm{d} \varepsilon}, \\
+\mathbf{J}_{Q}&=-\frac{\left(\pi k_{B} T\right)^{2}}{3 e} \frac{\mathrm{d} \sigma}{\mathrm{d} \varepsilon} \mathbf{E}-\frac{\nabla T}{T} \frac{\left(\pi k_{B} T\right)^{2}}{3 e^{2}} \sigma
+\end{aligned}.</script><p>For metal, $\mathrm{d}\sigma/\mathrm{d}\varepsilon\ll \sigma$, Lorentz number is a constant</p>
+<script type="math/tex; mode=display">L=\frac{\kappa}{\sigma T}=\frac{1}{3}\left(\frac{\pi k_B}{e}\right)^2,</script><p>which is Wiedemann-Franz law.</p>
+<p>Seebeck coefficient. Condition: $\nabla T\neq 0, \mathbf{J}=0, \mathbf{J}_Q\neq 0$.</p>
+<script type="math/tex; mode=display">S=\frac{\mathbf{E}}{\nabla T}=-\frac{\pi}{3}\frac{k_B^2T}{e}\frac{\mathrm{d}\sigma/\mathrm{d}\varepsilon}{\sigma}.</script><h3 id="The-collision-term"><a href="#The-collision-term" class="headerlink" title="The collision term"></a>The collision term</h3><p>General form</p>
+<script type="math/tex; mode=display">S[f](\mathbf{k})=\int\left[f\left(\mathbf{k}^{\prime}, t\right) \Theta\left(\mathbf{k}^{\prime}, \mathbf{k}\right)(1-f(\mathbf{k}, t))-f(\mathbf{k}, t) \Theta\left(\mathbf{k}, \mathbf{k}^{\prime}\right)\left(1-f\left(\mathbf{k}^{\prime}, t\right)\right)\right] \frac{\mathrm{d}^3 \mathbf{k}^{\prime}}{(2 \pi)^{3}}.</script><p>For $f_0$ there is detailed balance,</p>
+<script type="math/tex; mode=display">f_{0}\left(\mathbf{k}^{\prime}, t\right) \Theta\left(\mathbf{k}^{\prime}, \mathbf{k}\right)\left(1-f_{0}(\mathbf{k}, t)\right)=f_{0}(\mathbf{k}, t) \Theta\left(\mathbf{k}, \mathbf{k}^{\prime}\right)\left(1-f_{0}\left(\mathbf{k}^{\prime}, t\right)\right).</script><p>For Fermi-Dirac distribution and elastic scattering,</p>
+<script type="math/tex; mode=display">\Theta\left(\mathbf{k}',\mathbf{k}\right)=\Theta\left(\mathbf{k},\mathbf{k}'\right).</script><p>Then</p>
+<script type="math/tex; mode=display">S[f]\left(\mathbf{k}\right)=\int\Theta\left(\mathbf{k},\mathbf{k}'\right)\left(f\left(\mathbf{k}',t\right)-f\left(\mathbf{k},t\right)\right)\frac{\mathrm{d}^3\mathbf{k}'}{\left(2\pi\right)^3}.</script><h4 id="Deriving-relaxation-time"><a href="#Deriving-relaxation-time" class="headerlink" title="Deriving relaxation time"></a>Deriving relaxation time</h4><h5 id="Isotropic-case-elastic-scattering"><a href="#Isotropic-case-elastic-scattering" class="headerlink" title="Isotropic case, elastic scattering"></a>Isotropic case, elastic scattering</h5><p>Suppose $f_1\left(\mathbf{k},t\right)=k_i\varphi(\varepsilon)$,</p>
+<script type="math/tex; mode=display">\frac{1}{\tau}=\int\Theta\left(\mathbf{k},\mathbf{k}'\right)\left(1-\cos\theta\right)\frac{\mathrm{d}^3\mathbf{k}}{\left(2\pi\right)^3}.</script><p>Thus for two unrelated mechanism for scattering,</p>
+<script type="math/tex; mode=display">\frac{1}{\tau}=\frac{1}{\tau'}+\frac{1}{\tau''}.</script><h5 id="Phonon-scattering"><a href="#Phonon-scattering" class="headerlink" title="Phonon scattering"></a>Phonon scattering</h5><p>To be continued.</p>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Solid State Physics Course Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quantum noise and quantum operations</title>
+    <url>/2020/10/19/Quantum-noise-and-quantum-operations/</url>
+    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
+<p>Closed quantum systems, without noise.</p>
+<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
+<a id="more"></a>
+<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
+<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
+<script type="math/tex; mode=display">
+\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
+<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
+<script type="math/tex; mode=display">
+\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
+<p>Three equivalent seperate ways to understand quantum operation:</p>
+<ul>
+<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
+<li>Operator-sum representation: abstract, convenient in mathematics.</li>
+<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
+</ul>
+<blockquote>
+<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
+<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
+<script type="math/tex; mode=display">
+ \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
+</blockquote>
+<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
+<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
+<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
+<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
+<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
+<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
+<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
+    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
+    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
+\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
+<script type="math/tex; mode=display">
+\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
+<blockquote>
+<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Quantum Information</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Introduction to Semiconductor Physics</title>
+    <url>/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
+    <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
+<li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
+<li>Direct &amp; indirect band gap</li>
+<li>Intrinsic &amp; extrinsic semiconductor</li>
+</ul>
+<a id="more"></a>
+<h2 id="Quantitative-properties"><a href="#Quantitative-properties" class="headerlink" title="Quantitative properties"></a>Quantitative properties</h2><h3 id="Effective-mass-k-p-approximation"><a href="#Effective-mass-k-p-approximation" class="headerlink" title="Effective mass: k-p approximation"></a>Effective mass: k-p approximation</h3><p>Near the band edge, quadratic term.</p>
+<script type="math/tex; mode=display">
+\varepsilon(\mathbf{k})=\varepsilon\left(\mathbf{k}_{0}\right)+\frac{\hbar^{2}\left(k_{x}-k_{x 0}\right)^{2}}{2 m_{x}^{*}}+\frac{\hbar^{2}\left(k_{y}-k_{y 0}\right)^{2}}{2 m_{y}^{*}}+\frac{\hbar^{2}\left(k_{z}-k_{z 0}\right)^{2}}{2 m_{z}^{*}}.</script><p>Bloch state:</p>
+<script type="math/tex; mode=display">\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r}).</script><p> Schrödinger equation on $u$ becomes</p>
+<script type="math/tex; mode=display">\left(\frac{\mathbf{p}^2}{2m}+\frac{\hbar\mathbf{k}\cdot\mathbf{p}}{m}+V(\mathbf{r})\right)u_{n\mathbf{k}}(\mathbf{r})=\left(\varepsilon_n(\mathbf{k})-\frac{\hbar^2\mathbf{k}^2}{2m}\right)u_{n\mathbf{k}}(\mathbf{r}).</script><p> Taking $\mathbf{k}_0$ to be 0, <strong>view $\mathbf{k}\cdot\mathbf{p}$ term as perturbation and the $\mathbf{k}=\mathbf{k}_0$ state as the unperturbed state</strong>, </p>
+<script type="math/tex; mode=display">\Delta\varepsilon_n^{(1)}(\mathbf{k})\propto\mathbf{k}=0</script><script type="math/tex; mode=display">\Delta \varepsilon_{n}^{(2)}(\mathbf{k})=\frac{\hbar^{2}}{m^{2}} \sum_{i} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)} k_{i}^{2}</script><p>by taking the principal axes. Finally we have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{1}{m_{i}^{*}\left(k_{i}\right)}&=\frac{1}{m}+\frac{2}{m^{2}} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)}\\
+    &=\frac{1}{m}+\frac{2}{m^2}\frac{\left\langle u_{c 0}(\mathbf{r})\left|p_{i}\right| u_{v 0}(\mathbf{r})\right\rangle\left\langle u_{v 0}(\mathbf{r})\left|p_{i}\right| u_{c 0}(\mathbf{r})\right\rangle}{\varepsilon_{\mathrm{gap}}}.\quad(\text{For conduction band})
+\end{aligned}</script><h3 id="Statistics-of-charge-carriers"><a href="#Statistics-of-charge-carriers" class="headerlink" title="Statistics of charge carriers"></a>Statistics of charge carriers</h3><p>Electrons obey Fermi-Dirac perturbation</p>
+<script type="math/tex; mode=display">f(\varepsilon)=\frac{1}{e^{\left(\varepsilon(\mathbf{k})-\mu\right)/k_BT}+1}.</script><p>Consider</p>
+<ul>
+<li>Even at room temperature, $\varepsilon_c-\mu\sim\mu-\varepsilon_v\gg k_BT.$</li>
+<li>The distribution of the hole is $1-f(\varepsilon_h)$</li>
+<li>The density of state are<script type="math/tex; mode=display">\begin{aligned}
+D_{e}\left(\varepsilon_{e}(\mathbf{k})\right)&=\frac{2\left(2 m_{e}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{e}(\mathbf{k})-\varepsilon_{c}}, \\
+D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{v}-\varepsilon_{h}(\mathbf{k})}.
+\end{aligned}</script></li>
+</ul>
+<p>We have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    n_{e}&=\frac{1}{4}\left(\frac{2 m_{e}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{c}(\mathbf{k})-\varepsilon_{F}\right) / k_{B} T},\\
+    n_{h}&=\frac{1}{4}\left(\frac{2 m_{h}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{F}-\varepsilon_{v}(\mathbf{k})\right) / k_{B} T},
+\end{aligned}</script><p>and the <strong>law of mass action</strong></p>
+<script type="math/tex; mode=display">n_e n_h=\frac{1}{2}\left(\frac{k_BT}{\pi\hbar^2}\right)^3\left(m_e^*m_h^*\right)^{3/2}e^{-\varepsilon_{\mathrm{gap}}/k_BT}.</script><h4 id="Intrinsic-semiconductor"><a href="#Intrinsic-semiconductor" class="headerlink" title="Intrinsic semiconductor"></a>Intrinsic semiconductor</h4><script type="math/tex; mode=display">n_e=n_h</script><p>Consider the expression of $n_e$ and the law of mass action</p>
+<script type="math/tex; mode=display">\mu=\frac{3}{4}\frac{k_BT}{2}\ln\left(\frac{m_h^*}{m_e^*}\right)+\frac{\varepsilon_c+\varepsilon_v}{2}.</script><h4 id="Extrinsic-semiconductor"><a href="#Extrinsic-semiconductor" class="headerlink" title="Extrinsic semiconductor"></a>Extrinsic semiconductor</h4><p>Consider only donor case. Assume donor impurity density $D_i$ and energy $\varepsilon_i$.</p>
+<script type="math/tex; mode=display">n_e=D_i\left(1-f(\varepsilon_i)\right)=D_i\frac{1}{e^{(\mu-\varepsilon_i)/k_BT}+1}.</script><p>Put the equation above and $n_e=c_e\exp\left[-(\varepsilon_c-\varepsilon_F)/k_BT\right]$ together, solve $n_e$,</p>
+<script type="math/tex; mode=display">n_{e}=\frac{-1+\sqrt{1+4\left(\frac{D_{i}}{c_{e}}\right) e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}}{\frac{2 e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}{c_{e}}}.</script><ul>
+<li>At low temperature, <script type="math/tex; mode=display">n_e\approx\sqrt{c_eD_i}e^{-(\varepsilon_c-\varepsilon_i)/2k_BT}.</script></li>
+<li>At high temperature,<script type="math/tex; mode=display">n_e\approx D_i.</script></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Solid State Physics Course Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows 裝機記錄</title>
+    <url>/2020/01/09/Windows-%E8%A3%9D%E6%A9%9F%E8%A8%98%E9%8C%84/</url>
+    <content><![CDATA[<p>因爲想裝WSL，但更新一直出問題，另外也是覺得現在的電腦太亂了，我決定推倒重來，重裝系統。</p>
+<a id="more"></a>
+<h3 id="開發環境的搭建"><a href="#開發環境的搭建" class="headerlink" title="開發環境的搭建"></a>開發環境的搭建</h3><p>裝完Windows，先在Control Panel中進入Programs，點擊Turn Windows features on or off，開啓WSL，然後去應用商店下一個ubuntu18.04，就算搞成了。具體教程見<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">微軟官方文檔</a>。我這裏還嘗試把源換成阿里雲的，<a href="https://www.jianshu.com/p/3e627ff45ccb">教程</a>在此。</p>
+<p>下載<a href="https://code.visualstudio.com/Download">Vscode</a>。</p>
+<p>在WSL中搭建python環境，可以從<a href="https://code.visualstudio.com/remote-tutorials/wsl/install-python">這裏</a>開始看教程。</p>
+<p>Ubuntu中自帶了gcc和g++編譯器，我們只需在vscode中下載相關插件即可。</p>
+<p>爲了使代碼好看，可以下載prettier插件。</p>
+<p>還需安裝gdb以進行調試，在ubuntu的bash中輸入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gdb</span><br></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>安裝github。可以參考<a href="https://blog.csdn.net/tina_ttl/article/details/51326684">這個教程</a>。在Windows系統下，我也安裝了<a href="https://git-scm.com/download/win">git</a>。</p>
+<h3 id="文檔閱讀、編輯和管理"><a href="#文檔閱讀、編輯和管理" class="headerlink" title="文檔閱讀、編輯和管理"></a>文檔閱讀、編輯和管理</h3><p>下載並安裝Office套裝，我安裝了Word，Excel，Powerpoint，Onedrive for business（個人版系統自帶），Visio。Onenote就用系統自帶的版本。</p>
+<p>下載Adobe Acrobat以閱讀、編輯pdf文檔。</p>
+<p>下載<a href="https://www.amazon.com/kindle-dbs/fd/kcp">Kindle</a>看電子書。</p>
+<p>安裝<a href="https://typora.io/">Typora</a>。</p>
+<p>安裝Latex。這裏的基本思路也是安裝在WSL中，從那裏打開vscode進行編輯。先安裝texlive：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
+<p>完成之後，可以<a href="https://blog.csdn.net/qq_36265860/article/details/82972402">這樣</a>配置。</p>
+<p>編輯方面還要關心的是輸入法。微軟拼音輸入法對簡體字還不錯，繁體字甚至沒有按輸入歷史調整出詞位置的功能。因此可以安裝<a href="https://rime.im/">Rime輸入法</a>，用戶可以很自由地定製它，比如我就從<a href="https://github.com/rime-aca/dictionaries">這裏</a>搞了幾個詞典下來，讓我的輸入法變得更有文化一些。</p>
+<h3 id="上網問題"><a href="#上網問題" class="headerlink" title="上網問題"></a>上網問題</h3><p>安裝<a href="https://github.com/shadowsocksrr/shadowsocksr-csharp/releases">SSR</a>，做該做的事情。</p>
+<p>之後我安裝了<a href="https://www.google.cn/chrome/index.html">Chrome</a>，因爲之前註冊了一些奇奇怪怪的帳號，密碼在裏面存着，我連我註冊了哪些帳號都不記得了，更不用說密碼，萬一哪一天要用，直接在這裏查查就好。</p>
+<h3 id="其他小工具"><a href="#其他小工具" class="headerlink" title="其他小工具"></a>其他小工具</h3><p>在解壓一個zip文件時遇到問題，我去下載了<a href="https://www.bandisoft.com/bandizip/">Bandzip</a>。順便，它還可以解壓rar等多種其他格式。</p>
+<p>Microsoft Store中下載歐路詞典，學習用。</p>
+<p>Microsoft To Do做計劃。</p>
+<p>QQ和微信用於聊天。</p>
+<p>TranslucentTB把我的Taskbar變成透明的（什麼惡趣味？）</p>
+]]></content>
+      <categories>
+        <category>Computer</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Why Density Operator Varies with Time in a Different Way from Heisenberg Equation?</title>
+    <url>/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
+    <content><![CDATA[<p>In Heisenberg picture of quantum mechanics, there is <strong>Heisenberg equation of motion</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{heisenbergEq}
+\frac{d\hat{A}}{dt}=\frac{1}{i\hbar}\left[\hat{A},\hat{H}\right]
+\end{equation}</script><p>determining the time evolution of an operator. However, in quantum statistics, the <strong>density operator</strong> defined by</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{density operator}
+\hat{\rho}=\frac{1}{N}\sum_{k=1}^{N}\left|\alpha^k\right>\left<\alpha^k\right|
+\end{equation}</script><p>follows the equation of motion</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{equation of density operator}
+\frac{d\hat{\rho}}{dt}=\frac{1}{i\hbar}\left[\hat{H},\hat{\rho}\right],
+\end{equation}</script><p>where $N$ represents the number of ensembles and $\left|\alpha^k\right&gt;$ denotes the quantum state of the $k$th ensemble. The two equations ($\ref{heisenbergEq}$) and ($\ref{equation of density operator}$) has the opposite sign, which seems to be odd. Why is there such a difference?</p>
+<a id="more"></a>
+<p>Let’s refer to the derivation of those two equations to see the reason. First, define <strong>time evolution operator</strong> as a unitary operator satisfying</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{time evolution operator}
+i\hbar\frac{\partial}{\partial t}U(t)=\hat{H}U(t).
+\end{equation}</script><p>In <strong>Heisenberg picture</strong>, the kets are viewed unchanged while the operator changes with time like</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{heisenberg time evolution}
+\hat{A}(t)=U^\dagger(t) \hat{A}^{(S)}(t)U(t),
+\end{equation}</script><p>where $A^{(S)}$ refers to the operator in Schrödinger picture. <em>Assuming that $\hat{A}^{(S)}$ does not depend explicitly on time,</em> we have $\hat{A}^{(S)}=\hat{A}(0)$. In <strong>Schrödinger picture</strong> the operators are viewed unchanged while the kets satisfy</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{shrodinger time evolution}
+\left|\alpha(t)\right>=U(t)\left|\alpha(0)\right>.
+\end{equation}</script><p>From ($\ref{time evolution operator}$) and ($\ref{heisenberg time evolution}$), we can derive Heisenberg equation ($\ref{heisenbergEq}$) in the case that $\hat{A}^{(S)}$ is not explicitly dependent on time, and from ($\ref{time evolution operator}$) and ($\ref{shrodinger time evolution}$) we can derive <strong>Schrödinger equation</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{schrodingerEq}
+i\hbar\frac{\partial}{\partial t}\left|\alpha(t)\right>=\hat{H}\left|\alpha(t)\right>.
+\end{equation}</script><p>We now derive the equation of motion for density operation in <strong>Schödinger picture</strong>. According to ($\ref{shrodinger time evolution}$), we have</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{density time evolution}
+i\hbar\hat{\rho}(t)=U(t)\hat{\rho}(0)U^\dagger(t).
+\end{equation}</script><p>Then</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\partial t}\left|\alpha^k\right>\right)\left<\alpha^k\right|+\left|\alpha^k\right>\left(\frac{\partial}{\partial t}\left<\alpha^k\right|\right)\\
+&=\frac{1}{N}\sum_{k=1}^{N}\hat{H}\left|\alpha^k\right>\left<\alpha^k\right|-\left|\alpha^k\right>\left<\alpha^k\right|\hat{H}\\
+&=\left[\hat{H},\hat{\rho}\right].
+\end{aligned}
+\tag{3}</script><p>The equation ($\ref{equation of density operator}$) can also be derived directly by Schrödinger equation, but comparing ($\ref{density time evolution}$) and ($\ref{heisenberg time evolution}$) gives us the key to our problem: though they have the similar appearances, the former equation works in Schrödinger picture while the latter woks in Heisenberg picture, which have completely different physics contents!</p>
+<p>To have a better understanding of this problem, let’s study the density operator in Heisenberg picture. Now since the kets do not change, the density operator defined by ($\ref{density operator}$) remains the same obviously (you can also see this by ($\ref{heisenberg time evolution}$) and ($\ref{density time evolution}$)). Does this suggest that the system is always in a state of equilibrium? Of course not! We have known from ($\ref{equation of density operator}$) that in Schrödinger picture there is a condition for equilibrium that $\hat{\rho}$ and $\hat{H}$ commutes, so it is impossible that there is no requirement for equilibrium in Heisenberg picture. To clarify this problem, we need to discuss what “change with time” really means.</p>
+<p>For one particle problem, it is the average of an operator on some given state that we care about. The Heisenberg equation of motion concerns how an operator $\hat{A}$, which does not explicitly depend on time in Schrödinger picture, behaves in Heisenberg picture. As for a given set of eigenkets of some other operator $\left|n\right&gt;$, the matrix elements <script type="math/tex">A_{mn}=\left<m\right|\hat{A}\left|n\right></script> do not change in both pictures.</p>
+<p>However, for density operator $\hat{\rho}$, which generally may be explicitly dependent on time in Schrödinger picture, what we care about is the matrix elements. In Schrödinger picture, since the $\left|n\right&gt;$s do not change with time, the condition for equilibrium is that the right hand side of ($\ref{equation of density operator}$) be 0. In Heisenberg picture, we have</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+        A_{mn}&=\left<m(t)\right|\hat{\rho}(t)\left|n(t)\right>\\
+        &=\left<m(t)\right|\hat{\rho}(0)\left|n(t)\right>\\
+        &=\left<m(0)\right|U(t)\hat{\rho}(0)U^\dagger(t)\left|n(0)\right>\\
+        &=\left<m(0)\right|\hat{\rho}^{(S)}(t)\left|n(0)\right>,
+\end{aligned}
+\end{equation}</script><p>which shows that the condition for equilibrium is the same as that in Schrödinger picture.</p>
+<p>To summarize, the Heisenberg equation ($\ref{heisenbergEq}$) describes how an operator unchanged in Schrödinger picture changes with time in Heisenberg picture, while the equation ($\ref{equation of density operator}$) describes how the density operator changes in Schrödinger picture. They have similar forms but absolutely different physics.</p>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Statistical Mechanics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为LaTex设置VScode代码片段</title>
+    <url>/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
+    <content><![CDATA[<p>VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符<code>\par</code>输入之后再输回车，编辑器自动帮你键入了<code>\paragraph</code>；再比如每次输入行内公式，打两个<code>$</code>就很别扭。<a id="more"></a>怎么办？我们可以通过自定义代码片段的方法来使我们的输入更加便捷。</p>
+<img src="/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg" class>
+<p>如图，点击<code>File&gt;Preferences&gt;Use Snippets</code>，在弹出的框中键入<code>latex</code>，打开<code>latex.json</code>，在其中写入下列代码：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;Inline math&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;inline math&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;$$1$&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;, </span><br><span class="line">	<span class="attr">&quot;par&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;par&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\par&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;table environment&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;table&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;\\begin&#123;table&#125;[$1]&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\centering&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\caption&#123;$2&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\label&#123;$3&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\begin&#123;tabular&#125;&#123;$4&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\t$5&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\end&#123;tabular&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\\end&#123;table&#125;&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial $1&#125;&#123;\\partial $2&#125;&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\prepd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial&#125;&#123;\\partial $1&#125;$2&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\dd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;$1&#125;&#123;\\mathrm&#123;d&#125;$2&#125;&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pred&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;&#125;&#123;\\mathrm&#123;d&#125;$1&#125;$2&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and </span></span><br><span class="line">	<span class="comment">// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span></span><br><span class="line">	<span class="comment">// $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the </span></span><br><span class="line">	<span class="comment">// same ids are connected.</span></span><br><span class="line">	<span class="comment">// Example:</span></span><br><span class="line">	<span class="comment">// &quot;Print to console&quot;: &#123;</span></span><br><span class="line">	<span class="comment">// 	&quot;prefix&quot;: &quot;log&quot;,</span></span><br><span class="line">	<span class="comment">// 	&quot;body&quot;: [</span></span><br><span class="line">	<span class="comment">// 		&quot;console.log(&#x27;$1&#x27;);&quot;,</span></span><br><span class="line">	<span class="comment">// 		&quot;$2&quot;</span></span><br><span class="line">	<span class="comment">// 	],</span></span><br><span class="line">	<span class="comment">// 	&quot;description&quot;: &quot;Log output to console&quot;</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后面的注释是这个文件自带的，告诉你该怎么写。写好之后，输入<code>prefix</code>的内容（甚至不需要全部输入），回车，编辑器会帮你输入整个<code>body</code>。例如在编辑时输入<code>in+Enter</code>，就输入了两个<code>$</code>，并且光标自动位于两者之间。输入完成后，按<code>Tab</code>键即可将光标移至行内公式环境之外。</p>
+]]></content>
+      <tags>
+        <tag>LaTex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一篇给小北的非典型庆生文</title>
+    <url>/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
+    <content><![CDATA[<p>小北今年122岁了。</p>
+<p>122岁还叫小北？没办法，大家都这么叫。一方面是可爱吧——水灵灵的未名湖，鸭子游着，浮光闪着，楼影立着，一天天呆看着来去匆匆的苦恼和幸福、爱恋和背弃、智慧与迷茫，眼都不眨，被风一挠痒痒却笑得一切都映歪了；<a id="more"></a>还有表面儒雅娴静的博雅塔，暗暗地按着大家的头：你们都不准比我高！还有各种各样奇奇怪怪的人组成的社团，有在课堂上写诗的数学教授，有艺园二楼的烤鹅腿（我好像暴露了些什么）……颜值高、可撩、不开心了还能扑到它怀里的东西，不可爱吗？另一方面，叫它小北，也有一种看着自家不争气小孩的心态吧：你为啥一个劲地说着没名堂的转圈圈话？你为啥就不像隔壁家的孩子那么会包装自己？你为啥整天干坏事被人骂？你为啥最近学得没那么好？……好多人都觉得这娃不是理想的样子，觉得这娃理应做得更好。</p>
+<p>其实人家娃很优秀的。1898年，在内忧外患的国家中、在维新变法的浪潮中诞生，一生下来就寄托着一个民族复兴的希望。才十几二十岁，就成了新文化运动的主要阵地、马克思主义在中国的发源地，深刻影响了国家发展的方向。再往后，一个个辉煌的名字和这孩子联系在一起（太多了，也太强了，挂一漏万不如不列了），“爱国进步民主科学”的精神和这孩子联系在一起……不多说了，现在操控这孩子的那帮人比我能说。总而言之，你觉得它不争气吧，在这个国家，你似乎还找不到第二个这样的学校——了解它的人首先想到的不是“优秀”“一流”这类词汇，而是“伟大”。</p>
+<p>所以呀，说句实话，承担着民众（包括高中生）多少有点不切实际的期待，承担着无数溢美、无数骂名，这娃压力太大了，真太大了，是我娃我肯定看着心疼。心一疼，娃还过生日，今天就不批评它了，发自内心说一句——生日快乐！我喜欢你！</p>
+<p>想起我十六岁的夏天和你的初见，塔影湖光处你的美丽、燕南园旧院里你的深沉、邱德拔晚会上你的活力、讲座和物院宣讲会上你的智慧与能力，深深吸引了我。临别前夜，我站在宿舍楼水房的窗前，望着北京的夜空，写下了一首《暂别》。或许你会觉得我未免太过自信，后面那些坎都还没探出头就敢说是“暂别”？其实看了内容你会觉得我更自信：我始终挥之不去的是在燕南园里对着门牌号查这里住过哪些人时感受到的震撼：冰心、周培源、马寅初、冯友兰……一个个之前只在书上见到过的名字在手机屏幕上出现，告诉我“我当年就在你眼前浇花呢”——于是那晚我写道：“老房子的牙齿掉光时，讲述者是谁？”心里想的是：北大的故事谁来续写？就是我了！这何止是自信？这简直是狂妄了！</p>
+<p>后来就是回到大雁塔脚下，刷题，然后竞赛没有进省队，金秋营报名没过……那时我有点想你，有点怨你，不过没有你生活还是要继续。然后是十七岁的夏天，第一天早上语文多蒙对了几道选择题，第二天坐在华清中学的教室里，看着骊山在雨幕中静默。我走出了考场，结束了六年的中学生活。</p>
+<p>真正重逢的时候，我却感到异常忐忑。我真的可以吗？这里适合我吗？这是梦的起点，还是终点呢？我被推着往前走，然后北大变真实了。与很多人的想象相吻合，我遇到了精心设计课程让我零基础顺滑入门c++的老师；遇到了讲课参考很多本教材形成自己的体系，这样深刻改变了我学习思路的老师；遇到了包容我不会弹琴并且重塑我对音乐认识的钢琴社的大佬；遇到了一群巨得形态各异又非常可爱的同学……无论如何，这绝对是开心的生活。但另一方面，我也看到北大并非净土，看到了平均而言可谓低劣的教学水平，看到了某些人做学生工作时的形式主义和官僚主义，看到了许多真真切切的丑事……曾经和人谈起北大是否令人失望的话题，我说：“你要是让我复习一下，这几年北大的烂事我能给你讲一天一夜。”我失望吗？我不失望。北大从来都不在神坛上，它生存于人群中，扎根在土地里，绵延百余年，承载了太多意义和期待，但现在终归只是海淀区的一个园子而已。</p>
+<p>有时也会停下来想想自己究竟是在一个怎样的处境当中。不知何时开始，我有了这样的判断：</p>
+<p>我处在历史的摄像头聚焦的地方，却并不是主角。</p>
+<p>对于一个沉迷于人生的宏大叙事的人，认识到自身力量的局限和伟大的不可到达，之后再去寻找意义的过程，是非常痛苦的。人生意义在那？科学的意义在哪？探究非本质问题的意义在哪？一连串问题压得我喘不过气，走不动路，我在未名湖边转了一圈又一圈，得到了一个简单粗暴的结论——干就是了！</p>
+<p>依据在哪？依据在于北大，这个总是被人与“伟大”联系在一起的地方，似乎在用一种特殊的方式不断暗示着我：成功不是一个良定义的状态，但开心是。一方面有着家国天下的胸怀，一方面包容每个个体的无奈。这就是传说中的北大精神？</p>
+<p>于是十七岁那个惴惴不安地坐在物院会议室里听董老师那段几乎没有停顿的讲话的孩子变成了今天的样子：也会焦虑，也会迷茫，但几乎总是开心地享用着北大提供的精神盛宴。</p>
+<p>所以今天，我要祝不完美的世界非一流大学：北京大学——生日快乐！</p>
+<p>也要祝从这里走出去的、在这里的、将要来这里的伟大的成功者和可敬的失败者们——快乐！</p>
+<p>今天也是青年节，那就再祝可爱的小北永远年轻、永远进步、永远做这片土地上思想和教育的光！</p>
+]]></content>
+      <tags>
+        <tag>隨筆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>切向量与几何直观</title>
+    <url>/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/</url>
+    <content><![CDATA[<p>甲初学微分几何, 了解到切向量定义如下:</p>
+<blockquote>
+<p>微分流形$M$中$p$点上的切向量$X_p$是一个从$p$点处所有differentiable function的代数到实数集的线性映射, 即$X_p:\mathcal{F}_p(M)\rightarrow\mathbb{R}$, 且满足莱布尼茨积规则:$X_p(fg)=f(p)X_pg+g(p)X_pf$.</p>
+</blockquote>
+<p>如果选择一个chart $(U,\phi)$, 切向量可以用坐标表示为</p>
+<script type="math/tex; mode=display">X_pf=X^i\frac{\partial}{\partial x^i}\left(f\circ\phi^{-1}\right).</script><p>他清楚这一定义显然具有坐标变换下的不变性, 所以满足向量的要求. 但仍然想不明白: 它和几何直观中切向量的定义有什么联系呢? 为什么不直接定义成一个”向量”呢? 于是他去找乙请教.</p>
+<a id="more"></a>
+<p>甲: 为什么不直接定义为一个向量?</p>
+<p>乙: 什么是向量?</p>
+<p>甲: 就是向量空间中的元素啊?</p>
+<p>乙: 在我们定义切向量之前, 这里没有向量空间. 注意我们研究的就是一个微分流形, 没有说把它嵌在一个欧氏空间里.</p>
+<p>甲: 哦也就是说我之前考虑的”向量”的几何直观, 是要求流形嵌在一个欧氏空间里的. 一般而言我们研究的流形并不嵌在欧氏空间里, 所以不能直接通过欧氏空间中的向量来定义切向量.</p>
+<p>乙: 是的. 到这一步, 你已经澄清了你之前说的几何直观的”向量”究竟是什么意思. 那么你是不是可以想想如果我们把流形嵌在了欧氏空间里, 这一切向量的定义与几何直观有什么联系呢?</p>
+<p>甲: 对哦. 为了说明图像, 只考虑一个三维欧氏空间中的二维曲面, 假设它在局部可以记为$z=F(x,y)$, 坐标映射为向$xy$平面的投影, 即$\phi=\operatorname{pr}_{xy}, \phi(p)=(x_p,y_p)$. 这个时候几何直观地给出两个切向量作为切空间的基: </p>
+<script type="math/tex; mode=display">\left(1,0,\frac{\partial F(x,y)}{\partial x}\right),\quad \left(0,1,\frac{\partial F(x,y)}{\partial y}\right).</script><p>某个切向量用$(a,b)$表示, 那么它完整的坐标为</p>
+<script type="math/tex; mode=display">t_p=\left(a,b,a\frac{\partial F(x,y)}{\partial x}+b\frac{\partial F(x,y)}{\partial y}\right).</script><p>再考虑切向量的严格定义, 对任意$p$点的differential function $f$, 有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    X_pf&=a\frac{\partial}{\partial x}f\left(x,y,F(x,y)\right)+b\frac{\partial}{\partial y}f\left(x,y,F(x,y)\right)\\
+    &=a\frac{\partial f(p)}{\partial x}+b\frac{\partial f(p)}{\partial x}+\left(a\frac{\partial F(x,y)}{\partial x}+b\frac{\partial F(x,y)}{\partial y}\right)\frac{\partial f(p)}{\partial z}\\
+    &=t_p\cdot\nabla f.
+\end{aligned}</script><p>啊! 所以说把流形嵌入欧氏空间之后, 我们定义的切向量其实是几何直观上的切向量乘一个梯度算符.</p>
+<p>乙: 嘿嘿, 笨蛋, 你现在能进一步体会这样定义的动机了吗?</p>
+<p>甲: 也就是说, 对于欧氏空间中内嵌的流形, 我们可以通过欧氏空间中的向量来定义切向量, 但是这种依赖于欧氏空间的定义在讨论一般流形的时候失效了. 幸运的是, 在欧氏空间中, 我们发现切向量乘上一个梯度算符之后得到的线性泛函和切向量自己是一一对应的, 因此可以用后者替代前者, 后者替代前者之后我们发现可以通过直接指定映射本身来定义后者, 这就不需要外面那个欧氏空间了!</p>
+<p>乙: 嗯嗯, 但是你没有说明欧氏空间中直接指定满足要求的映射为什么可以和几何直观的切向量一一对应, 你只说了几何直观的向量乘梯度算符之后和自己一一对应.</p>
+<p>甲: 这不就是要说明向量乘梯度算符得到的泛函集合和满足开头定义中性质的集合是一样的吗? 这就是前面提到的坐标表示啊, 就是要证明那些偏导构成了一组基而已, 这个证明是前面提到坐标表示的基础, 我不可能不知道的.</p>
+<p>乙: 啊这次没坑到你.</p>
+]]></content>
+      <categories>
+        <category>Mathematics</category>
+      </categories>
+      <tags>
+        <tag>Differential Geometry</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>今天</title>
+    <url>/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
+    <content><![CDATA[<p>今天没有什么特别的<br>无非是风吹得耳朵疼<br>无非是骑自行车手会很冷</p>
+<a id="more"></a>
+<p>有些路你走上几年<br>上面的水泥缝就像是<br>中学时代背过的课文<br>给一个提示就能重复出几句</p>
+<p>可是他们说，当飞船的舷窗<br>被油烟熏黑<br>天空就会被重新解读<br>所以你是否愿意给世界<br>一双新的眼睛，或者<br>等价地，给童话<br>一次重生的机会</p>
+<p>有些事情会渐渐陌生，比如<br>日暮时分那间教室的那扇窗户<br>窗外是大雁塔，你心里想的<br>却是试卷上好像漏掉的一个负号<br>比如一些声音和一些面孔</p>
+<p>你喜欢抚摸未读过的新书<br>想象里面会是怎样一个世界<br>但如果你喜欢，你就会<br>把它们翻旧，旧得像<br>谁也说不清在后院墙角里<br>待了多久的那块石头</p>
+<p>今天我又走过一条旧路<br>我想知道手里的新书翻开后的样子<br>但我没有看到昨夜撸到的那只小猫<br>一切都很无聊<br>我低头看到地面凹凸不平<br>我还是过于熟悉它们了</p>
+<p>所以今天仍然没有什么特别的<br>所以我今天仍然爱你</p>
+<p>幸承对诗，附链接：<a href="https://blog.lhp-pku.top/2020/12/04/%E7%8E%B0%E4%BB%A3%E8%AF%97%E4%BB%8A%E5%A4%A9/">今天——对诗</a>。</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从加速度的定义说起</title>
+    <url>/2020/10/27/%E4%BB%8E%E5%8A%A0%E9%80%9F%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%B5%B7/</url>
+    <content><![CDATA[<p><strong>Warning:</strong> 这是一篇科普. 面向人类的内容在正文, 面向非人类的内容放在引用框中.</p>
+<a id="more"></a>
+<h2 id="问题引入-加速度是什么"><a href="#问题引入-加速度是什么" class="headerlink" title="问题引入: 加速度是什么?"></a>问题引入: 加速度是什么?</h2><p>任何一个正常初中生都了解这样的物理定义: 速度是位置矢量对时间的导数, 加速度是速度矢量对时间的导数. 由于我们是在位置空间中看这个问题, 位置矢量的加减很自然, 因此其求导也很自然; 但是速度矢量的求导这件事, 值得仔细考虑.</p>
+<p>仍然从一个初中水平的问题开始考虑: 速度可以和位置加减吗? 为什么? 初中生的回答是: 不能, 因为速度和位置的单位不同. 问: 什么是单位? 答: 某个物理量的单位是一个同类的物理量, 前者可以表示为后者乘一个系数的形式, 这个系数就是物理量在这个单位下的数值. 对于一个矢量, 我们可以将其表示为一些基矢量线性组合的形式, 这些基矢量就是单位, 展开系数便是不同分量的数值.</p>
+<p>因此, 对于三维空间中的位置矢量, 我们只需要选取一个参考系, 并以此为原点定下三个基, 矢量就可以由这三个基展开. 我们认为位置矢量处在上述的基张成的线性空间中, 可以进行加减运算. 对于速度呢? 我们则是以此时运动物体所在的点为原点, 取三个不共面的表征速度单位的矢量, 把速度用这三个基矢量展开, 得到可以用数值表示的形式. 我们把上面的过程用更紧凑的语言表述出来: 位置矢量是位置空间中的矢量, 每一点处的速度矢量则是”附着在”这一点处的另一个矢量空间中的矢量. 这时, 速度所在的矢量空间和位置所在的矢量空间根本就不是一个空间, 因此不能相加减.</p>
+<p>从上面的讨论还可以看出另一个问题: 两个点处的速度也不在同一个矢量空间中, 因此按照我们的逻辑, 它们也是不能加减的.</p>
+<p>或许你会辩驳: 你只要把不同速度空间的基矢量取成平行的, 不就可以对速度作加减了吗? 这里我们要陈述一个原则: <strong>物理规律是不依赖于坐标系的选取的.</strong> 我们前面之所以提到基矢量, 实际上只是为了做一个从单位到矢量空间的过渡. 况且, 平行这一概念是同一个矢量空间中才能讨论的概念, 不同矢量空间基的平行是很荒谬的说法. 因此, 我们要问: 我们在对速度求导时, 到底是在做什么呢?</p>
+<h2 id="流形和矢量丛"><a href="#流形和矢量丛" class="headerlink" title="流形和矢量丛"></a>流形和矢量丛</h2><p>为了更好地讨论上述问题, 同样也是为了不让欧氏空间非常好的性质赋予我们危险的直觉, 我们后面考虑一般的曲面上的运动. 这样的曲面, 我们称为”流形”.</p>
+<blockquote>
+<p><strong>流形</strong> 设$M$是Hausdorff空间. 若对任一点$p\in M$, 都有$p$在$M$中的一个邻域$U$同胚于$m$维欧氏空间$\mathbb{R}^m$中的一个开集, 则称$m$是一个$M$维流形, 也叫$m$维拓扑流形.</p>
+<p>在流形上确定一个$C^\infty$微分结构(在这里不详述其定义), 则我们称这个流形为光滑流形.</p>
+</blockquote>
+<p>在光滑流形的每个点上, 我们可以定义”切矢量”, 每个点上的切矢量是在这一点处的切空间中, 切空间是一个维数和流形维数相同的矢量空间. 值得一提的是, 切矢量的定义和几何直观上的相切是有密切联系的, 但其定义并不依赖于把流形放在另外的空间中(比如我们最容易想象的三维空间中的曲面那样), 这一点的详细讨论见<a href="https://florestan-eusebius.github.io/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/">这篇文章</a>.</p>
+<p>我们不光可以在光滑流形上每一个点处定义切空间, 还可以在这一点处附着其它类型的矢量空间. 如果我们在每一点处附着的矢量空间维数都相同, 并且它们还满足其他一些更好的性质(例如可以把一些结构赋予所有这些矢量空间的集合, 令其构成一个光滑流形, 等等), 那么我们就把这一套系统称为一个<strong>矢量丛</strong>. 每个点上附着的那个矢量空间, 我们称其为这个点上的”纤维”. 矢量丛是纤维丛的一种. 这些术语看起来有点吓人, 其实还是很形象的. 如果一个矢量丛它”附着”在每个点上的矢量空间是切空间, 那么我们称其为<strong>切丛</strong>.</p>
+<blockquote>
+<p><strong>矢量丛</strong> 设$E,M$是两个光滑流形, $\pi:E\rightarrow M$是光滑满映射, $V=\mathbb{R}^q$是$q$维矢量空间. 如果给定了$M$的一个开覆盖${U,W,Z,\cdots}$及一组映射${\varphi_U,\varphi_W,\varphi_Z,\cdots}$, 使得下列条件成立, 则称$(E,M,\pi)$是流形$M$上的(实)$q$维矢量丛, 其中$E$称为丛空间, $M$称为底空间, $\pi$称为丛投影, $V$是纤维型</p>
+<ul>
+<li>每一个映射$\phi_U$是从$U\times \mathbb{R}$到$\pi^{-1}(U)$的可微同胚, 而且对任意的$p\in U, y\in \mathbb{R}^q$, 有</li>
+</ul>
+<script type="math/tex; mode=display">
+\pi\circ\varphi_U(p,y)=p;</script><ul>
+<li>对于任意固定的$p\in U$, 命</li>
+</ul>
+<script type="math/tex; mode=display">
+ \varphi_{U,p}(y)=\varphi_U(p,y),\  y\in\mathbb{R},</script><p>则$\varphi_{U,p}:\mathbb{R}^q\rightarrow \pi^{-1}(p)$是同胚. 当$U\cap W\neq\varnothing$时, 对任意的$p\in U\cap W$, 要求</p>
+<script type="math/tex; mode=display">
+ g_{UW}(p)=\varphi^{-1}_{W,p} \circ {\varphi} _{U,p}:\mathbb{R}^q\rightarrow\mathbb{R}^q</script><p>是矢量空间$V=\mathbb{R}^q$的线性自同构, 即$g_{UW}{p}\in\mathrm{GL}(V)$;</p>
+<ul>
+<li>对于$U\cap W\neq\varnothing$, 映射$g_{UW}:U\cap W\rightarrow\mathrm{GL}(V)$是光滑的.</li>
+</ul>
+</blockquote>
+<p>我们可以在矢量丛的每个”纤维”中选取一个矢量, 如果选取的这些矢量是连续的, (这里”连续”实际上是由上述定义中$M$到$E$的光滑映射定义的, 不依赖于不同点上的矢量相减这类操作.) 那么我们称这是矢量丛的一个光滑<strong>截面</strong>, 切丛的光滑截面是一个光滑<strong>矢量场</strong>.</p>
+<p>现在我们很清楚数学上如何描述在每个点处长出一个矢量空间这种事情了, 这些不同的矢量空间中的元素自然是互不相干的, 但我们有很多动机将它们联系起来.</p>
+<h2 id="无动力小船上的旗子"><a href="#无动力小船上的旗子" class="headerlink" title="无动力小船上的旗子"></a>无动力小船上的旗子</h2><p>现在我们假设有一个人坐着无动力小船在海上漂, 他的手里在挥舞着一个旗子, 方向始终与此处的海面相切. 一种有意义的想法是, 我们就以船为参考系, 考虑这个人挥舞的旗子的速度. 此时, 我们只需要在船上对旗子求导即可.</p>
+<p>换一个角度看上面的过程, 我们把海面看成一个流形, 水流构成了一个流速场(这是一个矢量场). 人举的旗子构成了另一个矢量场(更为确切地说, 在一个二维流形上仅仅给出一条线上的矢量并不是这个流形上的矢量场, 不过你可以想象有一排船, 船之间旗子的方向连续过渡, 在漂流过程中遍历了这片水域). 上一段提到的导数, 实际是考虑了这样一个操作: 流速场确定了整体的流动, 从初始位置出发, 如果人举着旗子不动, 那么他和旗子也会被水流推到某一个位置上去, 但是他实际上动了旗子, 因此旗子实际处在另一个位置上, 旗子的这两个位置, 是在同一点的切空间中的, 因此可以作差, 这样作差比时间, 当时间无穷小时, 就得到了这种导数.</p>
+<p>更为紧凑的说法是: 流形上一个矢量场(流速场)确定了一个流形的一个单参数自同构映射(水流, 参数相当于上面例子中的时间), 沿着这个矢量场对另一个矢量场求导(类似于方向导数, 前者确定了后者求导的方向), 就是考虑单参数自同构映射两个相差很小的参数决定的两个点, 在这两个点上对被求导的矢量场作差, 这个差值除以时间, 当时间趋于零时得到导数. 其中作差的操作中, 我们用被”流”推到后一个处的矢量替代前一个点的矢量(切映射).</p>
+<p>这样定义的导数, 被称为<strong>李导数</strong>. 李导数不需要为流形引入其他的结构, 但因为我们需要用一个矢量场引入一个流, 这个流不是单一一个点处的矢量所能确定的, 所以对这个矢量场的李导数, 不能由这个点处的矢量确定, 还取决于这个点邻域内矢量场的性质. </p>
+<blockquote>
+<p><strong>李导数</strong> $X$是光滑流形$M$上的光滑矢量场, 它生成了$M$上一个单参数变换群$\sigma_t$. 如果$Y$是$M$上的光滑矢量场, 我们定义沿着$X$的李导数为</p>
+<script type="math/tex; mode=display">
+ \mathcal{L}_X Y=\lim_{t\rightarrow 0}\frac{Y-(\sigma t)_*Y}{t}.</script></blockquote>
+<h2 id="有动力小船上的旗子"><a href="#有动力小船上的旗子" class="headerlink" title="有动力小船上的旗子"></a>有动力小船上的旗子</h2><p>现在我们没有了流, 我门开着小船, 挥舞着旗子. 当然你仍然可以以小船为参考系为这个旗子求导, 这和默认有一个流是差不多的. 但我们还有另一种考虑方式: 我们在位置空间中把两个时刻的旗子按一定的规则移动使得它们的原点重合, 然后作差, 求导. 如果我们所在的空间恰好的欧氏空间, 这种移动恰好是平移, 那么这和我们一开始求加速度的操作是类似的.</p>
+<p>你一定会问, 如果以流形和流形上的矢量丛的角度考虑, 这种移动是非法的: 你在把一个矢量空间中的元素移到另一个空间中去! 是的, 仅依赖于流形本身的性质, 我们的确无法简单地定义平移. 但是这句话反过来看就是, 想要定义不同点上的矢量空间之间的关联, 我们就要为矢量丛加入新的结构, 这种结构被称为<strong>联络</strong>.</p>
+<p>根据我们引入的联络这一新结构, 我们就可以定义另外一种导数, 称为绝对微商; 如果是对切丛考虑, 这种导数也被物理学家称为<strong>协变导数</strong>. 协变导数仅依赖于这一点处你给出的确定求导方向的矢量, 不像李导数依赖于一个矢量场在邻域内的性质; 但它要求了一个新的结构. 这是一种必然的妥协. </p>
+<p>联络的引入有很大的任意性, 某种程度上体现了我们希望赋予流形的一些物理性质. 回到最初的问题, 只要我们令所有联络系数为零, 我们就可以在平直的欧氏空间中得到符合直觉的导数.</p>
+<blockquote>
+<p><strong>联络</strong> 记矢量丛$E$在流形$M$上光滑截面的集合为$\Gamma(E)$, $E$上的联络是一个映射</p>
+<script type="math/tex; mode=display">
+ \mathrm{D}:\Gamma(E)\rightarrow\Gamma(T^*(M)\otimes E),</script><p>它满足下列条件:</p>
+<ul>
+<li>对任意的$s_1,s_2\in\Gamma(E)$有</li>
+</ul>
+<script type="math/tex; mode=display">
+ \mathrm{D}(s_1+s_2)=\mathrm{D}s_1+\mathrm{D}s_2;</script><ul>
+<li>对$s\in\Gamma(E)$及任意的$\alpha\in C^\infty(M)$, 有</li>
+</ul>
+<script type="math/tex; mode=display">
+ \mathrm{D}(\alpha s)=\mathrm{d}\alpha\otimes s+\alpha\mathrm{D}s.</script><p><strong>绝对微商</strong> 设$X$是$M$上的光滑矢量场, $s\in\Gamma(E)$, 命</p>
+<script type="math/tex; mode=display">
+ \mathrm{D}_X s=\langle X,\mathrm{D}s\rangle,</script><p>则$\mathrm{D}_Xs$是$E$的截面, 称为截面$s$沿切矢量场$X$的绝对微商.</p>
+<p><strong>联络系数</strong> 设$U$是$M$上的一个坐标域, 局部坐标是$x_i, 1\leq i\leq m$. 取$E$在$U$上的$q$个处处线性无关的光滑截面$s_\alpha(1\leq\alpha\leq q)$, 称为$E$在$U$上的一个局部标架场. 在每个点沿$s_\alpha$展开, 有</p>
+<script type="math/tex; mode=display">
+ \mathrm{D}s_\alpha=\Gamma^\beta_{\phantom{\beta}\alpha i}\mathrm{d}x^i\otimes s_\beta,</script><p>展开系数称为联络系数.</p>
+<p><strong>协变导数及其张量性质</strong> 物理学家一般关心这样的问题, 把上述的矢量丛取成切丛, 或者由切空间及其对偶空间形成的张量丛, 这些张量的协变导数有什么性质. 当我们选定一个局部坐标系, 矢量$Y=Y^i\partial<em>{x^i}$直接对坐标求导$Y^i</em>{\phantom{i},j}=\partial Y_i/\partial x^j$在坐标变换下有如下性质:</p>
+<script type="math/tex; mode=display">
+Y^{\prime i'}_{\phantom{\prime i'},j'}=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^j}{\partial x'^{j'}}Y^i_{\phantom{i},j}+Y^i\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j},</script><p>第一项为(1,1)型张量的变换, 但第二项不具有张量变换的性质. 所以, 直接对坐标求导并不能得到一个张量, 不能用来描述真实的物理.</p>
+<p>另外我们容易推出, 仿射联络(即切丛上的联络)分量的变换为</p>
+<script type="math/tex; mode=display">
+\Gamma^{i'}_{\phantom{i'}j'k'}=\frac{\partial x^k}{\partial x'^{k'}}\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}\Gamma^i_{\phantom{i}jk}+\frac{\partial ^2x^i}{\partial x'^{k'}\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}.</script><p>因此协变导数的分量</p>
+<script type="math/tex; mode=display">
+Y^i_{\phantom{i};k}=Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j,</script><p>的坐标变换为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'}j'k'}Y'^{j'}.\\  
+&=\left(\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}Y^i_{\phantom{i},k}+Y^i\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j}\right)+\left(\frac{\partial x^k}{\partial x'^{k'}}\frac{\partial x^j}{\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}\Gamma^i_{\phantom{i}jk}+\frac{\partial ^2x^i}{\partial x'^{k'}\partial x'^{j'}}\frac{\partial x'^{i'}}{\partial x^i}\right)\left(\frac{\partial x'^{j'}}{\partial x^j}Y^j\right)\\  
+&=\left(\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}Y^i_{\phantom{i},k}+Y^i\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j}\right)+\left(\frac{\partial x^k}{\partial x'^{k'}}\frac{\partial x'^{i'}}{\partial x^i}\Gamma^i_{\phantom{i}jk}Y^j+\frac{\partial ^2x^i}{\partial x'^{k'}\partial x^{j}}\frac{\partial x'^{i'}}{\partial x^i}Y^j\right)\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)+Y^i\left(\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial ^2x'^{i'}}{\partial x^i\partial x^j}+\frac{\partial ^2x^j}{\partial x'^{k'}\partial x^{i}}\frac{\partial x'^{i'}}{\partial x^j}\right)\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)+Y^i\frac{\partial}{\partial x^i}\left(\frac{\partial x^j}{\partial x'^{k'}}\frac{\partial x'^{i'}}{\partial x^j}\right)\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)+Y^i\frac{\partial}{\partial x^i}{\delta^{i'}}_{k'}\\
+&=\frac{\partial x'^{i'}}{\partial x^i}\frac{\partial x^k}{\partial x'^{k'}}\left(Y^i_{\phantom{i},k}+\Gamma^i_{\phantom{i}jk}Y^j\right)
+\end{aligned}</script><p>因此具有张量的性质.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Mathematics</category>
+      </categories>
+      <tags>
+        <tag>科普</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在博客中插入數學公式</title>
+    <url>/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Usage: hexo &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  clean     Remove generated files and cache.</span><br><span class="line">  config    Get or <span class="built_in">set</span> configurations.</span><br><span class="line">  deploy    Deploy your website.</span><br><span class="line">  generate  Generate static files.</span><br><span class="line">  <span class="built_in">help</span>      Get <span class="built_in">help</span> on a <span class="built_in">command</span>.</span><br><span class="line">  init      Create a new Hexo folder.</span><br><span class="line">  list      List the information of the site</span><br><span class="line">  migrate   Migrate your site from other system to Hexo.</span><br><span class="line">  new       Create a new post.</span><br><span class="line">  publish   Moves a draft post from _drafts to _posts folder.</span><br><span class="line">  render    Render files with renderer plugins.</span><br><span class="line">  version   Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages <span class="keyword">in</span> the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more <span class="built_in">help</span>, you can use <span class="string">&#x27;hexo help [command]&#x27;</span> <span class="keyword">for</span> the detailed information</span><br><span class="line">or you can check the docs: http://hexo.io/docs/</span><br></pre></td></tr></table></figure>
+<p>後來我卸載了所有插件，按照這個<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/MATH.md">文檔</a>所說的去做，很快就成功了。在此記錄，留作參考。</p>
+]]></content>
+      <categories>
+        <category>Computer</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>排版</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>勃拉姆斯G大调第二号弦乐六重奏第一乐章</title>
+    <url>/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
+    <content><![CDATA[<p>勃拉姆斯第二号弦乐六重奏（op. 36）写于1864-1865年间，距其创作第一号六重奏（op.18, 1859-1860）已过去五年，其间他写出了两首管弦乐小夜曲、三首带有钢琴的室内乐和悲壮而甜美的第一钢琴协奏曲。相比第一钢琴协奏曲的戏剧化，这首六重奏显得温和很多；比起第一六重奏，它又显得灰暗和朴素，预示着贯穿勃拉姆斯此后大部分成熟作品的内敛气质。另外，这首六重奏，也展示出着勃拉姆斯在作曲技法——尤其是对位法——上的全面提高。</p>
+<a id="more"></a>
+<hr>
+<p>我们要介绍的第一乐章为3/4拍，奏鸣曲式，带有一段尾声。</p>
+<p>中提琴在G大调主音和导音之间小二度的颤音式音型，揭开了第一乐章的序幕，也为第一主题铺下了一层不安的背景。第一主题的旋律由两个相继的纯五度上行开始，一个在主音G上，一个在和声关系较远的降E上，神秘的气氛顿出。随后旋律是连续的跳进，和声则徘徊于G大调和降E大调之间，回归到G，中提琴的颤音音型被更丰富的对位所取代。小提琴接过颤音后，大提琴再次奏出第一主题的旋律，而此时单纯的颤音中加入了上行和下行，加入了舞动的和弦分解，带来变化和一丝微光。</p>
+<p>大提、中提、小提交错奏出一连串急促的下行，紧张的小幅摆动和典型的“叹息”动机结合，乐曲如此过渡到D大调上的第二主题。第二主题的旋律首先由大提琴奏出，再由小提琴接过。起初如梦幻般甜蜜优美，逐渐变得活泼，达到高潮时，音乐的形象热情而坚定，但级进后的向下五度大跳却给热情带来了某些宿命般的节制，这种节制在随后弱奏地重复高潮旋律时，带上了更浓郁的悲观色彩。</p>
+<p>展开部和再现部不必赘述。值得一提的是，室内乐中不同乐器的“对话”在这首作品中得到了充分的展现，营造出重叠往复、连绵不绝的效果，在形式和内容上都增加了音乐的厚度，也体现出勃拉姆斯高超的对位技巧。其例子随处可见，此不再逐一分析，听者宜自行体会。</p>
+<hr>
+<p>很多分析者认为，勃拉姆斯这部作品与他和哥廷根一位教授之女Agathe von Siebold的爱情有关。勃拉姆斯于1859年和Agathe订婚，但最终因为他焦虑与骄傲混合的奇异心态，他们解除了婚约。然而，即使在他们分开之后，勃拉姆斯给她的信中也写道：“我爱你，我一定要再见到你，但我无法忍受束缚。请给我写信，告诉我我是否要回到你身边，拥抱你，亲吻你，向你说我爱你。”但他们实际上从未再见面。有传记作者认为，这部作品第一乐章中第二主题结尾高潮处的A-G-A-H-E, 可以看作对Agathe名字的化用。若真是如此，这一乐章中的神秘、不安、热情和梦幻般的温柔，也可被看作是对逝去爱情的追忆、无奈和叹息。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms">https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Johannes_Brahms">https://en.wikipedia.org/wiki/Johannes_Brahms</a></li>
+<li><a href="http://kellydeanhansen.com/opus36.html">http://kellydeanhansen.com/opus36.html</a></li>
+<li><a href="https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36">https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>音樂評論</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的信仰</title>
+    <url>/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
+    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
+<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
+<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
+<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
+<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
+<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
+<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
+<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
+<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
+]]></content>
+      <categories>
+        <category>隨筆</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>小delta到底是个啥</title>
+    <url>/2020/04/04/%E5%B0%8Fdelta%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5/</url>
+    <content><![CDATA[<p>各种物理书中, 用得最混乱的概念是变分, 用得最混乱的符号就是$\delta$了. 一般来说, $\delta$有两个含义, 一是研究泛函极值时引入的<strong>变分</strong>, 这可以接受; 但有时研究一个随便什么函数, 也出来$\delta$, 也名之曰”变分”, 这在热力学中十分常见, 搞清楚了是力量, 搞不清楚就是混乱之源. 这里我们试图讲清楚第二种用法的精确含义, 并说明这种记号的优越性.</p>
+<a id="more"></a>
+<h2 id="微分-导函数-高阶微分和高阶导函数"><a href="#微分-导函数-高阶微分和高阶导函数" class="headerlink" title="微分, 导函数, 高阶微分和高阶导函数"></a>微分, 导函数, 高阶微分和高阶导函数</h2><p>Warning: 单纯为了实用的目的, 可以直接去看第二节的第一个定义(向量上的导数), 然后跳到第三节. 之所以叙述微分等内容, 主要是为了理论的完整和物理意义的优美. 这些内容主要参考了卓里奇的名著: 数学分析.</p>
+<p>我们下面引入一些定义. 为了叙述的方便, 我们仅仅讨论线性赋范空间. 一般意义下讨论切空间原则上也是可行的.</p>
+<blockquote>
+<p><strong>定义: 可微和微分</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数, 对于$x\in U$, 如果存在连续线性映射<sup><a href="#fn_1" id="reffn_1">1</a></sup> $L(x)\in\mathcal L(X,Y)$使得对于$h\in X, x+h\in U$, </p>
+<script type="math/tex; mode=display">
+\begin{equation}
+f(x+h)-f(x)=L(x)h+\alpha(x;h)
+\end{equation}</script><p>成立, 其中$\alpha(x;h)=o(h), |h|\rightarrow 0$. 则称$f$在$x$处可微. 并称连续线性映射$L(x)$为$f$在$x$处的微分, 微分也记作$f’(x)$.</p>
+<p><strong>定义: 导函数</strong></p>
+<p>对$U$上的可微函数$f$, $f’:x\mapsto f’(x)$称为导函数.</p>
+</blockquote>
+<p>为了避免混淆, 我们作一个类比: $f$是一个函数, 而$f(x)$是函数值; $f’:U\rightarrow \mathcal L(X,Y)$是导函数, 而$f’(x)$是导函数的<strong>值</strong>: $\mathcal L(X,Y)$中的一个线性映射. 下面我们递归地定义高阶微分和高阶导函数.</p>
+<blockquote>
+<p><strong>定义: 高阶微分和高阶导函数</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数, 如果其$n-1$阶导函数$f^{(n-1)}$可微, 那么它的微分$(f^{(n-1)})’(x)$就是$f$的$n$阶微分, 记为$f^{(n)}(x)$, 将$x$映射到$f^{(n)}(x)$的映射$f^{(n)}$就是$f$的$n$阶导函数. $n\in\mathbb{N}$.</p>
+</blockquote>
+<p>为了方便理解, 我们在下表中列出了$n$阶微分和$n$阶导函数分别是什么类型的映射.</p>
+<p>$n$阶微分和导函数所属的映射类</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>阶数</th>
+<th style="text-align:right">微分$f^{(n)}(x)$</th>
+<th style="text-align:right">导函数$f^{(n)}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">$\mathcal L(X,Y)$</td>
+<td style="text-align:right">$U\rightarrow \mathcal L(X,Y)$</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">$\mathcal L(X,\mathcal L(X,Y))$</td>
+<td style="text-align:right">$U\rightarrow\mathcal L(X,\mathcal L(X,Y))$</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">$\mathcal L(X,\mathcal L(X,\mathcal L(X,Y)))$</td>
+<td style="text-align:right">$U\rightarrow\mathcal L(X,\mathcal L(X,\mathcal L(X,Y)))$</td>
+</tr>
+<tr>
+<td>…</td>
+<td style="text-align:right">…</td>
+<td style="text-align:right">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这里的层层套娃看着有些吓人, 不过容易看出, 它其实和$n$重线性映射是一样的. 如果你看不出, 我们马上就会给出一个构造性的说明.</p>
+<h2 id="导数的向量计算"><a href="#导数的向量计算" class="headerlink" title="导数的向量计算"></a>导数的向量计算</h2><p>上面给出的定义稍显抽象, 下面我们讨论具体的计算.</p>
+<blockquote>
+<p><strong>定义: 向量上的导数</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数, 对于$x,h\in X, t\in\mathbb{R}$, 若极限</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    D_hf(x)=\lim_{t\rightarrow 0}\frac{f(x+th)-f(x)}{t}
+\end{equation}</script><p>存在, 那么称$D_hf(x)$为$f$在向量$h$上的导数.</p>
+</blockquote>
+<p>注意, 这里给出的定义是依赖于$|h|$的, 如果$|h|=1$, 我们的定义就和一般定义的方向导数一致.</p>
+<p>不难看出, 如果$f$可微, 那么</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    D_hf(x)=f'(x)h.
+\end{equation}</script><p>由此我们获得两点信息, 结构上, $D_h$对于角标$h$有线性性; 计算上, 把$h$选成一组基就可以立即看出微分的分量正是偏导数.</p>
+<p>另外, 对于一个连续线性映射$L\in\mathcal L(Y,Z)$, $Z$是另外的线性空间, 我们有</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{eq:DhLcommute}
+D_h(L\circ f)(x)=L\left(D_hf(x)\right).
+\end{equation}</script><p>这一点从定义就很容易看出.</p>
+<p>另外, 显然导数的加法和乘法等等公式对$D_h$也适用.</p>
+<p>下面我们来研究$D_h$与高阶微分的联系.</p>
+<p>对于一阶, 显然</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    f'(x)(h)=f'(x)h=D_hf(x).
+\end{equation}</script><p>对于二阶微分, 我们先以$h_1\in X$为参数定义一个$X$到$Y$的线性映射$f^{(2)}(x)h_1$, 它等于$D_{h_1} f’(x)$. 接下来<strong>定义</strong>:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
+&=\left(D_{h_1}f'(x)\right)h_2
+\end{aligned}
+\end{equation}</script><p>如果我们引入线性映射$L:\mathcal L(X,Y)\rightarrow Y$, 定义为$L(A)=A(h_2)$, 那么根据式$\eqref{eq:DhLcommute}$,</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+        \left(D_{h_1}f'(x)\right)h_2&=L\left(D_{h_1}f'(x)\right) \\
+        &=D_{h_1}\left(L\circ f'\right)(x)\\
+        &=D_{h_1}\left(f'(x)h_2\right)\\
+        &=D_{h_1}D_{h_2}f(x).
+    \end{aligned}
+\end{equation}</script><p>类似地, 我们可以<strong>定义</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{eq:multilinear}
+    \begin{aligned}
+        f^{(n)}(x)(h_1,\cdots,h_n):&=\left(\cdots\left(\left(f^{(n)}(x)h_1\right)h_2\right)\cdots h_{n-1}\right)h_n\\
+        &=D_{h_1}\cdots D_{h_n}f(x).
+    \end{aligned}
+\end{equation}</script><p>这样, 我们就把第一节中套娃式线性映射和$n$重线性映射等同了起来. 我们要注意, 上式中第一行左右两边$f^{(n)}(x)$的意义是不相同的: 右边是$n$阶微分的原始定义, 左边是一个和$n$阶微分对应的$n$重线性函数.</p>
+<p>使用分析学的技巧容易证明, $\eqref{eq:multilinear}$中定义的多重线性函数, 是对称的.</p>
+<h2 id="delta-到底是个啥"><a href="#delta-到底是个啥" class="headerlink" title="$\delta$到底是个啥"></a>$\delta$到底是个啥</h2><p>有了上面的知识准备, 我们终于可以开始严格地定义$\delta$.</p>
+<blockquote>
+<p><strong>定义</strong></p>
+<p>设$X, Y$是线性赋范空间, $U\in X$, $f:U\rightarrow Y$是定义在$U$上的函数. $\delta$定义为$\operatorname{Map}(U,Y)\times X$到$\operatorname{Map}(U,Y)$的一个映射, 满足</p>
+<script type="math/tex; mode=display">
+\begin{equation}\delta(f,h)(x)=D_hf(x)=f'(x)h.\end{equation}</script><p>固定$h=(h_1,\cdots,h_d)^T\in X$, 我们可以将上式简记为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+     \begin{aligned}
+         &\delta f(x)=D_hf(x);\\
+         &\delta^n f(x)=D_h^nf(x), n\in\mathbb N.
+     \end{aligned}
+\end{equation}</script><p>固定$f$, 也可简记为</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+     \begin{aligned}
+         &\delta f(x)=f'(x)h;\\
+         &\delta^n f(x)=f^{(n)}(x)(h,\cdots,h), n\in\mathbb N.
+     \end{aligned}
+\end{equation}</script></blockquote>
+<p>下面几个例子给出了$\delta$的一些具体表达式. 注意我们使用了Einstein求和约定, 并且以$\partial^i$表示$\partial_{x_i}$</p>
+<blockquote>
+<p><strong>例</strong></p>
+<p>一般的函数$f(x)$, 我们有</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+        \delta f(x)=f'(x)h=\partial^if(x)h_i,
+\end{equation}</script><p>二阶:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\delta^2 f(x)&=D_hD_hf(x)\\
+&=\partial^i\partial^jf(x)h_ih_j\\
+&=\left(h_i\partial^i+\cdots+h_d\partial^d\right)^2f(x),
+\end{aligned}
+\end{equation}</script><p>$n$阶:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\delta^n f(x)&=D_h^nf(x)\\
+&=\partial^{i_1}\cdots\partial^{i_d}f(x)h_{i_1}\cdots h_{i_d}\\
+&=\left(h_1\partial^1+\cdots+h_d\partial^d\right)^nf(x).
+\end{aligned}
+\end{equation}</script></blockquote>
+<p>不难看出, 在形式化的数值计算中, 我们可以直接将$\delta$写成$h_i\partial^i$. 这里$h_i$是一个数, 是坐标分量, 而不是上一节多重线性映射中不同的矢量.</p>
+<p>上例使我们可以方便地用$\delta$记号来表达Taylor多项式. 在物理中, $h$一般被赋予<strong>虚变化</strong>的含义. $\delta^n f(x)$的物理意义, 可以在Taylor多项式中看出:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+        f(x+h)-f(x)&=\sum_{k=1}^{n-1}\frac{1}{k!}\left(h_1\partial^1+\cdots+h_d\partial^d\right)^kf(x)+O(\|h\|^n)\\
+        &=\sum_{k=1}^{n-1}\frac{1}{k!}\delta^kf(x)+O(\|h\|^n)
+    \end{aligned}
+\end{equation}</script><p>因此, 我们就不难说明, 如果$\delta f(x)=0$, 那么$x$为函数的驻点. 如果在此基础上对于某个邻域内的$h$都有$\delta^2f(x)&gt;0$, 那么近似到虚位移的二阶项, 向无论何处移动函数值都会增大, 函数就处在极小值点.</p>
+<blockquote>
+<p><strong>例</strong></p>
+<p>投影函数$x_i(x_1,\cdots,x_d)=x_i$, 则</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta x_i(x)=h_i
+\end{equation}</script><p>更高阶</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta^n x_i(x)=0, n>1.
+\end{equation}</script><p> 基于此, 我们可以用$\delta x_i$来表示$h_i$, 并且$\delta^n x_i$对$n&gt;1$一概为$0$.</p>
+<p><strong>例</strong></p>
+<p>复合函数$y=f\left(w(x)\right)$, 其中$\delta$仍然是对自变量$x$和$h\in X$而言的. 分别考虑一阶和二阶的情况:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta f\left(w(x)\right)=D_hf\left(w(x)\right)=\frac{\partial f}{\partial w_j}\frac{\partial w_j}{\partial x_i}\delta x_i.
+\end{equation}</script><p>同时我们也可以写成</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\delta f\left(w(x)\right)=f'(w)w'(x)h=f'(w)D_hw(x)=f'(w)\delta w.
+\end{equation}</script><p>二阶</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{indepv}
+\begin{aligned}
+\delta^2f\left(w(x)\right)&=D_h^2f\left(w(x)\right)\\
+&=D_h\left(f'(w)D_hw(x)\right)\\
+&=D_hf'(w)D_hw(x)+f'(w)D_h^2w(x)\\
+&=\delta f'(w)\delta w+f'(w)\delta^2 w.
+\end{aligned}
+\end{equation}</script><p>对比上面两式, 我们发现我们完全可以用导数的运算法则来处理$\delta$的运算. 需要注意, 这里$\delta^2 w$并不为零, 因为$w$并非自变量. 事实上, $\delta^2 w$的表达式在前面的例子中已经给出.</p>
+</blockquote>
+<p>在上面这个例子中, 如果我们导出$\delta^2f(w)$之后, 临时决定以$w$为自变量, 那么右边第二项就会等于零, 左右两边此时还是相等的. 对于这种现象, 我们可以做出如下抽象概括:</p>
+<p><strong>由于固定$h$, 对于给定的$x$,  $\delta$写在一个函数前面无非就是对这个函数求$h$上的导数. 因此计算一个函数的$\delta$时, 我们可以直接使用导数的运算规则(加减乘除, 复合). 在变量之间依赖关系十分复杂的计算中, 我们总可以假设$h$(及其所在的空间$X$)已经固定, 尽管尚未指明, 然后使用复合函数的求导法则计算到任何你需要的一步, 最后再确定自变量和$h$带入即可.</strong> 这种性质赋予了使用$\delta$记号极大的灵活性, 也是它的优势所在. 下一节我们将使用一个物理中的一个实例来说明这一点.</p>
+<p>在结束这一节之前, 让我们再对$\delta$和微分的关系进行一个评述, 以澄清某些常见的误解. 前面的定义中, 如果固定$f$而仍以$h$为自变量, 那么$\delta f(x)$就是一个微分映射, $\delta^nf(x)$和$n$阶微分则略有不同, 它要求这个$n$重线性映射在每一个线性空间中的自变量都是$h$. 值得一提的是, 含$D_h$的表达式已经足够告诉我们怎么计算, 但是使用微分映射的语言则更直接地展现了$\delta^nf(x)$随$h$的变化, 这与函数对虚变化的响应完美呼应, 构成了优美的图像. </p>
+<h2 id="物理中实例的分析"><a href="#物理中实例的分析" class="headerlink" title="物理中实例的分析"></a>物理中实例的分析</h2><p>著名的物理学教学大师刘川在其平衡态统计物理的讲义中, 推导各种平衡条件时大量使用了这一记号, 可以检查, 那里的推导都符合这里给出的定义和计算规则. 这种推导繁而不难, 这里不再赘述.</p>
+<p>下面这个例子可以很好地展现上节中提到的优越性. </p>
+<blockquote>
+<p><strong>例 相稳定条件</strong> </p>
+<p>刘川老师在讲义中用$\delta$的一般运算规则推导出了相稳定条件:</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{eq:eqstab}
+    \delta p\delta v-\delta T\delta s< 0.
+\end{equation}</script><p>这里我们并没有确定自变量, 一旦我们确定了自变量, 我们就可以导出不同的热力学不等式. 例如, 以$(T, v)$为自变量, 则上面的条件变成</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+        &\delta v\left(\frac{\partial p}{\partial v}\delta v+\frac{\partial p}{\partial T}\delta T\right)-\delta T\left(\frac{\partial s}{\partial T}\delta T+\frac{\partial s}{\partial v}\delta v\right)\\
+        =&\left(\frac{\partial p}{\partial v}\right)_T(\delta v)^2-\frac{c_v}{T}(\delta T)^2\\
+        <&0
+    \end{aligned}
+\end{equation}</script><p>其中已利用Maxwell条件. </p>
+<p>如果我们选取不同的自变量带入不等式$\eqref{eq:eqstab}$, 我们可以得到不同的热力学不等式. 显然这种推导方式相比每次选取不同的自变量做泰勒展开要方便得多.</p>
+</blockquote>
+<p>这就是力量.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 有限维线性空间中的线性映射都是连续的.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>基础物理中的怪力乱神</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>幾首舊詩</title>
+    <url>/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/</url>
+    <content><![CDATA[<p>最近抽空整理一些舊作放在這個站點。本文收錄的幾篇都和之前一次愛情相關，覆蓋了愛情從產生到結束的全過程。</p>
+<a id="more"></a>
+<p>第一首《筆》是一首晦澀的情詩，大意是回憶起我曾經用這隻筆寫過宏大的理想，寫過對愛情的期待，而如今，這隻筆所寫的文字，終於有了情感上的歸屬。</p>
+<p>隨後是一段“三行情書”。當時網上在搞高校三行情書大賽，我跟風寫了幾句，寫的是北京的秋風讓湖中月亮的倒影支離破碎，我想舀一勺水，小心護住，於是月亮的倒影便應完整，我把它餵給她。這裏面“一勺”當然有雙關之意，月亮自然亦有其象徵。</p>
+<p>後兩首是悲嘆。只需提兩件小事，其一是她曾用月亮的隱喻向我傳達心意；其二是我們曾一起去香山看紅葉——這大概是最美好的回憶了。</p>
+<p>過去的事，應該也的確已經過去。對於我這樣的人，忘記是不可能的——她的聲音、她的形象已經在記憶中漸漸模糊，那些刺痛人的事情也早已變得無所謂，唯有愛與歡樂令人無法忘懷。</p>
+<p>希望我的整理不構成冒犯，也祝你一切順利。</p>
+<h2 id="筆"><a href="#筆" class="headerlink" title="筆"></a>筆</h2><p>——獻給親愛的G</p>
+<p>京城的十月<br>舊稿紙同古老的秋思<br>從窗口漏進</p>
+<p>孤燈面色蒼白<br>你的影子跳動<br>在漂亮詞語的旌旗下<br>集結起千軍萬馬</p>
+<p>你獨自構建花園<br>準備向每個人發出邀請<br>然後等待春風</p>
+<p>木葉未脫已被陽光染黃<br>陽光竟有些溫暖<br>又一次集結文字<br>你已不再是浪子</p>
+<p>11/10/18</p>
+<h2 id="三行情書"><a href="#三行情書" class="headerlink" title="三行情書"></a>三行情書</h2><p>——獻給親愛的G</p>
+<p>舀一勺未名湖水<br>拼好被大風撕碎的月亮<br>餵進你的嘴裏</p>
+<p>01/11/18</p>
+<h2 id="冬夜湖畔即景"><a href="#冬夜湖畔即景" class="headerlink" title="冬夜湖畔即景"></a>冬夜湖畔即景</h2><p>湖面的冰有多厚<br>凝固了路燈的淚水<br>落葉是死士<br>爲暴君醉臥沙場</p>
+<p>自行車在呻吟<br>控訴遠方天際的紅光<br>一隻肥貓趴在石頭上<br>吃盒子裏的豆豆</p>
+<p>孤星狡黠的目光<br>誰的歌聲謀殺了誰<br>塔身自沉湖底<br>找不到彼時的月亮</p>
+<p>04/14/18</p>
+<h2 id="無題"><a href="#無題" class="headerlink" title="無題"></a>無題</h2><p>隔着窗，我感到樓外的寒意。我變成一縷煙，從宿舍樓道散了出去。<br>我在月亮被吃掉的上半邊凝結，抹去的星星重新浮現。地面上，傷感的詩人怕星被風吹落，但風吹落的從來不是星星。<br>月宮裏廣播着京城的風聲，跳動的波峯波谷，不能加載縮在帽子裏的頭、凍紅的耳朵。我架起望遠鏡，望見冰凍的眼球。我觸犯了蟾宮的清規。<br>眼裏的影：有人在熟悉的地方構造出彩虹，他不懂欣賞，他懂光學。彩虹消失了，他還在計算。<br>我謀殺了守衛者，逃回戒備森嚴的城市，用他的血染紅滿山的葉，供人們欣賞。<br>人來人往，我躲在街邊，搜集未完成的故事，把它們傳給未來。我回到夢裏，把它們寫完。<br>夢醒了，我進入了另一個夢——我變成風，想撩撩路人的頭髮，帽子阻止了我。</p>
+<p>28/12/18</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>旧事闲叙</title>
+    <url>/2019/09/03/%E6%97%A7%E4%BA%8B%E9%97%B2%E5%8F%99/</url>
+    <content><![CDATA[<p>今天看到母校开学推送里一张照片，思路忽然不可抑制地弥散开去，想到诸多旧事。 </p>
+<a id="more"></a>
+<p>照片里是教室内景：老师站在讲台上，底下是初中生，活泼稚嫩。引人注目的是黑板上方PKU和THU的字母和校徽，一红一紫，让我一眼认出了这是哪个教室。 </p>
+<p>那还是2016年的事情，我刚上高二。中午上学，我如常走在西门进去那条长道上，看到前面一个女生一手提一块牌子，正是前面提到的北清标志。我心想：“这是高一几班学妹这么有志气？”遂上前询问，答曰：高三理科实验班。尴尬之余，我记住了此事。他们毕业的暑假，我们几个搞竞赛的去那个教室自习，两块牌子就赫然挂在那里，暗示着我们行为的功利目的。还有些圆形的卡片，都是一些国内顶尖高校（此处不使用柳特的定义）的校徽，因为没有固定在墙上，被我们当飞盘扔着玩。至于那个学姐，我不知道她的姓名，更不知道她的去处，即使遇见，她可能也认不出来那个曾让她年轻了两岁的小弟弟。 </p>
+<p>报应很快就来。我上了高三，有一次在校门口岐山面馆吃午饭，同桌坐了一个真学妹。旁边的桌子上有一个小同学和一名成年男子，两人交谈时，小同学说自己是实验班的，男子便开始询问实验班的状况：“你们实验班是不是上课都没有人说话呀？你们实验班是不是作业很多呀？”当他问到“你们实验班是不是大部分都可以上北大清华？”我忍不住笑了：师大附中在社会上竟然有如此声望！见此，同桌的学妹便问我：“你在实验班吗？”我说是的，她竟接着问：“高中还是初中？”一瞬间我想起了一年前那个中午的情景。接着她问了我参加竞赛的情况，又主动谈起自己准备参加物理竞赛的感受。“学校竞赛班讲得还是太简单了。”她说。有此认识，我觉得她具备参加物理竞赛的基本素质，可惜后来也没再见过，想想现在也快复赛了吧。 </p>
+<p>其实上面两个误认年龄的故事，并不是什么高级的笑话，但是每每想起此事，总让人笑得无奈：无奈并不是因为那早已冰释的尴尬，而是因为紧张尴尬都可以当作笑谈，正说明那件事连同它发生其中的那段岁月已经是纯粹的记忆，或许给了当事人人生轨迹一个微乎其微的散射角，然后各自离去，记忆被分成几份，永无拼合的可能。逝者如斯！ </p>
+<p>但是初中的教室里挂大学作为目标，总让我觉得很奇怪。一年前我问一个上小学的小朋友理想是什么，他说“考上北大清华”。当然，把某些顶尖大学作为自己的目标无可非议，可是除了正在准备高考的学生，这种目标真的值得作为一个人的理想，甚至被挂在墙上天天强调吗？我又想起了自己初中时的日子。 </p>
+<p>那个时候，我是一个爱幻想的小朋友，用现在很多人的话说叫“中二”，说来也巧，我对初中的回忆，恰巧集中在初中二年级。那时若有人问我理想是什么，我会毫不犹豫地回答：“to be a physicist”。至于物理学目前在研究什么，物理学的研究是什么样的，我一无所知。那时的我总会幻想未来生活的情景，我想象自己是一个杰出的物理学家，拓展了人类的认知边界，然后隐居在远方的田园里，有院子，有邻居，屋边有河；我在屋里可以弹琴、推导方程，在屋外可以和可爱的女孩子坐在河边，一起看书，阳光下，树枝的影子映在书上，风拿她刚洗过的头发轻扫我的脸；周末，我们和邻居一起办室内乐音乐会；做出新成果后，我会把文章发给期刊，署上一个神秘的名字……为此，我花了一些时间通览了高中数学教材，然后开始自学高数，我觉得那个幻想会变成现实，然后在三天打鱼两天晒网地为之学习新知识。至于学那些数学究竟是出于喜好还是想要炫耀，我觉得两者都有，但朴素的道德观总限制我不要太张狂。 </p>
+<p>那时在我眼里，没有一所大学处于神圣的位置，我也没有想过要上什么大学：我觉得重要的是我的理想，以及为人类服务的伟大事业，然后又狂妄地认为我可以上任何一所大学。那时的我也不认什么“大神”，要真说崇敬的人：牛顿、爱因斯坦、维克多·雨果，没了，“竞赛大佬”“高考状元”在我眼里如同草芥。我想起初二有一次下楼时，听到两个高中生讨论量子力学。当时我们班里就有人微积分还没搞懂号称在学习量子力学，我不以为然；那次听到高中生讨论量子力学，我也不以为然。直到我上了高中，开始把枭哥、雷神之属认作“大佬”时，我才意识到我初一初二的时候，正是他们书写校园传说的年代——说校园传说有点过，理科实验班学术传说或许比较恰当——那时的我还和他们在一栋楼上上课，现在只能说是“同住地球村”了。 </p>
+<p>说到校园传说，那时的我还真觉得自己上了高中能搞一番奇事。原因倒不是相信自己能达到后来所认“大佬”的层次（毕竟我根本不知道、也不屑于知道那些），而是当时看了很多青年文摘，向往高中生谈恋爱。我从不曾幻想自己参加竞赛如何如何，而是编出了自己为了恋人挑战整个世界，然后流浪到普林斯顿一类的大学，旁听理论物理课，最后做出惊世骇俗的成果得到承认的故事。还有平淡一些的，那是看到了高中生布置的教室，觉得他们的生活一定丰富多彩，然后开始幻想自己和女朋友一起学各种有趣的东西，参加各种活动的事。真到了高中，才发现一切都平平淡淡，还有老师告诉我们这场考试结束后的核心任务就是准备下一场考试，然后一直轮回。我处在曾经幻想过的境地，却发现我根本没有能力演好那部电影，也没有哪个女孩子失了智愿意陪我。即使是平淡很多的幻想，也被老师写好的当三年吴刚然后蟾宫折桂的剧本所取代。 </p>
+<p>高中的我开始怀念起初中。怀念考完试昏昏沉沉地走出行政楼时，斜阳下那方美丽小花园的景色；怀念音乐课唱歌被身边可爱的同学嘲讽，出教室后脸上热热的感觉；怀念语文课上红乾大叔天文地理历史政治信手拈来时，他那带点鼻音的普通话；怀念英语课上我借着语言陌生感的庇护写出的那些幻想，被老师大声宣读的满足感；怀念我坐在窗前书桌读历史，看窗框的影子从书的一段滑向另一端的那个下午；怀念我面对敲窗夜雨和雨中孤灯，写下一首首从未寄出的情诗的夜晚；怀念运动会观众席上看书时，节奏明快的背景音乐和念稿人无病呻吟的播音；怀念……可是等等，初中时的我，难道不是分明地憎恨着现实的逼仄，幻想着美好的未来吗？那时的我，不是也在一面为每一次考试而担心，一面说着“大不了放弃高考”的大话吗？ </p>
+<p>回首过去，略微区分开现实和幻想之后，即使它们都难免混进后来的解读，我仍然清楚地发现，随着时间的推移，现实变得越来越接近理想，也变得越来越不可能到达理想，这时我的幻想也变得越来越现实。走在临潼九月的街道上，余威未散的阳光、清凉的风和似乎毫不相干的人群里，我看到一个本质上无聊的故事：爱幻想的孩子总是在现实里挣扎，但过去的幻想与过去的挣扎混为一体，把回忆推进了一片云雾缭绕的仙境之中，而幻想的空间，则不断从未来流向曾经。 </p>
+<p>我想起了小时候无聊时打发时间的游戏：给一个细长的塑料袋充点气，封上口，用两个手指夹着从一头捋向另一头。开始时，气全在一边，然后不断从指缝中流过，手走到尽头，意味着空气已经全部溜到了手的另一侧。 </p>
+]]></content>
+      <categories>
+        <category>隨筆</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>没有地址的信</title>
+    <url>/2020/10/29/%E6%B2%A1%E6%9C%89%E5%9C%B0%E5%9D%80%E7%9A%84%E4%BF%A1/</url>
+    <content><![CDATA[<p>整理几首高二时写的小诗。那时的文字还很稚嫩，形式和内容也不能很好地统一。我很喜欢最后一首的内容，把其中一句化用作了标题，但那首的语感实在太差了。</p>
+<a id="more"></a>
+<h3 id="咖啡店随想"><a href="#咖啡店随想" class="headerlink" title="咖啡店随想"></a>咖啡店随想</h3><p>淡黄色的灯光和音乐<br>让我想起 童话<br>想起一个 在风中展开的世界<br>琴声从地上流过<br>模糊了时光的影子<br>咖啡里 尝到回忆<br>与旧日恋人的味道<br>她曾走过我的生命<br>构造出关于未来的一切可能</p>
+<p>27.9.16</p>
+<h3 id="信"><a href="#信" class="headerlink" title="信"></a>信</h3><p>姐姐，（请允许我这样<br>甜甜地叫你）<br>你是温柔，是存在本身<br>今夜，像灯火走近夜空<br>让我走近你的灵魂<br>姐姐，今夜我们不谈数学<br>也不说物理<br>我们只去想<br>明天的早餐和天气<br>或者就聊聊音乐和诗歌<br>音符与文字<br>比星星排得整齐<br>姐姐？或者就让我看着你的梦<br>哪怕一言不发，痴痴地<br>为你的笑声打着节拍<br>或者只让我忘了孤独<br>凝望，和我的影子一起<br>好像你的存在确乎是为了陪伴<br>或者，姐姐，你就听我<br>这样甜甜地叫你<br>你不必知道<br>我想你</p>
+<p>11.11.16</p>
+<h3 id="窗前"><a href="#窗前" class="headerlink" title="窗前"></a>窗前</h3><p>今天的窗前没有金色的阳光，<br>姐姐，今天只有快乐的春雨。<br>窗外的玉兰早已不堪寂寞，<br>爬在窗边的枯叶还没有变绿。</p>
+<p>今天我坐在没有阳光的窗前，<br>姐姐，你说这天空可知道惆怅？<br>雨滴为水洼点出圈圈波纹，<br>荡漾着满地幸福的欢响。</p>
+<p>多少次我独坐窗下的桌边，<br>窗框的影子悄然滑过书页；<br>或者如今日看不到阳光，<br>只有那无名的星火在心头明灭。</p>
+<p>姐姐，你去听那边夜雨敲打窗声，<br>它是在为每一朵将开的花儿命名。<br>微寒的夜里，只恨我不能是你的被褥，<br>却还是想提醒你，天有些冷。</p>
+<p>13.3.17</p>
+<h3 id="风中"><a href="#风中" class="headerlink" title="风中"></a>风中</h3><p>行走的是风<br>凝固的声音在六月<br>的阳光下解冻<br>还没到桂花飘香的季节<br>泥土是收藏家<br>写下长长的信<br>没有地址</p>
+<p>信中铺满的枯木般的文字<br>等着一双来辨认它的眼睛<br>它们看到了夕阳下红色的砖墙<br>藏在层层叠叠的深绿色<br>叶子之间，沙沙作响<br>风在这沉默的城市里<br>走到了老巷子的尽头</p>
+<p>1.7.17</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>關於這個博客</title>
+    <url>/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
+<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
+<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
+<p>聽起來是很有趣罷。</p>
+]]></content>
+      <categories>
+        <category>隨筆</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>诗两首</title>
+    <url>/2020/10/19/%E8%AF%97%E4%B8%A4%E9%A6%96/</url>
+    <content><![CDATA[<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>你是深渊<br>你是无眠的夜<br>你是大都市的玻璃幕墙<br>你是荒郊的野火</p>
+<a id="more"></a>
+<p>我的毛细血管<br>为西伯利亚的积雪输氧<br>我的呼吸<br>鼓动北京十月狂风大作<br>我按照勃拉姆斯的标示<br>抖落一串星星<br>撞上北四环疾驰的轿车<br>一地碎片仰望平凡且昂贵的格子</p>
+<p>你是雁塔的晨钟<br>你是彼得堡的白夜<br>你是指尖下黏稠的和弦<br>你是稿纸上稀松的文字</p>
+<p>我们在旧书堆成的迷宫中相遇<br>相约跳下从未晚点的列车<br>扎向未名湖里的月亮<br>解析波光的纹理<br>拉赫玛尼诺夫在旷野上擎起孤灯<br>走向记忆深处某间温暖的小屋<br>那里，我们将以未来的名义<br>复习古城的每一条砖缝</p>
+<p>你是眼泪<br>你是不变的笑容<br>你是不知疲倦的钟表<br>你是哐当作响的酒杯</p>
+<p>当夜幕低垂，或太阳升起<br>你用眼神灌注新的诗歌<br>你说起又一个摇摇晃晃的梦<br>让我握紧你的小手<br>我们幻想明天<br>因未说尽的话和未走过的路<br>和未写完的论文和未下完的面<br>到树叶变黄，或头发变白，那时——</p>
+<p>你是文字的揭幕人<br>你是时间的隐喻<br>你是我的乡愁<br>你是深渊</p>
+<p>2020年10月4-5日夜</p>
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>今夜无月，今夜只有满天的星星<br>最明亮的星被放逐在湖底<br>未名湖，你是一片荒凉的流放地</p>
+<p>诗人眼里，昨夜星辰只是陈旧的修辞<br>我沉溺于时间，问起它们的去处<br>“昨夜星辰的见证者已化作另一片土地上一场秋雨”<br>未名湖，你反问，“你确信它们可曾存在？”</p>
+<p>我知道，我知道怀疑是你的习惯<br>我知道你曾用怀疑的柔波抵御沉重的山<br>我知道你愿意倒映一切，让阳光与月光为影子赋予意义<br>我知道你可爱的眼睛也想像巨浪一样嘶吼<br>未名湖，可是，可是你为何只是低着头，沉默不语？</p>
+<p>未名湖，人们以坠落的姿势拥抱你<br>他们向你展示全部的肉体，你熄灭他们的梦<br>他们曾在你的低语里，读出黄河的涛声，读出孤坟的野火<br>读出机器的轰鸣和宇宙的寂静<br>读出西风残照中的汉家陵阙，读出枯黄的瘦弱的漫漶的脊梁<br>未名湖，你却要熄灭他们的梦</p>
+<p>远方是你身边人常说的方向，你见过太多的故事<br>我想象秋风再起，文字如枯叶纷纷落地<br>我想象光秃的树如我的灵魂，干冷得流不出一滴眼泪<br>我希望北风把它连根拔起<br>未名湖，你用厚厚的冰来习惯离别</p>
+<p>你是欢喜的、深邃的、冰冷的家园<br>我是彷徨的、骄傲的、无言的浪子<br>未名湖，我带走我的温度、我的歌声和凝望远方的双眼<br>我给你我的悲叹、我的思念和一首未写完的诗</p>
+<p>2020年10月17-18日夜<br>于未名湖畔 没写完<br>10月18-19日夜<br>草草结尾</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>色彩</title>
+    <url>/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
+    <content><![CDATA[<p>——致这个美丽而变动不居的秋天</p>
+<a id="more"></a>
+<p>深秋——我也不知道什么是深秋<br>词语如落叶堆积于僵硬的土地<br>风鉴别并摧折无依的希望<br>排演晦暗的仪式<br>仪式<br>楚地的巫者临风怳然唱着苍茫的歌<br>湘水默默地吞噬古老的抒情<br>一代代漂泊者走过无边落木<br>直到世界悄然变换色彩<br>你如一场细密的和弦落入我的双眼<br>以泥土和青草的气息你许诺一个花园<br>你撷取远方的隐喻解读晦涩的暗香<br>和露水谈起日暮的伯劳与南塘的莲子<br>然后你歌唱曾经很盛大的夏日<br>直到你悄然变换色彩<br>于是我想起北四环的路灯<br>于是我想起城墙下的地铁<br>于是我想起水泥地防盗网和沾了油的招牌<br>想起落日下的紫藤萝和晨风中的桂花香<br>于是我想起走廊漏进的冷气暗白的灯光和混乱的读书声<br>想起矮墙边的自行车和迫不及待的脚步<br>我撕开窗前的爬山虎听到一夜脚步匆匆<br>直到我悄然变换色彩<br>推演未来的笔在稿纸上迟疑<br>时空在纷繁的角标中扭曲<br>我透过场方程看到宇宙再看到你的眼睛<br>看到玻璃酒杯间跳动的懒散的灯光<br>我无视引力理论的警告<br>走进你的旋律然后迷路<br>和正确的和声交换舞步<br>目睹你占领星空<br>直到我们悄然变换色彩<br>变换色彩是日出<br>我看到你脚踩的是黄亮黄亮的银杏叶<br>你看到深绿到深红的层次里<br>借着夜的庇护散溢的言语不知该放在何处<br>你看到几片秋叶飘落如无依的希望<br>没有什么仪式<br>未名湖倒影平静<br>你为词语而惶惑<br>直到世界悄然变换色彩<br>我回头<br>只有空荡荡的深秋</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>灯笼</title>
+    <url>/2020/07/10/%E7%81%AF%E7%AC%BC/</url>
+    <content><![CDATA[<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>三年前的正月十五，我回到儿时生活的工厂家属区。是时，路边已挂起红色的灯笼，记忆在浅灰色的天空中忽聚忽散。</p>
+<p>走过子校门口，就想起诸多往事。当年每到正月十五，一群小孩就打着纸糊的灯笼，里面点着蜡烛，在社区里乱转。待夜深将回家时，便聚在广场，把灯笼转起来、撞起来，让它们在最后的舞蹈中为烛火所吞噬——这也算是传统习俗。每年我们聚在一起烧灯笼时，总能看到语文老师孔老师，一个五十多岁的大汉，身材魁梧，提着他的大灯笼，孤零零地坐在广场的角落，纸烟的黄点在手中明了又灭，灭了又明。最后，他把烟在灯笼上灭掉，取出蜡烛，点燃灯笼，木条在他面前折断，点燃的纸片飞起又落下，最后只剩几片未烧尽的纸，火星在其上闪烁——他注视的却是闪烁的星星。</p>
+<a id="more"></a>
+<p>开学往往是正月十六。每年开学第一天，我把收好的寒假作业放在孔老师办公桌上，总能看到桌下又是崭新的彩纸、木条和陈旧的剪刀、锉刀——他又要开始做灯笼了。春季学期、暑假、秋季学期，他的灯笼一点点有了架子、有了形状、有了精致的雕刻、有了剪纸的装饰，直到寒假，一个大灯笼基本定型。到正月十五，他终于把最终做好的灯笼拿出来，自己坐在广场角落，盯着它看几个小时。我们也忍不住去看他的灯笼，做工精美自不必说，他竟能把点蜡烛的灯笼制作得光影效果不输于市面上卖的电灯笼，且每年都有新的创意。我们暗自称奇，却又在心里觉得可惜：如此精美的艺术品，诞生后只有几个小时的寿命，很快就被烧掉了。可惜之后是不解：孔老师这样的人，怎会有如此怪异之举？平日里，孔老师博闻强识、温文尔雅，给我们讲论语说到君子，我们不懂什么是君子，却在心里隐隐觉得，所谓君子，就是孔老师这样的人。这样的人绝不会做这样的事。不过小时候总怕老师几分，虽然孔老师为人和蔼，我们也不敢多问。</p>
+<p>天渐渐黑了，眼前的街面却还是冷冷清清。现在大概已经没人打灯笼烧灯笼了吧？我心里有点失落。忽然，一个红色的球在眼前不远处显现，细看下还是绝佳的光影，还是精致的做工，提着它的是一个老汉，满头白发，长得不低腰却已经弓着。“孔老师！”我叫了出来，老汉立住，回头。</p>
+<p>“今年还要烧吗？”我们已经坐在广场的那个角落，问完我忽然有些后悔。</p>
+<p>“要烧的，要烧的。”</p>
+<p>“这么好看的灯笼，烧了不可惜吗？”</p>
+<p>“可惜？算不上的，哈哈……”孔老师点了根烟，凝望着黑暗的天空。</p>
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>1950年代的县城，孔盛才站在街口，手里端着烟斗，身后是曾象征自己财富的十几家铺子。这些铺面，他已捐给公家，老二孔持兴也因此得了一个乡里的办事员做。老大持厚向来不如老二机灵，也不会念书，硬要继续做灯笼。盛才拿这个没出息的大儿子也没办法，就任由他去做了。不久之后，盛才在持兴的建议下主动回到农村。农村的资产，盛才也几乎全数捐给了生产队，只留了几间瓦房和一个小院，稍微拾掇拾掇即和持厚住了下来，平日里父子二人便在渭河边上侍弄庄稼。</p>
+<p>老大孔持厚的儿子孔二十二刚到能跑的年纪，就从跟着父亲和祖父从县城跑回了农村。持厚踏实肯干，白天下地晚上做灯笼，不出几年就成了渭河滩有名的灯笼客——那里人管专门割麦子的叫麦客，管专门做粽子的叫粽子客，专门做灯笼的，就是灯笼客——远远近近的人都找他做灯笼。他既做那种孩子们打着玩随后烧掉的小灯笼，这一类不卖钱，发给村里邻村的小孩；又做那种精致的大灯笼，一挂能挂好多年，这是主要卖的，谁来买，家里有孩子的也会送一两个小灯笼。十岁那年，孔二十二问他怎么做灯笼，他却说：“好好念书，像你二爸一样，以后进县委工作。跟我学这，没用！”几个月后，孔二十二又提了一次，持厚断了一根竹竿，从此儿子再不提起学做灯笼的事。</p>
+<p>孔二十二本来不叫孔二十二，上高中那会，爆发了文化革命，家里是做灯笼的，是“四旧”，同学看不起他，目之为孔老二之徒孙，故名之曰孔二十二。他回家吃晚饭时向父亲抱怨，让父亲不要再做灯笼，持厚皱了一下眉头，又立刻笑着说：“孔二十二好呀，孔老二是圣人，孔二十二也是圣人的继承人了。”小孔惊呆了，父亲怎能说出如此大逆不道的话？他想摔筷子走人，不料父亲却先起身回到了自己的房间。</p>
+<p>之后几个月，孔二十二和父亲每天只礼节性地说一两句话。印象中持厚起得比之前更早，也回来得更晚了。回到家，持厚大多时候都是在自己房间里看书或者捣鼓什么东西——孔二十二不知道，也不想知道，反正干的肯定不是什么好事。孔二十二在学校，还是承受着来自同学的嘲笑，有一天，他终于下定决心做个了断，遂找来几个平时最“先进”的同学，给他们说，“放学去我家”。</p>
+<p>那天放学，孔二十二带着他们几个到了家里。持厚之前受了点伤，那天没去挣工分，看到他们回来，眼里划过一丝阴影，随即问儿子：“你们这些同学，要不要来坐坐，喝口水呀？”小将们没理会他，径直进了家里，踹开了持厚房间的木门，迎面见到的就是桌子底下一个骨架上雕着花，外层的纸折出许多样式的大灯笼。持厚跟了进来，看到他们愤怒而兴奋地注视着那个灯笼，什么也没说，坐在了炕边一个大箱子上。</p>
+<p>他们谁都没见过这么好看的灯笼，回过神来，欢呼一声，就抓起灯笼扔到了家门口的土坡上，一人上去踩了几脚。木条在脚下折断，好几层精心折出许多褶皱纹样的纸在脚下撕裂，孔二十二第一次享受到破坏的快感。踩得差不多了，二蛋掏出一盒火柴，“烧！”火焰跳动着、喘息着、狞笑着，不多久那个绝世的艺术品就化成了灰烬。小将们又是一阵欢呼。</p>
+<p>“走，再进去看看，那家伙不可能就这一个灯笼！”大狗叫道“走！走！”大伙应着。看遍房间每一个角落，拉开抽屉，打开柜子，抽出炕下的炉子，却什么都没有见到。众人有些失落之时，二蛋忽然灵机一动，指着孔持厚说：“喂，你起来一下，我们看看你屁股底下的箱子。”孔持厚迟疑片刻，站了起来，走出了房门。</p>
+<p>“你看我就说这老贼狡猾得很，藏了这么多家伙在屁股底下！”大伙凑上去，看到箱子里全是做灯笼的各种工具，皆称赞道，“还是二蛋聪明。”忽然众人的目光落在了父亲走后一直没有说话的孔二十二身上，孔二十二见气氛不对，渐渐挤出一个笑，连声说：“还是二蛋聪明，聪明……”</p>
+<p>那一箱子的家伙连同箱子也被他们烧掉了，烧毕，众人吹着口哨离开，离开前，二蛋拍了拍孔二十二的肩膀：“你娃今天表现不错呀！”</p>
+<p>孔二十二一个人坐在家里时，落日只剩下惨红的余晖。</p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p>“小孔，小孔！”组长气喘吁吁地跑进车间，扯着嗓子想盖过车床的噪声。</p>
+<p>“诶，咋了李师傅？”</p>
+<p>“你爸出事了，你快去县医院！”</p>
+<p>技工孔远至冲出厂区坐上公交直奔医院，父亲孔持厚已进了急救室。</p>
+<p>“你是患者他娃？”医生问道。</p>
+<p>“是的是的。”</p>
+<p>“你快进去，你大有话跟你说。”</p>
+<p>病床旁是母亲。母亲看到一直和父亲关系紧张的儿子终于赶来，只是流着泪不说话，把他俩的手按在一起。</p>
+<p>“儿呀，你大我对……不起你，让你……在学校受欺负，你后来跟着他……们混也没管你，又害……得你出去受了几年的苦。爸对不起你呀……你回去让你妈在我床铺底下把我的书和本子取出来，书是你二爸送的，你要看……对你好，本子，本子，你好好看……你自己看咋处理吧……”</p>
+<p>“家属注意，患者情绪千万不能激动。”医生提醒道。</p>
+<p>迟了。</p>
+<p>那天晚上，孔远至和母亲回到了农村家里。从县城到农村，皆是一派元宵节的欢乐气氛，街上、村头、各家门口早已再次挂起了灯笼，暗暗的红在这个饱经风霜的农村妇女眼里，显得格外刺目，而远至只是漠然。走到家门口，远至看到只有一边挂着灯笼，没有点亮，另一边的灯笼则掉到了地上，卡在同样斜倒在地的木梯子的框里。他后来才知道，那天父亲高高兴兴买来灯笼，已挂好了一只，挂另一只时却出了意外。</p>
+<p>孔远至处理父亲的后事，他向母亲询问应该通知哪些人，然后去一一报丧；其余诸事项皆由二爸持兴等人协力操办，远至像一个木偶，机械地执行着所有的礼节和规程——他太忙了，那几天甚至没有踏进过父亲房间一步。父亲那些故旧都称赞，远至是个大人了，待人接物老练了，对规矩也很熟稔，持厚看了一定会高兴吧。下葬那天，他早早起来，坐在灵前，让哭的时候苦，让停的时候停，接受来往吊唁的亲朋的安慰。</p>
+<p>吊唁的人群中有一些年轻的提着白灯笼，孔远至没见过这些人，不过没见过就没见过吧，古老的仪式不需要过多的好奇，不来闹事，随他去吧。那些人一个个走到灵位前，献上手里的灯笼，有的磕头，有的鞠躬。他们之中有的人已有了儿女，儿女不懂这场面的意义，提着被风吹到地上的白灯笼玩，被父母训斥了一番：</p>
+<p>“这灯笼，是给我孔叔的，孔叔当年不嫌我们穷，做灯笼送给我们耍，我们后来却因为成分、因为做灯笼，对孔叔家做了错事，这是来道谢，来赔罪的，你不要胡动！”</p>
+<p>这些话飘到孔远至耳边，把木偶样的孔远至从梦里拽了出来。十几年没和父亲好好交流，没去了解父亲，即使到现在，他都是在照章办事，死了人该怎样，他就怎样。但对于父亲这个人，他竟然一直忘了，忘了，甚至还没有那些小时候打着父亲灯笼的孩子把父亲看得重。他想去和父亲说会话，想问问父亲这些年怎么过来的，想听父亲说说他对那些人和事的看法，于是忘了周边的一切，站起来，走进家里父亲的房间。房间里摊开了一箱崭新的工具和材料——剪刀、锉刀、彩纸、木条……只是不见父亲。孔远至这才真真切切地体会到，人已经不在了。</p>
+<p>父亲确乎已经不在了！不在了，就是再也见不到他，听不到他，也再没法和他说话了。</p>
+<p>灯笼？看到眼前的场景，想起外面年轻人说的灯笼，那天带同学来家里的情景忽然像放电影一样，在眼前的墙上，在眼前的地上，在眼前的天上，在眼前的人群中，一遍遍地循环。</p>
+<p>孔远至哭了，哭得很大声，很痛苦，这次不是出于规程。</p>
+<p>晚上，忙了一天的二爸孔持兴和远至坐到了家里。面对眼前的持兴，远至忽然想起父亲临终前说的话，找母亲要书和本子。</p>
+<p>母亲从房间取来一本旧书，一个本子，摆在远至和持兴面前，对远至说：“你好好看，前几天我就想给你看你太忙没顾上。”</p>
+<p>“嗯，我爸啥时候有的这些东西？”</p>
+<p>“唉，你那次领人回来之后就没怎么关心过你爸吧？高中毕业，二蛋那伙出身好，推荐到好单位去了，你被拉去修路，从那以后也没见过你爸几面。”</p>
+<p>“是。当时和他关系不太好，每次回来，见了也说不上几句话。”</p>
+<p>“你爸那几年每天后晌就一个人坐在房子里，拿着你二爸给的书在那看，还拿个本子涂涂写写的，具体是啥我也不太懂，他一直说别让娃知道。你把书和本子拿着看，和你二爸聊吧。”</p>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p>“这是海明威的小说，《老人与海》，你把你爸灯笼和家伙烧了那次，我拿给他的。”持兴回忆道，“你爸念书不行，不过小说勉强能看，我也是想借此劝他，让他别丧气，人生就是要不断奋斗的。你看我从一个乡镇的办事员，干到县委，现在奋斗到……”</p>
+<p>“那另一本是？”远至打断了二爸的说教。</p>
+<p>“我也不知道，你打开看看。我要给你讲的是啥呢？你爸其实也应该有一些积极的人生态度……”</p>
+<p>见远至没有在听，而是埋头翻起父亲的本子，孔持兴也停住了话头。</p>
+<blockquote>
+<p>今天持兴来看我了，送了一本小说。我说你送我这干啥，我又看不懂，他说你就看，看完就懂了。书不厚，晚上我看了一遍，老人的事和我是有点像，但是说学他吧，我也不知道能学个啥。</p>
+</blockquote>
+<p>“你听二爸给你讲。你二爸和你爸是从小玩大的，你爸一直不是很上进，就是犟。最开始你爷不让他做灯笼，他不听。后来风向不对了，没人要大灯笼了，我们都劝他别做了。你看，咱家本来成分就不好，你爷捐了家产，照顾给了个上中农，没定富农，再做要吃大亏的。他说不行，村里娃们喜欢，就算大的不做了还要给他们做……唉，人太犟，总是要吃亏的。”</p>
+<blockquote>
+<p>我知道我干啥能跟圣地亚哥一样了。我是做灯笼的，那天远至回来说学校里同学给起了外号，我就想着算了不做了，就给自己最后做一个好看的，然后收手。后来远至带一群娃来把灯笼和做灯笼的家具都烧了，从此再没碰过。现在就继续悄悄做灯笼吧！</p>
+<p>唉不行，灯笼那家伙大，动静大，被发现了远至又要受人欺负，远至性格软弱，受人欺负不会反抗，反而跟他们混，好好的念书的料子不务正业，现在还劝不回来呢，不能再让他们捏住。我现在也有这本子，也偷偷写了两天了，不如以后就拿这个写灯笼的做法，再画点图，设计一下，想想有一天能做了我还要咋做。</p>
+</blockquote>
+<p>“给他说了一年多吧他不听，后来有一天可能确实吃大亏了，我也不知道是被生产队队长骂了还是有人威胁他游街，反正他就突然给我说他不做了，再给自己最后做一个好看的，我觉得他终于有点开窍了……”</p>
+<blockquote>
+<p>今天写了基本的材料和工具，累了，又看一遍小说，我觉得我越来越像老渔夫了。可老渔夫自己受苦不连累儿子，我却害的儿子离开家去修路。工地上累，也不知道远至吃得咋样睡得咋样。</p>
+</blockquote>
+<p>“我想着他开了窍以后日子能平顺点，结果没想到你一下子把他最后的寄托给烧了。我怕他想不开，也觉得他应该彻底改变人生态度了，不管是投身集体的事业还是谋个人的提升——这两个反正也是一致的嘛。你看我，这么多年兢兢业业，最开始就是乡镇的办事员，后来调到县委，又调到教育局做了个科长。”</p>
+<blockquote>
+<p>唉，我写这东西越来越像娃的课本了，后面的人拿着这个就能学？算了算了，没人学这。今年十五，村里那帮娃娃也都不打灯笼了，不打了，还来笑话我。写了也没人看，连鱼骨头都不如。</p>
+</blockquote>
+<p>“你听二爸给你讲，你二爸做到今天也是自己奋斗出来的，你现在不要眼里只有你那个工厂。你看你爸，不上进，嘴上说着自己平时干干活挺好，实际累成啥样，最后真需要给你找工作还得找我帮忙。”</p>
+<blockquote>
+<p>又看了一遍小说，圣地亚哥这老头有点意思，到最后了还要把鱼拉回来，这明显不是要个胜利呀。我也不要胜利，我胜利个啥？我对谁胜利？对自己娃？娃烧我灯笼我是难受，这能怪他吗？让他受人欺负，不得不和混混搅在一起的人是我，让他没有好工作，跑出去修路的是我。唉，我写一些做灯笼就满足了，不求什么胜利。</p>
+</blockquote>
+<p>“你还不知道吧？当年缝纫机厂招工人，你爸就来找我，说娃出去干活也干了几年了，太苦了，能不能想办法把娃调到厂子里。当时看是好岗位，现在慢慢不是了，现在你可以参加自学考试，考个教师，我想办法把你调到县里的中学来。这不光是为你自己，干活谁不能干？人民教师，教书育人，才是有意义的事业。《老人与海》你上学时读过吧？我给你爸读是白读了，还是不知道奋斗，你不能步他后尘呀。”</p>
+<blockquote>
+<p>灯笼做法写完了，还画了一些图纸，算是比较新的设计，估计我是没机会实现了。今天本子差点被外人发现，我以后就不写了。</p>
+<p>担心的还是我的远至娃呀，在外面干活，咋样我也不知道，一年回来一回也不愿意给我说。不给我说可能是不想让我操心吧？娃长大了。唉，他其实还是怨我的，我有啥办法，咱对不起娃，因为咱娃被人欺负、没有好工作。娃呀你哪天能不那么累就好了。<br>可能我死了之后娃会看到我写的东西，他会自己把这本子烧了吧？对，烧了他就不会受冲击。烧之前会看看吗？会不会我也给他写两句话吧。</p>
+<p>儿呀，你爸我一辈子没啥文化，就是经了些事，看了你二爸给的书，虽然文学名著啥的我也看不懂。儿呀，虽然我不行，我还是给你说，咱命不好，要争自己的这一口气，不是说赢了谁，就是争气，就是不要被人打倒，外面倒了你心里也不能倒。还有，你要好好和村里的老老少少相处，你爸这几年一直因为做灯笼被人看低，被人笑话，但从来没有人做过分的事，为啥？之前村里邻村多少娃打不起灯笼被人笑话，咱给他送，他高兴，虽然娃小不懂事后面笑话咱，但家里大人都记着呢，你别做灯笼，但也要做个好人。</p>
+</blockquote>
+<p>“远至，你听着没？你要缺书我给你找书来学，完了考教师，我把你调到县城，咋样？”</p>
+<p>“谢谢二爸，找书就麻烦你了，不过后面的事后面再说吧。”孔远至合上了父亲的本子。</p>
+<p>“你把你爸的本子看完了？你爸在里面写的啥？”</p>
+<p>“没啥，就是写咋做灯笼。”</p>
+<p>“哦，你可别又钻进去学做灯笼了啊，哈哈……”持兴看了看手表，“今天太晚了，我明早还要开会，先回去了啊，你好好想想我给你说的当教师的事。”</p>
+<h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><p>“后来呢？”我问孔老师。</p>
+<p>孔老师把烟在灯笼上按灭，又翻了翻灯笼，让灯笼沾上火，吐一口气，“后来我就钻进父亲的本子里，拿着父亲新置办的工具学会了做灯笼，一年做一个，自己再把它烧掉，哈哈哈……”</p>
+<p>“那你不是要去县城当老师吗？”</p>
+<p>“后来我二爸又变卦了，又让我去机关工作。二爸一辈子勤勤恳恳，给自己家里人是会谋点小利，却也不敢干大的。本来有升迁机会，被人挤掉了，干几十年还是个科长，一直不得志，所以希望我能真正出人头地。我把《老人与海》看了几十遍，奋斗精神不知道有了没有，对西方文学倒是产生了兴趣，就开始自学文学。后来子校缺语文老师，我就报名参加考核，通过之后留在子校当老师了，哈哈哈哈……”</p>
+<p>面前的灯笼被火苗渐渐吞噬，燃烧的纸片飞起而后落下，我听见木条折断的声音。很快，只剩下未烧尽的纸上火星在明灭，和天上的星星遥相呼应。我们都不说话，只伴着这微光，孔老师看着天，我看着地。</p>
+<h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><p>那次和孔老师重逢之后，就再也没见过他。后来有一次聚会上听同学说三年前春节期间孔老师就病逝了。</p>
+<p>“三年前？那年十五我还见他烧灯笼，和他聊过呢！”我疑惑。</p>
+<p>“小王你忘了？当时元宵节，报纸上还登了他的事迹，还是你发微信给我让我去看的。人民教师，年轻时修过路、在缝纫机厂干过活，后来因一本书爱上文学，转到子校当老师，几十年桃李满天下。教学期间不断自修，拿到了文学博士的学位，面对诸多更好的工作都推掉了，只想和学生在一起。还说他因为年轻时的往事对做灯笼的父亲心怀愧疚，父亲死后从父亲留下的笔记中学会了做灯笼，于是每年做一个自己烧掉，但是他和父亲之间究竟发生过什么事，始终没人知道。”小张提醒我。</p>
+<p>“对对对，我记得你当时给我们说，咱觉得孔老师水平高，人家是个博士呢，还说终于知道孔老师为啥烧灯笼了，不过就是细节上谁也不清楚。”小李补充道，“你见过他，是在梦里吧？”</p>
+<p>我不知道。不过我确实梦到过孔老师，那个梦里他不是一个老汉，而是一个小孩。农家院子里，孔老师的父亲做着灯笼，脚下小灯笼摆了几排，孔老师则坐在爷爷怀里，跟着爷爷诵读着：“仁远乎哉？我欲仁，斯仁至矣。”</p>
+]]></content>
+      <categories>
+        <category>小說</category>
+      </categories>
+  </entry>
+</search>
