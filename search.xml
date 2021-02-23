@@ -1209,4 +1209,44 @@ V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle
         <tag>献给lhp</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Crank-Nicolson Method for Solving 1D Schrödinger Equation</title>
+    <url>/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
+    <content><![CDATA[<p>To solve a one-dimensional time-dependent Schrödinger equation numerically, consider a difference method. </p>
+<a id="more"></a> 
+<p> The equation to be solved is</p>
+<script type="math/tex; mode=display">
+\mathrm{i}\hbar\frac{\partial \psi(x, t)}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^{2} \psi(x, t)}{\partial x^{2}}+V(x, t) \psi(x, t).</script><p>Discretise the $x$, and denote $x_j=j\Delta x, j=1,\cdots,L$ and $\psi(x_j)=\psi_j$ To perform the difference, define the discretised Hamiltonian $H_D$ as</p>
+<script type="math/tex; mode=display">
+ H_D\psi_j=-\frac{\hbar^2}{2m}\frac{1}{\Delta x^2}\left[\psi_{j-1}+\psi_{j+1}-2\psi_j\right]+V_j\psi_j,</script><p>which can be viewed as a matrix performed on a vector $(\psi_1,\cdots,\psi_L)$. Discretise the time and denote $\psi(t_n)=\psi(n\Delta t)=\psi^n$. A trivial differential method is</p>
+<script type="math/tex; mode=display">
+\mathrm{i}\hbar\frac{1}{\Delta t}(\psi^n_{j+1}-\psi^n_j)=H_D\psi^n_j,</script><p>i.e.,</p>
+<script type="math/tex; mode=display">
+\psi^{n+1}_j=\left(1-\mathrm{i}\Delta t H_D/\hbar\right)\psi^n_j.</script><p>To check the stability of such a method, consider the analytical solution to the discretised equation for $V_j$ constant</p>
+<script type="math/tex; mode=display">
+\psi^n_j=\xi^n\exp(\mathrm{i}kj\Delta x),</script><p>which yields</p>
+<script type="math/tex; mode=display">
+\xi=1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right].</script><p>For any $\Delta x$ and $\Delta t$, $|\xi|&gt;1$, indicating that this method is always unstable.</p>
+<p> A modification of this method is to replace the discretisation form by</p>
+<script type="math/tex; mode=display">
+\psi^{n+1}_j=\psi^n_j-\mathrm{i}\Delta t H_D/\hbar\psi^{n+1}_j,</script><p>i.e., </p>
+<script type="math/tex; mode=display">
+    \psi_{j}^{n+1}=\sum_{j'}\left(1+\mathrm{i} \Delta t H_D/\hbar\right)_{jj'}^{-1} \psi_{j'}^{n}</script><p>One can check that in this method</p>
+<script type="math/tex; mode=display">
+\xi=\frac{1}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which indicates that this method is always stable. However, the time evolution $\left(1+\mathrm{i} \Delta t H_D/\hbar\right)^{-1}$ is still not unitary, so that it does not preserve the norm of the wave function.</p>
+<p>A further modification is to set the time evolution as</p>
+<script type="math/tex; mode=display">
+    \frac{1-\mathrm{i}\Delta tH_D/2\hbar}{1+\mathrm{i}\Delta t H_D/2\hbar}.</script><p>To evaluate the stability,</p>
+<script type="math/tex; mode=display">
+\xi=\frac{1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which ensure the stability for any choice of $\Delta x$ and $\Delta t$. </p>
+<p>The third method is called Crank-Nicolson method. It is an implicit form and requires an inverse of a tridiagonal matrix, whose time cost is $\mathcal{O}(L)$. To calculate the time evolution, one need to perform matrix products, whose time cost is $\mathcal{O}(L^2)$.</p>
+<p>The code for this method with a periodic boundary condition can be found at <a href="https://github.com/Florestan-Eusebius/Crank-Nicolson-Solver">Florestan-Eusebius/Crank-Nicolson-Solver: The Crank Nicolson Solver to solve 1D time dependent Schrödinger equation. (github.com)</a>, where the harmonic oscillator is tested as an example. We see that result calculated by this method agrees with the theoretical result perfectly. </p>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Computational Methods</tag>
+      </tags>
+  </entry>
 </search>
