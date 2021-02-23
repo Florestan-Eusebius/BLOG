@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Crank-Nicolson Method for Solving 1D Schrödinger Equation</title>
-    <url>/blog/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
-    <content><![CDATA[<p>To solve a one-dimensional time-dependent Schrödinger equation numerically, consider a difference method. </p>
-<a id="more"></a> 
-<p> The equation to be solved is</p>
-<script type="math/tex; mode=display">
-\mathrm{i}\hbar\frac{\partial \psi(x, t)}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^{2} \psi(x, t)}{\partial x^{2}}+V(x, t) \psi(x, t).</script><p>Discretise the $x$, and denote $x_j=j\Delta x, j=1,\cdots,L$ and $\psi(x_j)=\psi_j$ To perform the difference, define the discretised Hamiltonian $H_D$ as</p>
-<script type="math/tex; mode=display">
- H_D\psi_j=-\frac{\hbar^2}{2m}\frac{1}{\Delta x^2}\left[\psi_{j-1}+\psi_{j+1}-2\psi_j\right]+V_j\psi_j,</script><p>which can be viewed as a matrix performed on a vector $(\psi_1,\cdots,\psi_L)$. Discretise the time and denote $\psi(t_n)=\psi(n\Delta t)=\psi^n$. A trivial differential method is</p>
-<script type="math/tex; mode=display">
-\mathrm{i}\hbar\frac{1}{\Delta t}(\psi^n_{j+1}-\psi^n_j)=H_D\psi^n_j,</script><p>i.e.,</p>
-<script type="math/tex; mode=display">
-\psi^{n+1}_j=\left(1-\mathrm{i}\Delta t H_D/\hbar\right)\psi^n_j.</script><p>To check the stability of such a method, consider the analytical solution to the discretised equation for $V_j$ constant</p>
-<script type="math/tex; mode=display">
-\psi^n_j=\xi^n\exp(\mathrm{i}kj\Delta x),</script><p>which yields</p>
-<script type="math/tex; mode=display">
-\xi=1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right].</script><p>For any $\Delta x$ and $\Delta t$, $|\xi|&gt;1$, indicating that this method is always unstable.</p>
-<p> A modification of this method is to replace the discretisation form by</p>
-<script type="math/tex; mode=display">
-\psi^{n+1}_j=\psi^n_j-\mathrm{i}\Delta t H_D/\hbar\psi^{n+1}_j,</script><p>i.e., </p>
-<script type="math/tex; mode=display">
-    \psi_{j}^{n+1}=\sum_{j'}\left(1+\mathrm{i} \Delta t H_D/\hbar\right)_{jj'}^{-1} \psi_{j'}^{n}</script><p>One can check that in this method</p>
-<script type="math/tex; mode=display">
-\xi=\frac{1}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which indicates that this method is always stable. However, the time evolution $\left(1+\mathrm{i} \Delta t H_D/\hbar\right)^{-1}$ is still not unitary, so that it does not preserve the norm of the wave function.</p>
-<p>A further modification is to set the time evolution as</p>
-<script type="math/tex; mode=display">
-    \frac{1-\mathrm{i}\Delta tH_D/2\hbar}{1+\mathrm{i}\Delta t H_D/2\hbar}.</script><p>To evaluate the stability,</p>
-<script type="math/tex; mode=display">
-\xi=\frac{1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which ensure the stability for any choice of $\Delta x$ and $\Delta t$. </p>
-<p>The third method is called Crank-Nicolson method. It is an implicit form and requires an inverse of a tridiagonal matrix, whose time cost is $\mathcal{O}(L)$. To calculate the time evolution, one need to perform matrix products, whose time cost is $\mathcal{O}(L^2)$.</p>
-<p>The code for this method with a periodic boundary condition can be found at <a href="https://github.com/Florestan-Eusebius/Crank-Nicolson-Solver">Florestan-Eusebius/Crank-Nicolson-Solver: The Crank Nicolson Solver to solve 1D time dependent Schrödinger equation. (github.com)</a>, where the harmonic oscillator is tested as an example. We see that result calculated by this method agrees with the theoretical result perfectly. </p>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Computational Methods</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Calculating Entropy for Variational Method</title>
     <url>/blog/2020/04/30/Calculating-Entropy-for-Variational-Method/</url>
     <content><![CDATA[<p>When using variational method to solve the equilibrium state for some many-particle system, one usually sets a density operator $\rho_i$ (with trace 1) for particle $i$. The density operator may have some parameters to be determined by the condition that the free energy be at its minimum. <a id="more"></a>Suppose we have $N$ particles at $N$ sites, each being labeled by $i$. The whole density operator is thus</p>
@@ -124,107 +84,43 @@ S=-k_B\operatorname{Tr}\left(\rho\ln\rho\right),</script><p>or equivalently, to 
       </tags>
   </entry>
   <entry>
-    <title>Quantum noise and quantum operations</title>
-    <url>/blog/2020/10/19/Quantum-noise-and-quantum-operations/</url>
-    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
-<p>Closed quantum systems, without noise.</p>
-<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
-<a id="more"></a>
-<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
-<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
+    <title>Crank-Nicolson Method for Solving 1D Schrödinger Equation</title>
+    <url>/blog/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
+    <content><![CDATA[<p>To solve a one-dimensional time-dependent Schrödinger equation numerically, consider a difference method. </p>
+<a id="more"></a> 
+<p> The equation to be solved is</p>
 <script type="math/tex; mode=display">
-\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
-<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
+\mathrm{i}\hbar\frac{\partial \psi(x, t)}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^{2} \psi(x, t)}{\partial x^{2}}+V(x, t) \psi(x, t).</script><p>Discretise the $x$, and denote $x_j=j\Delta x, j=1,\cdots,L$ and $\psi(x_j)=\psi_j$ To perform the difference, define the discretised Hamiltonian $H_D$ as</p>
 <script type="math/tex; mode=display">
-\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
-<p>Three equivalent seperate ways to understand quantum operation:</p>
-<ul>
-<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
-<li>Operator-sum representation: abstract, convenient in mathematics.</li>
-<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
-</ul>
-<blockquote>
-<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
-<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
+ H_D\psi_j=-\frac{\hbar^2}{2m}\frac{1}{\Delta x^2}\left[\psi_{j-1}+\psi_{j+1}-2\psi_j\right]+V_j\psi_j,</script><p>which can be viewed as a matrix performed on a vector $(\psi_1,\cdots,\psi_L)$. Discretise the time and denote $\psi(t_n)=\psi(n\Delta t)=\psi^n$. A trivial differential method is</p>
 <script type="math/tex; mode=display">
- \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
-</blockquote>
-<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
-<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
+\mathrm{i}\hbar\frac{1}{\Delta t}(\psi^n_{j+1}-\psi^n_j)=H_D\psi^n_j,</script><p>i.e.,</p>
 <script type="math/tex; mode=display">
-\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
-<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
-<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
-<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
-<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
+\psi^{n+1}_j=\left(1-\mathrm{i}\Delta t H_D/\hbar\right)\psi^n_j.</script><p>To check the stability of such a method, consider the analytical solution to the discretised equation for $V_j$ constant</p>
 <script type="math/tex; mode=display">
-\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
-<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
+\psi^n_j=\xi^n\exp(\mathrm{i}kj\Delta x),</script><p>which yields</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
-    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
-    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
-\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
+\xi=1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right].</script><p>For any $\Delta x$ and $\Delta t$, $|\xi|&gt;1$, indicating that this method is always unstable.</p>
+<p> A modification of this method is to replace the discretisation form by</p>
 <script type="math/tex; mode=display">
-\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
-<blockquote>
-<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
-</blockquote>
+\psi^{n+1}_j=\psi^n_j-\mathrm{i}\Delta t H_D/\hbar\psi^{n+1}_j,</script><p>i.e., </p>
+<script type="math/tex; mode=display">
+    \psi_{j}^{n+1}=\sum_{j'}\left(1+\mathrm{i} \Delta t H_D/\hbar\right)_{jj'}^{-1} \psi_{j'}^{n}</script><p>One can check that in this method</p>
+<script type="math/tex; mode=display">
+\xi=\frac{1}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which indicates that this method is always stable. However, the time evolution $\left(1+\mathrm{i} \Delta t H_D/\hbar\right)^{-1}$ is still not unitary, so that it does not preserve the norm of the wave function.</p>
+<p>A further modification is to set the time evolution as</p>
+<script type="math/tex; mode=display">
+    \frac{1-\mathrm{i}\Delta tH_D/2\hbar}{1+\mathrm{i}\Delta t H_D/2\hbar}.</script><p>To evaluate the stability,</p>
+<script type="math/tex; mode=display">
+\xi=\frac{1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which ensure the stability for any choice of $\Delta x$ and $\Delta t$. </p>
+<p>The third method is called Crank-Nicolson method. It is an implicit form and requires an inverse of a tridiagonal matrix, whose time cost is $\mathcal{O}(L)$. To calculate the time evolution, one need to perform matrix products, whose time cost is $\mathcal{O}(L^2)$.</p>
+<p>The code for this method with a periodic boundary condition can be found at <a href="https://github.com/Florestan-Eusebius/Crank-Nicolson-Solver">Florestan-Eusebius/Crank-Nicolson-Solver: The Crank Nicolson Solver to solve 1D time dependent Schrödinger equation. (github.com)</a>, where the harmonic oscillator is tested as an example. We see that result calculated by this method agrees with the theoretical result perfectly. </p>
 ]]></content>
       <categories>
         <category>Physics</category>
       </categories>
       <tags>
-        <tag>Quantum Information</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Introduction to Semiconductor Physics</title>
-    <url>/blog/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
-    <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
-<li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
-<li>Direct &amp; indirect band gap</li>
-<li>Intrinsic &amp; extrinsic semiconductor</li>
-</ul>
-<a id="more"></a>
-<h2 id="Quantitative-properties"><a href="#Quantitative-properties" class="headerlink" title="Quantitative properties"></a>Quantitative properties</h2><h3 id="Effective-mass-k-p-approximation"><a href="#Effective-mass-k-p-approximation" class="headerlink" title="Effective mass: k-p approximation"></a>Effective mass: k-p approximation</h3><p>Near the band edge, quadratic term.</p>
-<script type="math/tex; mode=display">
-\varepsilon(\mathbf{k})=\varepsilon\left(\mathbf{k}_{0}\right)+\frac{\hbar^{2}\left(k_{x}-k_{x 0}\right)^{2}}{2 m_{x}^{*}}+\frac{\hbar^{2}\left(k_{y}-k_{y 0}\right)^{2}}{2 m_{y}^{*}}+\frac{\hbar^{2}\left(k_{z}-k_{z 0}\right)^{2}}{2 m_{z}^{*}}.</script><p>Bloch state:</p>
-<script type="math/tex; mode=display">\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r}).</script><p> Schrödinger equation on $u$ becomes</p>
-<script type="math/tex; mode=display">\left(\frac{\mathbf{p}^2}{2m}+\frac{\hbar\mathbf{k}\cdot\mathbf{p}}{m}+V(\mathbf{r})\right)u_{n\mathbf{k}}(\mathbf{r})=\left(\varepsilon_n(\mathbf{k})-\frac{\hbar^2\mathbf{k}^2}{2m}\right)u_{n\mathbf{k}}(\mathbf{r}).</script><p> Taking $\mathbf{k}_0$ to be 0, <strong>view $\mathbf{k}\cdot\mathbf{p}$ term as perturbation and the $\mathbf{k}=\mathbf{k}_0$ state as the unperturbed state</strong>, </p>
-<script type="math/tex; mode=display">\Delta\varepsilon_n^{(1)}(\mathbf{k})\propto\mathbf{k}=0</script><script type="math/tex; mode=display">\Delta \varepsilon_{n}^{(2)}(\mathbf{k})=\frac{\hbar^{2}}{m^{2}} \sum_{i} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)} k_{i}^{2}</script><p>by taking the principal axes. Finally we have</p>
-<script type="math/tex; mode=display">\begin{aligned}
-    \frac{1}{m_{i}^{*}\left(k_{i}\right)}&=\frac{1}{m}+\frac{2}{m^{2}} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)}\\
-    &=\frac{1}{m}+\frac{2}{m^2}\frac{\left\langle u_{c 0}(\mathbf{r})\left|p_{i}\right| u_{v 0}(\mathbf{r})\right\rangle\left\langle u_{v 0}(\mathbf{r})\left|p_{i}\right| u_{c 0}(\mathbf{r})\right\rangle}{\varepsilon_{\mathrm{gap}}}.\quad(\text{For conduction band})
-\end{aligned}</script><h3 id="Statistics-of-charge-carriers"><a href="#Statistics-of-charge-carriers" class="headerlink" title="Statistics of charge carriers"></a>Statistics of charge carriers</h3><p>Electrons obey Fermi-Dirac perturbation</p>
-<script type="math/tex; mode=display">f(\varepsilon)=\frac{1}{e^{\left(\varepsilon(\mathbf{k})-\mu\right)/k_BT}+1}.</script><p>Consider</p>
-<ul>
-<li>Even at room temperature, $\varepsilon_c-\mu\sim\mu-\varepsilon_v\gg k_BT.$</li>
-<li>The distribution of the hole is $1-f(\varepsilon_h)$</li>
-<li>The density of state are<script type="math/tex; mode=display">\begin{aligned}
-D_{e}\left(\varepsilon_{e}(\mathbf{k})\right)&=\frac{2\left(2 m_{e}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{e}(\mathbf{k})-\varepsilon_{c}}, \\
-D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{v}-\varepsilon_{h}(\mathbf{k})}.
-\end{aligned}</script></li>
-</ul>
-<p>We have</p>
-<script type="math/tex; mode=display">\begin{aligned}
-    n_{e}&=\frac{1}{4}\left(\frac{2 m_{e}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{c}(\mathbf{k})-\varepsilon_{F}\right) / k_{B} T},\\
-    n_{h}&=\frac{1}{4}\left(\frac{2 m_{h}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{F}-\varepsilon_{v}(\mathbf{k})\right) / k_{B} T},
-\end{aligned}</script><p>and the <strong>law of mass action</strong></p>
-<script type="math/tex; mode=display">n_e n_h=\frac{1}{2}\left(\frac{k_BT}{\pi\hbar^2}\right)^3\left(m_e^*m_h^*\right)^{3/2}e^{-\varepsilon_{\mathrm{gap}}/k_BT}.</script><h4 id="Intrinsic-semiconductor"><a href="#Intrinsic-semiconductor" class="headerlink" title="Intrinsic semiconductor"></a>Intrinsic semiconductor</h4><script type="math/tex; mode=display">n_e=n_h</script><p>Consider the expression of $n_e$ and the law of mass action</p>
-<script type="math/tex; mode=display">\mu=\frac{3}{4}\frac{k_BT}{2}\ln\left(\frac{m_h^*}{m_e^*}\right)+\frac{\varepsilon_c+\varepsilon_v}{2}.</script><h4 id="Extrinsic-semiconductor"><a href="#Extrinsic-semiconductor" class="headerlink" title="Extrinsic semiconductor"></a>Extrinsic semiconductor</h4><p>Consider only donor case. Assume donor impurity density $D_i$ and energy $\varepsilon_i$.</p>
-<script type="math/tex; mode=display">n_e=D_i\left(1-f(\varepsilon_i)\right)=D_i\frac{1}{e^{(\mu-\varepsilon_i)/k_BT}+1}.</script><p>Put the equation above and $n_e=c_e\exp\left[-(\varepsilon_c-\varepsilon_F)/k_BT\right]$ together, solve $n_e$,</p>
-<script type="math/tex; mode=display">n_{e}=\frac{-1+\sqrt{1+4\left(\frac{D_{i}}{c_{e}}\right) e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}}{\frac{2 e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}{c_{e}}}.</script><ul>
-<li>At low temperature, <script type="math/tex; mode=display">n_e\approx\sqrt{c_eD_i}e^{-(\varepsilon_c-\varepsilon_i)/2k_BT}.</script></li>
-<li>At high temperature,<script type="math/tex; mode=display">n_e\approx D_i.</script></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Solid State Physics Course Summary</tag>
+        <tag>Computational Methods</tag>
       </tags>
   </entry>
   <entry>
@@ -346,6 +242,62 @@ J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac
       </tags>
   </entry>
   <entry>
+    <title>Quantum noise and quantum operations</title>
+    <url>/blog/2020/10/19/Quantum-noise-and-quantum-operations/</url>
+    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
+<p>Closed quantum systems, without noise.</p>
+<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
+<a id="more"></a>
+<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
+<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
+<script type="math/tex; mode=display">
+\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
+<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
+<script type="math/tex; mode=display">
+\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
+<p>Three equivalent seperate ways to understand quantum operation:</p>
+<ul>
+<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
+<li>Operator-sum representation: abstract, convenient in mathematics.</li>
+<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
+</ul>
+<blockquote>
+<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
+<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
+<script type="math/tex; mode=display">
+ \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
+</blockquote>
+<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
+<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
+<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
+<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
+<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
+<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
+<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
+    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
+    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
+\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
+<script type="math/tex; mode=display">
+\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
+<blockquote>
+<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Quantum Information</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows 裝機記錄</title>
     <url>/blog/2020/01/09/Windows-%E8%A3%9D%E6%A9%9F%E8%A8%98%E9%8C%84/</url>
     <content><![CDATA[<p>因爲想裝WSL，但更新一直出問題，另外也是覺得現在的電腦太亂了，我決定推倒重來，重裝系統。</p>
@@ -383,23 +335,117 @@ J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac
       </tags>
   </entry>
   <entry>
-    <title>今天</title>
-    <url>/blog/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
-    <content><![CDATA[<p>今天没有什么特别的<br>无非是风吹得耳朵疼<br>无非是骑自行车手会很冷</p>
+    <title>Introduction to Semiconductor Physics</title>
+    <url>/blog/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
+    <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
+<li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
+<li>Direct &amp; indirect band gap</li>
+<li>Intrinsic &amp; extrinsic semiconductor</li>
+</ul>
 <a id="more"></a>
-<p>有些路你走上几年<br>上面的水泥缝就像是<br>中学时代背过的课文<br>给一个提示就能重复出几句</p>
-<p>可是他们说，当飞船的舷窗<br>被油烟熏黑<br>天空就会被重新解读<br>所以你是否愿意给世界<br>一双新的眼睛，或者<br>等价地，给童话<br>一次重生的机会</p>
-<p>有些事情会渐渐陌生，比如<br>日暮时分那间教室的那扇窗户<br>窗外是大雁塔，你心里想的<br>却是试卷上好像漏掉的一个负号<br>比如一些声音和一些面孔</p>
-<p>你喜欢抚摸未读过的新书<br>想象里面会是怎样一个世界<br>但如果你喜欢，你就会<br>把它们翻旧，旧得像<br>谁也说不清在后院墙角里<br>待了多久的那块石头</p>
-<p>今天我又走过一条旧路<br>我想知道手里的新书翻开后的样子<br>但我没有看到昨夜撸到的那只小猫<br>一切都很无聊<br>我低头看到地面凹凸不平<br>我还是过于熟悉它们了</p>
-<p>所以今天仍然没有什么特别的<br>所以我今天仍然爱你</p>
-<p>幸承对诗，附链接：<a href="https://blog.lhp-pku.top/2020/12/04/%E7%8E%B0%E4%BB%A3%E8%AF%97%E4%BB%8A%E5%A4%A9/">今天——对诗</a>。</p>
+<h2 id="Quantitative-properties"><a href="#Quantitative-properties" class="headerlink" title="Quantitative properties"></a>Quantitative properties</h2><h3 id="Effective-mass-k-p-approximation"><a href="#Effective-mass-k-p-approximation" class="headerlink" title="Effective mass: k-p approximation"></a>Effective mass: k-p approximation</h3><p>Near the band edge, quadratic term.</p>
+<script type="math/tex; mode=display">
+\varepsilon(\mathbf{k})=\varepsilon\left(\mathbf{k}_{0}\right)+\frac{\hbar^{2}\left(k_{x}-k_{x 0}\right)^{2}}{2 m_{x}^{*}}+\frac{\hbar^{2}\left(k_{y}-k_{y 0}\right)^{2}}{2 m_{y}^{*}}+\frac{\hbar^{2}\left(k_{z}-k_{z 0}\right)^{2}}{2 m_{z}^{*}}.</script><p>Bloch state:</p>
+<script type="math/tex; mode=display">\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r}).</script><p> Schrödinger equation on $u$ becomes</p>
+<script type="math/tex; mode=display">\left(\frac{\mathbf{p}^2}{2m}+\frac{\hbar\mathbf{k}\cdot\mathbf{p}}{m}+V(\mathbf{r})\right)u_{n\mathbf{k}}(\mathbf{r})=\left(\varepsilon_n(\mathbf{k})-\frac{\hbar^2\mathbf{k}^2}{2m}\right)u_{n\mathbf{k}}(\mathbf{r}).</script><p> Taking $\mathbf{k}_0$ to be 0, <strong>view $\mathbf{k}\cdot\mathbf{p}$ term as perturbation and the $\mathbf{k}=\mathbf{k}_0$ state as the unperturbed state</strong>, </p>
+<script type="math/tex; mode=display">\Delta\varepsilon_n^{(1)}(\mathbf{k})\propto\mathbf{k}=0</script><script type="math/tex; mode=display">\Delta \varepsilon_{n}^{(2)}(\mathbf{k})=\frac{\hbar^{2}}{m^{2}} \sum_{i} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)} k_{i}^{2}</script><p>by taking the principal axes. Finally we have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{1}{m_{i}^{*}\left(k_{i}\right)}&=\frac{1}{m}+\frac{2}{m^{2}} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)}\\
+    &=\frac{1}{m}+\frac{2}{m^2}\frac{\left\langle u_{c 0}(\mathbf{r})\left|p_{i}\right| u_{v 0}(\mathbf{r})\right\rangle\left\langle u_{v 0}(\mathbf{r})\left|p_{i}\right| u_{c 0}(\mathbf{r})\right\rangle}{\varepsilon_{\mathrm{gap}}}.\quad(\text{For conduction band})
+\end{aligned}</script><h3 id="Statistics-of-charge-carriers"><a href="#Statistics-of-charge-carriers" class="headerlink" title="Statistics of charge carriers"></a>Statistics of charge carriers</h3><p>Electrons obey Fermi-Dirac perturbation</p>
+<script type="math/tex; mode=display">f(\varepsilon)=\frac{1}{e^{\left(\varepsilon(\mathbf{k})-\mu\right)/k_BT}+1}.</script><p>Consider</p>
+<ul>
+<li>Even at room temperature, $\varepsilon_c-\mu\sim\mu-\varepsilon_v\gg k_BT.$</li>
+<li>The distribution of the hole is $1-f(\varepsilon_h)$</li>
+<li>The density of state are<script type="math/tex; mode=display">\begin{aligned}
+D_{e}\left(\varepsilon_{e}(\mathbf{k})\right)&=\frac{2\left(2 m_{e}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{e}(\mathbf{k})-\varepsilon_{c}}, \\
+D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{v}-\varepsilon_{h}(\mathbf{k})}.
+\end{aligned}</script></li>
+</ul>
+<p>We have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    n_{e}&=\frac{1}{4}\left(\frac{2 m_{e}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{c}(\mathbf{k})-\varepsilon_{F}\right) / k_{B} T},\\
+    n_{h}&=\frac{1}{4}\left(\frac{2 m_{h}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{F}-\varepsilon_{v}(\mathbf{k})\right) / k_{B} T},
+\end{aligned}</script><p>and the <strong>law of mass action</strong></p>
+<script type="math/tex; mode=display">n_e n_h=\frac{1}{2}\left(\frac{k_BT}{\pi\hbar^2}\right)^3\left(m_e^*m_h^*\right)^{3/2}e^{-\varepsilon_{\mathrm{gap}}/k_BT}.</script><h4 id="Intrinsic-semiconductor"><a href="#Intrinsic-semiconductor" class="headerlink" title="Intrinsic semiconductor"></a>Intrinsic semiconductor</h4><script type="math/tex; mode=display">n_e=n_h</script><p>Consider the expression of $n_e$ and the law of mass action</p>
+<script type="math/tex; mode=display">\mu=\frac{3}{4}\frac{k_BT}{2}\ln\left(\frac{m_h^*}{m_e^*}\right)+\frac{\varepsilon_c+\varepsilon_v}{2}.</script><h4 id="Extrinsic-semiconductor"><a href="#Extrinsic-semiconductor" class="headerlink" title="Extrinsic semiconductor"></a>Extrinsic semiconductor</h4><p>Consider only donor case. Assume donor impurity density $D_i$ and energy $\varepsilon_i$.</p>
+<script type="math/tex; mode=display">n_e=D_i\left(1-f(\varepsilon_i)\right)=D_i\frac{1}{e^{(\mu-\varepsilon_i)/k_BT}+1}.</script><p>Put the equation above and $n_e=c_e\exp\left[-(\varepsilon_c-\varepsilon_F)/k_BT\right]$ together, solve $n_e$,</p>
+<script type="math/tex; mode=display">n_{e}=\frac{-1+\sqrt{1+4\left(\frac{D_{i}}{c_{e}}\right) e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}}{\frac{2 e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}{c_{e}}}.</script><ul>
+<li>At low temperature, <script type="math/tex; mode=display">n_e\approx\sqrt{c_eD_i}e^{-(\varepsilon_c-\varepsilon_i)/2k_BT}.</script></li>
+<li>At high temperature,<script type="math/tex; mode=display">n_e\approx D_i.</script></li>
+</ul>
 ]]></content>
       <categories>
-        <category>詩歌</category>
+        <category>Physics</category>
       </categories>
       <tags>
-        <tag>献给lhp</tag>
+        <tag>Solid State Physics Course Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Why Density Operator Varies with Time in a Different Way from Heisenberg Equation?</title>
+    <url>/blog/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
+    <content><![CDATA[<p>In Heisenberg picture of quantum mechanics, there is <strong>Heisenberg equation of motion</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{heisenbergEq}
+\frac{d\hat{A}}{dt}=\frac{1}{i\hbar}\left[\hat{A},\hat{H}\right]
+\end{equation}</script><p>determining the time evolution of an operator. However, in quantum statistics, the <strong>density operator</strong> defined by</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{density operator}
+\hat{\rho}=\frac{1}{N}\sum_{k=1}^{N}\left|\alpha^k\right>\left<\alpha^k\right|
+\end{equation}</script><p>follows the equation of motion</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{equation of density operator}
+\frac{d\hat{\rho}}{dt}=\frac{1}{i\hbar}\left[\hat{H},\hat{\rho}\right],
+\end{equation}</script><p>where $N$ represents the number of ensembles and $\left|\alpha^k\right&gt;$ denotes the quantum state of the $k$th ensemble. The two equations ($\ref{heisenbergEq}$) and ($\ref{equation of density operator}$) has the opposite sign, which seems to be odd. Why is there such a difference?</p>
+<a id="more"></a>
+<p>Let’s refer to the derivation of those two equations to see the reason. First, define <strong>time evolution operator</strong> as a unitary operator satisfying</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{time evolution operator}
+i\hbar\frac{\partial}{\partial t}U(t)=\hat{H}U(t).
+\end{equation}</script><p>In <strong>Heisenberg picture</strong>, the kets are viewed unchanged while the operator changes with time like</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{heisenberg time evolution}
+\hat{A}(t)=U^\dagger(t) \hat{A}^{(S)}(t)U(t),
+\end{equation}</script><p>where $A^{(S)}$ refers to the operator in Schrödinger picture. <em>Assuming that $\hat{A}^{(S)}$ does not depend explicitly on time,</em> we have $\hat{A}^{(S)}=\hat{A}(0)$. In <strong>Schrödinger picture</strong> the operators are viewed unchanged while the kets satisfy</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{shrodinger time evolution}
+\left|\alpha(t)\right>=U(t)\left|\alpha(0)\right>.
+\end{equation}</script><p>From ($\ref{time evolution operator}$) and ($\ref{heisenberg time evolution}$), we can derive Heisenberg equation ($\ref{heisenbergEq}$) in the case that $\hat{A}^{(S)}$ is not explicitly dependent on time, and from ($\ref{time evolution operator}$) and ($\ref{shrodinger time evolution}$) we can derive <strong>Schrödinger equation</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{schrodingerEq}
+i\hbar\frac{\partial}{\partial t}\left|\alpha(t)\right>=\hat{H}\left|\alpha(t)\right>.
+\end{equation}</script><p>We now derive the equation of motion for density operation in <strong>Schödinger picture</strong>. According to ($\ref{shrodinger time evolution}$), we have</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{density time evolution}
+i\hbar\hat{\rho}(t)=U(t)\hat{\rho}(0)U^\dagger(t).
+\end{equation}</script><p>Then</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\partial t}\left|\alpha^k\right>\right)\left<\alpha^k\right|+\left|\alpha^k\right>\left(\frac{\partial}{\partial t}\left<\alpha^k\right|\right)\\
+&=\frac{1}{N}\sum_{k=1}^{N}\hat{H}\left|\alpha^k\right>\left<\alpha^k\right|-\left|\alpha^k\right>\left<\alpha^k\right|\hat{H}\\
+&=\left[\hat{H},\hat{\rho}\right].
+\end{aligned}
+\tag{3}</script><p>The equation ($\ref{equation of density operator}$) can also be derived directly by Schrödinger equation, but comparing ($\ref{density time evolution}$) and ($\ref{heisenberg time evolution}$) gives us the key to our problem: though they have the similar appearances, the former equation works in Schrödinger picture while the latter woks in Heisenberg picture, which have completely different physics contents!</p>
+<p>To have a better understanding of this problem, let’s study the density operator in Heisenberg picture. Now since the kets do not change, the density operator defined by ($\ref{density operator}$) remains the same obviously (you can also see this by ($\ref{heisenberg time evolution}$) and ($\ref{density time evolution}$)). Does this suggest that the system is always in a state of equilibrium? Of course not! We have known from ($\ref{equation of density operator}$) that in Schrödinger picture there is a condition for equilibrium that $\hat{\rho}$ and $\hat{H}$ commutes, so it is impossible that there is no requirement for equilibrium in Heisenberg picture. To clarify this problem, we need to discuss what “change with time” really means.</p>
+<p>For one particle problem, it is the average of an operator on some given state that we care about. The Heisenberg equation of motion concerns how an operator $\hat{A}$, which does not explicitly depend on time in Schrödinger picture, behaves in Heisenberg picture. As for a given set of eigenkets of some other operator $\left|n\right&gt;$, the matrix elements <script type="math/tex">A_{mn}=\left<m\right|\hat{A}\left|n\right></script> do not change in both pictures.</p>
+<p>However, for density operator $\hat{\rho}$, which generally may be explicitly dependent on time in Schrödinger picture, what we care about is the matrix elements. In Schrödinger picture, since the $\left|n\right&gt;$s do not change with time, the condition for equilibrium is that the right hand side of ($\ref{equation of density operator}$) be 0. In Heisenberg picture, we have</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+        A_{mn}&=\left<m(t)\right|\hat{\rho}(t)\left|n(t)\right>\\
+        &=\left<m(t)\right|\hat{\rho}(0)\left|n(t)\right>\\
+        &=\left<m(0)\right|U(t)\hat{\rho}(0)U^\dagger(t)\left|n(0)\right>\\
+        &=\left<m(0)\right|\hat{\rho}^{(S)}(t)\left|n(0)\right>,
+\end{aligned}
+\end{equation}</script><p>which shows that the condition for equilibrium is the same as that in Schrödinger picture.</p>
+<p>To summarize, the Heisenberg equation ($\ref{heisenbergEq}$) describes how an operator unchanged in Schrödinger picture changes with time in Heisenberg picture, while the equation ($\ref{equation of density operator}$) describes how the density operator changes in Schrödinger picture. They have similar forms but absolutely different physics.</p>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Statistical Mechanics</tag>
       </tags>
   </entry>
   <entry>
@@ -423,6 +469,39 @@ J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac
 ]]></content>
       <tags>
         <tag>隨筆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为LaTex设置VScode代码片段</title>
+    <url>/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
+    <content><![CDATA[<p>VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符<code>\par</code>输入之后再输回车，编辑器自动帮你键入了<code>\paragraph</code>；再比如每次输入行内公式，打两个<code>$</code>就很别扭。<a id="more"></a>怎么办？我们可以通过自定义代码片段的方法来使我们的输入更加便捷。</p>
+<img src="/blog/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg" class>
+<p>如图，点击<code>File&gt;Preferences&gt;Use Snippets</code>，在弹出的框中键入<code>latex</code>，打开<code>latex.json</code>，在其中写入下列代码：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;Inline math&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;inline math&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;$$1$&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;, </span><br><span class="line">	<span class="attr">&quot;par&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;par&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\par&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;table environment&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;table&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;\\begin&#123;table&#125;[$1]&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\centering&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\caption&#123;$2&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\label&#123;$3&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\begin&#123;tabular&#125;&#123;$4&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\t$5&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\end&#123;tabular&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\\end&#123;table&#125;&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial $1&#125;&#123;\\partial $2&#125;&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\prepd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial&#125;&#123;\\partial $1&#125;$2&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\dd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;$1&#125;&#123;\\mathrm&#123;d&#125;$2&#125;&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pred&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;&#125;&#123;\\mathrm&#123;d&#125;$1&#125;$2&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and </span></span><br><span class="line">	<span class="comment">// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span></span><br><span class="line">	<span class="comment">// $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the </span></span><br><span class="line">	<span class="comment">// same ids are connected.</span></span><br><span class="line">	<span class="comment">// Example:</span></span><br><span class="line">	<span class="comment">// &quot;Print to console&quot;: &#123;</span></span><br><span class="line">	<span class="comment">// 	&quot;prefix&quot;: &quot;log&quot;,</span></span><br><span class="line">	<span class="comment">// 	&quot;body&quot;: [</span></span><br><span class="line">	<span class="comment">// 		&quot;console.log(&#x27;$1&#x27;);&quot;,</span></span><br><span class="line">	<span class="comment">// 		&quot;$2&quot;</span></span><br><span class="line">	<span class="comment">// 	],</span></span><br><span class="line">	<span class="comment">// 	&quot;description&quot;: &quot;Log output to console&quot;</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后面的注释是这个文件自带的，告诉你该怎么写。写好之后，输入<code>prefix</code>的内容（甚至不需要全部输入），回车，编辑器会帮你输入整个<code>body</code>。例如在编辑时输入<code>in+Enter</code>，就输入了两个<code>$</code>，并且光标自动位于两者之间。输入完成后，按<code>Tab</code>键即可将光标移至行内公式环境之外。</p>
+]]></content>
+      <tags>
+        <tag>LaTex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>今天</title>
+    <url>/blog/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
+    <content><![CDATA[<p>今天没有什么特别的<br>无非是风吹得耳朵疼<br>无非是骑自行车手会很冷</p>
+<a id="more"></a>
+<p>有些路你走上几年<br>上面的水泥缝就像是<br>中学时代背过的课文<br>给一个提示就能重复出几句</p>
+<p>可是他们说，当飞船的舷窗<br>被油烟熏黑<br>天空就会被重新解读<br>所以你是否愿意给世界<br>一双新的眼睛，或者<br>等价地，给童话<br>一次重生的机会</p>
+<p>有些事情会渐渐陌生，比如<br>日暮时分那间教室的那扇窗户<br>窗外是大雁塔，你心里想的<br>却是试卷上好像漏掉的一个负号<br>比如一些声音和一些面孔</p>
+<p>你喜欢抚摸未读过的新书<br>想象里面会是怎样一个世界<br>但如果你喜欢，你就会<br>把它们翻旧，旧得像<br>谁也说不清在后院墙角里<br>待了多久的那块石头</p>
+<p>今天我又走过一条旧路<br>我想知道手里的新书翻开后的样子<br>但我没有看到昨夜撸到的那只小猫<br>一切都很无聊<br>我低头看到地面凹凸不平<br>我还是过于熟悉它们了</p>
+<p>所以今天仍然没有什么特别的<br>所以我今天仍然爱你</p>
+<p>幸承对诗，附链接：<a href="https://blog.lhp-pku.top/2020/12/04/%E7%8E%B0%E4%BB%A3%E8%AF%97%E4%BB%8A%E5%A4%A9/">今天——对诗</a>。</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
       </tags>
   </entry>
   <entry>
@@ -519,82 +598,51 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
       </tags>
   </entry>
   <entry>
-    <title>Why Density Operator Varies with Time in a Different Way from Heisenberg Equation?</title>
-    <url>/blog/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
-    <content><![CDATA[<p>In Heisenberg picture of quantum mechanics, there is <strong>Heisenberg equation of motion</strong></p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{heisenbergEq}
-\frac{d\hat{A}}{dt}=\frac{1}{i\hbar}\left[\hat{A},\hat{H}\right]
-\end{equation}</script><p>determining the time evolution of an operator. However, in quantum statistics, the <strong>density operator</strong> defined by</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{density operator}
-\hat{\rho}=\frac{1}{N}\sum_{k=1}^{N}\left|\alpha^k\right>\left<\alpha^k\right|
-\end{equation}</script><p>follows the equation of motion</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{equation of density operator}
-\frac{d\hat{\rho}}{dt}=\frac{1}{i\hbar}\left[\hat{H},\hat{\rho}\right],
-\end{equation}</script><p>where $N$ represents the number of ensembles and $\left|\alpha^k\right&gt;$ denotes the quantum state of the $k$th ensemble. The two equations ($\ref{heisenbergEq}$) and ($\ref{equation of density operator}$) has the opposite sign, which seems to be odd. Why is there such a difference?</p>
+    <title>你的眼睛</title>
+    <url>/blog/2021/01/17/%E4%BD%A0%E7%9A%84%E7%9C%BC%E7%9D%9B/</url>
+    <content><![CDATA[<p>她没有仰头，只是眼睛向上看着我。四目相对那一瞬间，我感觉到她的眼神里有太多东西，我立刻躲开了，但那一瞬的记忆已经是无法抹去的刻痕。在这里我会多写一些注释，交代我写出某些话是怎么想的。但丁早年所作的情诗集《新生》正是诗歌散文结合的形式，用散文讲出诗歌的背景，读来颇有意趣。当然，注释并非散文，我也绝没有把自己和但丁相提并论的意思。</p>
 <a id="more"></a>
-<p>Let’s refer to the derivation of those two equations to see the reason. First, define <strong>time evolution operator</strong> as a unitary operator satisfying</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{time evolution operator}
-i\hbar\frac{\partial}{\partial t}U(t)=\hat{H}U(t).
-\end{equation}</script><p>In <strong>Heisenberg picture</strong>, the kets are viewed unchanged while the operator changes with time like</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{heisenberg time evolution}
-\hat{A}(t)=U^\dagger(t) \hat{A}^{(S)}(t)U(t),
-\end{equation}</script><p>where $A^{(S)}$ refers to the operator in Schrödinger picture. <em>Assuming that $\hat{A}^{(S)}$ does not depend explicitly on time,</em> we have $\hat{A}^{(S)}=\hat{A}(0)$. In <strong>Schrödinger picture</strong> the operators are viewed unchanged while the kets satisfy</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{shrodinger time evolution}
-\left|\alpha(t)\right>=U(t)\left|\alpha(0)\right>.
-\end{equation}</script><p>From ($\ref{time evolution operator}$) and ($\ref{heisenberg time evolution}$), we can derive Heisenberg equation ($\ref{heisenbergEq}$) in the case that $\hat{A}^{(S)}$ is not explicitly dependent on time, and from ($\ref{time evolution operator}$) and ($\ref{shrodinger time evolution}$) we can derive <strong>Schrödinger equation</strong></p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{schrodingerEq}
-i\hbar\frac{\partial}{\partial t}\left|\alpha(t)\right>=\hat{H}\left|\alpha(t)\right>.
-\end{equation}</script><p>We now derive the equation of motion for density operation in <strong>Schödinger picture</strong>. According to ($\ref{shrodinger time evolution}$), we have</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{density time evolution}
-i\hbar\hat{\rho}(t)=U(t)\hat{\rho}(0)U^\dagger(t).
-\end{equation}</script><p>Then</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\partial t}\left|\alpha^k\right>\right)\left<\alpha^k\right|+\left|\alpha^k\right>\left(\frac{\partial}{\partial t}\left<\alpha^k\right|\right)\\
-&=\frac{1}{N}\sum_{k=1}^{N}\hat{H}\left|\alpha^k\right>\left<\alpha^k\right|-\left|\alpha^k\right>\left<\alpha^k\right|\hat{H}\\
-&=\left[\hat{H},\hat{\rho}\right].
-\end{aligned}
-\tag{3}</script><p>The equation ($\ref{equation of density operator}$) can also be derived directly by Schrödinger equation, but comparing ($\ref{density time evolution}$) and ($\ref{heisenberg time evolution}$) gives us the key to our problem: though they have the similar appearances, the former equation works in Schrödinger picture while the latter woks in Heisenberg picture, which have completely different physics contents!</p>
-<p>To have a better understanding of this problem, let’s study the density operator in Heisenberg picture. Now since the kets do not change, the density operator defined by ($\ref{density operator}$) remains the same obviously (you can also see this by ($\ref{heisenberg time evolution}$) and ($\ref{density time evolution}$)). Does this suggest that the system is always in a state of equilibrium? Of course not! We have known from ($\ref{equation of density operator}$) that in Schrödinger picture there is a condition for equilibrium that $\hat{\rho}$ and $\hat{H}$ commutes, so it is impossible that there is no requirement for equilibrium in Heisenberg picture. To clarify this problem, we need to discuss what “change with time” really means.</p>
-<p>For one particle problem, it is the average of an operator on some given state that we care about. The Heisenberg equation of motion concerns how an operator $\hat{A}$, which does not explicitly depend on time in Schrödinger picture, behaves in Heisenberg picture. As for a given set of eigenkets of some other operator $\left|n\right&gt;$, the matrix elements <script type="math/tex">A_{mn}=\left<m\right|\hat{A}\left|n\right></script> do not change in both pictures.</p>
-<p>However, for density operator $\hat{\rho}$, which generally may be explicitly dependent on time in Schrödinger picture, what we care about is the matrix elements. In Schrödinger picture, since the $\left|n\right&gt;$s do not change with time, the condition for equilibrium is that the right hand side of ($\ref{equation of density operator}$) be 0. In Heisenberg picture, we have</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-        A_{mn}&=\left<m(t)\right|\hat{\rho}(t)\left|n(t)\right>\\
-        &=\left<m(t)\right|\hat{\rho}(0)\left|n(t)\right>\\
-        &=\left<m(0)\right|U(t)\hat{\rho}(0)U^\dagger(t)\left|n(0)\right>\\
-        &=\left<m(0)\right|\hat{\rho}^{(S)}(t)\left|n(0)\right>,
-\end{aligned}
-\end{equation}</script><p>which shows that the condition for equilibrium is the same as that in Schrödinger picture.</p>
-<p>To summarize, the Heisenberg equation ($\ref{heisenbergEq}$) describes how an operator unchanged in Schrödinger picture changes with time in Heisenberg picture, while the equation ($\ref{equation of density operator}$) describes how the density operator changes in Schrödinger picture. They have similar forms but absolutely different physics.</p>
+<p>我触摸你的眼神像触摸电流<br>我好像走在悬崖边与深渊对视<br>在沉重的过去和未来间保持危险的平衡</p>
+<p>抱歉，我知道比喻是一个华丽的陷阱<br>可是我说不出一句人话</p>
+<p>我看到剑的寒光听到淬火的声音<br>我看到熊熊的炉火<br>我看到凝固的血</p>
+<p>我看到一只黑猫翻出逻辑的迷宫<br>立刻因天地的空阔而感到害怕<br>在你的脚边徘徊不去<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+<p>我看到“夜晚”这个词语最深处的颜色<br>那是一个小心翼翼的问号<br>如十月的风在试探秋水<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+<p>你的手心微潮，你的手背冰凉<br>你的眼睛让人无言以对</p>
+<p>诗或者歌是西山的落日<sup><a href="#fn_3" id="reffn_3">3</a></sup><br>（当我们再次凝望夕阳<br>日落的位置就会北移<br>你可以算出时间的流逝<sup><a href="#fn_4" id="reffn_4">4</a></sup>）<br>你执着于定义<br>转而凝视僵硬的土地<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
+<p>土地僵硬，询问春天的日期<br>孩子，春天不是神谕<sup><a href="#fn_6" id="reffn_6">6</a></sup>或古老的仪式<br>春天是你呼在我手上的那一口热气<br>春天是拥抱和颤抖</p>
+<p><sup><a href="#fn_1" id="reffn_1">1</a></sup> 去年九月和今年一月，都有一个很快乐、回宿舍回得很晚的夜晚，我们见到缠着我们不肯离去的小猫。<br><sup><a href="#fn_2" id="reffn_2">2</a></sup> 九月，我们在未名湖边度过了很多快乐的时光。十月秋风初起时，我独自在湖边，看到风把湖水吹皱，就像我们最初的试探。另外，《秋水》也是庄子的篇目。<br><sup><a href="#fn_3" id="reffn_3">3</a></sup> 她很喜欢在理科一号楼最高处看夕阳从北京的西山落下，之前她会边看边拍照，把照片发给我，最近我们经常一起看。<br><sup><a href="#fn_4" id="reffn_4">4</a></sup> 我们这几天看到日落的地点向北移动了。现在快放寒假，如果寒假回来还能一起看，那么落日将在更靠北的位置。根据角度的变化，可以算出太阳直射纬度的变化，进而算出时间。虽然我们都有日历。<br><sup><a href="#fn_5" id="reffn_5">5</a></sup> 她在伤心或纠结的时候，就不看我，而是低头看着地面。这样的时候，她会显得非常可爱，但是让人担心。<br><sup><a href="#fn_6" id="reffn_6">6</a></sup> 神谕(oracle)，计算机术语，是一个可以得到某个判定问题结果的黑盒子。</p>
 ]]></content>
       <categories>
-        <category>Physics</category>
+        <category>詩歌</category>
       </categories>
       <tags>
-        <tag>Statistical Mechanics</tag>
+        <tag>献给lhp</tag>
       </tags>
   </entry>
   <entry>
-    <title>为LaTex设置VScode代码片段</title>
-    <url>/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
-    <content><![CDATA[<p>VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符<code>\par</code>输入之后再输回车，编辑器自动帮你键入了<code>\paragraph</code>；再比如每次输入行内公式，打两个<code>$</code>就很别扭。<a id="more"></a>怎么办？我们可以通过自定义代码片段的方法来使我们的输入更加便捷。</p>
-<img src="/blog/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg" class>
-<p>如图，点击<code>File&gt;Preferences&gt;Use Snippets</code>，在弹出的框中键入<code>latex</code>，打开<code>latex.json</code>，在其中写入下列代码：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;Inline math&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;inline math&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;$$1$&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;, </span><br><span class="line">	<span class="attr">&quot;par&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;par&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\par&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;table environment&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;table&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;\\begin&#123;table&#125;[$1]&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\centering&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\caption&#123;$2&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\label&#123;$3&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\begin&#123;tabular&#125;&#123;$4&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\t$5&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\end&#123;tabular&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\\end&#123;table&#125;&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial $1&#125;&#123;\\partial $2&#125;&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\prepd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial&#125;&#123;\\partial $1&#125;$2&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\dd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;$1&#125;&#123;\\mathrm&#123;d&#125;$2&#125;&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pred&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;&#125;&#123;\\mathrm&#123;d&#125;$1&#125;$2&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and </span></span><br><span class="line">	<span class="comment">// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span></span><br><span class="line">	<span class="comment">// $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the </span></span><br><span class="line">	<span class="comment">// same ids are connected.</span></span><br><span class="line">	<span class="comment">// Example:</span></span><br><span class="line">	<span class="comment">// &quot;Print to console&quot;: &#123;</span></span><br><span class="line">	<span class="comment">// 	&quot;prefix&quot;: &quot;log&quot;,</span></span><br><span class="line">	<span class="comment">// 	&quot;body&quot;: [</span></span><br><span class="line">	<span class="comment">// 		&quot;console.log(&#x27;$1&#x27;);&quot;,</span></span><br><span class="line">	<span class="comment">// 		&quot;$2&quot;</span></span><br><span class="line">	<span class="comment">// 	],</span></span><br><span class="line">	<span class="comment">// 	&quot;description&quot;: &quot;Log output to console&quot;</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>后面的注释是这个文件自带的，告诉你该怎么写。写好之后，输入<code>prefix</code>的内容（甚至不需要全部输入），回车，编辑器会帮你输入整个<code>body</code>。例如在编辑时输入<code>in+Enter</code>，就输入了两个<code>$</code>，并且光标自动位于两者之间。输入完成后，按<code>Tab</code>键即可将光标移至行内公式环境之外。</p>
+    <title>勃拉姆斯G大调第二号弦乐六重奏第一乐章</title>
+    <url>/blog/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
+    <content><![CDATA[<p>勃拉姆斯第二号弦乐六重奏（op. 36）写于1864-1865年间，距其创作第一号六重奏（op.18, 1859-1860）已过去五年，其间他写出了两首管弦乐小夜曲、三首带有钢琴的室内乐和悲壮而甜美的第一钢琴协奏曲。相比第一钢琴协奏曲的戏剧化，这首六重奏显得温和很多；比起第一六重奏，它又显得灰暗和朴素，预示着贯穿勃拉姆斯此后大部分成熟作品的内敛气质。另外，这首六重奏，也展示出着勃拉姆斯在作曲技法——尤其是对位法——上的全面提高。</p>
+<a id="more"></a>
+<hr>
+<p>我们要介绍的第一乐章为3/4拍，奏鸣曲式，带有一段尾声。</p>
+<p>中提琴在G大调主音和导音之间小二度的颤音式音型，揭开了第一乐章的序幕，也为第一主题铺下了一层不安的背景。第一主题的旋律由两个相继的纯五度上行开始，一个在主音G上，一个在和声关系较远的降E上，神秘的气氛顿出。随后旋律是连续的跳进，和声则徘徊于G大调和降E大调之间，回归到G，中提琴的颤音音型被更丰富的对位所取代。小提琴接过颤音后，大提琴再次奏出第一主题的旋律，而此时单纯的颤音中加入了上行和下行，加入了舞动的和弦分解，带来变化和一丝微光。</p>
+<p>大提、中提、小提交错奏出一连串急促的下行，紧张的小幅摆动和典型的“叹息”动机结合，乐曲如此过渡到D大调上的第二主题。第二主题的旋律首先由大提琴奏出，再由小提琴接过。起初如梦幻般甜蜜优美，逐渐变得活泼，达到高潮时，音乐的形象热情而坚定，但级进后的向下五度大跳却给热情带来了某些宿命般的节制，这种节制在随后弱奏地重复高潮旋律时，带上了更浓郁的悲观色彩。</p>
+<p>展开部和再现部不必赘述。值得一提的是，室内乐中不同乐器的“对话”在这首作品中得到了充分的展现，营造出重叠往复、连绵不绝的效果，在形式和内容上都增加了音乐的厚度，也体现出勃拉姆斯高超的对位技巧。其例子随处可见，此不再逐一分析，听者宜自行体会。</p>
+<hr>
+<p>很多分析者认为，勃拉姆斯这部作品与他和哥廷根一位教授之女Agathe von Siebold的爱情有关。勃拉姆斯于1859年和Agathe订婚，但最终因为他焦虑与骄傲混合的奇异心态，他们解除了婚约。然而，即使在他们分开之后，勃拉姆斯给她的信中也写道：“我爱你，我一定要再见到你，但我无法忍受束缚。请给我写信，告诉我我是否要回到你身边，拥抱你，亲吻你，向你说我爱你。”但他们实际上从未再见面。有传记作者认为，这部作品第一乐章中第二主题结尾高潮处的A-G-A-H-E, 可以看作对Agathe名字的化用。若真是如此，这一乐章中的神秘、不安、热情和梦幻般的温柔，也可被看作是对逝去爱情的追忆、无奈和叹息。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms">https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Johannes_Brahms">https://en.wikipedia.org/wiki/Johannes_Brahms</a></li>
+<li><a href="http://kellydeanhansen.com/opus36.html">http://kellydeanhansen.com/opus36.html</a></li>
+<li><a href="https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36">https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36</a></li>
+</ul>
 ]]></content>
+      <categories>
+        <category>音樂評論</category>
+      </categories>
       <tags>
-        <tag>LaTex</tag>
+        <tag>献给lhp</tag>
       </tags>
   </entry>
   <entry>
@@ -636,28 +684,6 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
       </tags>
   </entry>
   <entry>
-    <title>你的眼睛</title>
-    <url>/blog/2021/01/17/%E4%BD%A0%E7%9A%84%E7%9C%BC%E7%9D%9B/</url>
-    <content><![CDATA[<p>她没有仰头，只是眼睛向上看着我。四目相对那一瞬间，我感觉到她的眼神里有太多东西，我立刻躲开了，但那一瞬的记忆已经是无法抹去的刻痕。在这里我会多写一些注释，交代我写出某些话是怎么想的。但丁早年所作的情诗集《新生》正是诗歌散文结合的形式，用散文讲出诗歌的背景，读来颇有意趣。当然，注释并非散文，我也绝没有把自己和但丁相提并论的意思。</p>
-<a id="more"></a>
-<p>我触摸你的眼神像触摸电流<br>我好像走在悬崖边与深渊对视<br>在沉重的过去和未来间保持危险的平衡</p>
-<p>抱歉，我知道比喻是一个华丽的陷阱<br>可是我说不出一句人话</p>
-<p>我看到剑的寒光听到淬火的声音<br>我看到熊熊的炉火<br>我看到凝固的血</p>
-<p>我看到一只黑猫翻出逻辑的迷宫<br>立刻因天地的空阔而感到害怕<br>在你的脚边徘徊不去<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
-<p>我看到“夜晚”这个词语最深处的颜色<br>那是一个小心翼翼的问号<br>如十月的风在试探秋水<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p>你的手心微潮，你的手背冰凉<br>你的眼睛让人无言以对</p>
-<p>诗或者歌是西山的落日<sup><a href="#fn_3" id="reffn_3">3</a></sup><br>（当我们再次凝望夕阳<br>日落的位置就会北移<br>你可以算出时间的流逝<sup><a href="#fn_4" id="reffn_4">4</a></sup>）<br>你执着于定义<br>转而凝视僵硬的土地<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
-<p>土地僵硬，询问春天的日期<br>孩子，春天不是神谕<sup><a href="#fn_6" id="reffn_6">6</a></sup>或古老的仪式<br>春天是你呼在我手上的那一口热气<br>春天是拥抱和颤抖</p>
-<p><sup><a href="#fn_1" id="reffn_1">1</a></sup> 去年九月和今年一月，都有一个很快乐、回宿舍回得很晚的夜晚，我们见到缠着我们不肯离去的小猫。<br><sup><a href="#fn_2" id="reffn_2">2</a></sup> 九月，我们在未名湖边度过了很多快乐的时光。十月秋风初起时，我独自在湖边，看到风把湖水吹皱，就像我们最初的试探。另外，《秋水》也是庄子的篇目。<br><sup><a href="#fn_3" id="reffn_3">3</a></sup> 她很喜欢在理科一号楼最高处看夕阳从北京的西山落下，之前她会边看边拍照，把照片发给我，最近我们经常一起看。<br><sup><a href="#fn_4" id="reffn_4">4</a></sup> 我们这几天看到日落的地点向北移动了。现在快放寒假，如果寒假回来还能一起看，那么落日将在更靠北的位置。根据角度的变化，可以算出太阳直射纬度的变化，进而算出时间。虽然我们都有日历。<br><sup><a href="#fn_5" id="reffn_5">5</a></sup> 她在伤心或纠结的时候，就不看我，而是低头看着地面。这样的时候，她会显得非常可爱，但是让人担心。<br><sup><a href="#fn_6" id="reffn_6">6</a></sup> 神谕(oracle)，计算机术语，是一个可以得到某个判定问题结果的黑盒子。</p>
-]]></content>
-      <categories>
-        <category>詩歌</category>
-      </categories>
-      <tags>
-        <tag>献给lhp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在博客中插入數學公式</title>
     <url>/blog/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
@@ -672,6 +698,53 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
         <tag>hexo</tag>
         <tag>排版</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>幾首舊詩</title>
+    <url>/blog/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/</url>
+    <content><![CDATA[<p>最近抽空整理一些舊作放在這個站點。本文收錄的幾篇都和之前一次愛情相關，覆蓋了愛情從產生到結束的全過程。</p>
+<a id="more"></a>
+<p>第一首《筆》是一首晦澀的情詩，大意是回憶起我曾經用這隻筆寫過宏大的理想，寫過對愛情的期待，而如今，這隻筆所寫的文字，終於有了情感上的歸屬。</p>
+<p>隨後是一段“三行情書”。當時網上在搞高校三行情書大賽，我跟風寫了幾句，寫的是北京的秋風讓湖中月亮的倒影支離破碎，我想舀一勺水，小心護住，於是月亮的倒影便應完整，我把它餵給她。這裏面“一勺”當然有雙關之意，月亮自然亦有其象徵。</p>
+<p>後兩首是悲嘆。只需提兩件小事，其一是她曾用月亮的隱喻向我傳達心意；其二是我們曾一起去香山看紅葉——這大概是最美好的回憶了。</p>
+<p>過去的事，應該也的確已經過去。對於我這樣的人，忘記是不可能的——她的聲音、她的形象已經在記憶中漸漸模糊，那些刺痛人的事情也早已變得無所謂，唯有愛與歡樂令人無法忘懷。</p>
+<p>希望我的整理不構成冒犯，也祝你一切順利。</p>
+<h2 id="筆"><a href="#筆" class="headerlink" title="筆"></a>筆</h2><p>——獻給親愛的G</p>
+<p>京城的十月<br>舊稿紙同古老的秋思<br>從窗口漏進</p>
+<p>孤燈面色蒼白<br>你的影子跳動<br>在漂亮詞語的旌旗下<br>集結起千軍萬馬</p>
+<p>你獨自構建花園<br>準備向每個人發出邀請<br>然後等待春風</p>
+<p>木葉未脫已被陽光染黃<br>陽光竟有些溫暖<br>又一次集結文字<br>你已不再是浪子</p>
+<p>11/10/18</p>
+<h2 id="三行情書"><a href="#三行情書" class="headerlink" title="三行情書"></a>三行情書</h2><p>——獻給親愛的G</p>
+<p>舀一勺未名湖水<br>拼好被大風撕碎的月亮<br>餵進你的嘴裏</p>
+<p>01/11/18</p>
+<h2 id="冬夜湖畔即景"><a href="#冬夜湖畔即景" class="headerlink" title="冬夜湖畔即景"></a>冬夜湖畔即景</h2><p>湖面的冰有多厚<br>凝固了路燈的淚水<br>落葉是死士<br>爲暴君醉臥沙場</p>
+<p>自行車在呻吟<br>控訴遠方天際的紅光<br>一隻肥貓趴在石頭上<br>吃盒子裏的豆豆</p>
+<p>孤星狡黠的目光<br>誰的歌聲謀殺了誰<br>塔身自沉湖底<br>找不到彼時的月亮</p>
+<p>04/14/18</p>
+<h2 id="無題"><a href="#無題" class="headerlink" title="無題"></a>無題</h2><p>隔着窗，我感到樓外的寒意。我變成一縷煙，從宿舍樓道散了出去。<br>我在月亮被吃掉的上半邊凝結，抹去的星星重新浮現。地面上，傷感的詩人怕星被風吹落，但風吹落的從來不是星星。<br>月宮裏廣播着京城的風聲，跳動的波峯波谷，不能加載縮在帽子裏的頭、凍紅的耳朵。我架起望遠鏡，望見冰凍的眼球。我觸犯了蟾宮的清規。<br>眼裏的影：有人在熟悉的地方構造出彩虹，他不懂欣賞，他懂光學。彩虹消失了，他還在計算。<br>我謀殺了守衛者，逃回戒備森嚴的城市，用他的血染紅滿山的葉，供人們欣賞。<br>人來人往，我躲在街邊，搜集未完成的故事，把它們傳給未來。我回到夢裏，把它們寫完。<br>夢醒了，我進入了另一個夢——我變成風，想撩撩路人的頭髮，帽子阻止了我。</p>
+<p>28/12/18</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我的信仰</title>
+    <url>/blog/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
+    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
+<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
+<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
+<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
+<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
+<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
+<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
+<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
+<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
+]]></content>
+      <categories>
+        <category>隨筆</category>
+      </categories>
   </entry>
   <entry>
     <title>小delta到底是个啥</title>
@@ -901,32 +974,6 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </tags>
   </entry>
   <entry>
-    <title>勃拉姆斯G大调第二号弦乐六重奏第一乐章</title>
-    <url>/blog/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
-    <content><![CDATA[<p>勃拉姆斯第二号弦乐六重奏（op. 36）写于1864-1865年间，距其创作第一号六重奏（op.18, 1859-1860）已过去五年，其间他写出了两首管弦乐小夜曲、三首带有钢琴的室内乐和悲壮而甜美的第一钢琴协奏曲。相比第一钢琴协奏曲的戏剧化，这首六重奏显得温和很多；比起第一六重奏，它又显得灰暗和朴素，预示着贯穿勃拉姆斯此后大部分成熟作品的内敛气质。另外，这首六重奏，也展示出着勃拉姆斯在作曲技法——尤其是对位法——上的全面提高。</p>
-<a id="more"></a>
-<hr>
-<p>我们要介绍的第一乐章为3/4拍，奏鸣曲式，带有一段尾声。</p>
-<p>中提琴在G大调主音和导音之间小二度的颤音式音型，揭开了第一乐章的序幕，也为第一主题铺下了一层不安的背景。第一主题的旋律由两个相继的纯五度上行开始，一个在主音G上，一个在和声关系较远的降E上，神秘的气氛顿出。随后旋律是连续的跳进，和声则徘徊于G大调和降E大调之间，回归到G，中提琴的颤音音型被更丰富的对位所取代。小提琴接过颤音后，大提琴再次奏出第一主题的旋律，而此时单纯的颤音中加入了上行和下行，加入了舞动的和弦分解，带来变化和一丝微光。</p>
-<p>大提、中提、小提交错奏出一连串急促的下行，紧张的小幅摆动和典型的“叹息”动机结合，乐曲如此过渡到D大调上的第二主题。第二主题的旋律首先由大提琴奏出，再由小提琴接过。起初如梦幻般甜蜜优美，逐渐变得活泼，达到高潮时，音乐的形象热情而坚定，但级进后的向下五度大跳却给热情带来了某些宿命般的节制，这种节制在随后弱奏地重复高潮旋律时，带上了更浓郁的悲观色彩。</p>
-<p>展开部和再现部不必赘述。值得一提的是，室内乐中不同乐器的“对话”在这首作品中得到了充分的展现，营造出重叠往复、连绵不绝的效果，在形式和内容上都增加了音乐的厚度，也体现出勃拉姆斯高超的对位技巧。其例子随处可见，此不再逐一分析，听者宜自行体会。</p>
-<hr>
-<p>很多分析者认为，勃拉姆斯这部作品与他和哥廷根一位教授之女Agathe von Siebold的爱情有关。勃拉姆斯于1859年和Agathe订婚，但最终因为他焦虑与骄傲混合的奇异心态，他们解除了婚约。然而，即使在他们分开之后，勃拉姆斯给她的信中也写道：“我爱你，我一定要再见到你，但我无法忍受束缚。请给我写信，告诉我我是否要回到你身边，拥抱你，亲吻你，向你说我爱你。”但他们实际上从未再见面。有传记作者认为，这部作品第一乐章中第二主题结尾高潮处的A-G-A-H-E, 可以看作对Agathe名字的化用。若真是如此，这一乐章中的神秘、不安、热情和梦幻般的温柔，也可被看作是对逝去爱情的追忆、无奈和叹息。</p>
-<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms">https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms</a>)</li>
-<li><a href="https://en.wikipedia.org/wiki/Johannes_Brahms">https://en.wikipedia.org/wiki/Johannes_Brahms</a></li>
-<li><a href="http://kellydeanhansen.com/opus36.html">http://kellydeanhansen.com/opus36.html</a></li>
-<li><a href="https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36">https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>音樂評論</category>
-      </categories>
-      <tags>
-        <tag>献给lhp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>旧事闲叙</title>
     <url>/blog/2019/09/03/%E6%97%A7%E4%BA%8B%E9%97%B2%E5%8F%99/</url>
     <content><![CDATA[<p>今天看到母校开学推送里一张照片，思路忽然不可抑制地弥散开去，想到诸多旧事。 </p>
@@ -942,53 +989,6 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
 <p>高中的我开始怀念起初中。怀念考完试昏昏沉沉地走出行政楼时，斜阳下那方美丽小花园的景色；怀念音乐课唱歌被身边可爱的同学嘲讽，出教室后脸上热热的感觉；怀念语文课上红乾大叔天文地理历史政治信手拈来时，他那带点鼻音的普通话；怀念英语课上我借着语言陌生感的庇护写出的那些幻想，被老师大声宣读的满足感；怀念我坐在窗前书桌读历史，看窗框的影子从书的一段滑向另一端的那个下午；怀念我面对敲窗夜雨和雨中孤灯，写下一首首从未寄出的情诗的夜晚；怀念运动会观众席上看书时，节奏明快的背景音乐和念稿人无病呻吟的播音；怀念……可是等等，初中时的我，难道不是分明地憎恨着现实的逼仄，幻想着美好的未来吗？那时的我，不是也在一面为每一次考试而担心，一面说着“大不了放弃高考”的大话吗？ </p>
 <p>回首过去，略微区分开现实和幻想之后，即使它们都难免混进后来的解读，我仍然清楚地发现，随着时间的推移，现实变得越来越接近理想，也变得越来越不可能到达理想，这时我的幻想也变得越来越现实。走在临潼九月的街道上，余威未散的阳光、清凉的风和似乎毫不相干的人群里，我看到一个本质上无聊的故事：爱幻想的孩子总是在现实里挣扎，但过去的幻想与过去的挣扎混为一体，把回忆推进了一片云雾缭绕的仙境之中，而幻想的空间，则不断从未来流向曾经。 </p>
 <p>我想起了小时候无聊时打发时间的游戏：给一个细长的塑料袋充点气，封上口，用两个手指夹着从一头捋向另一头。开始时，气全在一边，然后不断从指缝中流过，手走到尽头，意味着空气已经全部溜到了手的另一侧。 </p>
-]]></content>
-      <categories>
-        <category>隨筆</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>幾首舊詩</title>
-    <url>/blog/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/</url>
-    <content><![CDATA[<p>最近抽空整理一些舊作放在這個站點。本文收錄的幾篇都和之前一次愛情相關，覆蓋了愛情從產生到結束的全過程。</p>
-<a id="more"></a>
-<p>第一首《筆》是一首晦澀的情詩，大意是回憶起我曾經用這隻筆寫過宏大的理想，寫過對愛情的期待，而如今，這隻筆所寫的文字，終於有了情感上的歸屬。</p>
-<p>隨後是一段“三行情書”。當時網上在搞高校三行情書大賽，我跟風寫了幾句，寫的是北京的秋風讓湖中月亮的倒影支離破碎，我想舀一勺水，小心護住，於是月亮的倒影便應完整，我把它餵給她。這裏面“一勺”當然有雙關之意，月亮自然亦有其象徵。</p>
-<p>後兩首是悲嘆。只需提兩件小事，其一是她曾用月亮的隱喻向我傳達心意；其二是我們曾一起去香山看紅葉——這大概是最美好的回憶了。</p>
-<p>過去的事，應該也的確已經過去。對於我這樣的人，忘記是不可能的——她的聲音、她的形象已經在記憶中漸漸模糊，那些刺痛人的事情也早已變得無所謂，唯有愛與歡樂令人無法忘懷。</p>
-<p>希望我的整理不構成冒犯，也祝你一切順利。</p>
-<h2 id="筆"><a href="#筆" class="headerlink" title="筆"></a>筆</h2><p>——獻給親愛的G</p>
-<p>京城的十月<br>舊稿紙同古老的秋思<br>從窗口漏進</p>
-<p>孤燈面色蒼白<br>你的影子跳動<br>在漂亮詞語的旌旗下<br>集結起千軍萬馬</p>
-<p>你獨自構建花園<br>準備向每個人發出邀請<br>然後等待春風</p>
-<p>木葉未脫已被陽光染黃<br>陽光竟有些溫暖<br>又一次集結文字<br>你已不再是浪子</p>
-<p>11/10/18</p>
-<h2 id="三行情書"><a href="#三行情書" class="headerlink" title="三行情書"></a>三行情書</h2><p>——獻給親愛的G</p>
-<p>舀一勺未名湖水<br>拼好被大風撕碎的月亮<br>餵進你的嘴裏</p>
-<p>01/11/18</p>
-<h2 id="冬夜湖畔即景"><a href="#冬夜湖畔即景" class="headerlink" title="冬夜湖畔即景"></a>冬夜湖畔即景</h2><p>湖面的冰有多厚<br>凝固了路燈的淚水<br>落葉是死士<br>爲暴君醉臥沙場</p>
-<p>自行車在呻吟<br>控訴遠方天際的紅光<br>一隻肥貓趴在石頭上<br>吃盒子裏的豆豆</p>
-<p>孤星狡黠的目光<br>誰的歌聲謀殺了誰<br>塔身自沉湖底<br>找不到彼時的月亮</p>
-<p>04/14/18</p>
-<h2 id="無題"><a href="#無題" class="headerlink" title="無題"></a>無題</h2><p>隔着窗，我感到樓外的寒意。我變成一縷煙，從宿舍樓道散了出去。<br>我在月亮被吃掉的上半邊凝結，抹去的星星重新浮現。地面上，傷感的詩人怕星被風吹落，但風吹落的從來不是星星。<br>月宮裏廣播着京城的風聲，跳動的波峯波谷，不能加載縮在帽子裏的頭、凍紅的耳朵。我架起望遠鏡，望見冰凍的眼球。我觸犯了蟾宮的清規。<br>眼裏的影：有人在熟悉的地方構造出彩虹，他不懂欣賞，他懂光學。彩虹消失了，他還在計算。<br>我謀殺了守衛者，逃回戒備森嚴的城市，用他的血染紅滿山的葉，供人們欣賞。<br>人來人往，我躲在街邊，搜集未完成的故事，把它們傳給未來。我回到夢裏，把它們寫完。<br>夢醒了，我進入了另一個夢——我變成風，想撩撩路人的頭髮，帽子阻止了我。</p>
-<p>28/12/18</p>
-]]></content>
-      <categories>
-        <category>詩歌</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我的信仰</title>
-    <url>/blog/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
-    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
-<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
-<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
-<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
-<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
-<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
-<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
-<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
-<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
 ]]></content>
       <categories>
         <category>隨筆</category>
@@ -1015,20 +1015,6 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       <categories>
         <category>詩歌</category>
       </categories>
-  </entry>
-  <entry>
-    <title>色彩</title>
-    <url>/blog/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
-    <content><![CDATA[<p>——致这个美丽而变动不居的秋天</p>
-<a id="more"></a>
-<p>深秋——我也不知道什么是深秋<br>词语如落叶堆积于僵硬的土地<br>风鉴别并摧折无依的希望<br>排演晦暗的仪式<br>仪式<br>楚地的巫者临风怳然唱着苍茫的歌<br>湘水默默地吞噬古老的抒情<br>一代代漂泊者走过无边落木<br>直到世界悄然变换色彩<br>你如一场细密的和弦落入我的双眼<br>以泥土和青草的气息你许诺一个花园<br>你撷取远方的隐喻解读晦涩的暗香<br>和露水谈起日暮的伯劳与南塘的莲子<br>然后你歌唱曾经很盛大的夏日<br>直到你悄然变换色彩<br>于是我想起北四环的路灯<br>于是我想起城墙下的地铁<br>于是我想起水泥地防盗网和沾了油的招牌<br>想起落日下的紫藤萝和晨风中的桂花香<br>于是我想起走廊漏进的冷气暗白的灯光和混乱的读书声<br>想起矮墙边的自行车和迫不及待的脚步<br>我撕开窗前的爬山虎听到一夜脚步匆匆<br>直到我悄然变换色彩<br>推演未来的笔在稿纸上迟疑<br>时空在纷繁的角标中扭曲<br>我透过场方程看到宇宙再看到你的眼睛<br>看到玻璃酒杯间跳动的懒散的灯光<br>我无视引力理论的警告<br>走进你的旋律然后迷路<br>和正确的和声交换舞步<br>目睹你占领星空<br>直到我们悄然变换色彩<br>变换色彩是日出<br>我看到你脚踩的是黄亮黄亮的银杏叶<br>你看到深绿到深红的层次里<br>借着夜的庇护散溢的言语不知该放在何处<br>你看到几片秋叶飘落如无依的希望<br>没有什么仪式<br>未名湖倒影平静<br>你为词语而惶惑<br>直到世界悄然变换色彩<br>我回头<br>只有空荡荡的深秋</p>
-]]></content>
-      <categories>
-        <category>詩歌</category>
-      </categories>
-      <tags>
-        <tag>献给lhp</tag>
-      </tags>
   </entry>
   <entry>
     <title>纠缠和统计力学的基础</title>
@@ -1114,18 +1100,6 @@ V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle
       </categories>
   </entry>
   <entry>
-    <title>關於這個博客</title>
-    <url>/blog/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
-<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
-<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
-<p>聽起來是很有趣罷。</p>
-]]></content>
-      <categories>
-        <category>隨筆</category>
-      </categories>
-  </entry>
-  <entry>
     <title>诗两首</title>
     <url>/blog/2020/10/19/%E8%AF%97%E4%B8%A4%E9%A6%96/</url>
     <content><![CDATA[<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>你是深渊<br>你是无眠的夜<br>你是大都市的玻璃幕墙<br>你是荒郊的野火</p>
@@ -1151,6 +1125,32 @@ V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle
       <tags>
         <tag>献给lhp</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>色彩</title>
+    <url>/blog/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
+    <content><![CDATA[<p>——致这个美丽而变动不居的秋天</p>
+<a id="more"></a>
+<p>深秋——我也不知道什么是深秋<br>词语如落叶堆积于僵硬的土地<br>风鉴别并摧折无依的希望<br>排演晦暗的仪式<br>仪式<br>楚地的巫者临风怳然唱着苍茫的歌<br>湘水默默地吞噬古老的抒情<br>一代代漂泊者走过无边落木<br>直到世界悄然变换色彩<br>你如一场细密的和弦落入我的双眼<br>以泥土和青草的气息你许诺一个花园<br>你撷取远方的隐喻解读晦涩的暗香<br>和露水谈起日暮的伯劳与南塘的莲子<br>然后你歌唱曾经很盛大的夏日<br>直到你悄然变换色彩<br>于是我想起北四环的路灯<br>于是我想起城墙下的地铁<br>于是我想起水泥地防盗网和沾了油的招牌<br>想起落日下的紫藤萝和晨风中的桂花香<br>于是我想起走廊漏进的冷气暗白的灯光和混乱的读书声<br>想起矮墙边的自行车和迫不及待的脚步<br>我撕开窗前的爬山虎听到一夜脚步匆匆<br>直到我悄然变换色彩<br>推演未来的笔在稿纸上迟疑<br>时空在纷繁的角标中扭曲<br>我透过场方程看到宇宙再看到你的眼睛<br>看到玻璃酒杯间跳动的懒散的灯光<br>我无视引力理论的警告<br>走进你的旋律然后迷路<br>和正确的和声交换舞步<br>目睹你占领星空<br>直到我们悄然变换色彩<br>变换色彩是日出<br>我看到你脚踩的是黄亮黄亮的银杏叶<br>你看到深绿到深红的层次里<br>借着夜的庇护散溢的言语不知该放在何处<br>你看到几片秋叶飘落如无依的希望<br>没有什么仪式<br>未名湖倒影平静<br>你为词语而惶惑<br>直到世界悄然变换色彩<br>我回头<br>只有空荡荡的深秋</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>關於這個博客</title>
+    <url>/blog/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
+<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
+<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
+<p>聽起來是很有趣罷。</p>
+]]></content>
+      <categories>
+        <category>隨筆</category>
+      </categories>
   </entry>
   <entry>
     <title>灯笼</title>
