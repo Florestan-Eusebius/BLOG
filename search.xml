@@ -1,59 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Quantum noise and quantum operations</title>
-    <url>/blog/2020/10/19/Quantum-noise-and-quantum-operations/</url>
-    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
-<p>Closed quantum systems, without noise.</p>
-<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
-<a id="more"></a>
-<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
-<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
+    <title>Crank-Nicolson Method for Solving 1D Schrödinger Equation</title>
+    <url>/blog/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
+    <content><![CDATA[<p>To solve a one-dimensional time-dependent Schrödinger equation numerically, consider a difference method. </p>
+<a id="more"></a> 
+<p> The equation to be solved is</p>
 <script type="math/tex; mode=display">
-\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
-<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
+\mathrm{i}\hbar\frac{\partial \psi(x, t)}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^{2} \psi(x, t)}{\partial x^{2}}+V(x, t) \psi(x, t).</script><p>Discretise the $x$, and denote $x_j=j\Delta x, j=1,\cdots,L$ and $\psi(x_j)=\psi_j$ To perform the difference, define the discretised Hamiltonian $H_D$ as</p>
 <script type="math/tex; mode=display">
-\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
-<p>Three equivalent seperate ways to understand quantum operation:</p>
-<ul>
-<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
-<li>Operator-sum representation: abstract, convenient in mathematics.</li>
-<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
-</ul>
-<blockquote>
-<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
-<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
+ H_D\psi_j=-\frac{\hbar^2}{2m}\frac{1}{\Delta x^2}\left[\psi_{j-1}+\psi_{j+1}-2\psi_j\right]+V_j\psi_j,</script><p>which can be viewed as a matrix performed on a vector $(\psi_1,\cdots,\psi_L)$. Discretise the time and denote $\psi(t_n)=\psi(n\Delta t)=\psi^n$. A trivial differential method is</p>
 <script type="math/tex; mode=display">
- \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
-</blockquote>
-<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
-<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
+\mathrm{i}\hbar\frac{1}{\Delta t}(\psi^n_{j+1}-\psi^n_j)=H_D\psi^n_j,</script><p>i.e.,</p>
 <script type="math/tex; mode=display">
-\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
-<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
-<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
-<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
-<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
+\psi^{n+1}_j=\left(1-\mathrm{i}\Delta t H_D/\hbar\right)\psi^n_j.</script><p>To check the stability of such a method, consider the analytical solution to the discretised equation for $V_j$ constant</p>
 <script type="math/tex; mode=display">
-\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
-<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
+\psi^n_j=\xi^n\exp(\mathrm{i}kj\Delta x),</script><p>which yields</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
-    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
-    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
-\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
+\xi=1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right].</script><p>For any $\Delta x$ and $\Delta t$, $|\xi|&gt;1$, indicating that this method is always unstable.</p>
+<p> A modification of this method is to replace the discretisation form by</p>
 <script type="math/tex; mode=display">
-\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
-<blockquote>
-<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
-</blockquote>
+\psi^{n+1}_j=\psi^n_j-\mathrm{i}\Delta t H_D/\hbar\psi^{n+1}_j,</script><p>i.e., </p>
+<script type="math/tex; mode=display">
+    \psi_{j}^{n+1}=\sum_{j'}\left(1+\mathrm{i} \Delta t H_D/\hbar\right)_{jj'}^{-1} \psi_{j'}^{n}</script><p>One can check that in this method</p>
+<script type="math/tex; mode=display">
+\xi=\frac{1}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which indicates that this method is always stable. However, the time evolution $\left(1+\mathrm{i} \Delta t H_D/\hbar\right)^{-1}$ is still not unitary, so that it does not preserve the norm of the wave function.</p>
+<p>A further modification is to set the time evolution as</p>
+<script type="math/tex; mode=display">
+    \frac{1-\mathrm{i}\Delta tH_D/2\hbar}{1+\mathrm{i}\Delta t H_D/2\hbar}.</script><p>To evaluate the stability,</p>
+<script type="math/tex; mode=display">
+\xi=\frac{1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which ensure the stability for any choice of $\Delta x$ and $\Delta t$. </p>
+<p>The third method is called Crank-Nicolson method. It is an implicit form and requires an inverse of a tridiagonal matrix, whose time cost is $\mathcal{O}(L)$. To calculate the time evolution, one need to perform matrix products, whose time cost is $\mathcal{O}(L^2)$.</p>
+<p>The code for this method with a periodic boundary condition can be found at <a href="https://github.com/Florestan-Eusebius/Crank-Nicolson-Solver">Florestan-Eusebius/Crank-Nicolson-Solver: The Crank Nicolson Solver to solve 1D time dependent Schrödinger equation. (github.com)</a>, where the harmonic oscillator is tested as an example. We see that result calculated by this method agrees with the theoretical result perfectly. </p>
 ]]></content>
       <categories>
         <category>Physics</category>
       </categories>
       <tags>
-        <tag>Quantum Information</tag>
+        <tag>Computational Methods</tag>
       </tags>
   </entry>
   <entry>
@@ -137,6 +121,110 @@ S=-k_B\operatorname{Tr}\left(\rho\ln\rho\right),</script><p>or equivalently, to 
       </categories>
       <tags>
         <tag>Quantum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quantum noise and quantum operations</title>
+    <url>/blog/2020/10/19/Quantum-noise-and-quantum-operations/</url>
+    <content><![CDATA[<p><strong>Not finished yet!</strong></p>
+<p>Closed quantum systems, without noise.</p>
+<p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
+<a id="more"></a>
+<h2 id="Classical-noise-and-Markov-peocesses"><a href="#Classical-noise-and-Markov-peocesses" class="headerlink" title="Classical noise and Markov peocesses"></a>Classical noise and Markov peocesses</h2><p>Bits will flip with probability $p$ in magnetic fields (noise).</p>
+<p>Assume that the consecutive noise process act independently, which results in a stochastic process known as a <em>Markov process</em>. That is, for a single stage process the output probabilities $\vec{q}$ are related to the input probabilities $\vec{p}$ by the equation</p>
+<script type="math/tex; mode=display">
+\vec{q}=E\vec{p}.</script><p>where $E$ is <em>evolution matrix</em>. This is a linear relationship. Two requirements on $E$: 1) entries of $E$ must be non-negative; 2) all the columns of $E$ must sum to one.</p>
+<h2 id="Quantum-operations"><a href="#Quantum-operations" class="headerlink" title="Quantum operations"></a>Quantum operations</h2><p>Describe quantum states by density operator. Quantum states transform is described as</p>
+<script type="math/tex; mode=display">
+\rho'=\mathcal{E}(\rho) .</script><p>The map $\mathcal{E}$ is called a quantum operation.</p>
+<p>Three equivalent seperate ways to understand quantum operation:</p>
+<ul>
+<li>System coupled to environment: easy to relate to the real world, but mathematically inconvenient.</li>
+<li>Operator-sum representation: abstract, convenient in mathematics.</li>
+<li>Physically motivated axioms: general, but not easy to calculate and has no concrete nature.</li>
+</ul>
+<blockquote>
+<h3 id="Eamples"><a href="#Eamples" class="headerlink" title="Eamples"></a>Eamples</h3><p><strong>Unitary evolutions</strong>: $\mathcal{E}(\rho)=U\rho U^\dagger$.</p>
+<p><strong>Measurement as quantum operation</strong>: Mearement operator $\sum_mM_m^\dagger M_m=I$. For $\mathcal{E}_m(\rho)\equiv M_m\rho M_m^\dagger$, the state after mearement is </p>
+<script type="math/tex; mode=display">
+ \frac{\mathcal{E}_m(\rho)}{\operatorname{tr}\left(\mathcal{E}_m(\rho)\right)},</script><p>with probability $p(m)=\operatorname{tr}\mathcal{E}_m(\rho)$.</p>
+</blockquote>
+<h3 id="Environment-and-quantum-operations"><a href="#Environment-and-quantum-operations" class="headerlink" title="Environment and quantum operations"></a>Environment and quantum operations</h3><blockquote>
+<p>A quantum operation of a <em>principal system</em> interacting with environment is defined as</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\operatorname{tr}_{\rm{env}}\left[U\left(\rho\otimes\rho_{\rm{env}}\right)U^\dagger\right].</script></blockquote>
+<p>An important assumption is made in this definition – we assume that the system and the environment start in a product state. This is for practical reasons. However,  the quantum operations formalism can even describe quantum dynamics when the system and environment do not start out in a product state.</p>
+<p>If the principal system has a Hilbert space of $d$ dimensions, then it suffices to model the environment as being in a Hilbert space of no more than $d^2$ dimensions. It also turns out not to be necessary for the environment to start out in a mixed state; a pure state will do. </p>
+<p>We can generalize the definition by defining quantum operations as the class of maps which arise as a result of the following processes: some initial system is prepared in an unknown quantum state $\rho$, and then brought into contact with other systems prepared in standard states, allowed to interact according to some unitary interaction, and then some part of the combined system is discarded, leaving just a final system in some state $\rho’$. The quantum operation $\mathcal{E}$ defining this process simply maps $\rho$ to $\rho’$. </p>
+<h3 id="Operator-sum-representation"><a href="#Operator-sum-representation" class="headerlink" title="Operator-sum representation"></a>Operator-sum representation</h3><p>Let $|e_k\rangle$ be an orthogonal basis for the (finite dimensional) state space of the environment, and let $\rho_\rm{env}=|e_0\rangle\langle e_0|$ be the initial state of the environment. Thus</p>
+<script type="math/tex; mode=display">
+\mathcal{E}(\rho)=\sum_k\langle e_k|U\left[\rho\otimes|e_0\rangle\langle e_0|\right]U^\dagger|e_k\rangle=\sum_k E_k\rho E_k^\dagger,</script><p>where $E_k=\langle e_k|U|e_0\rangle$ is an operator on the state of the principal system. The equation above is known as the <em>operator-sum representation</em> of $\mathcal{E}$. The operators ${E_k}$ are known as the <em>operation elements</em> for the quantum operation $\mathcal{E}$.</p>
+<p>The <em>completeness realtion</em> of the <em>trace preserving</em> operation elements can be derived from</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    1&=\operatorname{tr}\left(\mathcal{E}(\rho)\right)\\  
+    &=\operatorname{tr}\left(\sum_k E_k\rho E^\dagger_k\right)\\
+    &=\operatorname{tr}\left(\sum_k E_k^\dagger E_k\rho\right).
+\end{aligned}</script><p>Since this is true for all $\rho$ it follows that we have</p>
+<script type="math/tex; mode=display">
+\sum_k E^\dagger_k E_k=I.</script><p>Non-trace preserving quantum operations are those for which $\sum_k E_k^\dagger E_k\leq I$. They describe processes in which extra information about what occurred in the process is obtained by measurement.</p>
+<blockquote>
+<p>Maps $\mathcal{E}$ of the form $\mathcal{E}(\rho)=\sum_k E_k\rho E_k^\dagger$ for which $\sum_kE_k^\dagger E_k\leq 1$ is defined as a quantum operation.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Quantum Information</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Introduction to Semiconductor Physics</title>
+    <url>/blog/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
+    <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
+<li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
+<li>Direct &amp; indirect band gap</li>
+<li>Intrinsic &amp; extrinsic semiconductor</li>
+</ul>
+<a id="more"></a>
+<h2 id="Quantitative-properties"><a href="#Quantitative-properties" class="headerlink" title="Quantitative properties"></a>Quantitative properties</h2><h3 id="Effective-mass-k-p-approximation"><a href="#Effective-mass-k-p-approximation" class="headerlink" title="Effective mass: k-p approximation"></a>Effective mass: k-p approximation</h3><p>Near the band edge, quadratic term.</p>
+<script type="math/tex; mode=display">
+\varepsilon(\mathbf{k})=\varepsilon\left(\mathbf{k}_{0}\right)+\frac{\hbar^{2}\left(k_{x}-k_{x 0}\right)^{2}}{2 m_{x}^{*}}+\frac{\hbar^{2}\left(k_{y}-k_{y 0}\right)^{2}}{2 m_{y}^{*}}+\frac{\hbar^{2}\left(k_{z}-k_{z 0}\right)^{2}}{2 m_{z}^{*}}.</script><p>Bloch state:</p>
+<script type="math/tex; mode=display">\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r}).</script><p> Schrödinger equation on $u$ becomes</p>
+<script type="math/tex; mode=display">\left(\frac{\mathbf{p}^2}{2m}+\frac{\hbar\mathbf{k}\cdot\mathbf{p}}{m}+V(\mathbf{r})\right)u_{n\mathbf{k}}(\mathbf{r})=\left(\varepsilon_n(\mathbf{k})-\frac{\hbar^2\mathbf{k}^2}{2m}\right)u_{n\mathbf{k}}(\mathbf{r}).</script><p> Taking $\mathbf{k}_0$ to be 0, <strong>view $\mathbf{k}\cdot\mathbf{p}$ term as perturbation and the $\mathbf{k}=\mathbf{k}_0$ state as the unperturbed state</strong>, </p>
+<script type="math/tex; mode=display">\Delta\varepsilon_n^{(1)}(\mathbf{k})\propto\mathbf{k}=0</script><script type="math/tex; mode=display">\Delta \varepsilon_{n}^{(2)}(\mathbf{k})=\frac{\hbar^{2}}{m^{2}} \sum_{i} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)} k_{i}^{2}</script><p>by taking the principal axes. Finally we have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    \frac{1}{m_{i}^{*}\left(k_{i}\right)}&=\frac{1}{m}+\frac{2}{m^{2}} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)}\\
+    &=\frac{1}{m}+\frac{2}{m^2}\frac{\left\langle u_{c 0}(\mathbf{r})\left|p_{i}\right| u_{v 0}(\mathbf{r})\right\rangle\left\langle u_{v 0}(\mathbf{r})\left|p_{i}\right| u_{c 0}(\mathbf{r})\right\rangle}{\varepsilon_{\mathrm{gap}}}.\quad(\text{For conduction band})
+\end{aligned}</script><h3 id="Statistics-of-charge-carriers"><a href="#Statistics-of-charge-carriers" class="headerlink" title="Statistics of charge carriers"></a>Statistics of charge carriers</h3><p>Electrons obey Fermi-Dirac perturbation</p>
+<script type="math/tex; mode=display">f(\varepsilon)=\frac{1}{e^{\left(\varepsilon(\mathbf{k})-\mu\right)/k_BT}+1}.</script><p>Consider</p>
+<ul>
+<li>Even at room temperature, $\varepsilon_c-\mu\sim\mu-\varepsilon_v\gg k_BT.$</li>
+<li>The distribution of the hole is $1-f(\varepsilon_h)$</li>
+<li>The density of state are<script type="math/tex; mode=display">\begin{aligned}
+D_{e}\left(\varepsilon_{e}(\mathbf{k})\right)&=\frac{2\left(2 m_{e}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{e}(\mathbf{k})-\varepsilon_{c}}, \\
+D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{v}-\varepsilon_{h}(\mathbf{k})}.
+\end{aligned}</script></li>
+</ul>
+<p>We have</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    n_{e}&=\frac{1}{4}\left(\frac{2 m_{e}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{c}(\mathbf{k})-\varepsilon_{F}\right) / k_{B} T},\\
+    n_{h}&=\frac{1}{4}\left(\frac{2 m_{h}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{F}-\varepsilon_{v}(\mathbf{k})\right) / k_{B} T},
+\end{aligned}</script><p>and the <strong>law of mass action</strong></p>
+<script type="math/tex; mode=display">n_e n_h=\frac{1}{2}\left(\frac{k_BT}{\pi\hbar^2}\right)^3\left(m_e^*m_h^*\right)^{3/2}e^{-\varepsilon_{\mathrm{gap}}/k_BT}.</script><h4 id="Intrinsic-semiconductor"><a href="#Intrinsic-semiconductor" class="headerlink" title="Intrinsic semiconductor"></a>Intrinsic semiconductor</h4><script type="math/tex; mode=display">n_e=n_h</script><p>Consider the expression of $n_e$ and the law of mass action</p>
+<script type="math/tex; mode=display">\mu=\frac{3}{4}\frac{k_BT}{2}\ln\left(\frac{m_h^*}{m_e^*}\right)+\frac{\varepsilon_c+\varepsilon_v}{2}.</script><h4 id="Extrinsic-semiconductor"><a href="#Extrinsic-semiconductor" class="headerlink" title="Extrinsic semiconductor"></a>Extrinsic semiconductor</h4><p>Consider only donor case. Assume donor impurity density $D_i$ and energy $\varepsilon_i$.</p>
+<script type="math/tex; mode=display">n_e=D_i\left(1-f(\varepsilon_i)\right)=D_i\frac{1}{e^{(\mu-\varepsilon_i)/k_BT}+1}.</script><p>Put the equation above and $n_e=c_e\exp\left[-(\varepsilon_c-\varepsilon_F)/k_BT\right]$ together, solve $n_e$,</p>
+<script type="math/tex; mode=display">n_{e}=\frac{-1+\sqrt{1+4\left(\frac{D_{i}}{c_{e}}\right) e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}}{\frac{2 e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}{c_{e}}}.</script><ul>
+<li>At low temperature, <script type="math/tex; mode=display">n_e\approx\sqrt{c_eD_i}e^{-(\varepsilon_c-\varepsilon_i)/2k_BT}.</script></li>
+<li>At high temperature,<script type="math/tex; mode=display">n_e\approx D_i.</script></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+      <tags>
+        <tag>Solid State Physics Course Summary</tag>
       </tags>
   </entry>
   <entry>
@@ -258,77 +346,6 @@ J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac
       </tags>
   </entry>
   <entry>
-    <title>Introduction to Semiconductor Physics</title>
-    <url>/blog/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
-    <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
-<li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
-<li>Direct &amp; indirect band gap</li>
-<li>Intrinsic &amp; extrinsic semiconductor</li>
-</ul>
-<a id="more"></a>
-<h2 id="Quantitative-properties"><a href="#Quantitative-properties" class="headerlink" title="Quantitative properties"></a>Quantitative properties</h2><h3 id="Effective-mass-k-p-approximation"><a href="#Effective-mass-k-p-approximation" class="headerlink" title="Effective mass: k-p approximation"></a>Effective mass: k-p approximation</h3><p>Near the band edge, quadratic term.</p>
-<script type="math/tex; mode=display">
-\varepsilon(\mathbf{k})=\varepsilon\left(\mathbf{k}_{0}\right)+\frac{\hbar^{2}\left(k_{x}-k_{x 0}\right)^{2}}{2 m_{x}^{*}}+\frac{\hbar^{2}\left(k_{y}-k_{y 0}\right)^{2}}{2 m_{y}^{*}}+\frac{\hbar^{2}\left(k_{z}-k_{z 0}\right)^{2}}{2 m_{z}^{*}}.</script><p>Bloch state:</p>
-<script type="math/tex; mode=display">\psi_{n\mathbf{k}}(\mathbf{r})=e^{i\mathbf{k}\cdot\mathbf{r}}u_{n\mathbf{k}}(\mathbf{r}).</script><p> Schrödinger equation on $u$ becomes</p>
-<script type="math/tex; mode=display">\left(\frac{\mathbf{p}^2}{2m}+\frac{\hbar\mathbf{k}\cdot\mathbf{p}}{m}+V(\mathbf{r})\right)u_{n\mathbf{k}}(\mathbf{r})=\left(\varepsilon_n(\mathbf{k})-\frac{\hbar^2\mathbf{k}^2}{2m}\right)u_{n\mathbf{k}}(\mathbf{r}).</script><p> Taking $\mathbf{k}_0$ to be 0, <strong>view $\mathbf{k}\cdot\mathbf{p}$ term as perturbation and the $\mathbf{k}=\mathbf{k}_0$ state as the unperturbed state</strong>, </p>
-<script type="math/tex; mode=display">\Delta\varepsilon_n^{(1)}(\mathbf{k})\propto\mathbf{k}=0</script><script type="math/tex; mode=display">\Delta \varepsilon_{n}^{(2)}(\mathbf{k})=\frac{\hbar^{2}}{m^{2}} \sum_{i} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)} k_{i}^{2}</script><p>by taking the principal axes. Finally we have</p>
-<script type="math/tex; mode=display">\begin{aligned}
-    \frac{1}{m_{i}^{*}\left(k_{i}\right)}&=\frac{1}{m}+\frac{2}{m^{2}} \sum_{n^{\prime}} \frac{\left\langle u_{n 0}(\mathbf{r})\left|p_{i}\right| u_{n^{\prime} 0}(\mathbf{r})\right\rangle\left\langle u_{n^{\prime} 0}(\mathbf{r})\left|p_{i}\right| u_{n 0}(\mathbf{r})\right\rangle}{\varepsilon_{n}(0)-\varepsilon_{n^{\prime}}(0)}\\
-    &=\frac{1}{m}+\frac{2}{m^2}\frac{\left\langle u_{c 0}(\mathbf{r})\left|p_{i}\right| u_{v 0}(\mathbf{r})\right\rangle\left\langle u_{v 0}(\mathbf{r})\left|p_{i}\right| u_{c 0}(\mathbf{r})\right\rangle}{\varepsilon_{\mathrm{gap}}}.\quad(\text{For conduction band})
-\end{aligned}</script><h3 id="Statistics-of-charge-carriers"><a href="#Statistics-of-charge-carriers" class="headerlink" title="Statistics of charge carriers"></a>Statistics of charge carriers</h3><p>Electrons obey Fermi-Dirac perturbation</p>
-<script type="math/tex; mode=display">f(\varepsilon)=\frac{1}{e^{\left(\varepsilon(\mathbf{k})-\mu\right)/k_BT}+1}.</script><p>Consider</p>
-<ul>
-<li>Even at room temperature, $\varepsilon_c-\mu\sim\mu-\varepsilon_v\gg k_BT.$</li>
-<li>The distribution of the hole is $1-f(\varepsilon_h)$</li>
-<li>The density of state are<script type="math/tex; mode=display">\begin{aligned}
-D_{e}\left(\varepsilon_{e}(\mathbf{k})\right)&=\frac{2\left(2 m_{e}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{e}(\mathbf{k})-\varepsilon_{c}}, \\
-D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{3 / 2}}{(2 \pi)^{2} \hbar^{3}} \sqrt{\varepsilon_{v}-\varepsilon_{h}(\mathbf{k})}.
-\end{aligned}</script></li>
-</ul>
-<p>We have</p>
-<script type="math/tex; mode=display">\begin{aligned}
-    n_{e}&=\frac{1}{4}\left(\frac{2 m_{e}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{c}(\mathbf{k})-\varepsilon_{F}\right) / k_{B} T},\\
-    n_{h}&=\frac{1}{4}\left(\frac{2 m_{h}^{*} k_{B} T}{\pi \hbar^{2}}\right)^{3 / 2} e^{-\left(\varepsilon_{F}-\varepsilon_{v}(\mathbf{k})\right) / k_{B} T},
-\end{aligned}</script><p>and the <strong>law of mass action</strong></p>
-<script type="math/tex; mode=display">n_e n_h=\frac{1}{2}\left(\frac{k_BT}{\pi\hbar^2}\right)^3\left(m_e^*m_h^*\right)^{3/2}e^{-\varepsilon_{\mathrm{gap}}/k_BT}.</script><h4 id="Intrinsic-semiconductor"><a href="#Intrinsic-semiconductor" class="headerlink" title="Intrinsic semiconductor"></a>Intrinsic semiconductor</h4><script type="math/tex; mode=display">n_e=n_h</script><p>Consider the expression of $n_e$ and the law of mass action</p>
-<script type="math/tex; mode=display">\mu=\frac{3}{4}\frac{k_BT}{2}\ln\left(\frac{m_h^*}{m_e^*}\right)+\frac{\varepsilon_c+\varepsilon_v}{2}.</script><h4 id="Extrinsic-semiconductor"><a href="#Extrinsic-semiconductor" class="headerlink" title="Extrinsic semiconductor"></a>Extrinsic semiconductor</h4><p>Consider only donor case. Assume donor impurity density $D_i$ and energy $\varepsilon_i$.</p>
-<script type="math/tex; mode=display">n_e=D_i\left(1-f(\varepsilon_i)\right)=D_i\frac{1}{e^{(\mu-\varepsilon_i)/k_BT}+1}.</script><p>Put the equation above and $n_e=c_e\exp\left[-(\varepsilon_c-\varepsilon_F)/k_BT\right]$ together, solve $n_e$,</p>
-<script type="math/tex; mode=display">n_{e}=\frac{-1+\sqrt{1+4\left(\frac{D_{i}}{c_{e}}\right) e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}}{\frac{2 e^{\left(\varepsilon_{c}-\varepsilon_{i}\right) / k_{B} T}}{c_{e}}}.</script><ul>
-<li>At low temperature, <script type="math/tex; mode=display">n_e\approx\sqrt{c_eD_i}e^{-(\varepsilon_c-\varepsilon_i)/2k_BT}.</script></li>
-<li>At high temperature,<script type="math/tex; mode=display">n_e\approx D_i.</script></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Solid State Physics Course Summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一篇给小北的非典型庆生文</title>
-    <url>/blog/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
-    <content><![CDATA[<p>小北今年122岁了。</p>
-<p>122岁还叫小北？没办法，大家都这么叫。一方面是可爱吧——水灵灵的未名湖，鸭子游着，浮光闪着，楼影立着，一天天呆看着来去匆匆的苦恼和幸福、爱恋和背弃、智慧与迷茫，眼都不眨，被风一挠痒痒却笑得一切都映歪了；<a id="more"></a>还有表面儒雅娴静的博雅塔，暗暗地按着大家的头：你们都不准比我高！还有各种各样奇奇怪怪的人组成的社团，有在课堂上写诗的数学教授，有艺园二楼的烤鹅腿（我好像暴露了些什么）……颜值高、可撩、不开心了还能扑到它怀里的东西，不可爱吗？另一方面，叫它小北，也有一种看着自家不争气小孩的心态吧：你为啥一个劲地说着没名堂的转圈圈话？你为啥就不像隔壁家的孩子那么会包装自己？你为啥整天干坏事被人骂？你为啥最近学得没那么好？……好多人都觉得这娃不是理想的样子，觉得这娃理应做得更好。</p>
-<p>其实人家娃很优秀的。1898年，在内忧外患的国家中、在维新变法的浪潮中诞生，一生下来就寄托着一个民族复兴的希望。才十几二十岁，就成了新文化运动的主要阵地、马克思主义在中国的发源地，深刻影响了国家发展的方向。再往后，一个个辉煌的名字和这孩子联系在一起（太多了，也太强了，挂一漏万不如不列了），“爱国进步民主科学”的精神和这孩子联系在一起……不多说了，现在操控这孩子的那帮人比我能说。总而言之，你觉得它不争气吧，在这个国家，你似乎还找不到第二个这样的学校——了解它的人首先想到的不是“优秀”“一流”这类词汇，而是“伟大”。</p>
-<p>所以呀，说句实话，承担着民众（包括高中生）多少有点不切实际的期待，承担着无数溢美、无数骂名，这娃压力太大了，真太大了，是我娃我肯定看着心疼。心一疼，娃还过生日，今天就不批评它了，发自内心说一句——生日快乐！我喜欢你！</p>
-<p>想起我十六岁的夏天和你的初见，塔影湖光处你的美丽、燕南园旧院里你的深沉、邱德拔晚会上你的活力、讲座和物院宣讲会上你的智慧与能力，深深吸引了我。临别前夜，我站在宿舍楼水房的窗前，望着北京的夜空，写下了一首《暂别》。或许你会觉得我未免太过自信，后面那些坎都还没探出头就敢说是“暂别”？其实看了内容你会觉得我更自信：我始终挥之不去的是在燕南园里对着门牌号查这里住过哪些人时感受到的震撼：冰心、周培源、马寅初、冯友兰……一个个之前只在书上见到过的名字在手机屏幕上出现，告诉我“我当年就在你眼前浇花呢”——于是那晚我写道：“老房子的牙齿掉光时，讲述者是谁？”心里想的是：北大的故事谁来续写？就是我了！这何止是自信？这简直是狂妄了！</p>
-<p>后来就是回到大雁塔脚下，刷题，然后竞赛没有进省队，金秋营报名没过……那时我有点想你，有点怨你，不过没有你生活还是要继续。然后是十七岁的夏天，第一天早上语文多蒙对了几道选择题，第二天坐在华清中学的教室里，看着骊山在雨幕中静默。我走出了考场，结束了六年的中学生活。</p>
-<p>真正重逢的时候，我却感到异常忐忑。我真的可以吗？这里适合我吗？这是梦的起点，还是终点呢？我被推着往前走，然后北大变真实了。与很多人的想象相吻合，我遇到了精心设计课程让我零基础顺滑入门c++的老师；遇到了讲课参考很多本教材形成自己的体系，这样深刻改变了我学习思路的老师；遇到了包容我不会弹琴并且重塑我对音乐认识的钢琴社的大佬；遇到了一群巨得形态各异又非常可爱的同学……无论如何，这绝对是开心的生活。但另一方面，我也看到北大并非净土，看到了平均而言可谓低劣的教学水平，看到了某些人做学生工作时的形式主义和官僚主义，看到了许多真真切切的丑事……曾经和人谈起北大是否令人失望的话题，我说：“你要是让我复习一下，这几年北大的烂事我能给你讲一天一夜。”我失望吗？我不失望。北大从来都不在神坛上，它生存于人群中，扎根在土地里，绵延百余年，承载了太多意义和期待，但现在终归只是海淀区的一个园子而已。</p>
-<p>有时也会停下来想想自己究竟是在一个怎样的处境当中。不知何时开始，我有了这样的判断：</p>
-<p>我处在历史的摄像头聚焦的地方，却并不是主角。</p>
-<p>对于一个沉迷于人生的宏大叙事的人，认识到自身力量的局限和伟大的不可到达，之后再去寻找意义的过程，是非常痛苦的。人生意义在那？科学的意义在哪？探究非本质问题的意义在哪？一连串问题压得我喘不过气，走不动路，我在未名湖边转了一圈又一圈，得到了一个简单粗暴的结论——干就是了！</p>
-<p>依据在哪？依据在于北大，这个总是被人与“伟大”联系在一起的地方，似乎在用一种特殊的方式不断暗示着我：成功不是一个良定义的状态，但开心是。一方面有着家国天下的胸怀，一方面包容每个个体的无奈。这就是传说中的北大精神？</p>
-<p>于是十七岁那个惴惴不安地坐在物院会议室里听董老师那段几乎没有停顿的讲话的孩子变成了今天的样子：也会焦虑，也会迷茫，但几乎总是开心地享用着北大提供的精神盛宴。</p>
-<p>所以今天，我要祝不完美的世界非一流大学：北京大学——生日快乐！</p>
-<p>也要祝从这里走出去的、在这里的、将要来这里的伟大的成功者和可敬的失败者们——快乐！</p>
-<p>今天也是青年节，那就再祝可爱的小北永远年轻、永远进步、永远做这片土地上思想和教育的光！</p>
-]]></content>
-      <tags>
-        <tag>隨筆</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Windows 裝機記錄</title>
     <url>/blog/2020/01/09/Windows-%E8%A3%9D%E6%A9%9F%E8%A8%98%E9%8C%84/</url>
     <content><![CDATA[<p>因爲想裝WSL，但更新一直出問題，另外也是覺得現在的電腦太亂了，我決定推倒重來，重裝系統。</p>
@@ -366,85 +383,6 @@ D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{
       </tags>
   </entry>
   <entry>
-    <title>Why Density Operator Varies with Time in a Different Way from Heisenberg Equation?</title>
-    <url>/blog/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
-    <content><![CDATA[<p>In Heisenberg picture of quantum mechanics, there is <strong>Heisenberg equation of motion</strong></p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{heisenbergEq}
-\frac{d\hat{A}}{dt}=\frac{1}{i\hbar}\left[\hat{A},\hat{H}\right]
-\end{equation}</script><p>determining the time evolution of an operator. However, in quantum statistics, the <strong>density operator</strong> defined by</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{density operator}
-\hat{\rho}=\frac{1}{N}\sum_{k=1}^{N}\left|\alpha^k\right>\left<\alpha^k\right|
-\end{equation}</script><p>follows the equation of motion</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{equation of density operator}
-\frac{d\hat{\rho}}{dt}=\frac{1}{i\hbar}\left[\hat{H},\hat{\rho}\right],
-\end{equation}</script><p>where $N$ represents the number of ensembles and $\left|\alpha^k\right&gt;$ denotes the quantum state of the $k$th ensemble. The two equations ($\ref{heisenbergEq}$) and ($\ref{equation of density operator}$) has the opposite sign, which seems to be odd. Why is there such a difference?</p>
-<a id="more"></a>
-<p>Let’s refer to the derivation of those two equations to see the reason. First, define <strong>time evolution operator</strong> as a unitary operator satisfying</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{time evolution operator}
-i\hbar\frac{\partial}{\partial t}U(t)=\hat{H}U(t).
-\end{equation}</script><p>In <strong>Heisenberg picture</strong>, the kets are viewed unchanged while the operator changes with time like</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{heisenberg time evolution}
-\hat{A}(t)=U^\dagger(t) \hat{A}^{(S)}(t)U(t),
-\end{equation}</script><p>where $A^{(S)}$ refers to the operator in Schrödinger picture. <em>Assuming that $\hat{A}^{(S)}$ does not depend explicitly on time,</em> we have $\hat{A}^{(S)}=\hat{A}(0)$. In <strong>Schrödinger picture</strong> the operators are viewed unchanged while the kets satisfy</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{shrodinger time evolution}
-\left|\alpha(t)\right>=U(t)\left|\alpha(0)\right>.
-\end{equation}</script><p>From ($\ref{time evolution operator}$) and ($\ref{heisenberg time evolution}$), we can derive Heisenberg equation ($\ref{heisenbergEq}$) in the case that $\hat{A}^{(S)}$ is not explicitly dependent on time, and from ($\ref{time evolution operator}$) and ($\ref{shrodinger time evolution}$) we can derive <strong>Schrödinger equation</strong></p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{schrodingerEq}
-i\hbar\frac{\partial}{\partial t}\left|\alpha(t)\right>=\hat{H}\left|\alpha(t)\right>.
-\end{equation}</script><p>We now derive the equation of motion for density operation in <strong>Schödinger picture</strong>. According to ($\ref{shrodinger time evolution}$), we have</p>
-<script type="math/tex; mode=display">
-\begin{equation}\label{density time evolution}
-i\hbar\hat{\rho}(t)=U(t)\hat{\rho}(0)U^\dagger(t).
-\end{equation}</script><p>Then</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\partial t}\left|\alpha^k\right>\right)\left<\alpha^k\right|+\left|\alpha^k\right>\left(\frac{\partial}{\partial t}\left<\alpha^k\right|\right)\\
-&=\frac{1}{N}\sum_{k=1}^{N}\hat{H}\left|\alpha^k\right>\left<\alpha^k\right|-\left|\alpha^k\right>\left<\alpha^k\right|\hat{H}\\
-&=\left[\hat{H},\hat{\rho}\right].
-\end{aligned}
-\tag{3}</script><p>The equation ($\ref{equation of density operator}$) can also be derived directly by Schrödinger equation, but comparing ($\ref{density time evolution}$) and ($\ref{heisenberg time evolution}$) gives us the key to our problem: though they have the similar appearances, the former equation works in Schrödinger picture while the latter woks in Heisenberg picture, which have completely different physics contents!</p>
-<p>To have a better understanding of this problem, let’s study the density operator in Heisenberg picture. Now since the kets do not change, the density operator defined by ($\ref{density operator}$) remains the same obviously (you can also see this by ($\ref{heisenberg time evolution}$) and ($\ref{density time evolution}$)). Does this suggest that the system is always in a state of equilibrium? Of course not! We have known from ($\ref{equation of density operator}$) that in Schrödinger picture there is a condition for equilibrium that $\hat{\rho}$ and $\hat{H}$ commutes, so it is impossible that there is no requirement for equilibrium in Heisenberg picture. To clarify this problem, we need to discuss what “change with time” really means.</p>
-<p>For one particle problem, it is the average of an operator on some given state that we care about. The Heisenberg equation of motion concerns how an operator $\hat{A}$, which does not explicitly depend on time in Schrödinger picture, behaves in Heisenberg picture. As for a given set of eigenkets of some other operator $\left|n\right&gt;$, the matrix elements <script type="math/tex">A_{mn}=\left<m\right|\hat{A}\left|n\right></script> do not change in both pictures.</p>
-<p>However, for density operator $\hat{\rho}$, which generally may be explicitly dependent on time in Schrödinger picture, what we care about is the matrix elements. In Schrödinger picture, since the $\left|n\right&gt;$s do not change with time, the condition for equilibrium is that the right hand side of ($\ref{equation of density operator}$) be 0. In Heisenberg picture, we have</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{aligned}
-        A_{mn}&=\left<m(t)\right|\hat{\rho}(t)\left|n(t)\right>\\
-        &=\left<m(t)\right|\hat{\rho}(0)\left|n(t)\right>\\
-        &=\left<m(0)\right|U(t)\hat{\rho}(0)U^\dagger(t)\left|n(0)\right>\\
-        &=\left<m(0)\right|\hat{\rho}^{(S)}(t)\left|n(0)\right>,
-\end{aligned}
-\end{equation}</script><p>which shows that the condition for equilibrium is the same as that in Schrödinger picture.</p>
-<p>To summarize, the Heisenberg equation ($\ref{heisenbergEq}$) describes how an operator unchanged in Schrödinger picture changes with time in Heisenberg picture, while the equation ($\ref{equation of density operator}$) describes how the density operator changes in Schrödinger picture. They have similar forms but absolutely different physics.</p>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Statistical Mechanics</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>为LaTex设置VScode代码片段</title>
-    <url>/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
-    <content><![CDATA[<p>VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符<code>\par</code>输入之后再输回车，编辑器自动帮你键入了<code>\paragraph</code>；再比如每次输入行内公式，打两个<code>$</code>就很别扭。<a id="more"></a>怎么办？我们可以通过自定义代码片段的方法来使我们的输入更加便捷。</p>
-<img src="/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg" class>
-<p>如图，点击<code>File&gt;Preferences&gt;Use Snippets</code>，在弹出的框中键入<code>latex</code>，打开<code>latex.json</code>，在其中写入下列代码：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;Inline math&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;inline math&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;$$1$&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;, </span><br><span class="line">	<span class="attr">&quot;par&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;par&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\par&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;table environment&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;table&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;\\begin&#123;table&#125;[$1]&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\centering&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\caption&#123;$2&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\label&#123;$3&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\begin&#123;tabular&#125;&#123;$4&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\t$5&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\end&#123;tabular&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\\end&#123;table&#125;&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial $1&#125;&#123;\\partial $2&#125;&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\prepd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial&#125;&#123;\\partial $1&#125;$2&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\dd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;$1&#125;&#123;\\mathrm&#123;d&#125;$2&#125;&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pred&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;&#125;&#123;\\mathrm&#123;d&#125;$1&#125;$2&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and </span></span><br><span class="line">	<span class="comment">// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span></span><br><span class="line">	<span class="comment">// $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the </span></span><br><span class="line">	<span class="comment">// same ids are connected.</span></span><br><span class="line">	<span class="comment">// Example:</span></span><br><span class="line">	<span class="comment">// &quot;Print to console&quot;: &#123;</span></span><br><span class="line">	<span class="comment">// 	&quot;prefix&quot;: &quot;log&quot;,</span></span><br><span class="line">	<span class="comment">// 	&quot;body&quot;: [</span></span><br><span class="line">	<span class="comment">// 		&quot;console.log(&#x27;$1&#x27;);&quot;,</span></span><br><span class="line">	<span class="comment">// 		&quot;$2&quot;</span></span><br><span class="line">	<span class="comment">// 	],</span></span><br><span class="line">	<span class="comment">// 	&quot;description&quot;: &quot;Log output to console&quot;</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>后面的注释是这个文件自带的，告诉你该怎么写。写好之后，输入<code>prefix</code>的内容（甚至不需要全部输入），回车，编辑器会帮你输入整个<code>body</code>。例如在编辑时输入<code>in+Enter</code>，就输入了两个<code>$</code>，并且光标自动位于两者之间。输入完成后，按<code>Tab</code>键即可将光标移至行内公式环境之外。</p>
-]]></content>
-      <tags>
-        <tag>LaTex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>今天</title>
     <url>/blog/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
     <content><![CDATA[<p>今天没有什么特别的<br>无非是风吹得耳朵疼<br>无非是骑自行车手会很冷</p>
@@ -462,6 +400,29 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
       </categories>
       <tags>
         <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一篇给小北的非典型庆生文</title>
+    <url>/blog/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
+    <content><![CDATA[<p>小北今年122岁了。</p>
+<p>122岁还叫小北？没办法，大家都这么叫。一方面是可爱吧——水灵灵的未名湖，鸭子游着，浮光闪着，楼影立着，一天天呆看着来去匆匆的苦恼和幸福、爱恋和背弃、智慧与迷茫，眼都不眨，被风一挠痒痒却笑得一切都映歪了；<a id="more"></a>还有表面儒雅娴静的博雅塔，暗暗地按着大家的头：你们都不准比我高！还有各种各样奇奇怪怪的人组成的社团，有在课堂上写诗的数学教授，有艺园二楼的烤鹅腿（我好像暴露了些什么）……颜值高、可撩、不开心了还能扑到它怀里的东西，不可爱吗？另一方面，叫它小北，也有一种看着自家不争气小孩的心态吧：你为啥一个劲地说着没名堂的转圈圈话？你为啥就不像隔壁家的孩子那么会包装自己？你为啥整天干坏事被人骂？你为啥最近学得没那么好？……好多人都觉得这娃不是理想的样子，觉得这娃理应做得更好。</p>
+<p>其实人家娃很优秀的。1898年，在内忧外患的国家中、在维新变法的浪潮中诞生，一生下来就寄托着一个民族复兴的希望。才十几二十岁，就成了新文化运动的主要阵地、马克思主义在中国的发源地，深刻影响了国家发展的方向。再往后，一个个辉煌的名字和这孩子联系在一起（太多了，也太强了，挂一漏万不如不列了），“爱国进步民主科学”的精神和这孩子联系在一起……不多说了，现在操控这孩子的那帮人比我能说。总而言之，你觉得它不争气吧，在这个国家，你似乎还找不到第二个这样的学校——了解它的人首先想到的不是“优秀”“一流”这类词汇，而是“伟大”。</p>
+<p>所以呀，说句实话，承担着民众（包括高中生）多少有点不切实际的期待，承担着无数溢美、无数骂名，这娃压力太大了，真太大了，是我娃我肯定看着心疼。心一疼，娃还过生日，今天就不批评它了，发自内心说一句——生日快乐！我喜欢你！</p>
+<p>想起我十六岁的夏天和你的初见，塔影湖光处你的美丽、燕南园旧院里你的深沉、邱德拔晚会上你的活力、讲座和物院宣讲会上你的智慧与能力，深深吸引了我。临别前夜，我站在宿舍楼水房的窗前，望着北京的夜空，写下了一首《暂别》。或许你会觉得我未免太过自信，后面那些坎都还没探出头就敢说是“暂别”？其实看了内容你会觉得我更自信：我始终挥之不去的是在燕南园里对着门牌号查这里住过哪些人时感受到的震撼：冰心、周培源、马寅初、冯友兰……一个个之前只在书上见到过的名字在手机屏幕上出现，告诉我“我当年就在你眼前浇花呢”——于是那晚我写道：“老房子的牙齿掉光时，讲述者是谁？”心里想的是：北大的故事谁来续写？就是我了！这何止是自信？这简直是狂妄了！</p>
+<p>后来就是回到大雁塔脚下，刷题，然后竞赛没有进省队，金秋营报名没过……那时我有点想你，有点怨你，不过没有你生活还是要继续。然后是十七岁的夏天，第一天早上语文多蒙对了几道选择题，第二天坐在华清中学的教室里，看着骊山在雨幕中静默。我走出了考场，结束了六年的中学生活。</p>
+<p>真正重逢的时候，我却感到异常忐忑。我真的可以吗？这里适合我吗？这是梦的起点，还是终点呢？我被推着往前走，然后北大变真实了。与很多人的想象相吻合，我遇到了精心设计课程让我零基础顺滑入门c++的老师；遇到了讲课参考很多本教材形成自己的体系，这样深刻改变了我学习思路的老师；遇到了包容我不会弹琴并且重塑我对音乐认识的钢琴社的大佬；遇到了一群巨得形态各异又非常可爱的同学……无论如何，这绝对是开心的生活。但另一方面，我也看到北大并非净土，看到了平均而言可谓低劣的教学水平，看到了某些人做学生工作时的形式主义和官僚主义，看到了许多真真切切的丑事……曾经和人谈起北大是否令人失望的话题，我说：“你要是让我复习一下，这几年北大的烂事我能给你讲一天一夜。”我失望吗？我不失望。北大从来都不在神坛上，它生存于人群中，扎根在土地里，绵延百余年，承载了太多意义和期待，但现在终归只是海淀区的一个园子而已。</p>
+<p>有时也会停下来想想自己究竟是在一个怎样的处境当中。不知何时开始，我有了这样的判断：</p>
+<p>我处在历史的摄像头聚焦的地方，却并不是主角。</p>
+<p>对于一个沉迷于人生的宏大叙事的人，认识到自身力量的局限和伟大的不可到达，之后再去寻找意义的过程，是非常痛苦的。人生意义在那？科学的意义在哪？探究非本质问题的意义在哪？一连串问题压得我喘不过气，走不动路，我在未名湖边转了一圈又一圈，得到了一个简单粗暴的结论——干就是了！</p>
+<p>依据在哪？依据在于北大，这个总是被人与“伟大”联系在一起的地方，似乎在用一种特殊的方式不断暗示着我：成功不是一个良定义的状态，但开心是。一方面有着家国天下的胸怀，一方面包容每个个体的无奈。这就是传说中的北大精神？</p>
+<p>于是十七岁那个惴惴不安地坐在物院会议室里听董老师那段几乎没有停顿的讲话的孩子变成了今天的样子：也会焦虑，也会迷茫，但几乎总是开心地享用着北大提供的精神盛宴。</p>
+<p>所以今天，我要祝不完美的世界非一流大学：北京大学——生日快乐！</p>
+<p>也要祝从这里走出去的、在这里的、将要来这里的伟大的成功者和可敬的失败者们——快乐！</p>
+<p>今天也是青年节，那就再祝可爱的小北永远年轻、永远进步、永远做这片土地上思想和教育的光！</p>
+]]></content>
+      <tags>
+        <tag>隨筆</tag>
       </tags>
   </entry>
   <entry>
@@ -558,29 +519,82 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
       </tags>
   </entry>
   <entry>
-    <title>勃拉姆斯G大调第二号弦乐六重奏第一乐章</title>
-    <url>/blog/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
-    <content><![CDATA[<p>勃拉姆斯第二号弦乐六重奏（op. 36）写于1864-1865年间，距其创作第一号六重奏（op.18, 1859-1860）已过去五年，其间他写出了两首管弦乐小夜曲、三首带有钢琴的室内乐和悲壮而甜美的第一钢琴协奏曲。相比第一钢琴协奏曲的戏剧化，这首六重奏显得温和很多；比起第一六重奏，它又显得灰暗和朴素，预示着贯穿勃拉姆斯此后大部分成熟作品的内敛气质。另外，这首六重奏，也展示出着勃拉姆斯在作曲技法——尤其是对位法——上的全面提高。</p>
+    <title>Why Density Operator Varies with Time in a Different Way from Heisenberg Equation?</title>
+    <url>/blog/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
+    <content><![CDATA[<p>In Heisenberg picture of quantum mechanics, there is <strong>Heisenberg equation of motion</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{heisenbergEq}
+\frac{d\hat{A}}{dt}=\frac{1}{i\hbar}\left[\hat{A},\hat{H}\right]
+\end{equation}</script><p>determining the time evolution of an operator. However, in quantum statistics, the <strong>density operator</strong> defined by</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{density operator}
+\hat{\rho}=\frac{1}{N}\sum_{k=1}^{N}\left|\alpha^k\right>\left<\alpha^k\right|
+\end{equation}</script><p>follows the equation of motion</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{equation of density operator}
+\frac{d\hat{\rho}}{dt}=\frac{1}{i\hbar}\left[\hat{H},\hat{\rho}\right],
+\end{equation}</script><p>where $N$ represents the number of ensembles and $\left|\alpha^k\right&gt;$ denotes the quantum state of the $k$th ensemble. The two equations ($\ref{heisenbergEq}$) and ($\ref{equation of density operator}$) has the opposite sign, which seems to be odd. Why is there such a difference?</p>
 <a id="more"></a>
-<hr>
-<p>我们要介绍的第一乐章为3/4拍，奏鸣曲式，带有一段尾声。</p>
-<p>中提琴在G大调主音和导音之间小二度的颤音式音型，揭开了第一乐章的序幕，也为第一主题铺下了一层不安的背景。第一主题的旋律由两个相继的纯五度上行开始，一个在主音G上，一个在和声关系较远的降E上，神秘的气氛顿出。随后旋律是连续的跳进，和声则徘徊于G大调和降E大调之间，回归到G，中提琴的颤音音型被更丰富的对位所取代。小提琴接过颤音后，大提琴再次奏出第一主题的旋律，而此时单纯的颤音中加入了上行和下行，加入了舞动的和弦分解，带来变化和一丝微光。</p>
-<p>大提、中提、小提交错奏出一连串急促的下行，紧张的小幅摆动和典型的“叹息”动机结合，乐曲如此过渡到D大调上的第二主题。第二主题的旋律首先由大提琴奏出，再由小提琴接过。起初如梦幻般甜蜜优美，逐渐变得活泼，达到高潮时，音乐的形象热情而坚定，但级进后的向下五度大跳却给热情带来了某些宿命般的节制，这种节制在随后弱奏地重复高潮旋律时，带上了更浓郁的悲观色彩。</p>
-<p>展开部和再现部不必赘述。值得一提的是，室内乐中不同乐器的“对话”在这首作品中得到了充分的展现，营造出重叠往复、连绵不绝的效果，在形式和内容上都增加了音乐的厚度，也体现出勃拉姆斯高超的对位技巧。其例子随处可见，此不再逐一分析，听者宜自行体会。</p>
-<hr>
-<p>很多分析者认为，勃拉姆斯这部作品与他和哥廷根一位教授之女Agathe von Siebold的爱情有关。勃拉姆斯于1859年和Agathe订婚，但最终因为他焦虑与骄傲混合的奇异心态，他们解除了婚约。然而，即使在他们分开之后，勃拉姆斯给她的信中也写道：“我爱你，我一定要再见到你，但我无法忍受束缚。请给我写信，告诉我我是否要回到你身边，拥抱你，亲吻你，向你说我爱你。”但他们实际上从未再见面。有传记作者认为，这部作品第一乐章中第二主题结尾高潮处的A-G-A-H-E, 可以看作对Agathe名字的化用。若真是如此，这一乐章中的神秘、不安、热情和梦幻般的温柔，也可被看作是对逝去爱情的追忆、无奈和叹息。</p>
-<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms">https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms</a>)</li>
-<li><a href="https://en.wikipedia.org/wiki/Johannes_Brahms">https://en.wikipedia.org/wiki/Johannes_Brahms</a></li>
-<li><a href="http://kellydeanhansen.com/opus36.html">http://kellydeanhansen.com/opus36.html</a></li>
-<li><a href="https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36">https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36</a></li>
-</ul>
+<p>Let’s refer to the derivation of those two equations to see the reason. First, define <strong>time evolution operator</strong> as a unitary operator satisfying</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{time evolution operator}
+i\hbar\frac{\partial}{\partial t}U(t)=\hat{H}U(t).
+\end{equation}</script><p>In <strong>Heisenberg picture</strong>, the kets are viewed unchanged while the operator changes with time like</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{heisenberg time evolution}
+\hat{A}(t)=U^\dagger(t) \hat{A}^{(S)}(t)U(t),
+\end{equation}</script><p>where $A^{(S)}$ refers to the operator in Schrödinger picture. <em>Assuming that $\hat{A}^{(S)}$ does not depend explicitly on time,</em> we have $\hat{A}^{(S)}=\hat{A}(0)$. In <strong>Schrödinger picture</strong> the operators are viewed unchanged while the kets satisfy</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{shrodinger time evolution}
+\left|\alpha(t)\right>=U(t)\left|\alpha(0)\right>.
+\end{equation}</script><p>From ($\ref{time evolution operator}$) and ($\ref{heisenberg time evolution}$), we can derive Heisenberg equation ($\ref{heisenbergEq}$) in the case that $\hat{A}^{(S)}$ is not explicitly dependent on time, and from ($\ref{time evolution operator}$) and ($\ref{shrodinger time evolution}$) we can derive <strong>Schrödinger equation</strong></p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{schrodingerEq}
+i\hbar\frac{\partial}{\partial t}\left|\alpha(t)\right>=\hat{H}\left|\alpha(t)\right>.
+\end{equation}</script><p>We now derive the equation of motion for density operation in <strong>Schödinger picture</strong>. According to ($\ref{shrodinger time evolution}$), we have</p>
+<script type="math/tex; mode=display">
+\begin{equation}\label{density time evolution}
+i\hbar\hat{\rho}(t)=U(t)\hat{\rho}(0)U^\dagger(t).
+\end{equation}</script><p>Then</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\partial t}\left|\alpha^k\right>\right)\left<\alpha^k\right|+\left|\alpha^k\right>\left(\frac{\partial}{\partial t}\left<\alpha^k\right|\right)\\
+&=\frac{1}{N}\sum_{k=1}^{N}\hat{H}\left|\alpha^k\right>\left<\alpha^k\right|-\left|\alpha^k\right>\left<\alpha^k\right|\hat{H}\\
+&=\left[\hat{H},\hat{\rho}\right].
+\end{aligned}
+\tag{3}</script><p>The equation ($\ref{equation of density operator}$) can also be derived directly by Schrödinger equation, but comparing ($\ref{density time evolution}$) and ($\ref{heisenberg time evolution}$) gives us the key to our problem: though they have the similar appearances, the former equation works in Schrödinger picture while the latter woks in Heisenberg picture, which have completely different physics contents!</p>
+<p>To have a better understanding of this problem, let’s study the density operator in Heisenberg picture. Now since the kets do not change, the density operator defined by ($\ref{density operator}$) remains the same obviously (you can also see this by ($\ref{heisenberg time evolution}$) and ($\ref{density time evolution}$)). Does this suggest that the system is always in a state of equilibrium? Of course not! We have known from ($\ref{equation of density operator}$) that in Schrödinger picture there is a condition for equilibrium that $\hat{\rho}$ and $\hat{H}$ commutes, so it is impossible that there is no requirement for equilibrium in Heisenberg picture. To clarify this problem, we need to discuss what “change with time” really means.</p>
+<p>For one particle problem, it is the average of an operator on some given state that we care about. The Heisenberg equation of motion concerns how an operator $\hat{A}$, which does not explicitly depend on time in Schrödinger picture, behaves in Heisenberg picture. As for a given set of eigenkets of some other operator $\left|n\right&gt;$, the matrix elements <script type="math/tex">A_{mn}=\left<m\right|\hat{A}\left|n\right></script> do not change in both pictures.</p>
+<p>However, for density operator $\hat{\rho}$, which generally may be explicitly dependent on time in Schrödinger picture, what we care about is the matrix elements. In Schrödinger picture, since the $\left|n\right&gt;$s do not change with time, the condition for equilibrium is that the right hand side of ($\ref{equation of density operator}$) be 0. In Heisenberg picture, we have</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+        A_{mn}&=\left<m(t)\right|\hat{\rho}(t)\left|n(t)\right>\\
+        &=\left<m(t)\right|\hat{\rho}(0)\left|n(t)\right>\\
+        &=\left<m(0)\right|U(t)\hat{\rho}(0)U^\dagger(t)\left|n(0)\right>\\
+        &=\left<m(0)\right|\hat{\rho}^{(S)}(t)\left|n(0)\right>,
+\end{aligned}
+\end{equation}</script><p>which shows that the condition for equilibrium is the same as that in Schrödinger picture.</p>
+<p>To summarize, the Heisenberg equation ($\ref{heisenbergEq}$) describes how an operator unchanged in Schrödinger picture changes with time in Heisenberg picture, while the equation ($\ref{equation of density operator}$) describes how the density operator changes in Schrödinger picture. They have similar forms but absolutely different physics.</p>
 ]]></content>
       <categories>
-        <category>音樂評論</category>
+        <category>Physics</category>
       </categories>
       <tags>
-        <tag>献给lhp</tag>
+        <tag>Statistical Mechanics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为LaTex设置VScode代码片段</title>
+    <url>/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
+    <content><![CDATA[<p>VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符<code>\par</code>输入之后再输回车，编辑器自动帮你键入了<code>\paragraph</code>；再比如每次输入行内公式，打两个<code>$</code>就很别扭。<a id="more"></a>怎么办？我们可以通过自定义代码片段的方法来使我们的输入更加便捷。</p>
+<img src="/blog/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg" class>
+<p>如图，点击<code>File&gt;Preferences&gt;Use Snippets</code>，在弹出的框中键入<code>latex</code>，打开<code>latex.json</code>，在其中写入下列代码：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;Inline math&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;inline math&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;$$1$&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;, </span><br><span class="line">	<span class="attr">&quot;par&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;par&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\par&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;table environment&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;table&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">			<span class="string">&quot;\\begin&#123;table&#125;[$1]&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\centering&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\caption&#123;$2&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\label&#123;$3&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\begin&#123;tabular&#125;&#123;$4&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\t$5&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\t\\end&#123;tabular&#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;\\end&#123;table&#125;&quot;</span></span><br><span class="line">		],</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial $1&#125;&#123;\\partial $2&#125;&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;partial derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\prepd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\partial&#125;&#123;\\partial $1&#125;$2&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\dd&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;$1&#125;&#123;\\mathrm&#123;d&#125;$2&#125;&quot;</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;derivative prefix&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;\\pred&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;body&quot;</span>: <span class="string">&quot;\\frac&#123;\\mathrm&#123;d&#125;&#125;&#123;\\mathrm&#123;d&#125;$1&#125;$2&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and </span></span><br><span class="line">	<span class="comment">// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span></span><br><span class="line">	<span class="comment">// $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the </span></span><br><span class="line">	<span class="comment">// same ids are connected.</span></span><br><span class="line">	<span class="comment">// Example:</span></span><br><span class="line">	<span class="comment">// &quot;Print to console&quot;: &#123;</span></span><br><span class="line">	<span class="comment">// 	&quot;prefix&quot;: &quot;log&quot;,</span></span><br><span class="line">	<span class="comment">// 	&quot;body&quot;: [</span></span><br><span class="line">	<span class="comment">// 		&quot;console.log(&#x27;$1&#x27;);&quot;,</span></span><br><span class="line">	<span class="comment">// 		&quot;$2&quot;</span></span><br><span class="line">	<span class="comment">// 	],</span></span><br><span class="line">	<span class="comment">// 	&quot;description&quot;: &quot;Log output to console&quot;</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后面的注释是这个文件自带的，告诉你该怎么写。写好之后，输入<code>prefix</code>的内容（甚至不需要全部输入），回车，编辑器会帮你输入整个<code>body</code>。例如在编辑时输入<code>in+Enter</code>，就输入了两个<code>$</code>，并且光标自动位于两者之间。输入完成后，按<code>Tab</code>键即可将光标移至行内公式环境之外。</p>
+]]></content>
+      <tags>
+        <tag>LaTex</tag>
       </tags>
   </entry>
   <entry>
@@ -619,6 +633,44 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
       </categories>
       <tags>
         <tag>Differential Geometry</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>你的眼睛</title>
+    <url>/blog/2021/01/17/%E4%BD%A0%E7%9A%84%E7%9C%BC%E7%9D%9B/</url>
+    <content><![CDATA[<p>她没有仰头，只是眼睛向上看着我。四目相对那一瞬间，我感觉到她的眼神里有太多东西，我立刻躲开了，但那一瞬的记忆已经是无法抹去的刻痕。在这里我会多写一些注释，交代我写出某些话是怎么想的。但丁早年所作的情诗集《新生》正是诗歌散文结合的形式，用散文讲出诗歌的背景，读来颇有意趣。当然，注释并非散文，我也绝没有把自己和但丁相提并论的意思。</p>
+<a id="more"></a>
+<p>我触摸你的眼神像触摸电流<br>我好像走在悬崖边与深渊对视<br>在沉重的过去和未来间保持危险的平衡</p>
+<p>抱歉，我知道比喻是一个华丽的陷阱<br>可是我说不出一句人话</p>
+<p>我看到剑的寒光听到淬火的声音<br>我看到熊熊的炉火<br>我看到凝固的血</p>
+<p>我看到一只黑猫翻出逻辑的迷宫<br>立刻因天地的空阔而感到害怕<br>在你的脚边徘徊不去<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+<p>我看到“夜晚”这个词语最深处的颜色<br>那是一个小心翼翼的问号<br>如十月的风在试探秋水<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+<p>你的手心微潮，你的手背冰凉<br>你的眼睛让人无言以对</p>
+<p>诗或者歌是西山的落日<sup><a href="#fn_3" id="reffn_3">3</a></sup><br>（当我们再次凝望夕阳<br>日落的位置就会北移<br>你可以算出时间的流逝<sup><a href="#fn_4" id="reffn_4">4</a></sup>）<br>你执着于定义<br>转而凝视僵硬的土地<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
+<p>土地僵硬，询问春天的日期<br>孩子，春天不是神谕<sup><a href="#fn_6" id="reffn_6">6</a></sup>或古老的仪式<br>春天是你呼在我手上的那一口热气<br>春天是拥抱和颤抖</p>
+<p><sup><a href="#fn_1" id="reffn_1">1</a></sup> 去年九月和今年一月，都有一个很快乐、回宿舍回得很晚的夜晚，我们见到缠着我们不肯离去的小猫。<br><sup><a href="#fn_2" id="reffn_2">2</a></sup> 九月，我们在未名湖边度过了很多快乐的时光。十月秋风初起时，我独自在湖边，看到风把湖水吹皱，就像我们最初的试探。另外，《秋水》也是庄子的篇目。<br><sup><a href="#fn_3" id="reffn_3">3</a></sup> 她很喜欢在理科一号楼最高处看夕阳从北京的西山落下，之前她会边看边拍照，把照片发给我，最近我们经常一起看。<br><sup><a href="#fn_4" id="reffn_4">4</a></sup> 我们这几天看到日落的地点向北移动了。现在快放寒假，如果寒假回来还能一起看，那么落日将在更靠北的位置。根据角度的变化，可以算出太阳直射纬度的变化，进而算出时间。虽然我们都有日历。<br><sup><a href="#fn_5" id="reffn_5">5</a></sup> 她在伤心或纠结的时候，就不看我，而是低头看着地面。这样的时候，她会显得非常可爱，但是让人担心。<br><sup><a href="#fn_6" id="reffn_6">6</a></sup> 神谕(oracle)，计算机术语，是一个可以得到某个判定问题结果的黑盒子。</p>
+]]></content>
+      <categories>
+        <category>詩歌</category>
+      </categories>
+      <tags>
+        <tag>献给lhp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在博客中插入數學公式</title>
+    <url>/blog/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Usage: hexo &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  clean     Remove generated files and cache.</span><br><span class="line">  config    Get or <span class="built_in">set</span> configurations.</span><br><span class="line">  deploy    Deploy your website.</span><br><span class="line">  generate  Generate static files.</span><br><span class="line">  <span class="built_in">help</span>      Get <span class="built_in">help</span> on a <span class="built_in">command</span>.</span><br><span class="line">  init      Create a new Hexo folder.</span><br><span class="line">  list      List the information of the site</span><br><span class="line">  migrate   Migrate your site from other system to Hexo.</span><br><span class="line">  new       Create a new post.</span><br><span class="line">  publish   Moves a draft post from _drafts to _posts folder.</span><br><span class="line">  render    Render files with renderer plugins.</span><br><span class="line">  version   Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages <span class="keyword">in</span> the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more <span class="built_in">help</span>, you can use <span class="string">&#x27;hexo help [command]&#x27;</span> <span class="keyword">for</span> the detailed information</span><br><span class="line">or you can check the docs: http://hexo.io/docs/</span><br></pre></td></tr></table></figure>
+<p>後來我卸載了所有插件，按照這個<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/MATH.md">文檔</a>所說的去做，很快就成功了。在此記錄，留作參考。</p>
+]]></content>
+      <categories>
+        <category>Computer</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>排版</tag>
       </tags>
   </entry>
   <entry>
@@ -849,20 +901,51 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </tags>
   </entry>
   <entry>
-    <title>在博客中插入數學公式</title>
-    <url>/blog/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
-    <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
+    <title>勃拉姆斯G大调第二号弦乐六重奏第一乐章</title>
+    <url>/blog/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
+    <content><![CDATA[<p>勃拉姆斯第二号弦乐六重奏（op. 36）写于1864-1865年间，距其创作第一号六重奏（op.18, 1859-1860）已过去五年，其间他写出了两首管弦乐小夜曲、三首带有钢琴的室内乐和悲壮而甜美的第一钢琴协奏曲。相比第一钢琴协奏曲的戏剧化，这首六重奏显得温和很多；比起第一六重奏，它又显得灰暗和朴素，预示着贯穿勃拉姆斯此后大部分成熟作品的内敛气质。另外，这首六重奏，也展示出着勃拉姆斯在作曲技法——尤其是对位法——上的全面提高。</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Usage: hexo &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  clean     Remove generated files and cache.</span><br><span class="line">  config    Get or <span class="built_in">set</span> configurations.</span><br><span class="line">  deploy    Deploy your website.</span><br><span class="line">  generate  Generate static files.</span><br><span class="line">  <span class="built_in">help</span>      Get <span class="built_in">help</span> on a <span class="built_in">command</span>.</span><br><span class="line">  init      Create a new Hexo folder.</span><br><span class="line">  list      List the information of the site</span><br><span class="line">  migrate   Migrate your site from other system to Hexo.</span><br><span class="line">  new       Create a new post.</span><br><span class="line">  publish   Moves a draft post from _drafts to _posts folder.</span><br><span class="line">  render    Render files with renderer plugins.</span><br><span class="line">  version   Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages <span class="keyword">in</span> the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more <span class="built_in">help</span>, you can use <span class="string">&#x27;hexo help [command]&#x27;</span> <span class="keyword">for</span> the detailed information</span><br><span class="line">or you can check the docs: http://hexo.io/docs/</span><br></pre></td></tr></table></figure>
-<p>後來我卸載了所有插件，按照這個<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/MATH.md">文檔</a>所說的去做，很快就成功了。在此記錄，留作參考。</p>
+<hr>
+<p>我们要介绍的第一乐章为3/4拍，奏鸣曲式，带有一段尾声。</p>
+<p>中提琴在G大调主音和导音之间小二度的颤音式音型，揭开了第一乐章的序幕，也为第一主题铺下了一层不安的背景。第一主题的旋律由两个相继的纯五度上行开始，一个在主音G上，一个在和声关系较远的降E上，神秘的气氛顿出。随后旋律是连续的跳进，和声则徘徊于G大调和降E大调之间，回归到G，中提琴的颤音音型被更丰富的对位所取代。小提琴接过颤音后，大提琴再次奏出第一主题的旋律，而此时单纯的颤音中加入了上行和下行，加入了舞动的和弦分解，带来变化和一丝微光。</p>
+<p>大提、中提、小提交错奏出一连串急促的下行，紧张的小幅摆动和典型的“叹息”动机结合，乐曲如此过渡到D大调上的第二主题。第二主题的旋律首先由大提琴奏出，再由小提琴接过。起初如梦幻般甜蜜优美，逐渐变得活泼，达到高潮时，音乐的形象热情而坚定，但级进后的向下五度大跳却给热情带来了某些宿命般的节制，这种节制在随后弱奏地重复高潮旋律时，带上了更浓郁的悲观色彩。</p>
+<p>展开部和再现部不必赘述。值得一提的是，室内乐中不同乐器的“对话”在这首作品中得到了充分的展现，营造出重叠往复、连绵不绝的效果，在形式和内容上都增加了音乐的厚度，也体现出勃拉姆斯高超的对位技巧。其例子随处可见，此不再逐一分析，听者宜自行体会。</p>
+<hr>
+<p>很多分析者认为，勃拉姆斯这部作品与他和哥廷根一位教授之女Agathe von Siebold的爱情有关。勃拉姆斯于1859年和Agathe订婚，但最终因为他焦虑与骄傲混合的奇异心态，他们解除了婚约。然而，即使在他们分开之后，勃拉姆斯给她的信中也写道：“我爱你，我一定要再见到你，但我无法忍受束缚。请给我写信，告诉我我是否要回到你身边，拥抱你，亲吻你，向你说我爱你。”但他们实际上从未再见面。有传记作者认为，这部作品第一乐章中第二主题结尾高潮处的A-G-A-H-E, 可以看作对Agathe名字的化用。若真是如此，这一乐章中的神秘、不安、热情和梦幻般的温柔，也可被看作是对逝去爱情的追忆、无奈和叹息。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms">https://en.wikipedia.org/wiki/String_Sextet_No._2_(Brahms</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Johannes_Brahms">https://en.wikipedia.org/wiki/Johannes_Brahms</a></li>
+<li><a href="http://kellydeanhansen.com/opus36.html">http://kellydeanhansen.com/opus36.html</a></li>
+<li><a href="https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36">https://www.laphil.com/musicdb/pieces/3765/string-sextet-no-2-in-g-op-36</a></li>
+</ul>
 ]]></content>
       <categories>
-        <category>Computer</category>
+        <category>音樂評論</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
-        <tag>排版</tag>
+        <tag>献给lhp</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>旧事闲叙</title>
+    <url>/blog/2019/09/03/%E6%97%A7%E4%BA%8B%E9%97%B2%E5%8F%99/</url>
+    <content><![CDATA[<p>今天看到母校开学推送里一张照片，思路忽然不可抑制地弥散开去，想到诸多旧事。 </p>
+<a id="more"></a>
+<p>照片里是教室内景：老师站在讲台上，底下是初中生，活泼稚嫩。引人注目的是黑板上方PKU和THU的字母和校徽，一红一紫，让我一眼认出了这是哪个教室。 </p>
+<p>那还是2016年的事情，我刚上高二。中午上学，我如常走在西门进去那条长道上，看到前面一个女生一手提一块牌子，正是前面提到的北清标志。我心想：“这是高一几班学妹这么有志气？”遂上前询问，答曰：高三理科实验班。尴尬之余，我记住了此事。他们毕业的暑假，我们几个搞竞赛的去那个教室自习，两块牌子就赫然挂在那里，暗示着我们行为的功利目的。还有些圆形的卡片，都是一些国内顶尖高校（此处不使用柳特的定义）的校徽，因为没有固定在墙上，被我们当飞盘扔着玩。至于那个学姐，我不知道她的姓名，更不知道她的去处，即使遇见，她可能也认不出来那个曾让她年轻了两岁的小弟弟。 </p>
+<p>报应很快就来。我上了高三，有一次在校门口岐山面馆吃午饭，同桌坐了一个真学妹。旁边的桌子上有一个小同学和一名成年男子，两人交谈时，小同学说自己是实验班的，男子便开始询问实验班的状况：“你们实验班是不是上课都没有人说话呀？你们实验班是不是作业很多呀？”当他问到“你们实验班是不是大部分都可以上北大清华？”我忍不住笑了：师大附中在社会上竟然有如此声望！见此，同桌的学妹便问我：“你在实验班吗？”我说是的，她竟接着问：“高中还是初中？”一瞬间我想起了一年前那个中午的情景。接着她问了我参加竞赛的情况，又主动谈起自己准备参加物理竞赛的感受。“学校竞赛班讲得还是太简单了。”她说。有此认识，我觉得她具备参加物理竞赛的基本素质，可惜后来也没再见过，想想现在也快复赛了吧。 </p>
+<p>其实上面两个误认年龄的故事，并不是什么高级的笑话，但是每每想起此事，总让人笑得无奈：无奈并不是因为那早已冰释的尴尬，而是因为紧张尴尬都可以当作笑谈，正说明那件事连同它发生其中的那段岁月已经是纯粹的记忆，或许给了当事人人生轨迹一个微乎其微的散射角，然后各自离去，记忆被分成几份，永无拼合的可能。逝者如斯！ </p>
+<p>但是初中的教室里挂大学作为目标，总让我觉得很奇怪。一年前我问一个上小学的小朋友理想是什么，他说“考上北大清华”。当然，把某些顶尖大学作为自己的目标无可非议，可是除了正在准备高考的学生，这种目标真的值得作为一个人的理想，甚至被挂在墙上天天强调吗？我又想起了自己初中时的日子。 </p>
+<p>那个时候，我是一个爱幻想的小朋友，用现在很多人的话说叫“中二”，说来也巧，我对初中的回忆，恰巧集中在初中二年级。那时若有人问我理想是什么，我会毫不犹豫地回答：“to be a physicist”。至于物理学目前在研究什么，物理学的研究是什么样的，我一无所知。那时的我总会幻想未来生活的情景，我想象自己是一个杰出的物理学家，拓展了人类的认知边界，然后隐居在远方的田园里，有院子，有邻居，屋边有河；我在屋里可以弹琴、推导方程，在屋外可以和可爱的女孩子坐在河边，一起看书，阳光下，树枝的影子映在书上，风拿她刚洗过的头发轻扫我的脸；周末，我们和邻居一起办室内乐音乐会；做出新成果后，我会把文章发给期刊，署上一个神秘的名字……为此，我花了一些时间通览了高中数学教材，然后开始自学高数，我觉得那个幻想会变成现实，然后在三天打鱼两天晒网地为之学习新知识。至于学那些数学究竟是出于喜好还是想要炫耀，我觉得两者都有，但朴素的道德观总限制我不要太张狂。 </p>
+<p>那时在我眼里，没有一所大学处于神圣的位置，我也没有想过要上什么大学：我觉得重要的是我的理想，以及为人类服务的伟大事业，然后又狂妄地认为我可以上任何一所大学。那时的我也不认什么“大神”，要真说崇敬的人：牛顿、爱因斯坦、维克多·雨果，没了，“竞赛大佬”“高考状元”在我眼里如同草芥。我想起初二有一次下楼时，听到两个高中生讨论量子力学。当时我们班里就有人微积分还没搞懂号称在学习量子力学，我不以为然；那次听到高中生讨论量子力学，我也不以为然。直到我上了高中，开始把枭哥、雷神之属认作“大佬”时，我才意识到我初一初二的时候，正是他们书写校园传说的年代——说校园传说有点过，理科实验班学术传说或许比较恰当——那时的我还和他们在一栋楼上上课，现在只能说是“同住地球村”了。 </p>
+<p>说到校园传说，那时的我还真觉得自己上了高中能搞一番奇事。原因倒不是相信自己能达到后来所认“大佬”的层次（毕竟我根本不知道、也不屑于知道那些），而是当时看了很多青年文摘，向往高中生谈恋爱。我从不曾幻想自己参加竞赛如何如何，而是编出了自己为了恋人挑战整个世界，然后流浪到普林斯顿一类的大学，旁听理论物理课，最后做出惊世骇俗的成果得到承认的故事。还有平淡一些的，那是看到了高中生布置的教室，觉得他们的生活一定丰富多彩，然后开始幻想自己和女朋友一起学各种有趣的东西，参加各种活动的事。真到了高中，才发现一切都平平淡淡，还有老师告诉我们这场考试结束后的核心任务就是准备下一场考试，然后一直轮回。我处在曾经幻想过的境地，却发现我根本没有能力演好那部电影，也没有哪个女孩子失了智愿意陪我。即使是平淡很多的幻想，也被老师写好的当三年吴刚然后蟾宫折桂的剧本所取代。 </p>
+<p>高中的我开始怀念起初中。怀念考完试昏昏沉沉地走出行政楼时，斜阳下那方美丽小花园的景色；怀念音乐课唱歌被身边可爱的同学嘲讽，出教室后脸上热热的感觉；怀念语文课上红乾大叔天文地理历史政治信手拈来时，他那带点鼻音的普通话；怀念英语课上我借着语言陌生感的庇护写出的那些幻想，被老师大声宣读的满足感；怀念我坐在窗前书桌读历史，看窗框的影子从书的一段滑向另一端的那个下午；怀念我面对敲窗夜雨和雨中孤灯，写下一首首从未寄出的情诗的夜晚；怀念运动会观众席上看书时，节奏明快的背景音乐和念稿人无病呻吟的播音；怀念……可是等等，初中时的我，难道不是分明地憎恨着现实的逼仄，幻想着美好的未来吗？那时的我，不是也在一面为每一次考试而担心，一面说着“大不了放弃高考”的大话吗？ </p>
+<p>回首过去，略微区分开现实和幻想之后，即使它们都难免混进后来的解读，我仍然清楚地发现，随着时间的推移，现实变得越来越接近理想，也变得越来越不可能到达理想，这时我的幻想也变得越来越现实。走在临潼九月的街道上，余威未散的阳光、清凉的风和似乎毫不相干的人群里，我看到一个本质上无聊的故事：爱幻想的孩子总是在现实里挣扎，但过去的幻想与过去的挣扎混为一体，把回忆推进了一片云雾缭绕的仙境之中，而幻想的空间，则不断从未来流向曾经。 </p>
+<p>我想起了小时候无聊时打发时间的游戏：给一个细长的塑料袋充点气，封上口，用两个手指夹着从一头捋向另一头。开始时，气全在一边，然后不断从指缝中流过，手走到尽头，意味着空气已经全部溜到了手的另一侧。 </p>
+]]></content>
+      <categories>
+        <category>隨筆</category>
+      </categories>
   </entry>
   <entry>
     <title>幾首舊詩</title>
@@ -895,21 +978,17 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </categories>
   </entry>
   <entry>
-    <title>旧事闲叙</title>
-    <url>/blog/2019/09/03/%E6%97%A7%E4%BA%8B%E9%97%B2%E5%8F%99/</url>
-    <content><![CDATA[<p>今天看到母校开学推送里一张照片，思路忽然不可抑制地弥散开去，想到诸多旧事。 </p>
-<a id="more"></a>
-<p>照片里是教室内景：老师站在讲台上，底下是初中生，活泼稚嫩。引人注目的是黑板上方PKU和THU的字母和校徽，一红一紫，让我一眼认出了这是哪个教室。 </p>
-<p>那还是2016年的事情，我刚上高二。中午上学，我如常走在西门进去那条长道上，看到前面一个女生一手提一块牌子，正是前面提到的北清标志。我心想：“这是高一几班学妹这么有志气？”遂上前询问，答曰：高三理科实验班。尴尬之余，我记住了此事。他们毕业的暑假，我们几个搞竞赛的去那个教室自习，两块牌子就赫然挂在那里，暗示着我们行为的功利目的。还有些圆形的卡片，都是一些国内顶尖高校（此处不使用柳特的定义）的校徽，因为没有固定在墙上，被我们当飞盘扔着玩。至于那个学姐，我不知道她的姓名，更不知道她的去处，即使遇见，她可能也认不出来那个曾让她年轻了两岁的小弟弟。 </p>
-<p>报应很快就来。我上了高三，有一次在校门口岐山面馆吃午饭，同桌坐了一个真学妹。旁边的桌子上有一个小同学和一名成年男子，两人交谈时，小同学说自己是实验班的，男子便开始询问实验班的状况：“你们实验班是不是上课都没有人说话呀？你们实验班是不是作业很多呀？”当他问到“你们实验班是不是大部分都可以上北大清华？”我忍不住笑了：师大附中在社会上竟然有如此声望！见此，同桌的学妹便问我：“你在实验班吗？”我说是的，她竟接着问：“高中还是初中？”一瞬间我想起了一年前那个中午的情景。接着她问了我参加竞赛的情况，又主动谈起自己准备参加物理竞赛的感受。“学校竞赛班讲得还是太简单了。”她说。有此认识，我觉得她具备参加物理竞赛的基本素质，可惜后来也没再见过，想想现在也快复赛了吧。 </p>
-<p>其实上面两个误认年龄的故事，并不是什么高级的笑话，但是每每想起此事，总让人笑得无奈：无奈并不是因为那早已冰释的尴尬，而是因为紧张尴尬都可以当作笑谈，正说明那件事连同它发生其中的那段岁月已经是纯粹的记忆，或许给了当事人人生轨迹一个微乎其微的散射角，然后各自离去，记忆被分成几份，永无拼合的可能。逝者如斯！ </p>
-<p>但是初中的教室里挂大学作为目标，总让我觉得很奇怪。一年前我问一个上小学的小朋友理想是什么，他说“考上北大清华”。当然，把某些顶尖大学作为自己的目标无可非议，可是除了正在准备高考的学生，这种目标真的值得作为一个人的理想，甚至被挂在墙上天天强调吗？我又想起了自己初中时的日子。 </p>
-<p>那个时候，我是一个爱幻想的小朋友，用现在很多人的话说叫“中二”，说来也巧，我对初中的回忆，恰巧集中在初中二年级。那时若有人问我理想是什么，我会毫不犹豫地回答：“to be a physicist”。至于物理学目前在研究什么，物理学的研究是什么样的，我一无所知。那时的我总会幻想未来生活的情景，我想象自己是一个杰出的物理学家，拓展了人类的认知边界，然后隐居在远方的田园里，有院子，有邻居，屋边有河；我在屋里可以弹琴、推导方程，在屋外可以和可爱的女孩子坐在河边，一起看书，阳光下，树枝的影子映在书上，风拿她刚洗过的头发轻扫我的脸；周末，我们和邻居一起办室内乐音乐会；做出新成果后，我会把文章发给期刊，署上一个神秘的名字……为此，我花了一些时间通览了高中数学教材，然后开始自学高数，我觉得那个幻想会变成现实，然后在三天打鱼两天晒网地为之学习新知识。至于学那些数学究竟是出于喜好还是想要炫耀，我觉得两者都有，但朴素的道德观总限制我不要太张狂。 </p>
-<p>那时在我眼里，没有一所大学处于神圣的位置，我也没有想过要上什么大学：我觉得重要的是我的理想，以及为人类服务的伟大事业，然后又狂妄地认为我可以上任何一所大学。那时的我也不认什么“大神”，要真说崇敬的人：牛顿、爱因斯坦、维克多·雨果，没了，“竞赛大佬”“高考状元”在我眼里如同草芥。我想起初二有一次下楼时，听到两个高中生讨论量子力学。当时我们班里就有人微积分还没搞懂号称在学习量子力学，我不以为然；那次听到高中生讨论量子力学，我也不以为然。直到我上了高中，开始把枭哥、雷神之属认作“大佬”时，我才意识到我初一初二的时候，正是他们书写校园传说的年代——说校园传说有点过，理科实验班学术传说或许比较恰当——那时的我还和他们在一栋楼上上课，现在只能说是“同住地球村”了。 </p>
-<p>说到校园传说，那时的我还真觉得自己上了高中能搞一番奇事。原因倒不是相信自己能达到后来所认“大佬”的层次（毕竟我根本不知道、也不屑于知道那些），而是当时看了很多青年文摘，向往高中生谈恋爱。我从不曾幻想自己参加竞赛如何如何，而是编出了自己为了恋人挑战整个世界，然后流浪到普林斯顿一类的大学，旁听理论物理课，最后做出惊世骇俗的成果得到承认的故事。还有平淡一些的，那是看到了高中生布置的教室，觉得他们的生活一定丰富多彩，然后开始幻想自己和女朋友一起学各种有趣的东西，参加各种活动的事。真到了高中，才发现一切都平平淡淡，还有老师告诉我们这场考试结束后的核心任务就是准备下一场考试，然后一直轮回。我处在曾经幻想过的境地，却发现我根本没有能力演好那部电影，也没有哪个女孩子失了智愿意陪我。即使是平淡很多的幻想，也被老师写好的当三年吴刚然后蟾宫折桂的剧本所取代。 </p>
-<p>高中的我开始怀念起初中。怀念考完试昏昏沉沉地走出行政楼时，斜阳下那方美丽小花园的景色；怀念音乐课唱歌被身边可爱的同学嘲讽，出教室后脸上热热的感觉；怀念语文课上红乾大叔天文地理历史政治信手拈来时，他那带点鼻音的普通话；怀念英语课上我借着语言陌生感的庇护写出的那些幻想，被老师大声宣读的满足感；怀念我坐在窗前书桌读历史，看窗框的影子从书的一段滑向另一端的那个下午；怀念我面对敲窗夜雨和雨中孤灯，写下一首首从未寄出的情诗的夜晚；怀念运动会观众席上看书时，节奏明快的背景音乐和念稿人无病呻吟的播音；怀念……可是等等，初中时的我，难道不是分明地憎恨着现实的逼仄，幻想着美好的未来吗？那时的我，不是也在一面为每一次考试而担心，一面说着“大不了放弃高考”的大话吗？ </p>
-<p>回首过去，略微区分开现实和幻想之后，即使它们都难免混进后来的解读，我仍然清楚地发现，随着时间的推移，现实变得越来越接近理想，也变得越来越不可能到达理想，这时我的幻想也变得越来越现实。走在临潼九月的街道上，余威未散的阳光、清凉的风和似乎毫不相干的人群里，我看到一个本质上无聊的故事：爱幻想的孩子总是在现实里挣扎，但过去的幻想与过去的挣扎混为一体，把回忆推进了一片云雾缭绕的仙境之中，而幻想的空间，则不断从未来流向曾经。 </p>
-<p>我想起了小时候无聊时打发时间的游戏：给一个细长的塑料袋充点气，封上口，用两个手指夹着从一头捋向另一头。开始时，气全在一边，然后不断从指缝中流过，手走到尽头，意味着空气已经全部溜到了手的另一侧。 </p>
+    <title>我的信仰</title>
+    <url>/blog/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
+    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
+<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
+<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
+<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
+<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
+<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
+<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
+<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
+<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
 ]]></content>
       <categories>
         <category>隨筆</category>
@@ -952,17 +1031,95 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       </tags>
   </entry>
   <entry>
-    <title>我的信仰</title>
-    <url>/blog/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
-    <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
-<p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
-<p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
-<p>我那時最認同的話，是蘇格拉底說的：「未經審驗的人生是不值得過的。」</p>
-<p>我以爲那是自由的開始，其實那更是迷茫的開始。</p>
-<p>直到今天，我發現，「對人生，對社會，什麼是有意義的」這一問題，我仍然無法回答。七年以來，我做了很多事，也說了很多話，但實際上沒有一件事是我能真正說服自己去做的，也沒有一句話是我真正認同的。我努力地學習，參加考試，無非是爲了滿足求知的衝動，爲了滿足被人認同的渴望，或者相信這樣做是符合自己利益的——雖然並不知道爲什麼要追求這種利益；我對很多問題發表看法，也無非是出於自我表達的衝動，出於對偏見的堅持（所謂偏見，並不是說它一定偏頗或者錯誤，只是我實在無法徹底說服自己相信它們）。所以，七年來，我以爲自己相比那些盲信的人更清醒、更自由，其實我無非是一個沒有理想信念，完全被衝動、偏見和利益驅使的動物罷了。</p>
-<p>不過，仔細想想，有兩點我應該是無條件認同的。第一，我認同邏輯應該做爲一切價值的基礎，而懷疑對於導向正確的邏輯是有價值的。我曾嘗試懷疑邏輯本身，但我發現一旦要給出懷疑的理由，我就已經進入了邏輯的領地。這是一個悖論。當然你可以認爲「不可道」是最高的精神境界，但你並不能對此說更多的話，一旦試圖論證，不管是爲了說服別人還是說服自己，你都陷入了上面的悖論。第二點是出於對稱性的考慮：既然自己還是一個動物，不能給自己找到意義，不能回答究竟什麼是有價值的，那麼就不能認定自己的衝動和利益比其他人的更有價值，也不能認定一個人、一個種族的衝動和利益比另一個人、一個種族的更有價值。因此，出於同理心的善良，在我看來是符合邏輯的。</p>
-<p>如果上述兩條可以算是信仰，那它們就暫時是我的信仰了。</p>
-<p>前幾天某個晚上在樹洞和幾個人舌戰一番之後，忽然覺得很沒意思——你拿你自己都不相信的一套理論，試圖去說服根本沒認真想過應該相信什麼的那些人，這到底算什麼事？你還是先去讀書去思考吧——在想清楚之前，不妨繼續做一個被衝動和利益驅使的動物，但是，保持善良，放棄偏見，堅持進化成一個自由人的目標不動搖！</p>
+    <title>纠缠和统计力学的基础</title>
+    <url>/blog/2021/01/02/%E7%BA%A0%E7%BC%A0%E5%92%8C%E7%BB%9F%E8%AE%A1%E5%8A%9B%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>传统的统计力学假设宇宙是一个满足能量约束的微正则系综, 它的一个足够小的子系统的概率分布可以由正则系综导出. Popescu S, et al. <sup><a href="#fn_1" id="reffn_1">1</a></sup> 提出, 如果假设宇宙是一个纯态, 那么它的一个子系统的密度矩阵和统计力学导出的正则分布密度矩阵几乎是相同的.</p>
+<a id="more"></a>
+<p>我们考虑一般的约束$R$, 约束下的态空间为</p>
+<script type="math/tex; mode=display">
+\mathcal{H}_R\subseteq \mathcal{H}_S\otimes\mathcal{H}_E,</script><p>其中$S$指代我们考虑的系统, 维数为$d_S$, $E$指代环境, 维数为$d_E$. 态空间的维数记为$d_R$.</p>
+<p>传统的统计力学以等概率原理为根基, 假设宇宙的密度矩阵为</p>
+<script type="math/tex; mode=display">
+\mathcal{E}_R=\frac{1}{d_R}P_R,</script><p>$P_R$为$\mathcal{H}_R$上的投影算符. 于是系统和环境的密度矩阵为</p>
+<script type="math/tex; mode=display">
+\Omega_S=\operatorname{Tr}_E\mathcal{E}_R,\quad\Omega_E=\operatorname{Tr}_S\mathcal{E}_R.</script><p>当宇宙是一个纯态$|\phi\rangle$时, 子系统和环境的密度矩阵为</p>
+<script type="math/tex; mode=display">
+\rho_S=\operatorname{Tr}_E|\phi\rangle\langle\phi|,\quad\rho_E=\operatorname{Tr}_S|\phi\rangle\langle\phi|</script><p>显然, 对所有可能的纯态$|\phi\rangle\in\mathcal{H}_R$取平均, $\langle\rho_S\rangle=\Omega_S, \langle\rho_E\rangle=\Omega_E$. 为描述对某一特定纯态$|\phi\rangle$两种假定下密度矩阵的差异, 引入</p>
+<script type="math/tex; mode=display">
+D(\rho_S(\phi),\Omega_S)=\frac{1}{2}\operatorname{Tr}\sqrt{(\rho_S-\Omega_S)^\dagger(\rho_S-\Omega_S)}.</script><p>在$\mathcal{H}_R$上引入测度, 则可以证明如下定理:</p>
+<blockquote>
+<p>对于任意的$\epsilon&gt;0$, 定义</p>
+<script type="math/tex; mode=display">
+ \eta=\epsilon+\frac{1}{2}\sqrt{\frac{d_S}{d_E^{\text{eff}}}},</script><p>其中</p>
+<script type="math/tex; mode=display">
+ d_{E}^{\text{eff}}=\frac{1}{\operatorname{Tr}\Omega_E^2}\geq \frac{d_R}{d_S},</script><p>那么存在</p>
+<script type="math/tex; mode=display">
+ \eta'=4\exp\left(-\frac{2}{9\pi^3}d_R \epsilon^2\right),</script><p>使得</p>
+<script type="math/tex; mode=display">
+ \frac{V\left(\left\{|\phi\rangle\in\mathcal{H}_R|D(\rho_S(\phi),\Omega_S)\geq\eta\right\}\right)}{V\left(\left\{|\phi\rangle\in\mathcal{H}_R\right\}\right)}\leq\eta'.</script></blockquote>
+<p>该定理表明, 如果$d_R\gg 1$(这是必然的), 且$d_S^2\ll d_R^{1/3}$(对于我们研究的系统, 这几乎也是必然的), 那么我们研究的系统相对等概率原理推出的情况几乎不会有大于$d_R^{-1/3}$的偏离. 因为取$\epsilon\sim d_R^{-1/3}$, 则$\sqrt{d_S/d_E^{\text{eff}}}\ll\epsilon$, $d_R\epsilon^2\gg 1$.</p>
+<p>这一结论的意义在于, 对于一般的热力学系统, 我们可以取消统计力学有关平均值的假设, 例如”等概率原理”, “时间平均”, “系综平均”等, 而仅仅用量子力学的基本原理导出和等概率原理相同的结论.</p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>由Levy’s Lemma, 只需证明</p>
+<script type="math/tex; mode=display">
+\langle D(\rho_S,\Omega_S)\rangle\leq\frac{1}{2}\sqrt{\frac{d_S}{d_E^{\text{eff}}}}.</script><p>首先</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    D(\rho_S,\Omega_S)&=\frac{1}{2}\sum_{i=1}^{d_S}|\lambda_i|\\  
+    &\leq\frac{1}{2}\sqrt{d_S\sum_{i=1}^{d_S}\lambda_i^2}\\  
+    &=\frac{1}{2}\sqrt{d_S\operatorname{Tr}(\rho_S-\Omega_S)^2}.
+\end{aligned}</script><p>其中$\lambda_i$为$\rho_S-\Omega_S$的本征值. 进而</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \langle D(\rho_S,\Omega_S)\rangle&\leq\bigg\langle\frac{1}{2}\sqrt{d_S\operatorname{Tr}(\rho_S-\Omega_S)^2}\bigg\rangle\\
+    &\leq\frac{1}{2}\sqrt{\langle d_S\operatorname{Tr}(\rho_S-\Omega_S)^2\rangle}\\
+    &=\frac{1}{2}\sqrt{d_S\left(\langle\operatorname{Tr}\rho_S^2\rangle-\operatorname{Tr}\langle\rho_S\rangle^2\right)}.
+\end{aligned}</script><p>最后证明</p>
+<script type="math/tex; mode=display">
+ \langle\operatorname{Tr}\rho_S^2\rangle\leq\operatorname{Tr}\langle\rho_S\rangle^2+\operatorname{Tr}\langle\rho_E\rangle^2.</script><p>我们引入原始空间的一个拷贝, $\mathcal{H}_R\otimes\mathcal{H}_{R’}, \mathcal{H}_{R’}\subseteq\mathcal{H}_{S’}\otimes\mathcal{H}_{E’}$.</p>
+<p>对于一般的线性空间$V$上的算符$A$, 我们可以把它的平方的迹和$V\otimes V$上一个算符的迹联系起来,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \operatorname{Tr}_{V\otimes V} \left(\left(A\otimes A\right)F_{VV}\right)&=\operatorname{Tr}\sum_{kl;k'l';vv'}\left(A_{kl}|k\rangle\langle l|\right)\otimes\left(A_{k'l'}|k'\rangle\langle l'|\right)|v'v\rangle\langle vv'|\\  
+    &=\operatorname{Tr}\sum_{kl;k'l';vv'}A_{kl}A_{k'l'}|kk'\rangle\langle ll'|v'v\rangle\langle vv'| \\  
+    &=\sum_{kl;k'l';vv'}A_{kl}A_{k'l'}\langle vv'|kk'\rangle\langle ll'|v'v\rangle\\  
+    &=\sum_{kl}A_{kl}A_{lk}\\  
+    &=\operatorname{Tr}_V(A^2),
+\end{aligned}</script><p>其中, 交换算符$F_{VV}$定义为</p>
+<script type="math/tex; mode=display">
+F_{VV}=\sum_{v,v'}|v'\rangle\langle v|\otimes|v\rangle\langle v'|.</script><p>由此, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\operatorname{Tr}_S\rho_S^2&= \operatorname{Tr}_{SS'}\left(\left(\rho_S\otimes\rho_{S'}\right)F_{SS'}\right)\\   
+&=\operatorname{Tr}_{RR'}\left(\left(|\phi\rangle\langle\psi|\otimes|\phi\rangle\langle\psi|\right)_{RR'}\left(F_{SS'}\otimes P_{EE'}\right)\right)
+\end{aligned}</script><p>现在只需考虑</p>
+<script type="math/tex; mode=display">
+V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle=\int|\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \mathrm{d} \phi</script><p>由于$V$在正交变换下是不变的, 它可以被分解为向对称子空间和反对称子空间的投影. 但是考虑到它作用在反对称态上得到的是0, $V$完全是一个向对称子空间的投影算符. 归一化得到</p>
+<script type="math/tex; mode=display">
+ \langle|\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi|\rangle=\frac{2}{d_{R}\left(d_{R}+1\right)} \Pi_{R R^{\prime}}^{\mathrm{sym}},</script><p>其中投影算符</p>
+<script type="math/tex; mode=display">
+ \Pi_{R R^{\prime}}^{\mathrm{sym}}=\frac{1}{2}\left(P_{R R^{\prime}}+F_{R R^{\prime}}\right).</script><p>于是</p>
+<script type="math/tex; mode=display">
+ \begin{aligned}
+\left\langle\operatorname{Tr}_{S} \rho_{S}^{2}\right\rangle=&\operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R R^{\prime}}}{d_{R}\left(d_{R}+1\right)}\right)\left(F_{S S^{\prime}} \otimes P_{E E^{\prime}}\right)\right)+\operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R R^{\prime}}}{d_{R}\left(d_{R}+1\right)}\right)\left(P_{S S^{\prime}} \otimes F_{E E^{\prime}}\right)\right) \\
+\leq & \operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R}}{d_{R}} \otimes \frac{P_{R^{\prime}}}{d_{R}}\right)\left(F_{S S^{\prime}} \otimes P_{E E^{\prime}}\right)\right)+\operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R}}{d_{R}} \otimes \frac{P_{R^{\prime}}}{d_{R}}\right)\left(P_{S S^{\prime}} \otimes F_{E E^{\prime}}\right)\right) \\
+=& \operatorname{Tr}_{S S^{\prime}}\left(\left(\Omega_{S} \otimes \Omega_{S}\right) F_{S S^{\prime}}\right) +\operatorname{Tr}_{E E^{\prime}}\left(\left(\Omega_{E} \otimes \Omega_{E}\right) F_{E E^{\prime}}\right)\\  
+=&\operatorname{Tr}_{S} \Omega_{S}^{2}+\operatorname{Tr}_{E} \Omega_{E}^{2}
+\end{aligned}</script><p>这就证明了我们的结论.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. Popescu, S., Short, A. J., &amp; Winter, A. (2006). Entanglement and the foundations of statistical mechanics. Nature Physics, 2(11), 754–758. <a href="https://doi.org/10.1038/nphys444">https://doi.org/10.1038/nphys444</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Physics</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>關於這個博客</title>
+    <url>/blog/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
+<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
+<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
+<p>聽起來是很有趣罷。</p>
 ]]></content>
       <categories>
         <category>隨筆</category>
@@ -994,18 +1151,6 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       <tags>
         <tag>献给lhp</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>關於這個博客</title>
-    <url>/blog/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
-<p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
-<p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
-<p>聽起來是很有趣罷。</p>
-]]></content>
-      <categories>
-        <category>隨筆</category>
-      </categories>
   </entry>
   <entry>
     <title>灯笼</title>
@@ -1103,150 +1248,5 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
       <categories>
         <category>小說</category>
       </categories>
-  </entry>
-  <entry>
-    <title>纠缠和统计力学的基础</title>
-    <url>/blog/2021/01/02/%E7%BA%A0%E7%BC%A0%E5%92%8C%E7%BB%9F%E8%AE%A1%E5%8A%9B%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>传统的统计力学假设宇宙是一个满足能量约束的微正则系综, 它的一个足够小的子系统的概率分布可以由正则系综导出. Popescu S, et al. <sup><a href="#fn_1" id="reffn_1">1</a></sup> 提出, 如果假设宇宙是一个纯态, 那么它的一个子系统的密度矩阵和统计力学导出的正则分布密度矩阵几乎是相同的.</p>
-<a id="more"></a>
-<p>我们考虑一般的约束$R$, 约束下的态空间为</p>
-<script type="math/tex; mode=display">
-\mathcal{H}_R\subseteq \mathcal{H}_S\otimes\mathcal{H}_E,</script><p>其中$S$指代我们考虑的系统, 维数为$d_S$, $E$指代环境, 维数为$d_E$. 态空间的维数记为$d_R$.</p>
-<p>传统的统计力学以等概率原理为根基, 假设宇宙的密度矩阵为</p>
-<script type="math/tex; mode=display">
-\mathcal{E}_R=\frac{1}{d_R}P_R,</script><p>$P_R$为$\mathcal{H}_R$上的投影算符. 于是系统和环境的密度矩阵为</p>
-<script type="math/tex; mode=display">
-\Omega_S=\operatorname{Tr}_E\mathcal{E}_R,\quad\Omega_E=\operatorname{Tr}_S\mathcal{E}_R.</script><p>当宇宙是一个纯态$|\phi\rangle$时, 子系统和环境的密度矩阵为</p>
-<script type="math/tex; mode=display">
-\rho_S=\operatorname{Tr}_E|\phi\rangle\langle\phi|,\quad\rho_E=\operatorname{Tr}_S|\phi\rangle\langle\phi|</script><p>显然, 对所有可能的纯态$|\phi\rangle\in\mathcal{H}_R$取平均, $\langle\rho_S\rangle=\Omega_S, \langle\rho_E\rangle=\Omega_E$. 为描述对某一特定纯态$|\phi\rangle$两种假定下密度矩阵的差异, 引入</p>
-<script type="math/tex; mode=display">
-D(\rho_S(\phi),\Omega_S)=\frac{1}{2}\operatorname{Tr}\sqrt{(\rho_S-\Omega_S)^\dagger(\rho_S-\Omega_S)}.</script><p>在$\mathcal{H}_R$上引入测度, 则可以证明如下定理:</p>
-<blockquote>
-<p>对于任意的$\epsilon&gt;0$, 定义</p>
-<script type="math/tex; mode=display">
- \eta=\epsilon+\frac{1}{2}\sqrt{\frac{d_S}{d_E^{\text{eff}}}},</script><p>其中</p>
-<script type="math/tex; mode=display">
- d_{E}^{\text{eff}}=\frac{1}{\operatorname{Tr}\Omega_E^2}\geq \frac{d_R}{d_S},</script><p>那么存在</p>
-<script type="math/tex; mode=display">
- \eta'=4\exp\left(-\frac{2}{9\pi^3}d_R \epsilon^2\right),</script><p>使得</p>
-<script type="math/tex; mode=display">
- \frac{V\left(\left\{|\phi\rangle\in\mathcal{H}_R|D(\rho_S(\phi),\Omega_S)\geq\eta\right\}\right)}{V\left(\left\{|\phi\rangle\in\mathcal{H}_R\right\}\right)}\leq\eta'.</script></blockquote>
-<p>该定理表明, 如果$d_R\gg 1$(这是必然的), 且$d_S^2\ll d_R^{1/3}$(对于我们研究的系统, 这几乎也是必然的), 那么我们研究的系统相对等概率原理推出的情况几乎不会有大于$d_R^{-1/3}$的偏离. 因为取$\epsilon\sim d_R^{-1/3}$, 则$\sqrt{d_S/d_E^{\text{eff}}}\ll\epsilon$, $d_R\epsilon^2\gg 1$.</p>
-<p>这一结论的意义在于, 对于一般的热力学系统, 我们可以取消统计力学有关平均值的假设, 例如”等概率原理”, “时间平均”, “系综平均”等, 而仅仅用量子力学的基本原理导出和等概率原理相同的结论.</p>
-<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>由Levy’s Lemma, 只需证明</p>
-<script type="math/tex; mode=display">
-\langle D(\rho_S,\Omega_S)\rangle\leq\frac{1}{2}\sqrt{\frac{d_S}{d_E^{\text{eff}}}}.</script><p>首先</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    D(\rho_S,\Omega_S)&=\frac{1}{2}\sum_{i=1}^{d_S}|\lambda_i|\\  
-    &\leq\frac{1}{2}\sqrt{d_S\sum_{i=1}^{d_S}\lambda_i^2}\\  
-    &=\frac{1}{2}\sqrt{d_S\operatorname{Tr}(\rho_S-\Omega_S)^2}.
-\end{aligned}</script><p>其中$\lambda_i$为$\rho_S-\Omega_S$的本征值. 进而</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    \langle D(\rho_S,\Omega_S)\rangle&\leq\bigg\langle\frac{1}{2}\sqrt{d_S\operatorname{Tr}(\rho_S-\Omega_S)^2}\bigg\rangle\\
-    &\leq\frac{1}{2}\sqrt{\langle d_S\operatorname{Tr}(\rho_S-\Omega_S)^2\rangle}\\
-    &=\frac{1}{2}\sqrt{d_S\left(\langle\operatorname{Tr}\rho_S^2\rangle-\operatorname{Tr}\langle\rho_S\rangle^2\right)}.
-\end{aligned}</script><p>最后证明</p>
-<script type="math/tex; mode=display">
- \langle\operatorname{Tr}\rho_S^2\rangle\leq\operatorname{Tr}\langle\rho_S\rangle^2+\operatorname{Tr}\langle\rho_E\rangle^2.</script><p>我们引入原始空间的一个拷贝, $\mathcal{H}_R\otimes\mathcal{H}_{R’}, \mathcal{H}_{R’}\subseteq\mathcal{H}_{S’}\otimes\mathcal{H}_{E’}$.</p>
-<p>对于一般的线性空间$V$上的算符$A$, 我们可以把它的平方的迹和$V\otimes V$上一个算符的迹联系起来,</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    \operatorname{Tr}_{V\otimes V} \left(\left(A\otimes A\right)F_{VV}\right)&=\operatorname{Tr}\sum_{kl;k'l';vv'}\left(A_{kl}|k\rangle\langle l|\right)\otimes\left(A_{k'l'}|k'\rangle\langle l'|\right)|v'v\rangle\langle vv'|\\  
-    &=\operatorname{Tr}\sum_{kl;k'l';vv'}A_{kl}A_{k'l'}|kk'\rangle\langle ll'|v'v\rangle\langle vv'| \\  
-    &=\sum_{kl;k'l';vv'}A_{kl}A_{k'l'}\langle vv'|kk'\rangle\langle ll'|v'v\rangle\\  
-    &=\sum_{kl}A_{kl}A_{lk}\\  
-    &=\operatorname{Tr}_V(A^2),
-\end{aligned}</script><p>其中, 交换算符$F_{VV}$定义为</p>
-<script type="math/tex; mode=display">
-F_{VV}=\sum_{v,v'}|v'\rangle\langle v|\otimes|v\rangle\langle v'|.</script><p>由此, </p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\operatorname{Tr}_S\rho_S^2&= \operatorname{Tr}_{SS'}\left(\left(\rho_S\otimes\rho_{S'}\right)F_{SS'}\right)\\   
-&=\operatorname{Tr}_{RR'}\left(\left(|\phi\rangle\langle\psi|\otimes|\phi\rangle\langle\psi|\right)_{RR'}\left(F_{SS'}\otimes P_{EE'}\right)\right)
-\end{aligned}</script><p>现在只需考虑</p>
-<script type="math/tex; mode=display">
-V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle=\int|\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \mathrm{d} \phi</script><p>由于$V$在正交变换下是不变的, 它可以被分解为向对称子空间和反对称子空间的投影. 但是考虑到它作用在反对称态上得到的是0, $V$完全是一个向对称子空间的投影算符. 归一化得到</p>
-<script type="math/tex; mode=display">
- \langle|\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi|\rangle=\frac{2}{d_{R}\left(d_{R}+1\right)} \Pi_{R R^{\prime}}^{\mathrm{sym}},</script><p>其中投影算符</p>
-<script type="math/tex; mode=display">
- \Pi_{R R^{\prime}}^{\mathrm{sym}}=\frac{1}{2}\left(P_{R R^{\prime}}+F_{R R^{\prime}}\right).</script><p>于是</p>
-<script type="math/tex; mode=display">
- \begin{aligned}
-\left\langle\operatorname{Tr}_{S} \rho_{S}^{2}\right\rangle=&\operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R R^{\prime}}}{d_{R}\left(d_{R}+1\right)}\right)\left(F_{S S^{\prime}} \otimes P_{E E^{\prime}}\right)\right)+\operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R R^{\prime}}}{d_{R}\left(d_{R}+1\right)}\right)\left(P_{S S^{\prime}} \otimes F_{E E^{\prime}}\right)\right) \\
-\leq & \operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R}}{d_{R}} \otimes \frac{P_{R^{\prime}}}{d_{R}}\right)\left(F_{S S^{\prime}} \otimes P_{E E^{\prime}}\right)\right)+\operatorname{Tr}_{R R^{\prime}}\left(\left(\frac{P_{R}}{d_{R}} \otimes \frac{P_{R^{\prime}}}{d_{R}}\right)\left(P_{S S^{\prime}} \otimes F_{E E^{\prime}}\right)\right) \\
-=& \operatorname{Tr}_{S S^{\prime}}\left(\left(\Omega_{S} \otimes \Omega_{S}\right) F_{S S^{\prime}}\right) +\operatorname{Tr}_{E E^{\prime}}\left(\left(\Omega_{E} \otimes \Omega_{E}\right) F_{E E^{\prime}}\right)\\  
-=&\operatorname{Tr}_{S} \Omega_{S}^{2}+\operatorname{Tr}_{E} \Omega_{E}^{2}
-\end{aligned}</script><p>这就证明了我们的结论.</p>
-<blockquote id="fn_1">
-<sup>1</sup>. Popescu, S., Short, A. J., &amp; Winter, A. (2006). Entanglement and the foundations of statistical mechanics. Nature Physics, 2(11), 754–758. <a href="https://doi.org/10.1038/nphys444">https://doi.org/10.1038/nphys444</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>你的眼睛</title>
-    <url>/blog/2021/01/17/%E4%BD%A0%E7%9A%84%E7%9C%BC%E7%9D%9B/</url>
-    <content><![CDATA[<p>她没有仰头，只是眼睛向上看着我。四目相对那一瞬间，我感觉到她的眼神里有太多东西，我立刻躲开了，但那一瞬的记忆已经是无法抹去的刻痕。在这里我会多写一些注释，交代我写出某些话是怎么想的。但丁早年所作的情诗集《新生》正是诗歌散文结合的形式，用散文讲出诗歌的背景，读来颇有意趣。当然，注释并非散文，我也绝没有把自己和但丁相提并论的意思。</p>
-<a id="more"></a>
-<p>我触摸你的眼神像触摸电流<br>我好像走在悬崖边与深渊对视<br>在沉重的过去和未来间保持危险的平衡</p>
-<p>抱歉，我知道比喻是一个华丽的陷阱<br>可是我说不出一句人话</p>
-<p>我看到剑的寒光听到淬火的声音<br>我看到熊熊的炉火<br>我看到凝固的血</p>
-<p>我看到一只黑猫翻出逻辑的迷宫<br>立刻因天地的空阔而感到害怕<br>在你的脚边徘徊不去<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
-<p>我看到“夜晚”这个词语最深处的颜色<br>那是一个小心翼翼的问号<br>如十月的风在试探秋水<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p>你的手心微潮，你的手背冰凉<br>你的眼睛让人无言以对</p>
-<p>诗或者歌是西山的落日<sup><a href="#fn_3" id="reffn_3">3</a></sup><br>（当我们再次凝望夕阳<br>日落的位置就会北移<br>你可以算出时间的流逝<sup><a href="#fn_4" id="reffn_4">4</a></sup>）<br>你执着于定义<br>转而凝视僵硬的土地<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
-<p>土地僵硬，询问春天的日期<br>孩子，春天不是神谕<sup><a href="#fn_6" id="reffn_6">6</a></sup>或古老的仪式<br>春天是你呼在我手上的那一口热气<br>春天是拥抱和颤抖</p>
-<p><sup><a href="#fn_1" id="reffn_1">1</a></sup> 去年九月和今年一月，都有一个很快乐、回宿舍回得很晚的夜晚，我们见到缠着我们不肯离去的小猫。<br><sup><a href="#fn_2" id="reffn_2">2</a></sup> 九月，我们在未名湖边度过了很多快乐的时光。十月秋风初起时，我独自在湖边，看到风把湖水吹皱，就像我们最初的试探。另外，《秋水》也是庄子的篇目。<br><sup><a href="#fn_3" id="reffn_3">3</a></sup> 她很喜欢在理科一号楼最高处看夕阳从北京的西山落下，之前她会边看边拍照，把照片发给我，最近我们经常一起看。<br><sup><a href="#fn_4" id="reffn_4">4</a></sup> 我们这几天看到日落的地点向北移动了。现在快放寒假，如果寒假回来还能一起看，那么落日将在更靠北的位置。根据角度的变化，可以算出太阳直射纬度的变化，进而算出时间。虽然我们都有日历。<br><sup><a href="#fn_5" id="reffn_5">5</a></sup> 她在伤心或纠结的时候，就不看我，而是低头看着地面。这样的时候，她会显得非常可爱，但是让人担心。<br><sup><a href="#fn_6" id="reffn_6">6</a></sup> 神谕(oracle)，计算机术语，是一个可以得到某个判定问题结果的黑盒子。</p>
-]]></content>
-      <categories>
-        <category>詩歌</category>
-      </categories>
-      <tags>
-        <tag>献给lhp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Crank-Nicolson Method for Solving 1D Schrödinger Equation</title>
-    <url>/blog/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
-    <content><![CDATA[<p>To solve a one-dimensional time-dependent Schrödinger equation numerically, consider a difference method. </p>
-<a id="more"></a> 
-<p> The equation to be solved is</p>
-<script type="math/tex; mode=display">
-\mathrm{i}\hbar\frac{\partial \psi(x, t)}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^{2} \psi(x, t)}{\partial x^{2}}+V(x, t) \psi(x, t).</script><p>Discretise the $x$, and denote $x_j=j\Delta x, j=1,\cdots,L$ and $\psi(x_j)=\psi_j$ To perform the difference, define the discretised Hamiltonian $H_D$ as</p>
-<script type="math/tex; mode=display">
- H_D\psi_j=-\frac{\hbar^2}{2m}\frac{1}{\Delta x^2}\left[\psi_{j-1}+\psi_{j+1}-2\psi_j\right]+V_j\psi_j,</script><p>which can be viewed as a matrix performed on a vector $(\psi_1,\cdots,\psi_L)$. Discretise the time and denote $\psi(t_n)=\psi(n\Delta t)=\psi^n$. A trivial differential method is</p>
-<script type="math/tex; mode=display">
-\mathrm{i}\hbar\frac{1}{\Delta t}(\psi^n_{j+1}-\psi^n_j)=H_D\psi^n_j,</script><p>i.e.,</p>
-<script type="math/tex; mode=display">
-\psi^{n+1}_j=\left(1-\mathrm{i}\Delta t H_D/\hbar\right)\psi^n_j.</script><p>To check the stability of such a method, consider the analytical solution to the discretised equation for $V_j$ constant</p>
-<script type="math/tex; mode=display">
-\psi^n_j=\xi^n\exp(\mathrm{i}kj\Delta x),</script><p>which yields</p>
-<script type="math/tex; mode=display">
-\xi=1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right].</script><p>For any $\Delta x$ and $\Delta t$, $|\xi|&gt;1$, indicating that this method is always unstable.</p>
-<p> A modification of this method is to replace the discretisation form by</p>
-<script type="math/tex; mode=display">
-\psi^{n+1}_j=\psi^n_j-\mathrm{i}\Delta t H_D/\hbar\psi^{n+1}_j,</script><p>i.e., </p>
-<script type="math/tex; mode=display">
-    \psi_{j}^{n+1}=\sum_{j'}\left(1+\mathrm{i} \Delta t H_D/\hbar\right)_{jj'}^{-1} \psi_{j'}^{n}</script><p>One can check that in this method</p>
-<script type="math/tex; mode=display">
-\xi=\frac{1}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which indicates that this method is always stable. However, the time evolution $\left(1+\mathrm{i} \Delta t H_D/\hbar\right)^{-1}$ is still not unitary, so that it does not preserve the norm of the wave function.</p>
-<p>A further modification is to set the time evolution as</p>
-<script type="math/tex; mode=display">
-    \frac{1-\mathrm{i}\Delta tH_D/2\hbar}{1+\mathrm{i}\Delta t H_D/2\hbar}.</script><p>To evaluate the stability,</p>
-<script type="math/tex; mode=display">
-\xi=\frac{1-\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]}{1+\frac{\mathrm{i} \Delta t}{\hbar}\left[\frac{\hbar^2}{2m}\frac{4}{\Delta^{2} x} \sin ^{2}(k \Delta x / 2)+V_{j}\right]},</script><p>which ensure the stability for any choice of $\Delta x$ and $\Delta t$. </p>
-<p>The third method is called Crank-Nicolson method. It is an implicit form and requires an inverse of a tridiagonal matrix, whose time cost is $\mathcal{O}(L)$. To calculate the time evolution, one need to perform matrix products, whose time cost is $\mathcal{O}(L^2)$.</p>
-<p>The code for this method with a periodic boundary condition can be found at <a href="https://github.com/Florestan-Eusebius/Crank-Nicolson-Solver">Florestan-Eusebius/Crank-Nicolson-Solver: The Crank Nicolson Solver to solve 1D time dependent Schrödinger equation. (github.com)</a>, where the harmonic oscillator is tested as an example. We see that result calculated by this method agrees with the theoretical result perfectly. </p>
-]]></content>
-      <categories>
-        <category>Physics</category>
-      </categories>
-      <tags>
-        <tag>Computational Methods</tag>
-      </tags>
   </entry>
 </search>
