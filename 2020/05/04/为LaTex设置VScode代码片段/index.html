@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://florestan-eusebius.github.io').hostname,
-    root: '/',
+    hostname: new URL('https://florestan-eusebius.github.io/blog').hostname,
+    root: '/blog/',
     scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
@@ -49,7 +49,7 @@
   <meta name="description" content="VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符\par输入之后再输回车，编辑器自动帮你键入了\paragraph；再比如每次输入行内公式，打两个$就很别扭。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为LaTex设置VScode代码片段">
-<meta property="og:url" content="https://florestan-eusebius.github.io/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/index.html">
+<meta property="og:url" content="https://florestan-eusebius.github.io/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/index.html">
 <meta property="og:site_name" content="狸狌的平行世界">
 <meta property="og:description" content="VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符\par输入之后再输回车，编辑器自动帮你键入了\paragraph；再比如每次输入行内公式，打两个$就很别扭。">
 <meta property="og:locale" content="en_US">
@@ -61,7 +61,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://florestan-eusebius.github.io/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg">
 
-<link rel="canonical" href="https://florestan-eusebius.github.io/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+<link rel="canonical" href="https://florestan-eusebius.github.io/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
 
 
 <script id="page-configurations">
@@ -115,7 +115,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">狸狌的平行世界</span>
         <span class="logo-line-after"><i></i></span>
@@ -139,32 +139,32 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Friends</a>
+    <a href="/blog/friends/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Friends</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -214,10 +214,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
       <meta itemprop="name" content="Atonal Fermion">
       <meta itemprop="description" content="學不可以已">
     </span>
@@ -273,7 +273,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/LaTex/" rel="tag"># LaTex</a>
+              <a href="/blog/tags/LaTex/" rel="tag"># LaTex</a>
           </div>
 
         
@@ -282,11 +282,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/" rel="prev" title="一篇给小北的非典型庆生文">
+    <a href="/blog/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/" rel="prev" title="一篇给小北的非典型庆生文">
       <i class="fa fa-chevron-left"></i> 一篇给小北的非典型庆生文
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/16/Introduction-to-Semiconductor-Physics/" rel="next" title="Introduction to Semiconductor Physics">
+    <a href="/blog/2020/06/16/Introduction-to-Semiconductor-Physics/" rel="next" title="Introduction to Semiconductor Physics">
       Introduction to Semiconductor Physics <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -360,20 +360,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/blog/archives/">
         
           <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/blog/categories/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/blog/tags/">
           
         <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
@@ -461,30 +461,30 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/blog/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/blog/js/next-boot.js"></script>
 
 
 
 
   
-<script src="/js/local-search.js"></script>
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -514,7 +514,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'BlogComment',
       owner: 'Florestan-Eusebius',
       admin: ['Florestan-Eusebius'],
-      id: '03a43a374cb9cdb8fe85f6e66e2cdf6b',
+      id: 'eb4a25b58fd4b37e1f49d9f746b37e9b',
         language: 'default.yml',
       distractionFreeMode: true
     });

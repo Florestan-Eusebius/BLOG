@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Quantum noise and quantum operations</title>
-    <url>/2020/10/19/Quantum-noise-and-quantum-operations/</url>
+    <url>/blog/2020/10/19/Quantum-noise-and-quantum-operations/</url>
     <content><![CDATA[<p><strong>Not finished yet!</strong></p>
 <p>Closed quantum systems, without noise.</p>
 <p>Quantum opsrations formalism, to describe open quantum systems. It can be applied to any kind of open systems and can be used to describe discrete state changes.</p>
@@ -58,7 +58,7 @@
   </entry>
   <entry>
     <title>Calculating Entropy for Variational Method</title>
-    <url>/2020/04/30/Calculating-Entropy-for-Variational-Method/</url>
+    <url>/blog/2020/04/30/Calculating-Entropy-for-Variational-Method/</url>
     <content><![CDATA[<p>When using variational method to solve the equilibrium state for some many-particle system, one usually sets a density operator $\rho_i$ (with trace 1) for particle $i$. The density operator may have some parameters to be determined by the condition that the free energy be at its minimum. <a id="more"></a>Suppose we have $N$ particles at $N$ sites, each being labeled by $i$. The whole density operator is thus</p>
 <script type="math/tex; mode=display">
 \rho=\rho_1\otimes\rho_2\otimes\cdots\otimes\rho_N.</script><p>Our problem now is to calculate the entropy given this density operator,</p>
@@ -79,7 +79,7 @@ S=-k_B\operatorname{Tr}\left(\rho\ln\rho\right),</script><p>or equivalently, to 
   </entry>
   <entry>
     <title>EPR到底说了些什么？</title>
-    <url>/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+    <url>/blog/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
     <content><![CDATA[<blockquote>
 <p>本文改写自笔者的课程作业, DDL已过, 故整理发出. </p>
 <p>EPR悖论一直是学界内外的一个热词, 但中文互联网上对EPR到底说了些什么的介绍并不尽如人意, 一会说量子力学不完备, 一会说定域实在论和量子力学不相容, 一会说量子纠缠和”鬼魅般的超距作用”, 这些词组, 或多或少和EPR有些联系, 但它们究竟是怎样的逻辑关系? EPR的原始论文究竟讲了些什么? 这就是本文试图说明的.</p>
@@ -141,7 +141,7 @@ S=-k_B\operatorname{Tr}\left(\rho\ln\rho\right),</script><p>or equivalently, to 
   </entry>
   <entry>
     <title>Semi-classical Transport</title>
-    <url>/2020/06/17/Semi-classical-Transport/</url>
+    <url>/blog/2020/06/17/Semi-classical-Transport/</url>
     <content><![CDATA[<h2 id="Drude-model"><a href="#Drude-model" class="headerlink" title="Drude model"></a>Drude model</h2><h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
 <li>Electron scattering time $\tau$.</li>
 <li>After scattering, $\mathbf{p}=0$.</li>
@@ -259,7 +259,7 @@ J_{x}=&-\left[\frac{\left(\frac{\sigma_{1}}{1+\omega_{1}^{2} \tau_{1}^{2}}+\frac
   </entry>
   <entry>
     <title>Introduction to Semiconductor Physics</title>
-    <url>/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
+    <url>/blog/2020/06/16/Introduction-to-Semiconductor-Physics/</url>
     <content><![CDATA[<h2 id="Qualitative-properties"><a href="#Qualitative-properties" class="headerlink" title="Qualitative properties"></a>Qualitative properties</h2><ul>
 <li>Semi-metal &amp; half metal, the latter is related to spin polarization</li>
 <li>Direct &amp; indirect band gap</li>
@@ -307,7 +307,7 @@ D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{
   </entry>
   <entry>
     <title>一篇给小北的非典型庆生文</title>
-    <url>/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
+    <url>/blog/2020/05/04/%E4%B8%80%E7%AF%87%E7%BB%99%E5%B0%8F%E5%8C%97%E7%9A%84%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%BA%86%E7%94%9F%E6%96%87/</url>
     <content><![CDATA[<p>小北今年122岁了。</p>
 <p>122岁还叫小北？没办法，大家都这么叫。一方面是可爱吧——水灵灵的未名湖，鸭子游着，浮光闪着，楼影立着，一天天呆看着来去匆匆的苦恼和幸福、爱恋和背弃、智慧与迷茫，眼都不眨，被风一挠痒痒却笑得一切都映歪了；<a id="more"></a>还有表面儒雅娴静的博雅塔，暗暗地按着大家的头：你们都不准比我高！还有各种各样奇奇怪怪的人组成的社团，有在课堂上写诗的数学教授，有艺园二楼的烤鹅腿（我好像暴露了些什么）……颜值高、可撩、不开心了还能扑到它怀里的东西，不可爱吗？另一方面，叫它小北，也有一种看着自家不争气小孩的心态吧：你为啥一个劲地说着没名堂的转圈圈话？你为啥就不像隔壁家的孩子那么会包装自己？你为啥整天干坏事被人骂？你为啥最近学得没那么好？……好多人都觉得这娃不是理想的样子，觉得这娃理应做得更好。</p>
 <p>其实人家娃很优秀的。1898年，在内忧外患的国家中、在维新变法的浪潮中诞生，一生下来就寄托着一个民族复兴的希望。才十几二十岁，就成了新文化运动的主要阵地、马克思主义在中国的发源地，深刻影响了国家发展的方向。再往后，一个个辉煌的名字和这孩子联系在一起（太多了，也太强了，挂一漏万不如不列了），“爱国进步民主科学”的精神和这孩子联系在一起……不多说了，现在操控这孩子的那帮人比我能说。总而言之，你觉得它不争气吧，在这个国家，你似乎还找不到第二个这样的学校——了解它的人首先想到的不是“优秀”“一流”这类词汇，而是“伟大”。</p>
@@ -330,7 +330,7 @@ D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{
   </entry>
   <entry>
     <title>Windows 裝機記錄</title>
-    <url>/2020/01/09/Windows-%E8%A3%9D%E6%A9%9F%E8%A8%98%E9%8C%84/</url>
+    <url>/blog/2020/01/09/Windows-%E8%A3%9D%E6%A9%9F%E8%A8%98%E9%8C%84/</url>
     <content><![CDATA[<p>因爲想裝WSL，但更新一直出問題，另外也是覺得現在的電腦太亂了，我決定推倒重來，重裝系統。</p>
 <a id="more"></a>
 <h3 id="開發環境的搭建"><a href="#開發環境的搭建" class="headerlink" title="開發環境的搭建"></a>開發環境的搭建</h3><p>裝完Windows，先在Control Panel中進入Programs，點擊Turn Windows features on or off，開啓WSL，然後去應用商店下一個ubuntu18.04，就算搞成了。具體教程見<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">微軟官方文檔</a>。我這裏還嘗試把源換成阿里雲的，<a href="https://www.jianshu.com/p/3e627ff45ccb">教程</a>在此。</p>
@@ -367,7 +367,7 @@ D_{h}\left(\varepsilon_{h}(\mathbf{k})\right)&=\frac{2\left(2 m_{h}^{*}\right)^{
   </entry>
   <entry>
     <title>Why Density Operator Varies with Time in a Different Way from Heisenberg Equation?</title>
-    <url>/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
+    <url>/blog/2020/01/10/Why-Density-Operator-Varies-with-Time-in-a-Different-Way-from-Heisenberg-Equation/</url>
     <content><![CDATA[<p>In Heisenberg picture of quantum mechanics, there is <strong>Heisenberg equation of motion</strong></p>
 <script type="math/tex; mode=display">
 \begin{equation}\label{heisenbergEq}
@@ -433,7 +433,7 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
   </entry>
   <entry>
     <title>为LaTex设置VScode代码片段</title>
-    <url>/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
+    <url>/blog/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
     <content><![CDATA[<p>VScode编辑LaTex大体而言是很方便的，但是默认的设置总有一些小问题。比如分段符<code>\par</code>输入之后再输回车，编辑器自动帮你键入了<code>\paragraph</code>；再比如每次输入行内公式，打两个<code>$</code>就很别扭。<a id="more"></a>怎么办？我们可以通过自定义代码片段的方法来使我们的输入更加便捷。</p>
 <img src="/2020/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/05/04/%E4%B8%BALaTex%E8%AE%BE%E7%BD%AEVScode%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/snippet.jpg" class>
 <p>如图，点击<code>File&gt;Preferences&gt;Use Snippets</code>，在弹出的框中键入<code>latex</code>，打开<code>latex.json</code>，在其中写入下列代码：</p>
@@ -446,7 +446,7 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
   </entry>
   <entry>
     <title>今天</title>
-    <url>/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
+    <url>/blog/2020/12/02/%E4%BB%8A%E5%A4%A9/</url>
     <content><![CDATA[<p>今天没有什么特别的<br>无非是风吹得耳朵疼<br>无非是骑自行车手会很冷</p>
 <a id="more"></a>
 <p>有些路你走上几年<br>上面的水泥缝就像是<br>中学时代背过的课文<br>给一个提示就能重复出几句</p>
@@ -466,7 +466,7 @@ i\hbar\dot{\hat{\rho}}&=i\hbar\frac{1}{N}\sum_{k=1}^{N}\left(\frac{\partial}{\pa
   </entry>
   <entry>
     <title>从加速度的定义说起</title>
-    <url>/2020/10/27/%E4%BB%8E%E5%8A%A0%E9%80%9F%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%B5%B7/</url>
+    <url>/blog/2020/10/27/%E4%BB%8E%E5%8A%A0%E9%80%9F%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%B5%B7/</url>
     <content><![CDATA[<p><strong>Warning:</strong> 这是一篇科普. 面向人类的内容在正文, 面向非人类的内容放在引用框中.</p>
 <a id="more"></a>
 <h2 id="问题引入-加速度是什么"><a href="#问题引入-加速度是什么" class="headerlink" title="问题引入: 加速度是什么?"></a>问题引入: 加速度是什么?</h2><p>任何一个正常初中生都了解这样的物理定义: 速度是位置矢量对时间的导数, 加速度是速度矢量对时间的导数. 由于我们是在位置空间中看这个问题, 位置矢量的加减很自然, 因此其求导也很自然; 但是速度矢量的求导这件事, 值得仔细考虑.</p>
@@ -559,7 +559,7 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
   </entry>
   <entry>
     <title>勃拉姆斯G大调第二号弦乐六重奏第一乐章</title>
-    <url>/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
+    <url>/blog/2020/10/18/%E5%8B%83%E6%8B%89%E5%A7%86%E6%96%AFG%E5%A4%A7%E8%B0%83%E7%AC%AC%E4%BA%8C%E5%8F%B7%E5%BC%A6%E4%B9%90%E5%85%AD%E9%87%8D%E5%A5%8F%E7%AC%AC%E4%B8%80%E4%B9%90%E7%AB%A0/</url>
     <content><![CDATA[<p>勃拉姆斯第二号弦乐六重奏（op. 36）写于1864-1865年间，距其创作第一号六重奏（op.18, 1859-1860）已过去五年，其间他写出了两首管弦乐小夜曲、三首带有钢琴的室内乐和悲壮而甜美的第一钢琴协奏曲。相比第一钢琴协奏曲的戏剧化，这首六重奏显得温和很多；比起第一六重奏，它又显得灰暗和朴素，预示着贯穿勃拉姆斯此后大部分成熟作品的内敛气质。另外，这首六重奏，也展示出着勃拉姆斯在作曲技法——尤其是对位法——上的全面提高。</p>
 <a id="more"></a>
 <hr>
@@ -585,7 +585,7 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
   </entry>
   <entry>
     <title>切向量与几何直观</title>
-    <url>/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/</url>
+    <url>/blog/2020/07/09/%E5%88%87%E5%90%91%E9%87%8F%E4%B8%8E%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82/</url>
     <content><![CDATA[<p>甲初学微分几何, 了解到切向量定义如下:</p>
 <blockquote>
 <p>微分流形$M$中$p$点上的切向量$X_p$是一个从$p$点处所有differentiable function的代数到实数集的线性映射, 即$X_p:\mathcal{F}_p(M)\rightarrow\mathbb{R}$, 且满足莱布尼茨积规则:$X_p(fg)=f(p)X_pg+g(p)X_pf$.</p>
@@ -623,7 +623,7 @@ Y^{\prime i'}_{\phantom{\prime i'};k'}&={Y'^{i'}}_{,k'}+\Gamma^{i'}_{\phantom{i'
   </entry>
   <entry>
     <title>小delta到底是个啥</title>
-    <url>/2020/04/04/%E5%B0%8Fdelta%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5/</url>
+    <url>/blog/2020/04/04/%E5%B0%8Fdelta%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5/</url>
     <content><![CDATA[<p>各种物理书中, 用得最混乱的概念是变分, 用得最混乱的符号就是$\delta$了. 一般来说, $\delta$有两个含义, 一是研究泛函极值时引入的<strong>变分</strong>, 这可以接受; 但有时研究一个随便什么函数, 也出来$\delta$, 也名之曰”变分”, 这在热力学中十分常见, 搞清楚了是力量, 搞不清楚就是混乱之源. 这里我们试图讲清楚第二种用法的精确含义, 并说明这种记号的优越性.</p>
 <a id="more"></a>
 <h2 id="微分-导函数-高阶微分和高阶导函数"><a href="#微分-导函数-高阶微分和高阶导函数" class="headerlink" title="微分, 导函数, 高阶微分和高阶导函数"></a>微分, 导函数, 高阶微分和高阶导函数</h2><p>Warning: 单纯为了实用的目的, 可以直接去看第二节的第一个定义(向量上的导数), 然后跳到第三节. 之所以叙述微分等内容, 主要是为了理论的完整和物理意义的优美. 这些内容主要参考了卓里奇的名著: 数学分析.</p>
@@ -850,7 +850,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>在博客中插入數學公式</title>
-    <url>/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
+    <url>/blog/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<p>今天想要發一篇有公式的文章，於是摸索如何實現。網上很多教程說要下插件，但插件配置好之後我的<code>hexo s</code>和<code>hexo d</code>都不能正常工作了，場面是這樣的：</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo s</span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Usage: hexo &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  clean     Remove generated files and cache.</span><br><span class="line">  config    Get or <span class="built_in">set</span> configurations.</span><br><span class="line">  deploy    Deploy your website.</span><br><span class="line">  generate  Generate static files.</span><br><span class="line">  <span class="built_in">help</span>      Get <span class="built_in">help</span> on a <span class="built_in">command</span>.</span><br><span class="line">  init      Create a new Hexo folder.</span><br><span class="line">  list      List the information of the site</span><br><span class="line">  migrate   Migrate your site from other system to Hexo.</span><br><span class="line">  new       Create a new post.</span><br><span class="line">  publish   Moves a draft post from _drafts to _posts folder.</span><br><span class="line">  render    Render files with renderer plugins.</span><br><span class="line">  version   Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages <span class="keyword">in</span> the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more <span class="built_in">help</span>, you can use <span class="string">&#x27;hexo help [command]&#x27;</span> <span class="keyword">for</span> the detailed information</span><br><span class="line">or you can check the docs: http://hexo.io/docs/</span><br></pre></td></tr></table></figure>
@@ -866,7 +866,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>幾首舊詩</title>
-    <url>/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/</url>
+    <url>/blog/2020/10/25/%E5%B9%BE%E9%A6%96%E8%88%8A%E8%A9%A9/</url>
     <content><![CDATA[<p>最近抽空整理一些舊作放在這個站點。本文收錄的幾篇都和之前一次愛情相關，覆蓋了愛情從產生到結束的全過程。</p>
 <a id="more"></a>
 <p>第一首《筆》是一首晦澀的情詩，大意是回憶起我曾經用這隻筆寫過宏大的理想，寫過對愛情的期待，而如今，這隻筆所寫的文字，終於有了情感上的歸屬。</p>
@@ -896,7 +896,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>旧事闲叙</title>
-    <url>/2019/09/03/%E6%97%A7%E4%BA%8B%E9%97%B2%E5%8F%99/</url>
+    <url>/blog/2019/09/03/%E6%97%A7%E4%BA%8B%E9%97%B2%E5%8F%99/</url>
     <content><![CDATA[<p>今天看到母校开学推送里一张照片，思路忽然不可抑制地弥散开去，想到诸多旧事。 </p>
 <a id="more"></a>
 <p>照片里是教室内景：老师站在讲台上，底下是初中生，活泼稚嫩。引人注目的是黑板上方PKU和THU的字母和校徽，一红一紫，让我一眼认出了这是哪个教室。 </p>
@@ -917,7 +917,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>没有地址的信</title>
-    <url>/2020/10/29/%E6%B2%A1%E6%9C%89%E5%9C%B0%E5%9D%80%E7%9A%84%E4%BF%A1/</url>
+    <url>/blog/2020/10/29/%E6%B2%A1%E6%9C%89%E5%9C%B0%E5%9D%80%E7%9A%84%E4%BF%A1/</url>
     <content><![CDATA[<p>整理几首高二时写的小诗。那时的文字还很稚嫩，形式和内容也不能很好地统一。我很喜欢最后一首的内容，把其中一句化用作了标题，但那首的语感实在太差了。</p>
 <a id="more"></a>
 <h3 id="咖啡店随想"><a href="#咖啡店随想" class="headerlink" title="咖啡店随想"></a>咖啡店随想</h3><p>淡黄色的灯光和音乐<br>让我想起 童话<br>想起一个 在风中展开的世界<br>琴声从地上流过<br>模糊了时光的影子<br>咖啡里 尝到回忆<br>与旧日恋人的味道<br>她曾走过我的生命<br>构造出关于未来的一切可能</p>
@@ -939,7 +939,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>色彩</title>
-    <url>/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
+    <url>/blog/2020/11/16/%E8%89%B2%E5%BD%A9/</url>
     <content><![CDATA[<p>——致这个美丽而变动不居的秋天</p>
 <a id="more"></a>
 <p>深秋——我也不知道什么是深秋<br>词语如落叶堆积于僵硬的土地<br>风鉴别并摧折无依的希望<br>排演晦暗的仪式<br>仪式<br>楚地的巫者临风怳然唱着苍茫的歌<br>湘水默默地吞噬古老的抒情<br>一代代漂泊者走过无边落木<br>直到世界悄然变换色彩<br>你如一场细密的和弦落入我的双眼<br>以泥土和青草的气息你许诺一个花园<br>你撷取远方的隐喻解读晦涩的暗香<br>和露水谈起日暮的伯劳与南塘的莲子<br>然后你歌唱曾经很盛大的夏日<br>直到你悄然变换色彩<br>于是我想起北四环的路灯<br>于是我想起城墙下的地铁<br>于是我想起水泥地防盗网和沾了油的招牌<br>想起落日下的紫藤萝和晨风中的桂花香<br>于是我想起走廊漏进的冷气暗白的灯光和混乱的读书声<br>想起矮墙边的自行车和迫不及待的脚步<br>我撕开窗前的爬山虎听到一夜脚步匆匆<br>直到我悄然变换色彩<br>推演未来的笔在稿纸上迟疑<br>时空在纷繁的角标中扭曲<br>我透过场方程看到宇宙再看到你的眼睛<br>看到玻璃酒杯间跳动的懒散的灯光<br>我无视引力理论的警告<br>走进你的旋律然后迷路<br>和正确的和声交换舞步<br>目睹你占领星空<br>直到我们悄然变换色彩<br>变换色彩是日出<br>我看到你脚踩的是黄亮黄亮的银杏叶<br>你看到深绿到深红的层次里<br>借着夜的庇护散溢的言语不知该放在何处<br>你看到几片秋叶飘落如无依的希望<br>没有什么仪式<br>未名湖倒影平静<br>你为词语而惶惑<br>直到世界悄然变换色彩<br>我回头<br>只有空荡荡的深秋</p>
@@ -953,7 +953,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>我的信仰</title>
-    <url>/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
+    <url>/blog/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/</url>
     <content><![CDATA[<p>我實在說不出自己有什麼信仰。</p>
 <p>曾參加浙大小組面試，老師問：「你想成爲什麼樣的人？」有同學回答說：「我想要成爲一個對祖國有用的人，祖國需要什麼樣的人，我就想成爲什麼樣的人。」我忍住沒笑，心裏想，祖國顯然需要各種各樣的人，所以你想成爲孫悟空？</p>
 <p>不過，回過頭來一想，如果<a id="more"></a>這位同學不是在說假話——面試說這樣的假話實在算是過於拙劣了——那我還真的很羨慕這種純粹的心態。十二歲那年，我忽然發現，此前老師家長給我灌輸的那一套價值觀、道德和理想，都禁不住一番透徹的追問。我開始重新審視人生和世界，試圖獨立地回答：對人生，對社會，究竟什麼纔是有價值的？從那時起，我拒絕接受任何一套現行的價值觀，我希望通過閱讀和思考，認真地給自己找到說話和做事的邏輯起點。我在邏輯上或許過分挑剔，我認爲，找不到這樣一個邏輯起點，一切言行的「目的」都是虛無的。</p>
@@ -970,7 +970,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>诗两首</title>
-    <url>/2020/10/19/%E8%AF%97%E4%B8%A4%E9%A6%96/</url>
+    <url>/blog/2020/10/19/%E8%AF%97%E4%B8%A4%E9%A6%96/</url>
     <content><![CDATA[<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>你是深渊<br>你是无眠的夜<br>你是大都市的玻璃幕墙<br>你是荒郊的野火</p>
 <a id="more"></a>
 <p>我的毛细血管<br>为西伯利亚的积雪输氧<br>我的呼吸<br>鼓动北京十月狂风大作<br>我按照勃拉姆斯的标示<br>抖落一串星星<br>撞上北四环疾驰的轿车<br>一地碎片仰望平凡且昂贵的格子</p>
@@ -997,7 +997,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>關於這個博客</title>
-    <url>/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
+    <url>/blog/2020/01/10/%E9%97%9C%E6%96%BC%E9%80%99%E5%80%8B%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>很早就想給自己弄一個博客。記得上小學時（已經是十幾年前的事了），老師教我們申請博客。我當時申請了一個——坐在爸媽臥室的椅子上，面對着4G硬盤的長屁股聯想電腦，自己搗鼓了很久，把電腦整得一陣一陣地吹風。<a id="more"></a>興奮地給媽媽看，“你還能得很，會弄博客了！”，媽媽就又回到客廳看電視了，我也就跟了過去。當時還是覺得坐在媽媽懷裏看電視連續劇更吸引我，卻實在沒有表達的能力和欲望，後來就連博客帳號也不記得了。上了大學，表達欲開始膨脹，想申請一個博客，看了一圈，國內這些運營商的審美實在讓人不敢恭維，於是就網上找教程自己搭。沒錢，也不想花錢買域名，這個github.io就剛好，每次看到都誘惑我走向CS的康莊大道。</p>
 <p>博客寫什麼？一是所謂「乾貨」。我是學物理的，數學也學一點，平時有什麼思考，可以寫在這裏。這是本行，要保證專業水準的。二是摻些水的半乾貨，業餘涉獵計算機、音樂、文學等等，有所得，輒書於此，於是這就僅僅是個人的體驗與想法，不保證專業性。三是隨筆，寫一些日常的見聞和思考，儘量寫些美好的東西，有時候編一兩個小故事，也放在這裏。</p>
 <p>一般而言，有表達，就有接收，有作者，就有讀者。但我實在也不指望我這滿屏荒唐言能有人閱讀。我寫日記，很隨意地寫，自然也有很多見不得人的言語。但除此之外，有時還想寫一些稍有打磨或者稍有知識含量的文字，放在這裏就正合適。這裏的文字只是日記的升級版，給自己搭一個精神家園，留一點回憶的素材。後之視今，亦猶今之視昔——或許將來看到今天的生活點滴和技術載體，就像現在看十幾年前一樣，在嘆惋中狐疑地欣賞着別具風味的落後，反覆品味那小題大做的焦慮和幸福。</p>
@@ -1009,7 +1009,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>灯笼</title>
-    <url>/2020/07/10/%E7%81%AF%E7%AC%BC/</url>
+    <url>/blog/2020/07/10/%E7%81%AF%E7%AC%BC/</url>
     <content><![CDATA[<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>三年前的正月十五，我回到儿时生活的工厂家属区。是时，路边已挂起红色的灯笼，记忆在浅灰色的天空中忽聚忽散。</p>
 <p>走过子校门口，就想起诸多往事。当年每到正月十五，一群小孩就打着纸糊的灯笼，里面点着蜡烛，在社区里乱转。待夜深将回家时，便聚在广场，把灯笼转起来、撞起来，让它们在最后的舞蹈中为烛火所吞噬——这也算是传统习俗。每年我们聚在一起烧灯笼时，总能看到语文老师孔老师，一个五十多岁的大汉，身材魁梧，提着他的大灯笼，孤零零地坐在广场的角落，纸烟的黄点在手中明了又灭，灭了又明。最后，他把烟在灯笼上灭掉，取出蜡烛，点燃灯笼，木条在他面前折断，点燃的纸片飞起又落下，最后只剩几片未烧尽的纸，火星在其上闪烁——他注视的却是闪烁的星星。</p>
 <a id="more"></a>
@@ -1106,7 +1106,7 @@ f^{(2)}(x)(h_1,h_2):&=\left(f^{(2)}(x)h_1\right)h_2\\
   </entry>
   <entry>
     <title>纠缠和统计力学的基础</title>
-    <url>/2021/01/02/%E7%BA%A0%E7%BC%A0%E5%92%8C%E7%BB%9F%E8%AE%A1%E5%8A%9B%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80/</url>
+    <url>/blog/2021/01/02/%E7%BA%A0%E7%BC%A0%E5%92%8C%E7%BB%9F%E8%AE%A1%E5%8A%9B%E5%AD%A6%E7%9A%84%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>传统的统计力学假设宇宙是一个满足能量约束的微正则系综, 它的一个足够小的子系统的概率分布可以由正则系综导出. Popescu S, et al. <sup><a href="#fn_1" id="reffn_1">1</a></sup> 提出, 如果假设宇宙是一个纯态, 那么它的一个子系统的密度矩阵和统计力学导出的正则分布密度矩阵几乎是相同的.</p>
 <a id="more"></a>
 <p>我们考虑一般的约束$R$, 约束下的态空间为</p>
@@ -1189,7 +1189,7 @@ V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle
   </entry>
   <entry>
     <title>你的眼睛</title>
-    <url>/2021/01/17/%E4%BD%A0%E7%9A%84%E7%9C%BC%E7%9D%9B/</url>
+    <url>/blog/2021/01/17/%E4%BD%A0%E7%9A%84%E7%9C%BC%E7%9D%9B/</url>
     <content><![CDATA[<p>她没有仰头，只是眼睛向上看着我。四目相对那一瞬间，我感觉到她的眼神里有太多东西，我立刻躲开了，但那一瞬的记忆已经是无法抹去的刻痕。在这里我会多写一些注释，交代我写出某些话是怎么想的。但丁早年所作的情诗集《新生》正是诗歌散文结合的形式，用散文讲出诗歌的背景，读来颇有意趣。当然，注释并非散文，我也绝没有把自己和但丁相提并论的意思。</p>
 <a id="more"></a>
 <p>我触摸你的眼神像触摸电流<br>我好像走在悬崖边与深渊对视<br>在沉重的过去和未来间保持危险的平衡</p>
@@ -1211,7 +1211,7 @@ V \equiv\langle |\phi\rangle\langle\phi|\otimes| \phi\rangle\langle\phi| \rangle
   </entry>
   <entry>
     <title>Crank-Nicolson Method for Solving 1D Schrödinger Equation</title>
-    <url>/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
+    <url>/blog/2021/02/23/Crank-Nicolson-Method-for-Solving-1D-Schrodinger-Equation/</url>
     <content><![CDATA[<p>To solve a one-dimensional time-dependent Schrödinger equation numerically, consider a difference method. </p>
 <a id="more"></a> 
 <p> The equation to be solved is</p>

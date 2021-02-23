@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://florestan-eusebius.github.io').hostname,
-    root: '/',
+    hostname: new URL('https://florestan-eusebius.github.io/blog').hostname,
+    root: '/blog/',
     scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
@@ -49,7 +49,7 @@
   <meta name="description" content="本文改写自笔者的课程作业, DDL已过, 故整理发出.  EPR悖论一直是学界内外的一个热词, 但中文互联网上对EPR到底说了些什么的介绍并不尽如人意, 一会说量子力学不完备, 一会说定域实在论和量子力学不相容, 一会说量子纠缠和”鬼魅般的超距作用”, 这些词组, 或多或少和EPR有些联系, 但它们究竟是怎样的逻辑关系? EPR的原始论文究竟讲了些什么? 这就是本文试图说明的.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EPR到底说了些什么？">
-<meta property="og:url" content="https://florestan-eusebius.github.io/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/index.html">
+<meta property="og:url" content="https://florestan-eusebius.github.io/blog/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/index.html">
 <meta property="og:site_name" content="狸狌的平行世界">
 <meta property="og:description" content="本文改写自笔者的课程作业, DDL已过, 故整理发出.  EPR悖论一直是学界内外的一个热词, 但中文互联网上对EPR到底说了些什么的介绍并不尽如人意, 一会说量子力学不完备, 一会说定域实在论和量子力学不相容, 一会说量子纠缠和”鬼魅般的超距作用”, 这些词组, 或多或少和EPR有些联系, 但它们究竟是怎样的逻辑关系? EPR的原始论文究竟讲了些什么? 这就是本文试图说明的.">
 <meta property="og:locale" content="en_US">
@@ -59,7 +59,7 @@
 <meta property="article:tag" content="Quantum">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://florestan-eusebius.github.io/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/">
+<link rel="canonical" href="https://florestan-eusebius.github.io/blog/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/">
 
 
 <script id="page-configurations">
@@ -113,7 +113,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">狸狌的平行世界</span>
         <span class="logo-line-after"><i></i></span>
@@ -137,32 +137,32 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-friends">
 
-    <a href="/friends/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Friends</a>
+    <a href="/blog/friends/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Friends</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -212,10 +212,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="https://florestan-eusebius.github.io/blog/2020/04/03/EPR%E5%88%B0%E5%BA%95%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
       <meta itemprop="name" content="Atonal Fermion">
       <meta itemprop="description" content="學不可以已">
     </span>
@@ -244,7 +244,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Physics/" itemprop="url" rel="index">
+                  <a href="/blog/categories/Physics/" itemprop="url" rel="index">
                     <span itemprop="name">Physics</span>
                   </a>
                 </span>
@@ -328,7 +328,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Quantum/" rel="tag"># Quantum</a>
+              <a href="/blog/tags/Quantum/" rel="tag"># Quantum</a>
           </div>
 
         
@@ -337,11 +337,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/" rel="prev" title="在博客中插入數學公式">
+    <a href="/blog/2020/01/10/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/" rel="prev" title="在博客中插入數學公式">
       <i class="fa fa-chevron-left"></i> 在博客中插入數學公式
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/" rel="next" title="我的信仰">
+    <a href="/blog/2020/04/03/%E6%88%91%E7%9A%84%E4%BF%A1%E4%BB%B0/" rel="next" title="我的信仰">
       我的信仰 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -416,20 +416,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/blog/archives/">
         
           <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/blog/categories/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/blog/tags/">
           
         <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
@@ -517,30 +517,30 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/blog/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
-
-
-  
+<script src="/blog/js/next-boot.js"></script>
 
 
 
 
   
-<script src="/js/local-search.js"></script>
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -618,7 +618,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'BlogComment',
       owner: 'Florestan-Eusebius',
       admin: ['Florestan-Eusebius'],
-      id: '027f2ba258b227df9955ea65cf7a22d8',
+      id: 'c4f796306ffc3382ccfee842f4756873',
         language: 'default.yml',
       distractionFreeMode: true
     });
